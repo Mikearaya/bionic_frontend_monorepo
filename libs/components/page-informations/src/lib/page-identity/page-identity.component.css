@@ -1,0 +1,19 @@
+.title {
+  width: 50%;
+  float: left;
+  font-family: unset;
+  color: #333;
+  font-size: x-large
+}
+
+.bread-crumb {
+  width: 50%;
+  float: left;
+  height: 3em;
+  color: #333;
+  text-align: right;
+}
+
+div {
+  align-items: center;
+}

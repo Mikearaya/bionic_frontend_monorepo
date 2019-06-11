@@ -2,7 +2,274 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "bionic-rent": {
+      "root": "apps/bionic-rent/",
+      "sourceRoot": "apps/bionic-rent/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bionic-rent",
+            "index": "apps/bionic-rent/src/index.html",
+            "main": "apps/bionic-rent/src/main.ts",
+            "polyfills": "apps/bionic-rent/src/polyfills.ts",
+            "tsConfig": "apps/bionic-rent/tsconfig.app.json",
+            "assets": [
+              "apps/bionic-rent/src/favicon.ico",
+              "apps/bionic-rent/src/assets"
+            ],
+            "styles": [
+              "apps/bionic-rent/src/styles.css",
+              "./node_modules/@syncfusion/ej2-base/styles/material.css",
+              "./node_modules/@syncfusion/ej2-buttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-inputs/styles/material.css",
+              "./node_modules/@syncfusion/ej2-navigations/styles/material.css",
+              "./node_modules/@syncfusion/ej2-popups/styles/material.css",
+              "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bionic-rent/src/environments/environment.ts",
+                  "with": "apps/bionic-rent/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bionic-rent:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bionic-rent:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bionic-rent:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bionic-rent/tsconfig.app.json",
+              "apps/bionic-rent/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/bionic-rent/src/test.ts",
+            "tsConfig": "apps/bionic-rent/tsconfig.spec.json",
+            "karmaConfig": "apps/bionic-rent/karma.conf.js",
+            "polyfills": "apps/bionic-rent/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "bionic-rent-e2e": {
+      "root": "apps/bionic-rent-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/bionic-rent-e2e/protractor.conf.js",
+            "devServerTarget": "bionic-rent:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bionic-rent:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/bionic-rent-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "components-data-grid": {
+      "root": "libs/components/data-grid",
+      "sourceRoot": "libs/components/data-grid/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/data-grid/tsconfig.lib.json",
+            "project": "libs/components/data-grid/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/data-grid/tsconfig.lib.json",
+              "libs/components/data-grid/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/components/data-grid/jest.config.js",
+            "tsConfig": "libs/components/data-grid/tsconfig.spec.json",
+            "setupFile": "libs/components/data-grid/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "services-security-service": {
+      "root": "libs/services/security-service",
+      "sourceRoot": "libs/services/security-service/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/services/security-service/tsconfig.lib.json",
+            "project": "libs/services/security-service/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/services/security-service/tsconfig.lib.json",
+              "libs/services/security-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/services/security-service/src/test.ts",
+            "tsConfig": "libs/services/security-service/tsconfig.spec.json",
+            "karmaConfig": "libs/services/security-service/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-form-buttons": {
+      "root": "libs/components/form-buttons",
+      "sourceRoot": "libs/components/form-buttons/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/form-buttons/tsconfig.lib.json",
+            "project": "libs/components/form-buttons/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/form-buttons/tsconfig.lib.json",
+              "libs/components/form-buttons/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/form-buttons/src/test.ts",
+            "tsConfig": "libs/components/form-buttons/tsconfig.spec.json",
+            "karmaConfig": "libs/components/form-buttons/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-page-informations": {
+      "root": "libs/components/page-informations",
+      "sourceRoot": "libs/components/page-informations/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/page-informations/tsconfig.lib.json",
+            "project": "libs/components/page-informations/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/page-informations/tsconfig.lib.json",
+              "libs/components/page-informations/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/page-informations/src/test.ts",
+            "tsConfig": "libs/components/page-informations/tsconfig.spec.json",
+            "karmaConfig": "libs/components/page-informations/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -10,5 +277,6 @@
     },
     "defaultCollection": "@nrwl/schematics"
   },
-  "schematics": {}
+  "schematics": {},
+  "defaultProject": "bionic-rent"
 }

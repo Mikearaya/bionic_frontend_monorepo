@@ -1,0 +1,44 @@
+<ejs-grid
+  [dataSource]="gridData | async"
+  #grid
+  [allowExcelExport]="true"
+  id="accounts"
+  [toolbar]="toolbarOptions"
+  [allowPaging]="true"
+  [allowFiltering]="true"
+  [allowSorting]="true"
+  [allowResizing]="true"
+  [showColumnChooser]="true"
+  [allowPdfExport]="true"
+  (toolbarClick)="toolbarClick($event)"
+  [pageSettings]="initialPage"
+  [filterSettings]="filterOptions"
+  [showColumnChooser]="true"
+  (dataStateChange)="onDataStateChanged($event)"
+  [editSettings]="editSettings"
+  [height]="650"
+  [groupSettings]="groupOptions"
+  [allowGrouping]="true"
+>
+  <e-columns>
+    <e-column
+      *ngFor="let column of columnsList"
+      [field]="column.key"
+      [headerText]="column.header"
+      [width]="column.width"
+      [textAlign]="column.textAlign"
+      [headerTextAlign]="column.hederAlign"
+      [visible]="column.visible"
+      [type]="column.type"
+      [format]="column.format"
+    ></e-column>
+    <e-column
+      headerText="Actions"
+      width="30"
+      [commands]="commands"
+      *ngIf="commands.length > 0"
+      textAlign="center"
+    >
+    </e-column>
+  </e-columns>
+</ejs-grid>

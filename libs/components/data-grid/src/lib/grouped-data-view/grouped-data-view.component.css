@@ -1,0 +1,35 @@
+#accounts_content_table {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.e-customizedExpandcell {
+  background-color: rebeccapurple;
+}
+
+.e-grid.e-gridhover tr[role='row']:hover {
+  background-color: #eee;
+}
+
+@media print {
+  #accounts_toolbarItems {
+    display: none;
+  }
+
+  .e-grid.e-default * {
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .e-ungroupbutton.e-icons.e-icon-hide {
+    display: none;
+  }
+
+  .e-groupsort.e-icons.e-ascending.e-icon-ascending {
+    display: none;
+  }
+
+  .e-groupsort.e-icons.e-descending.e-icon-descending {
+    display: none;
+  }
+
+}

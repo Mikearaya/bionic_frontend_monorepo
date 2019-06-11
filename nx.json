@@ -7,5 +7,24 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "bionic-rent": {
+      "tags": ["rent"]
+    },
+    "bionic-rent-e2e": {
+      "tags": []
+    },
+    "components-data-grid": {
+      "tags": ["grid"]
+    },
+    "services-security-service": {
+      "tags": ["service"]
+    },
+    "components-form-buttons": {
+      "tags": ["form"]
+    },
+    "components-page-informations": {
+      "tags": ["info"]
+    }
+  }
 }

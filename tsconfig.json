@@ -14,7 +14,20 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@bionic/components/data-grid": [
+        "libs/components/data-grid/src/index.ts"
+      ],
+      "@bionic/services/security-service": [
+        "libs/services/security-service/src/index.ts"
+      ],
+      "@bionic/components/form-buttons": [
+        "libs/components/form-buttons/src/index.ts"
+      ],
+      "@bionic/components/page-informations": [
+        "libs/components/page-informations/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
