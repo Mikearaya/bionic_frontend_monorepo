@@ -5,5 +5,14 @@
     "types": []
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts"]
+  "include": [
+    "**/*.ts",
+    "../../libs/rent/customers/src/index.ts",
+
+    "../../libs/rent/vehicle-rent/src/index.ts",
+
+    "../../libs/rent/vehicle-owners/src/index.ts",
+
+    "../../libs/rent/vehicles/src/index.ts"
+  ]
 }

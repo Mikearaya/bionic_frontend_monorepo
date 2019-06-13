@@ -31,7 +31,27 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     ButtonModule,
     ToolbarModule,
 
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        {
+          path: 'customers',
+          loadChildren: '@bionic/rent/customers#CustomersModule'
+        },
+        {
+          path: 'vehicle-rent',
+          loadChildren: '@bionic/rent/vehicle-rent#VehicleRentModule'
+        },
+        {
+          path: 'vehicle-owners',
+          loadChildren: '@bionic/rent/vehicle-owners#VehicleOwnersModule'
+        },
+        {
+          path: 'vehicles',
+          loadChildren: '@bionic/rent/vehicles#VehiclesModule'
+        }
+      ],
+      { initialNavigation: 'enabled' }
+    )
   ],
   providers: [SecurityService],
   bootstrap: [AppComponent]

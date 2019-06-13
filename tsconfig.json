@@ -26,7 +26,25 @@
       ],
       "@bionic/components/page-informations": [
         "libs/components/page-informations/src/index.ts"
-      ]
+      ],
+      "@bionic/components/vehicle-owner": [
+        "libs/components/vehicle-owner/src/index.ts"
+      ],
+      "@bionic/components/vehicles": ["libs/components/vehicles/src/index.ts"],
+      "@bionic/rent/customers": ["libs/rent/customers/src/index.ts"],
+      "@bionic/rent/vehicle-rent": ["libs/rent/vehicle-rent/src/index.ts"],
+      "@bionic/apis/rent/customer-api": [
+        "libs/apis/rent/customer-api/src/index.ts"
+      ],
+      "@bionic/apis/rent/vehicle-owners-api": [
+        "libs/apis/rent/vehicle-owners-api/src/index.ts"
+      ],
+      "@bionic/apis/rent/vehicles-api": [
+        "libs/apis/rent/vehicles-api/src/index.ts"
+      ],
+      "@bionic/apis/rent/rents-api": ["libs/apis/rent/rents-api/src/index.ts"],
+      "@bionic/rent/vehicle-owners": ["libs/rent/vehicle-owners/src/index.ts"],
+      "@bionic/rent/vehicles": ["libs/rent/vehicles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

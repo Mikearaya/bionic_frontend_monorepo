@@ -21,7 +21,7 @@ export const NAVIGATION_LINKS = [
       {
         id: '01-01',
         name: 'Vehicle Owners',
-        url: '/accounts',
+        url: '/vehicle-owners',
         expanded: false,
         selected: false,
         enabled: true,
@@ -49,7 +49,7 @@ export const NAVIGATION_LINKS = [
       {
         id: '02-01',
         name: 'Vehicles',
-        url: '/ledgers',
+        url: '/vehicles',
         expanded: false,
         enabled: true,
         selected: false
@@ -68,7 +68,26 @@ export const NAVIGATION_LINKS = [
       {
         id: '03-01',
         name: 'Customers',
-        url: '/lookups',
+        url: '/customers',
+        expanded: false,
+        enabled: true,
+        selected: false
+      }
+    ]
+  },
+  {
+    id: '05',
+    name: 'Rents',
+    expanded: false,
+    enabled: true,
+    url: 'parent',
+    selected: false,
+    icon: 'fas fa-cogs',
+    subChild: [
+      {
+        id: '05-01',
+        name: 'Rents List',
+        url: '/vehicle-rent',
         expanded: false,
         enabled: true,
         selected: false

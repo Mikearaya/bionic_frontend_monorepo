@@ -268,6 +268,279 @@
         }
       },
       "schematics": {}
+    },
+
+    "rent-customers": {
+      "root": "libs/rent/customers",
+      "sourceRoot": "libs/rent/customers/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/customers/tsconfig.lib.json",
+            "project": "libs/rent/customers/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/customers/tsconfig.lib.json",
+              "libs/rent/customers/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/customers/src/test.ts",
+            "tsConfig": "libs/rent/customers/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/customers/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-vehicle-rent": {
+      "root": "libs/rent/vehicle-rent",
+      "sourceRoot": "libs/rent/vehicle-rent/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/vehicle-rent/tsconfig.lib.json",
+            "project": "libs/rent/vehicle-rent/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/vehicle-rent/tsconfig.lib.json",
+              "libs/rent/vehicle-rent/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/vehicle-rent/src/test.ts",
+            "tsConfig": "libs/rent/vehicle-rent/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/vehicle-rent/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-customer-api": {
+      "root": "libs/apis/rent/customer-api",
+      "sourceRoot": "libs/apis/rent/customer-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/customer-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/customer-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/customer-api/tsconfig.lib.json",
+              "libs/apis/rent/customer-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/customer-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/customer-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/customer-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-vehicle-owners-api": {
+      "root": "libs/apis/rent/vehicle-owners-api",
+      "sourceRoot": "libs/apis/rent/vehicle-owners-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/vehicle-owners-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/vehicle-owners-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/vehicle-owners-api/tsconfig.lib.json",
+              "libs/apis/rent/vehicle-owners-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/vehicle-owners-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/vehicle-owners-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/vehicle-owners-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-vehicles-api": {
+      "root": "libs/apis/rent/vehicles-api",
+      "sourceRoot": "libs/apis/rent/vehicles-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/vehicles-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/vehicles-api/tsconfig.lib.json",
+              "libs/apis/rent/vehicles-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/vehicles-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/vehicles-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-rents-api": {
+      "root": "libs/apis/rent/rents-api",
+      "sourceRoot": "libs/apis/rent/rents-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/rents-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/rents-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/rents-api/tsconfig.lib.json",
+              "libs/apis/rent/rents-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/rents-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/rents-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/rents-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-vehicle-owners": {
+      "root": "libs/rent/vehicle-owners",
+      "sourceRoot": "libs/rent/vehicle-owners/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/vehicle-owners/tsconfig.lib.json",
+            "project": "libs/rent/vehicle-owners/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/vehicle-owners/tsconfig.lib.json",
+              "libs/rent/vehicle-owners/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/vehicle-owners/src/test.ts",
+            "tsConfig": "libs/rent/vehicle-owners/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/vehicle-owners/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-vehicles": {
+      "root": "libs/rent/vehicles",
+      "sourceRoot": "libs/rent/vehicles/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/vehicles/tsconfig.lib.json",
+            "project": "libs/rent/vehicles/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/vehicles/tsconfig.lib.json",
+              "libs/rent/vehicles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/vehicles/src/test.ts",
+            "tsConfig": "libs/rent/vehicles/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/vehicles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

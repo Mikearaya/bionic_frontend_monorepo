@@ -25,6 +25,30 @@
     },
     "components-page-informations": {
       "tags": ["info"]
+    },
+    "rent-customers": {
+      "tags": ["rent"]
+    },
+    "rent-vehicle-rent": {
+      "tags": ["rent"]
+    },
+    "apis-rent-customer-api": {
+      "tags": ["rent", ""]
+    },
+    "apis-rent-vehicle-owners-api": {
+      "tags": ["rent", ""]
+    },
+    "apis-rent-vehicles-api": {
+      "tags": ["rent", ""]
+    },
+    "apis-rent-rents-api": {
+      "tags": ["rent", ""]
+    },
+    "rent-vehicle-owners": {
+      "tags": ["rent", ""]
+    },
+    "rent-vehicles": {
+      "tags": ["rent", ""]
     }
   }
 }

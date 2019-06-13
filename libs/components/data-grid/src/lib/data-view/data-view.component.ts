@@ -158,7 +158,7 @@ export class DataViewComponent implements OnInit {
   }
   initilizeCommandColumn(): void {
     if (
-      this.showUpdate &&
+      this.showUpdate ||
       this.securityService.hasClaim(this.updatePrivilage)
     ) {
       this.commands.push({
@@ -171,7 +171,7 @@ export class DataViewComponent implements OnInit {
     }
 
     if (
-      this.showDelete &&
+      this.showDelete ||
       this.securityService.hasClaim(this.deletePrivilage)
     ) {
       this.commands.push({
@@ -281,7 +281,7 @@ export class DataViewComponent implements OnInit {
   }
 
   initializeToolBar(): void {
-    if (this.showAdd && this.securityService.hasClaim(this.addPrivilage)) {
+    if (this.showAdd || this.securityService.hasClaim(this.addPrivilage)) {
       console.log('iside ca add function');
       this.toolbar.push('Add');
     }
