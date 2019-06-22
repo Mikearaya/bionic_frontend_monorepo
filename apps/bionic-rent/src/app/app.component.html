@@ -13,14 +13,6 @@
           id="treeelement"
           [fields]="field"
         >
-          <ng-template #nodeTemplate="" let-data="">
-            <div>
-              <div>
-                <i [attr.class]="data.icon" aria-hidden="true"> </i
-                >{{ data.name }}
-              </div>
-            </div>
-          </ng-template>
         </ejs-treeview>
       </div>
     </ejs-sidebar>
@@ -39,13 +31,6 @@
           (click)="btnClick()"
         ></button>
       </div>
-
-      <!--
-        <ejs-toolbar>
-          <e-items> </e-items>
-        </ejs-toolbar>
-      -->
-
       <div id="targetcontent">
         <div class="content-head"><app-page-identity></app-page-identity></div>
 

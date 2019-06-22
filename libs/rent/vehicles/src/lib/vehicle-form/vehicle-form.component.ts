@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import {
+  VehiclesApiService,
+  VehicleViewModel,
+  Vehicle
+} from '@bionic/apis/rent/vehicles-api';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'bionic-vehicle-form',
@@ -6,10 +19,193 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicle-form.component.css']
 })
 export class VehicleFormComponent implements OnInit {
+  vehicleForm: FormGroup;
+  isUpdate: boolean;
+  transmissionTypes = ['Automatic', 'Manual'];
+  plateCodes = [2, 3];
+  fuielTypes = ['Benzine', 'Diesel'];
+  vehicleColor = ['White', 'Black', 'Red', 'Blue', 'Yellow', 'Green'];
+  vehicleTypes = ['Hatchback', 'Sedan', 'Pickup', 'SUV', 'Limosine', 'Motor'];
+  Years: number[] = [];
 
-  constructor() { }
+  private vehicleId: number;
 
-  ngOnInit() {
+  constructor(
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private vehicleApi: VehiclesApiService
+  ) {
+    this.createForm();
+    const currentYear = new Date().getFullYear();
+    for (let i = currentYear; i > currentYear - 30; i--) {
+      this.Years.push(i);
+    }
   }
 
+  ngOnInit() {
+    this.vehicleId = +this.activatedRoute.snapshot.paramMap.get('vehicleId');
+
+    if (this.vehicleId) {
+      this.isUpdate = true;
+      this.vehicleApi
+        .getVehicleById(this.vehicleId)
+        .subscribe(
+          (vehicle: VehicleViewModel) => this.initializeForm(vehicle),
+          (error: HttpErrorResponse) => alert(error.message)
+        );
+    }
+  }
+
+  private createForm(): void {
+    this.vehicleForm = this.formBuilder.group({
+      OwnerId: [''],
+      Make: ['', Validators.required],
+      Model: ['', Validators.required],
+      YearMade: ['', Validators.required],
+      Color: ['', Validators.required],
+      Type: ['', Validators.required],
+      ChassisNumber: [''],
+      MotorNumber: [''],
+      FuielType: ['', Validators.required],
+      CC: [''],
+      TotalPassanger: ['', Validators.required],
+      CylinderCount: [''],
+      LibreNo: ['', Validators.required],
+      PlateCode: ['', Validators.required],
+      PlateNumber: ['', Validators.required],
+      Transmission: ['', Validators.required]
+    });
+  }
+
+  private initializeForm(vehicle: VehicleViewModel): void {
+    this.vehicleForm = this.formBuilder.group({
+      OwnerId: [vehicle.OwnerId],
+      Make: [vehicle.Make, Validators.required],
+      Model: [vehicle.Model, Validators.required],
+      YearMade: [vehicle.YearMade, Validators.required],
+      Color: [vehicle.Color, Validators.required],
+      Type: [vehicle.Type, Validators.required],
+      ChassisNumber: [vehicle.ChassisNumber],
+      MotorNumber: [vehicle.MotorNumber],
+      FuielType: [vehicle.FuielType, Validators.required],
+      CC: [vehicle.Cc],
+      TotalPassanger: [vehicle.TotalPassanger, Validators.required],
+      CylinderCount: [vehicle.CylinderCount],
+      LibreNo: [vehicle.LibreNo, Validators.required],
+      PlateCode: [vehicle.PlateCode, Validators.required],
+      PlateNumber: [vehicle.PlateNumber, Validators.required],
+      Transmission: [vehicle.Transmission, Validators.required]
+    });
+  }
+
+  get OwnerId(): FormControl {
+    return this.vehicleForm.get('OwnerId') as FormControl;
+  }
+
+  get Make(): FormControl {
+    return this.vehicleForm.get('Make') as FormControl;
+  }
+
+  get Model(): FormControl {
+    return this.vehicleForm.get('Model') as FormControl;
+  }
+
+  get YearMade(): FormControl {
+    return this.vehicleForm.get('YearMade') as FormControl;
+  }
+  get Color(): FormControl {
+    return this.vehicleForm.get('Color') as FormControl;
+  }
+
+  get Type(): FormControl {
+    return this.vehicleForm.get('Type') as FormControl;
+  }
+
+  get ChassisNumber(): FormControl {
+    return this.vehicleForm.get('ChassisNumber') as FormControl;
+  }
+
+  get MotorNumber(): FormControl {
+    return this.vehicleForm.get('MotorNumber') as FormControl;
+  }
+
+  get FuielType(): FormControl {
+    return this.vehicleForm.get('FuielType') as FormControl;
+  }
+
+  get CC(): FormControl {
+    return this.vehicleForm.get('CC') as FormControl;
+  }
+  get CylinderCount(): FormControl {
+    return this.vehicleForm.get('CylinderCount') as FormControl;
+  }
+  get LibreNo(): FormControl {
+    return this.vehicleForm.get('LibreNo') as FormControl;
+  }
+
+  get PlateCode(): FormControl {
+    return this.vehicleForm.get('PlateCode') as FormControl;
+  }
+
+  get PlateNumber(): FormControl {
+    return this.vehicleForm.get('PlateNumber') as FormControl;
+  }
+  get TotalPassange(): FormControl {
+    return this.vehicleForm.get('TotalPassange') as FormControl;
+  }
+
+  get Transmission(): FormControl {
+    return this.vehicleForm.get('Transmission') as FormControl;
+  }
+
+  onSubmit(): void {
+    const vehicleData = this.prepareData(this.vehicleForm);
+
+    if (this.isUpdate && vehicleData) {
+      this.vehicleApi
+        .updateVehicle(vehicleData)
+        .subscribe(
+          () => alert('Vehicle updated Successfuly'),
+          (error: HttpErrorResponse) => alert(error.message)
+        );
+    } else if (vehicleData) {
+      this.vehicleApi
+        .addVehicle(vehicleData)
+        .subscribe(
+          (vehicle: VehicleViewModel) => alert('Vehicle added Successfuly'),
+          (error: HttpErrorResponse) => alert(error.message)
+        );
+    }
+  }
+
+  private prepareData(form: FormGroup): Vehicle | null {
+    if (form.valid) {
+      const vehicle: Vehicle = {
+        OwnerId: this.OwnerId.value,
+        Make: this.Make.value,
+        Model: this.Model.value,
+        Cc: this.CC.value,
+        ChassisNumber: this.ChassisNumber.value,
+        Color: this.Color.value,
+        CylinderCount: this.CylinderCount.value,
+        FuielType: this.FuielType.value,
+        LibreNo: this.LibreNo.value,
+        MotorNumber: this.MotorNumber.value,
+        PlateCode: this.PlateCode.value,
+        PlateNumber: this.PlateNumber.value,
+        TotalPassanger: this.TotalPassange.value,
+        Transmission: this.Transmission.value,
+        Type: this.Type.value,
+        YearMade: this.YearMade.value
+      };
+
+      if (this.vehicleId) {
+        vehicle.Id = this.vehicleId;
+      }
+
+      return vehicle;
+    } else {
+      return null;
+    }
+  }
 }

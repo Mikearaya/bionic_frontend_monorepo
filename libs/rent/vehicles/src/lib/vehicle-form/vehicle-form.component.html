@@ -1,3 +1,183 @@
-<p>
-  vehicle-form works!
-</p>
+<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <label for="owners">Owner</label>
+        <bionic-vehicle-owners-selector
+          formControlName="OwnerId"
+        ></bionic-vehicle-owners-selector>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <label for="vehicleMake"> Make</label>
+        <input
+          type="text"
+          name="make"
+          id="make"
+          placeholder="Make"
+          class="e-input"
+          formControlName="Make"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          name="model"
+          id="model"
+          formControlName="Model"
+          class="e-input"
+          placeholder="Model"
+        />
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <label for="yearMade"> Year Made </label>
+        <ejs-dropdownlist
+          type="text"
+          [width]="100"
+          formControlName="YearMade"
+          name="year"
+          placeholder="Year made"
+          id="year"
+          [dataSource]="Years"
+          class="e-input"
+        ></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <label for="color">Color</label>
+        <ejs-dropdownlist
+          formControlName="Color"
+          [dataSource]="vehicleColor"
+          [width]="250"
+          id="color"
+          name="color"
+          [filterBarPlaceholder]="'Search for Color'"
+          placeholder="Color"
+        ></ejs-dropdownlist>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <label for="type">Type</label>
+        <ejs-dropdownlist
+          formControlName="Type"
+          [dataSource]="vehicleTypes"
+          id="type"
+          [width]="250"
+          placeholder="Vehicle Type"
+          name="type"
+        ></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+        <label for="plateCode"> Plate Code</label>
+        <ejs-dropdownlist
+          [dataSource]="plateCodes"
+          [width]="100"
+          formControlName="PlateCode"
+          id="plateCode"
+          name="plateCode"
+          placeholder="Plate Code"
+        ></ejs-dropdownlist>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <label for="plateNumber"> Plate Number</label>
+        <input
+          type="text"
+          name="plateNumber"
+          id="plateNumber"
+          formControlName="PlateNumber"
+          class="e-input"
+          placeholder="Plate number"
+        />
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <label for="transmission">Transmission</label>
+        <ejs-dropdownlist
+          [dataSource]="transmissionTypes"
+          [width]="200"
+          id="transmission"
+          name="transmission"
+          formControlName="Transmission"
+          placeholder="Transmission"
+        ></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <label for="fuielType">Fuiel Type</label>
+        <ejs-dropdownlist
+          [dataSource]="fuielTypes"
+          name="fuielTypes"
+          id="fuielTypes"
+          placeholder="Fuiel Types"
+          formControlName="FuielType"
+        >
+        </ejs-dropdownlist>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <label for="totalPassangers">Total Passangers</label>
+        <input
+          type="text"
+          name="totalPassangers"
+          id="totalPassangers"
+          formControlName="TotalPassanger"
+          class="e-input"
+          placeholder="Total passangers"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <label for="chassisNumber">Chassis Number</label>
+        <input
+          type="text"
+          name="chassisNumber"
+          id="chassisNumber"
+          placeholder="Chassis Number"
+          formControlName="ChassisNumber"
+          class="e-input"
+        />
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <label for="motorNumber">Motor Number</label>
+        <input
+          type="text"
+          name="motorNumber"
+          id="motorNumber"
+          placeholder="Motor number"
+          formControlName="MotorNumber"
+          placeholder="Motor Number"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <label for="cylinderCount">Cylinder Count</label>
+        <input
+          type="number"
+          name="cylinderCount"
+          id="cylinderCount"
+          placeholder="Cylinder Count"
+          formControlName="CylinderCount"
+          class="e-input"
+        />
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <label for="libreNo">Libre Number</label>
+        <input
+          type="text"
+          name="libreNo"
+          id="libreNo"
+          class="e-input"
+          placeholder="Libre Number"
+          formControlName="LibreNo"
+        />
+      </div>
+    </div>
+  </div>
+  <bionic-form-options></bionic-form-options>
+</form>

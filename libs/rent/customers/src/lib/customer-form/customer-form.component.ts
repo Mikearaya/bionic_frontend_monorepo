@@ -118,5 +118,48 @@ export class CustomerFormComponent implements OnInit {
     return this.customerForm.get('PassportNumber') as FormControl;
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    const customerData = this.prepareData(this.customerForm);
+
+    if (this.isUpdate && customerData) {
+      this.customerApi
+        .updateCustomer(customerData)
+        .subscribe(
+          () => alert('Customer updated successfuly'),
+          (error: HttpErrorResponse) => alert(error.message)
+        );
+    } else if (customerData) {
+      this.customerApi
+        .addCustomer(customerData)
+        .subscribe(
+          (customer: CustomerViewModel) => alert('Customer added successfuly'),
+          (error: HttpErrorResponse) => alert(error.message)
+        );
+    }
+  }
+
+  private prepareData(form: FormGroup): Customer | null {
+    if (form.valid) {
+      const customer: Customer = {
+        CustomerName: this.CustomerName.value,
+        MobileNumber: this.MobileNumber.value,
+        OtherPhone: this.OtherPhone.value,
+        HouseNo: this.HouseNo.value,
+        HotelName: this.HotelName.value,
+        HotelPhone: this.HotelPhone.value,
+        Country: this.Country.value,
+        City: this.City.value,
+        Nationality: this.Nationality.value,
+        DrivingLicenceId: this.DrivingLicenceId.value,
+        PassportNumber: this.PassportNumber.value
+      };
+
+      if (this.isUpdate) {
+        customer.Id = this.customerId;
+      }
+      return customer;
+    } else {
+      return null;
+    }
+  }
 }

@@ -6,3 +6,6 @@ export {
 export {
   VehicleOwnerViewComponent
 } from './lib/vehicle-owner-view/vehicle-owner-view.component';
+export {
+  VehicleOwnersSelectorComponent
+} from './lib/vehicle-owners-selector/vehicle-owners-selector.component';

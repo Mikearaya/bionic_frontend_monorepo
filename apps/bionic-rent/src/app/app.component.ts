@@ -1,11 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import {
-  SidebarComponent,
-  TreeViewComponent,
-  ItemModel,
-  NodeSelectEventArgs,
-  MenuEventArgs
-} from '@syncfusion/ej2-angular-navigations';
+import { Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { Router } from '@angular/router';
 import {
@@ -13,13 +7,19 @@ import {
   AppUserAuth
 } from '@bionic/services/security-service';
 import { NAVIGATION_LINKS } from './navigation-data.model';
+import { ItemModel, MenuEventArgs, Item } from '@syncfusion/ej2-splitbuttons';
+import {
+  SidebarComponent,
+  TreeViewComponent,
+  NodeSelectEventArgs
+} from '@syncfusion/ej2-angular-navigations';
 
 @Component({
   selector: 'bionic-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public securityObject: AppUserAuth;
 
   public cssClass = 'custom';
@@ -35,7 +35,7 @@ export class AppComponent {
   ) {
     this.yearFields = { key: 'Year', value: 'Year' };
     this.field = {
-      dataSource: this.smartAccountingLinks,
+      dataSource: NAVIGATION_LINKS,
       id: 'id',
       text: 'name',
       child: 'subChild',
@@ -44,7 +44,7 @@ export class AppComponent {
       enabled: 'enabled'
     };
   }
-  title = '';
+
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
   public type = 'Auto';
@@ -58,6 +58,7 @@ export class AppComponent {
 
   public field: object;
   public yearFields: { key: string; value: string };
+
   ngOnInit(): void {
     this.securityObject = this.securityService.securityObject;
   }

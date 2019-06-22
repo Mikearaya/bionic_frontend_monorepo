@@ -30,7 +30,7 @@ export const NAVIGATION_LINKS = [
       {
         id: '01-02',
         name: 'Remaining Payments',
-        url: '/account-catagories',
+        url: 'parent',
         expanded: false,
         enabled: true,
         selected: false

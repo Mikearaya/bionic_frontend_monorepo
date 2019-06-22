@@ -34,7 +34,9 @@
               "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
               "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/@syncfusion/ej2-lists/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -269,7 +271,6 @@
       },
       "schematics": {}
     },
-
     "rent-customers": {
       "root": "libs/rent/customers",
       "sourceRoot": "libs/rent/customers/src",
@@ -406,40 +407,6 @@
       },
       "schematics": {}
     },
-    "apis-rent-vehicles-api": {
-      "root": "libs/apis/rent/vehicles-api",
-      "sourceRoot": "libs/apis/rent/vehicles-api/src",
-      "projectType": "library",
-      "prefix": "bionic",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.lib.json",
-            "project": "libs/apis/rent/vehicles-api/ng-package.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/apis/rent/vehicles-api/tsconfig.lib.json",
-              "libs/apis/rent/vehicles-api/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/apis/rent/vehicles-api/src/test.ts",
-            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.spec.json",
-            "karmaConfig": "libs/apis/rent/vehicles-api/karma.conf.js"
-          }
-        }
-      },
-      "schematics": {}
-    },
     "apis-rent-rents-api": {
       "root": "libs/apis/rent/rents-api",
       "sourceRoot": "libs/apis/rent/rents-api/src",
@@ -537,6 +504,40 @@
             "main": "libs/rent/vehicles/src/test.ts",
             "tsConfig": "libs/rent/vehicles/tsconfig.spec.json",
             "karmaConfig": "libs/rent/vehicles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-vehicles-api": {
+      "root": "libs/apis/rent/vehicles-api",
+      "sourceRoot": "libs/apis/rent/vehicles-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/vehicles-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/vehicles-api/tsconfig.lib.json",
+              "libs/apis/rent/vehicles-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/vehicles-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/vehicles-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/vehicles-api/karma.conf.js"
           }
         }
       },

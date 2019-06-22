@@ -38,9 +38,6 @@
     "apis-rent-vehicle-owners-api": {
       "tags": ["rent", ""]
     },
-    "apis-rent-vehicles-api": {
-      "tags": ["rent", ""]
-    },
     "apis-rent-rents-api": {
       "tags": ["rent", ""]
     },
@@ -49,6 +46,9 @@
     },
     "rent-vehicles": {
       "tags": ["rent", ""]
+    },
+    "apis-rent-vehicles-api": {
+      "tags": ["api", ""]
     }
   }
 }

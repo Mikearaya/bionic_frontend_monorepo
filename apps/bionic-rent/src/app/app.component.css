@@ -159,24 +159,7 @@
 
 
 
-.e-dropdown-popup ul {
-  box-shadow: none;
-}
 
-.e-dropdown-popup li {
-  height: 20px !important;
-  align-items: center;
-  padding-left: 25px;
-  color: #4d841d;
-  box-shadow: none;
-  font-size: small;
-  font-weight: 500;
-}
-
-.e-dropdown-popup li:hover {
-  background: #4d841d55 !important;
-  width: 100px;
-}
 
 .e-input-group.e-control-wrapper.e-ddl.e-lib.e-keyboard {
   background: #ecf0f5;

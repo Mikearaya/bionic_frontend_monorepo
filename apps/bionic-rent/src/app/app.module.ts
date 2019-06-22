@@ -13,7 +13,7 @@ import {
 import {
   TreeViewModule,
   SidebarModule,
-  ToolbarModule
+  TreeViewAllModule
 } from '@syncfusion/ej2-angular-navigations';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 @NgModule({
@@ -26,10 +26,9 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
   imports: [
     BrowserModule,
     PageInformationsModule,
-    TreeViewModule,
     SidebarModule,
+    TreeViewAllModule,
     ButtonModule,
-    ToolbarModule,
 
     RouterModule.forRoot(
       [
@@ -42,12 +41,13 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
           loadChildren: '@bionic/rent/vehicle-rent#VehicleRentModule'
         },
         {
-          path: 'vehicle-owners',
-          loadChildren: '@bionic/rent/vehicle-owners#VehicleOwnersModule'
+          path: 'vehicles',
+          loadChildren: '@bionic/rent/vehicles#VehiclesModule',
+          data: { breadCrum: 'Vehicle' }
         },
         {
-          path: 'vehicles',
-          loadChildren: '@bionic/rent/vehicles#VehiclesModule'
+          path: 'vehicle-owners',
+          loadChildren: '@bionic/rent/vehicle-owners#VehicleOwnersModule'
         }
       ],
       { initialNavigation: 'enabled' }
