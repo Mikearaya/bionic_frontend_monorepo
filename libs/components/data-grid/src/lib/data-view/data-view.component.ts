@@ -110,9 +110,7 @@ export class DataViewComponent implements OnInit {
   public groupByOptions: GroupSettingsModel = {};
 
   @Output()
-  public dataStateChaged: EventEmitter<
-    DataStateChangeEventArgs
-  > = new EventEmitter();
+  public dataStateChaged: EventEmitter<QueryString> = new EventEmitter();
 
   @ViewChild('grid')
   public grid: GridComponent;
@@ -218,66 +216,34 @@ export class DataViewComponent implements OnInit {
   }
 
   onDataStateChanged(state: DataStateChangeEventArgs) {
-    this.dataStateChaged.emit(state);
-  }
+    this.query.pageSize = state.take;
+    this.query.pageNumber = state.skip;
+    if (state.action) {
+      switch (state.action.requestType) {
+        case 'sorting':
+          this.query.sortBy = state.action['columnName'];
+          this.query.sortDirection = state.action['direction'];
+          break;
+        case 'filtering':
+          this.query.filter = [];
 
-  actionEndHandler(args: ActionEventArgs) {
-    switch (args.requestType) {
-      case 'sorting':
-        this.query.sortDirection = args['direction'];
-        this.query.sortBy = args['columnName'];
+          state.action['columns'].forEach(element => {
+            this.query.filter.push({
+              propertyName: element.field,
+              operation: element.operator,
+              value: element.value
+            });
+          });
 
-        break;
-      case 'filtering':
-        const filteringModel = new FilterEventModel();
-        filteringModel.columnName = args['currentFilterObject']['field'];
-        filteringModel.operator = args['currentFilterObject']['operator'];
-        filteringModel.value = args['currentFilterObject']['value'];
+          break;
+        case 'searching':
+          this.query.searchString = state.action['searchString'];
 
-        break;
-      case 'searching':
-        this.query.searchString = args['searchString'];
-
-        break;
-      case 'paging':
-        this.query.searchString = args['searchString'];
-
-        break;
+          break;
+      }
     }
 
-    if (args.requestType !== 'refresh') {
-      this.dataQueried.emit(this.prepareQuery());
-    }
-
-    if (
-      this.query.pageSize !== this.grid.pageSettings.pageSize ||
-      this.query.pageNumber !== this.grid.pageSettings.currentPage
-    ) {
-      this.query.pageSize = this.grid.pageSettings.pageSize;
-      this.query.pageNumber = this.grid.pageSettings.currentPage;
-
-      this.dataQueried.emit(this.prepareQuery());
-    }
-  }
-
-  private prepareQuery(): string {
-    let searchString = `selectedColumns=${this.query.selectedColumns.toString()}&`;
-
-    if (this.query.searchString) {
-      searchString += `searchString=${this.query.searchString}&`;
-    }
-
-    if (this.query.sortBy) {
-      searchString += `sortBy=${this.query.sortBy}&sortDirection=${
-        this.query.sortDirection
-      }&`;
-    }
-
-    searchString += `pageSize=${this.query.pageSize}&pageNumber=${
-      this.query.pageNumber
-    }`;
-
-    return searchString;
+    this.dataStateChaged.emit(this.query);
   }
 
   initializeToolBar(): void {

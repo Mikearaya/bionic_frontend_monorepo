@@ -1,1 +1,115 @@
 /* You can add global styles to this file, and also import other style files */
+
+.e-search:before {
+  content: '\e993';
+}
+
+
+
+body {
+  background-color: #ecf0f5 !important;
+  padding: 0px;
+}
+
+.e-plus-icon::before {
+  content: '\e823';
+}
+
+.e-close::before {
+  content: '\e7fc';
+}
+
+.e-Excel_Export::before {
+  content: '\e242';
+}
+
+.e-expand::before {
+  content: '\e919';
+}
+
+.e-create::before {
+  content: '\e555'
+}
+
+.e-collapse::before {
+  content: '\e918'
+}
+
+.e-acrdn-header {
+  background-color: rgb(217, 224, 212);
+}
+
+/* group area of syncfusion grid */
+.e-groupdroparea.e-grouped.e-lib.e-droppable.e-draggable {
+  background: #4d841d55;
+}
+
+.e-grouptext {
+  width: auto !important;
+}
+
+.e-grid .e-groupheadercell {
+  background: #4d841d !important;
+  width: auto !important;
+}
+
+.e-grid.e-groupdroparea:hover * {
+  background-color: #4d841d55 !important;
+}
+
+.e-ungroupbutton.e-icons.e-icon-hide {
+  display: none;
+}
+
+@media print {
+  .e-acrdn-item.e-select {
+    display: none
+  }
+
+
+  .content-head {
+    display: none;
+  }
+
+  .e-emptyrow {
+    display: none !important;
+  }
+
+  .e-gridpager.e-control.e-pager.e-lib {
+    display: none;
+  }
+
+  .e-btn-icon.e-edit.e-icons {
+    display: none;
+  }
+
+  .e-btn-icon.e-delete.e-icons {
+    display: none;
+  }
+
+  .e-icons.e-dtdiagonaldown.e-icon-gdownarrow,
+  .e-icons.e-dtdiagonalright.e-icon-grightarrow {
+    display: none;
+  }
+
+  .e-filtermenudiv.e-icons.e-icon-filter {
+    display: none;
+  }
+
+  #dataview_toolbarItems {
+    display: none;
+  }
+
+  .e-table {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .e-icons.e-gdiagonaldown.e-icon-gdownarrow {
+    display: none;
+  }
+
+  .e-grid.e-default * {
+    height: auto !important;
+    overflow: hidden !important;
+  }
+}

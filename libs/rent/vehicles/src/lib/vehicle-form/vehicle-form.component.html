@@ -1,4 +1,4 @@
-<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="card">
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-xs-12">
@@ -71,53 +71,62 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-xs-12">
-        <label for="plateCode"> Plate Code</label>
-        <ejs-dropdownlist
-          [dataSource]="plateCodes"
-          [width]="100"
-          formControlName="PlateCode"
-          id="plateCode"
-          name="plateCode"
-          placeholder="Plate Code"
-        ></ejs-dropdownlist>
-      </div>
-      <div class="col-sm-4 col-xs-12">
-        <label for="plateNumber"> Plate Number</label>
-        <input
-          type="text"
-          name="plateNumber"
-          id="plateNumber"
-          formControlName="PlateNumber"
-          class="e-input"
-          placeholder="Plate number"
-        />
-      </div>
-      <div class="col-sm-4 col-xs-12">
-        <label for="transmission">Transmission</label>
-        <ejs-dropdownlist
-          [dataSource]="transmissionTypes"
-          [width]="200"
-          id="transmission"
-          name="transmission"
-          formControlName="Transmission"
-          placeholder="Transmission"
-        ></ejs-dropdownlist>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12 col-sm-5">
+            <label for="plateCode"> Plate Code</label>
+            <ejs-dropdownlist
+              [dataSource]="plateCodes"
+              [width]="100"
+              formControlName="PlateCode"
+              id="plateCode"
+              name="plateCode"
+              placeholder="Plate Code"
+            ></ejs-dropdownlist>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="plateNumber"> Plate Number</label>
+            <input
+              type="text"
+              name="plateNumber"
+              id="plateNumber"
+              formControlName="PlateNumber"
+              class="e-input"
+              placeholder="Plate number"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <label for="fuielType">Fuiel Type</label>
-        <ejs-dropdownlist
-          [dataSource]="fuielTypes"
-          name="fuielTypes"
-          id="fuielTypes"
-          placeholder="Fuiel Types"
-          formControlName="FuielType"
-        >
-        </ejs-dropdownlist>
+      <div class="col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label for="transmission">Transmission</label>
+            <ejs-dropdownlist
+              [dataSource]="transmissionTypes"
+              id="transmission"
+              name="transmission"
+              formControlName="Transmission"
+              placeholder="Transmission"
+            ></ejs-dropdownlist>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <label for="fuielType">Fuiel Type</label>
+            <ejs-dropdownlist
+              [dataSource]="fuielTypes"
+              name="fuielTypes"
+              id="fuielTypes"
+              placeholder="Fuiel Types"
+              formControlName="FuielType"
+            >
+            </ejs-dropdownlist>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
         <label for="totalPassangers">Total Passangers</label>
         <input
           type="text"
@@ -130,51 +139,72 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-xs-12">
-        <label for="chassisNumber">Chassis Number</label>
-        <input
-          type="text"
-          name="chassisNumber"
-          id="chassisNumber"
-          placeholder="Chassis Number"
-          formControlName="ChassisNumber"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-6 col-xs-12">
-        <label for="motorNumber">Motor Number</label>
-        <input
-          type="text"
-          name="motorNumber"
-          id="motorNumber"
-          placeholder="Motor number"
-          formControlName="MotorNumber"
-          placeholder="Motor Number"
-          class="e-input"
-        />
+      <div class="col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label for="chassisNumber">Chassis Number</label>
+            <input
+              type="text"
+              name="chassisNumber"
+              id="chassisNumber"
+              placeholder="Chassis Number"
+              formControlName="ChassisNumber"
+              class="e-input"
+            />
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <label for="motorNumber">Motor Number</label>
+            <input
+              type="text"
+              name="motorNumber"
+              id="motorNumber"
+              placeholder="Motor number"
+              formControlName="MotorNumber"
+              placeholder="Motor Number"
+              class="e-input"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-xs-12">
-        <label for="cylinderCount">Cylinder Count</label>
+      <div class="col-xs-12 col-sm-8">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label for="cylinderCount">Cylinder Count</label>
+            <input
+              type="number"
+              name="cylinderCount"
+              id="cylinderCount"
+              placeholder="Cylinder Count"
+              formControlName="CylinderCount"
+              class="e-input"
+            />
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <label for="libreNo">Libre Number</label>
+            <input
+              type="text"
+              name="libreNo"
+              id="libreNo"
+              class="e-input"
+              placeholder="Libre Number"
+              formControlName="LibreNo"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 col-xs-12">
+        <label for="Cc">Cc.</label>
         <input
           type="number"
-          name="cylinderCount"
-          id="cylinderCount"
-          placeholder="Cylinder Count"
-          formControlName="CylinderCount"
+          name="Cc"
+          id="Cc"
+          placeholder="Cc"
+          formControlName="Cc"
           class="e-input"
-        />
-      </div>
-      <div class="col-sm-6 col-xs-12">
-        <label for="libreNo">Libre Number</label>
-        <input
-          type="text"
-          name="libreNo"
-          id="libreNo"
-          class="e-input"
-          placeholder="Libre Number"
-          formControlName="LibreNo"
         />
       </div>
     </div>

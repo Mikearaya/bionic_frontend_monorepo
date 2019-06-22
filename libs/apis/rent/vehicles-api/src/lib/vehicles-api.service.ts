@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { VehicleViewModel } from './models/vehicle-view-model.model';
 import { Vehicle } from './models/vehicle.model';
+import { map } from 'rxjs/operators';
+import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
+import { QueryString } from '@bionic/components/data-grid';
 
 @Injectable()
-export class VehiclesApiService {
-  private apiUrl = 'vehicles';
+export class VehiclesApiService extends Subject<DataStateChangeEventArgs> {
+  private apiUrl = `http://${window.location.hostname}:5000/api/vehicles`;
+  private query = new QueryString();
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    super();
+  }
 
   getVehicleById(id: number): Observable<VehicleViewModel> {
     return this.httpClient.get<VehicleViewModel>(`${this.apiUrl}/${id}`);
@@ -31,5 +37,24 @@ export class VehiclesApiService {
 
   deleteVehicle(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  execute(state: QueryString): void {
+    this.getData(state).subscribe(a => this.next(a));
+  }
+
+  getData(state: QueryString): Observable<DataStateChangeEventArgs> {
+    return this.httpClient
+      .post(`${this.apiUrl}/filter`, state)
+      .pipe(
+        map(
+          (response: any) =>
+            ({
+              result: response['Items'],
+              count: parseInt(response['Count'], 10)
+            } as DataResult)
+        )
+      )
+      .pipe((data: any) => data);
   }
 }

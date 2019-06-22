@@ -22,11 +22,11 @@ export class VehicleFormComponent implements OnInit {
   vehicleForm: FormGroup;
   isUpdate: boolean;
   transmissionTypes = ['Automatic', 'Manual'];
-  plateCodes = [2, 3];
+  plateCodes = ['2', '3'];
   fuielTypes = ['Benzine', 'Diesel'];
   vehicleColor = ['White', 'Black', 'Red', 'Blue', 'Yellow', 'Green'];
   vehicleTypes = ['Hatchback', 'Sedan', 'Pickup', 'SUV', 'Limosine', 'Motor'];
-  Years: number[] = [];
+  Years: string[] = [];
 
   private vehicleId: number;
 
@@ -38,7 +38,7 @@ export class VehicleFormComponent implements OnInit {
     this.createForm();
     const currentYear = new Date().getFullYear();
     for (let i = currentYear; i > currentYear - 30; i--) {
-      this.Years.push(i);
+      this.Years.push(i.toString());
     }
   }
 
@@ -67,10 +67,10 @@ export class VehicleFormComponent implements OnInit {
       ChassisNumber: [''],
       MotorNumber: [''],
       FuielType: ['', Validators.required],
-      CC: [''],
+      Cc: [''],
       TotalPassanger: ['', Validators.required],
       CylinderCount: [''],
-      LibreNo: ['', Validators.required],
+      LibreNo: [''],
       PlateCode: ['', Validators.required],
       PlateNumber: ['', Validators.required],
       Transmission: ['', Validators.required]
@@ -88,10 +88,10 @@ export class VehicleFormComponent implements OnInit {
       ChassisNumber: [vehicle.ChassisNumber],
       MotorNumber: [vehicle.MotorNumber],
       FuielType: [vehicle.FuielType, Validators.required],
-      CC: [vehicle.Cc],
+      Cc: [vehicle.Cc],
       TotalPassanger: [vehicle.TotalPassanger, Validators.required],
       CylinderCount: [vehicle.CylinderCount],
-      LibreNo: [vehicle.LibreNo, Validators.required],
+      LibreNo: [vehicle.LibreNo],
       PlateCode: [vehicle.PlateCode, Validators.required],
       PlateNumber: [vehicle.PlateNumber, Validators.required],
       Transmission: [vehicle.Transmission, Validators.required]
@@ -133,8 +133,8 @@ export class VehicleFormComponent implements OnInit {
     return this.vehicleForm.get('FuielType') as FormControl;
   }
 
-  get CC(): FormControl {
-    return this.vehicleForm.get('CC') as FormControl;
+  get Cc(): FormControl {
+    return this.vehicleForm.get('Cc') as FormControl;
   }
   get CylinderCount(): FormControl {
     return this.vehicleForm.get('CylinderCount') as FormControl;
@@ -150,8 +150,8 @@ export class VehicleFormComponent implements OnInit {
   get PlateNumber(): FormControl {
     return this.vehicleForm.get('PlateNumber') as FormControl;
   }
-  get TotalPassange(): FormControl {
-    return this.vehicleForm.get('TotalPassange') as FormControl;
+  get TotalPassanger(): FormControl {
+    return this.vehicleForm.get('TotalPassanger') as FormControl;
   }
 
   get Transmission(): FormControl {
@@ -169,6 +169,7 @@ export class VehicleFormComponent implements OnInit {
           (error: HttpErrorResponse) => alert(error.message)
         );
     } else if (vehicleData) {
+      alert('in');
       this.vehicleApi
         .addVehicle(vehicleData)
         .subscribe(
@@ -184,7 +185,7 @@ export class VehicleFormComponent implements OnInit {
         OwnerId: this.OwnerId.value,
         Make: this.Make.value,
         Model: this.Model.value,
-        Cc: this.CC.value,
+        Cc: this.Cc.value,
         ChassisNumber: this.ChassisNumber.value,
         Color: this.Color.value,
         CylinderCount: this.CylinderCount.value,
@@ -193,7 +194,7 @@ export class VehicleFormComponent implements OnInit {
         MotorNumber: this.MotorNumber.value,
         PlateCode: this.PlateCode.value,
         PlateNumber: this.PlateNumber.value,
-        TotalPassanger: this.TotalPassange.value,
+        TotalPassanger: this.TotalPassanger.value,
         Transmission: this.Transmission.value,
         Type: this.Type.value,
         YearMade: this.YearMade.value

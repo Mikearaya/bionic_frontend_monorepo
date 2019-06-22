@@ -15,11 +15,10 @@
   [allowGrouping]="groupByOptions != null ? true : false"
   (toolbarClick)="toolbarClick($event)"
   (rowSelected)="rowIsSelected($event)"
-  (actionComplete)="actionEndHandler($event)"
   [allowPdfExport]="showPdfExport"
   [showColumnChooser]="showColumnChooser"
   (dataStateChange)="onDataStateChanged($event)"
-  [height]="700"
+  [height]="400"
 >
   <e-columns>
     <e-column
@@ -34,8 +33,7 @@
       [format]="column.format"
     ></e-column>
     <e-column
-      headerText="Actions"
-      width="30"
+      width="70"
       [commands]="commands"
       *ngIf="commands.length > 0"
       textAlign="center"

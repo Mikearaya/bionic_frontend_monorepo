@@ -38,7 +38,7 @@ import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
       },
       {
         path: ':vehicleId/update',
-        component: VehicleViewComponent,
+        component: VehicleFormComponent,
         data: { breadCrum: 'Update', title: 'Update Vehicle' }
       }
     ])
