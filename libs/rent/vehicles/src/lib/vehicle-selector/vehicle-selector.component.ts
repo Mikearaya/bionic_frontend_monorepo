@@ -1,10 +1,13 @@
-import { Component, forwardRef } from '@angular/core';
-import { VehicleOwnersApiService } from '@bionic/apis/rent/vehicle-owners-api';
-import { Query, Predicate } from '@syncfusion/ej2-data';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import {
+  VehiclesApiService,
+  VehicleIndex
+} from '@bionic/apis/rent/vehicles-api';
+import { Predicate, Query } from '@syncfusion/ej2-data/src';
 
 @Component({
-  selector: 'bionic-vehicle-owners-selector',
+  selector: 'bionic-vehicle-selector',
   template: `
     <ejs-autocomplete
       id="account"
@@ -16,20 +19,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       [fields]="fields"
       (filtering)="onFiltering($event)"
       [dataSource]="accounts"
-      (change)="accountChanged($event)"
+      (change)="vehicleChanged($event)"
     ></ejs-autocomplete>
   `,
-  styleUrls: ['./vehicle-owners-selector.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => VehicleOwnersSelectorComponent),
-      multi: true
-    }
-  ]
+  styleUrls: ['./vehicle-selector.component.css']
 })
-export class VehicleOwnersSelectorComponent implements ControlValueAccessor {
-  constructor(private vehicleOwnersApi: VehicleOwnersApiService) {}
+export class VehicleSelectorComponent implements ControlValueAccessor {
+  constructor(private vehicleApi: VehiclesApiService) {}
   public _value: any;
   public disabled: boolean;
   public data;
@@ -39,7 +35,7 @@ export class VehicleOwnersSelectorComponent implements ControlValueAccessor {
 
   public text = '';
 
-  accountChanged($event: any) {
+  vehicleChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
     } else {
@@ -57,7 +53,7 @@ export class VehicleOwnersSelectorComponent implements ControlValueAccessor {
 
     query = e.text !== '' ? query.where(predicate) : query;
 
-    this.vehicleOwnersApi.getVehicleOwnersIndex(e.text).subscribe(data => {
+    this.vehicleApi.getVehiclesIndex().subscribe((data: VehicleIndex[]) => {
       e.updateData(data);
     });
   }
@@ -68,7 +64,7 @@ export class VehicleOwnersSelectorComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
     this._value = obj;
 
-    this.vehicleOwnersApi.getVehicleOwnersIndex('').subscribe((result: any) => {
+    this.vehicleApi.getVehiclesIndex().subscribe((result: any) => {
       this.accounts = result;
       if (this._value) {
         if (obj !== 0) {

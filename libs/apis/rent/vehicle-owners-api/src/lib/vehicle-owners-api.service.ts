@@ -7,7 +7,7 @@ import { VehicleOwnersIndex } from './models/vehicle-owners-index.model';
 
 @Injectable()
 export class VehicleOwnersApiService {
-  private apiUrl = 'vehicle-owners';
+  private apiUrl = `http://${window.location.hostname}:5000/api/vehicle-owners`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class VehicleOwnersApiService {
     return this.httpClient.get<VehicleOwnerViewModel>(`${this.apiUrl}/${id}`);
   }
 
-  getVehicleOwnersIndex(): Observable<VehicleOwnersIndex> {
+  getVehicleOwnersIndex(name: string = ''): Observable<VehicleOwnersIndex> {
     return this.httpClient.get<VehicleOwnersIndex>(`${this.apiUrl}/index`);
   }
 

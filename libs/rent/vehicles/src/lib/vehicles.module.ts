@@ -13,6 +13,7 @@ import {
 import { VehicleOwnersSelectorComponent } from '@bionic/rent/vehicle-owners';
 import { VehiclesApiModule } from '@bionic/apis/rent/vehicles-api';
 import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
+import { VehicleSelectorComponent } from './vehicle-selector/vehicle-selector.component';
 
 @NgModule({
   imports: [
@@ -46,9 +47,10 @@ import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
   declarations: [
     VehicleFormComponent,
     VehicleViewComponent,
-    VehicleOwnersSelectorComponent
+    VehicleOwnersSelectorComponent,
+    VehicleSelectorComponent
   ],
-  exports: [VehicleFormComponent, VehicleViewComponent],
+  exports: [VehicleFormComponent, VehicleViewComponent, VehicleSelectorComponent],
   providers: []
 })
 export class VehiclesModule {}

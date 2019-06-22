@@ -162,14 +162,14 @@ export class VehicleFormComponent implements OnInit {
     const vehicleData = this.prepareData(this.vehicleForm);
 
     if (this.isUpdate && vehicleData) {
-      this.vehicleApi
-        .updateVehicle(vehicleData)
-        .subscribe(
-          () => alert('Vehicle updated Successfuly'),
-          (error: HttpErrorResponse) => alert(error.message)
-        );
+      this.vehicleApi.updateVehicle(vehicleData).subscribe(
+        () => {
+          alert('Vehicle updated Successfuly');
+          this.vehicleForm.reset();
+        },
+        (error: HttpErrorResponse) => alert(error.message)
+      );
     } else if (vehicleData) {
-      alert('in');
       this.vehicleApi
         .addVehicle(vehicleData)
         .subscribe(

@@ -6,6 +6,7 @@ import { Vehicle } from './models/vehicle.model';
 import { map } from 'rxjs/operators';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { QueryString } from '@bionic/components/data-grid';
+import { VehicleIndex } from './models/vehicle-index.model';
 
 @Injectable()
 export class VehiclesApiService extends Subject<DataStateChangeEventArgs> {
@@ -41,6 +42,10 @@ export class VehiclesApiService extends Subject<DataStateChangeEventArgs> {
 
   execute(state: QueryString): void {
     this.getData(state).subscribe(a => this.next(a));
+  }
+
+  getVehiclesIndex(): Observable<VehicleIndex[]> {
+    return this.httpClient.get<VehicleIndex[]>(`${this.apiUrl}/index`);
   }
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {

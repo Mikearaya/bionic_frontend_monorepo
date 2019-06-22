@@ -30,10 +30,7 @@ import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
       }
     ])
   ],
-  declarations: [
-    VehicleOwnerFormComponent,
-    VehicleOwnerViewComponent,
-  ],
+  declarations: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],
   exports: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],
   providers: [VehicleOwnersApiService]
 })

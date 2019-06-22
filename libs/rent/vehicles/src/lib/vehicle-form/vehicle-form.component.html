@@ -17,6 +17,9 @@
           class="e-input"
           formControlName="Make"
         />
+        <div *ngIf="Make.errors" class="e-error">
+          <div *ngIf="Make.errors['required']">Vehicle Make is required</div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -30,6 +33,9 @@
           class="e-input"
           placeholder="Model"
         />
+        <div *ngIf="Model.errors" class="e-error">
+          <div *ngIf="Model.errors['required']">Vehicle Model is required</div>
+        </div>
       </div>
       <div class="col-sm-6 col-xs-12">
         <label for="yearMade"> Year Made </label>
@@ -43,6 +49,11 @@
           [dataSource]="Years"
           class="e-input"
         ></ejs-dropdownlist>
+        <div *ngIf="YearMade.errors" class="e-error">
+          <div *ngIf="YearMade.errors['required']">
+            Vehicle Year Made is required
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -57,6 +68,9 @@
           [filterBarPlaceholder]="'Search for Color'"
           placeholder="Color"
         ></ejs-dropdownlist>
+        <div *ngIf="Color.errors" class="e-error">
+          <div *ngIf="Color.errors['required']">Vehicle Color is required</div>
+        </div>
       </div>
       <div class="col-sm-6 col-xs-12">
         <label for="type">Type</label>
@@ -68,6 +82,9 @@
           placeholder="Vehicle Type"
           name="type"
         ></ejs-dropdownlist>
+        <div *ngIf="Type.errors" class="e-error">
+          <div *ngIf="Type.errors['required']">Vehicle Type is required</div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -83,6 +100,9 @@
               name="plateCode"
               placeholder="Plate Code"
             ></ejs-dropdownlist>
+            <div *ngIf="PlateCode.errors" class="e-error">
+              <div *ngIf="PlateCode.errors['required']">Code is required</div>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-6">
             <label for="plateNumber"> Plate Number</label>
@@ -94,6 +114,11 @@
               class="e-input"
               placeholder="Plate number"
             />
+            <div *ngIf="PlateNumber.errors" class="e-error">
+              <div *ngIf="PlateNumber.errors['required']">
+                Plate Number is required
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -110,6 +135,11 @@
               formControlName="Transmission"
               placeholder="Transmission"
             ></ejs-dropdownlist>
+            <div *ngIf="Transmission.errors" class="e-error">
+              <div *ngIf="Transmission.errors['required']">
+                Transmission is required
+              </div>
+            </div>
           </div>
           <div class="col-sm-6 col-xs-12">
             <label for="fuielType">Fuiel Type</label>
@@ -120,6 +150,11 @@
               placeholder="Fuiel Types"
               formControlName="FuielType"
             >
+              <div *ngIf="FuielType.errors" class="e-error">
+                <div *ngIf="FuielType.errors['required']">
+                  Fuiel Type is required
+                </div>
+              </div>
             </ejs-dropdownlist>
           </div>
         </div>
@@ -209,5 +244,7 @@
       </div>
     </div>
   </div>
-  <bionic-form-options></bionic-form-options>
+  <bionic-form-options
+    [submitDisabled]="vehicleForm.invalid"
+  ></bionic-form-options>
 </form>
