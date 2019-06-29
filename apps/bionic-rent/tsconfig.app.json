@@ -13,6 +13,10 @@
 
     "../../libs/rent/vehicle-owners/src/index.ts",
 
-    "../../libs/rent/vehicles/src/index.ts"
+    "../../libs/rent/vehicles/src/index.ts",
+
+    "../../libs/rent/customer-payment/src/index.ts",
+
+    "../../libs/rent/partners-payment/src/index.ts"
   ]
 }

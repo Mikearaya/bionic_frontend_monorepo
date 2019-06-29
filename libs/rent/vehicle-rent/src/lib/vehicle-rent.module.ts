@@ -7,12 +7,27 @@ import { VehicleRentContractComponent } from './vehicle-rent-contract/vehicle-re
 import { DataGridModule } from '@bionic/components/data-grid';
 import { VehiclesApiModule } from '@bionic/apis/rent/vehicles-api';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RentsApiModule } from '@bionic/apis/rent/rents-api';
+import { VehicleSelectorComponent } from '@bionic/rent/vehicles';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { CustomerSelectorComponent } from '@bionic/rent/customers';
+import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
+import { FormButtonsModule } from '@bionic/components/form-buttons';
+import { TabModule } from '@syncfusion/ej2-angular-navigations';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
     ReactiveFormsModule,
+    AutoCompleteModule,
     VehiclesApiModule,
+    TabModule,
+    DatePickerModule,
+    CustomerApiModule,
+    FormButtonsModule,
+    RentsApiModule,
 
     RouterModule.forChild([
       {
@@ -40,7 +55,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     VehicleRentFormComponent,
     VehicleRentViewComponent,
-    VehicleRentContractComponent
+    VehicleRentContractComponent,
+    VehicleSelectorComponent,
+    CustomerSelectorComponent
   ],
   exports: [
     VehicleRentFormComponent,

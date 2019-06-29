@@ -6,3 +6,4 @@ export {
 
 export { QueryString } from './lib/models/query-string.model';
 export { DataFilter } from './lib/models/data-filter.model';
+export { CustomGridColumns } from './lib/data-view/data-view.component';

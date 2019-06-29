@@ -4,14 +4,22 @@ import { RouterModule } from '@angular/router';
 import { VehicleOwnerFormComponent } from './vehicle-owner-form/vehicle-owner-form.component';
 import { DataGridModule } from '@bionic/components/data-grid';
 import { VehicleOwnerViewComponent } from './vehicle-owner-view/vehicle-owner-view.component';
-import { VehicleOwnersApiService } from '@bionic/apis/rent/vehicle-owners-api';
-import { VehicleOwnersSelectorComponent } from './vehicle-owners-selector/vehicle-owners-selector.component';
+import {
+  VehicleOwnersApiService,
+  VehicleOwnersApiModule
+} from '@bionic/apis/rent/vehicle-owners-api';
 import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormButtonsModule } from '@bionic/components/form-buttons';
+
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
     AutoCompleteModule,
+    ReactiveFormsModule,
+    FormButtonsModule,
+    VehicleOwnersApiModule,
     RouterModule.forChild([
       {
         path: '',
@@ -32,6 +40,6 @@ import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
   ],
   declarations: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],
   exports: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],
-  providers: [VehicleOwnersApiService]
+  providers: []
 })
 export class VehicleOwnersModule {}

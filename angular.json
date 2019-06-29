@@ -542,6 +542,276 @@
         }
       },
       "schematics": {}
+    },
+    "bionic-shipment": {
+      "root": "apps/bionic-shipment/",
+      "sourceRoot": "apps/bionic-shipment/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bionic-shipment",
+            "index": "apps/bionic-shipment/src/index.html",
+            "main": "apps/bionic-shipment/src/main.ts",
+            "polyfills": "apps/bionic-shipment/src/polyfills.ts",
+            "tsConfig": "apps/bionic-shipment/tsconfig.app.json",
+            "assets": [
+              "apps/bionic-shipment/src/favicon.ico",
+              "apps/bionic-shipment/src/assets"
+            ],
+            "styles": [
+              "apps/bionic-shipment/src/styles.css",
+              "./node_modules/@syncfusion/ej2-base/styles/material.css",
+              "./node_modules/@syncfusion/ej2-buttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-inputs/styles/material.css",
+              "./node_modules/@syncfusion/ej2-navigations/styles/material.css",
+              "./node_modules/@syncfusion/ej2-popups/styles/material.css",
+              "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/@syncfusion/ej2-lists/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-calendars/styles/material.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bionic-shipment/src/environments/environment.ts",
+                  "with": "apps/bionic-shipment/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bionic-shipment:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bionic-shipment:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bionic-shipment:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bionic-shipment/tsconfig.app.json",
+              "apps/bionic-shipment/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/bionic-shipment/src/test.ts",
+            "tsConfig": "apps/bionic-shipment/tsconfig.spec.json",
+            "karmaConfig": "apps/bionic-shipment/karma.conf.js",
+            "polyfills": "apps/bionic-shipment/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "bionic-shipment-e2e": {
+      "root": "apps/bionic-shipment-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/bionic-shipment-e2e/cypress.json",
+            "tsConfig": "apps/bionic-shipment-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bionic-shipment:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bionic-shipment:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/bionic-shipment-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "rent-customer-payment": {
+      "root": "libs/rent/customer-payment",
+      "sourceRoot": "libs/rent/customer-payment/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/customer-payment/tsconfig.lib.json",
+            "project": "libs/rent/customer-payment/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/customer-payment/tsconfig.lib.json",
+              "libs/rent/customer-payment/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/customer-payment/src/test.ts",
+            "tsConfig": "libs/rent/customer-payment/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/customer-payment/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-partners-payment": {
+      "root": "libs/rent/partners-payment",
+      "sourceRoot": "libs/rent/partners-payment/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/partners-payment/tsconfig.lib.json",
+            "project": "libs/rent/partners-payment/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/partners-payment/tsconfig.lib.json",
+              "libs/rent/partners-payment/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/partners-payment/src/test.ts",
+            "tsConfig": "libs/rent/partners-payment/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/partners-payment/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-partners-payment-api": {
+      "root": "libs/apis/rent/partners-payment-api",
+      "sourceRoot": "libs/apis/rent/partners-payment-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/partners-payment-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/partners-payment-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/partners-payment-api/tsconfig.lib.json",
+              "libs/apis/rent/partners-payment-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/partners-payment-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/partners-payment-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/partners-payment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-customers-payment-api": {
+      "root": "libs/apis/rent/customers-payment-api",
+      "sourceRoot": "libs/apis/rent/customers-payment-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/customers-payment-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/customers-payment-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/customers-payment-api/tsconfig.lib.json",
+              "libs/apis/rent/customers-payment-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/customers-payment-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/customers-payment-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/customers-payment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

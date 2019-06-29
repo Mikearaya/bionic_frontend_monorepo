@@ -49,6 +49,24 @@
     },
     "apis-rent-vehicles-api": {
       "tags": ["api", ""]
+    },
+    "bionic-shipment": {
+      "tags": ["shipment"]
+    },
+    "bionic-shipment-e2e": {
+      "tags": []
+    },
+    "rent-customer-payment": {
+      "tags": ["rent"]
+    },
+    "rent-partners-payment": {
+      "tags": ["rent"]
+    },
+    "apis-rent-partners-payment-api": {
+      "tags": ["rent"]
+    },
+    "apis-rent-customers-payment-api": {
+      "tags": ["rent"]
     }
   }
 }

@@ -1,1 +1,17 @@
-<bionic-data-view> </bionic-data-view>
+<bionic-data-view
+  [data]="data"
+  [showAdd]="true"
+  [showDelete]="true"
+  [enableSorting]="true"
+  [showUpdate]="true"
+  [addPrivilage]="'canAddCustomer'"
+  [updatePrivilage]="'canUpdateCustomer'"
+  [deletePrivilage]="'canDeleteCustomer'"
+  (deleteRecord)="deleteCustomer($event)"
+  [showPdfExport]="true"
+  [showPrint]="true"
+  [columnsList]="columnBluePrint"
+  (dataStateChaged)="onDataStateChange($event)"
+  [enableSearching]="true"
+  [showColumnChooser]="true"
+></bionic-data-view>

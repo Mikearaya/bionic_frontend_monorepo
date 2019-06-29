@@ -10,7 +10,7 @@ export const NAVIGATION_LINKS = [
   },
   {
     id: '01',
-    name: 'Vehicle Owners Managment',
+    name: 'Partners Managment',
     expanded: false,
     enabled: true,
     url: 'parent',
@@ -29,8 +29,8 @@ export const NAVIGATION_LINKS = [
       },
       {
         id: '01-02',
-        name: 'Remaining Payments',
-        url: 'parent',
+        name: 'Partner Payments',
+        url: '/partner-payments',
         expanded: false,
         enabled: true,
         selected: false
@@ -69,6 +69,14 @@ export const NAVIGATION_LINKS = [
         id: '03-01',
         name: 'Customers',
         url: '/customers',
+        expanded: false,
+        enabled: true,
+        selected: false
+      },
+      {
+        id: '03-02',
+        name: 'Customer Payments',
+        url: '/customer-payments',
         expanded: false,
         enabled: true,
         selected: false

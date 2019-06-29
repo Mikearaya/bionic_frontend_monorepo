@@ -44,7 +44,19 @@
       ],
       "@bionic/apis/rent/rents-api": ["libs/apis/rent/rents-api/src/index.ts"],
       "@bionic/rent/vehicle-owners": ["libs/rent/vehicle-owners/src/index.ts"],
-      "@bionic/rent/vehicles": ["libs/rent/vehicles/src/index.ts"]
+      "@bionic/rent/vehicles": ["libs/rent/vehicles/src/index.ts"],
+      "@bionic/rent/customer-payment": [
+        "libs/rent/customer-payment/src/index.ts"
+      ],
+      "@bionic/rent/partners-payment": [
+        "libs/rent/partners-payment/src/index.ts"
+      ],
+      "@bionic/apis/rent/partners-payment-api": [
+        "libs/apis/rent/partners-payment-api/src/index.ts"
+      ],
+      "@bionic/apis/rent/customers-payment-api": [
+        "libs/apis/rent/customers-payment-api/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

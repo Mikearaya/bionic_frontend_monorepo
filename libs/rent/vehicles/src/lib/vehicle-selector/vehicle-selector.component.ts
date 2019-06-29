@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
   VehiclesApiService,
   VehicleIndex
@@ -22,7 +22,14 @@ import { Predicate, Query } from '@syncfusion/ej2-data/src';
       (change)="vehicleChanged($event)"
     ></ejs-autocomplete>
   `,
-  styleUrls: ['./vehicle-selector.component.css']
+  styleUrls: ['./vehicle-selector.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VehicleSelectorComponent),
+      multi: true
+    }
+  ]
 })
 export class VehicleSelectorComponent implements ControlValueAccessor {
   constructor(private vehicleApi: VehiclesApiService) {}
@@ -31,7 +38,7 @@ export class VehicleSelectorComponent implements ControlValueAccessor {
   public data;
 
   public accounts: any;
-  public fields: object = { value: 'Id', text: 'Name' };
+  public fields: object = { value: 'Id', text: 'PlateNumber' };
 
   public text = '';
 
@@ -47,7 +54,7 @@ export class VehicleSelectorComponent implements ControlValueAccessor {
 
   public onFiltering(e) {
     e.preventDefaultAction = true;
-    const predicate = new Predicate('Name', 'Contains', e.text);
+    const predicate = new Predicate('PlateNumber', 'Contains', e.text);
 
     let query = new Query();
 
@@ -70,7 +77,7 @@ export class VehicleSelectorComponent implements ControlValueAccessor {
         if (obj !== 0) {
           const data = this.accounts.filter(a => a.Id === obj);
           data.forEach(element => {
-            this.text = element.Name;
+            this.text = element.PlateNumber;
           });
         }
       }

@@ -28,7 +28,9 @@ export class CustomerFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private customerApi: CustomersApiService
-  ) {}
+  ) {
+    this.createForm();
+  }
 
   ngOnInit() {
     this.customerId = +this.activatedRoute.snapshot.paramMap.get('customerId');
@@ -49,12 +51,12 @@ export class CustomerFormComponent implements OnInit {
       CustomerName: ['', Validators.required],
       MobileNumber: ['', Validators.required],
       OtherPhone: [''],
-      HouseNo: ['', Validators.required],
-      Country: ['', Validators.required],
-      City: ['', Validators.required],
-      Nationality: ['Ethiopian', Validators.required],
-      HotelPhone: ['', Validators.required],
-      HotelName: ['', Validators.required],
+      HouseNo: [''],
+      Country: [''],
+      City: [''],
+      Nationality: ['Ethiopian'],
+      HotelPhone: [''],
+      HotelName: [''],
       DrivingLicenceId: ['', Validators.required],
       PassportNumber: ['']
     });
@@ -66,12 +68,12 @@ export class CustomerFormComponent implements OnInit {
       CustomerName: [customer.CustomerName, Validators.required],
       MobileNumber: [customer.MobileNumber, Validators.required],
       OtherPhone: [customer.OtherPhone],
-      HouseNo: [customer.HouseNo, Validators.required],
-      Country: [customer.Country, Validators.required],
-      City: [customer.City, Validators.required],
-      Nationality: [customer.Country, Validators.required],
-      HotelPhone: [customer.HotelPhone, Validators.required],
-      HotelName: [customer.HotelName, Validators.required],
+      HouseNo: [customer.HouseNo],
+      Country: [customer.Country],
+      City: [customer.City],
+      Nationality: [customer.Country],
+      HotelPhone: [customer.HotelPhone],
+      HotelName: [customer.HotelName],
       DrivingLicenceId: [customer.DrivingLicenceId, Validators.required],
       PassportNumber: [customer.PassportNumber]
     });

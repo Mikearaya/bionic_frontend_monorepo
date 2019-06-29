@@ -6,12 +6,17 @@ import { CustomerViewComponent } from './customer-view/customer-view.component';
 import { DataGridModule } from '@bionic/components/data-grid';
 import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormButtonsModule } from '@bionic/components/form-buttons';
+
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
     ReactiveFormsModule,
+    AutoCompleteModule,
     CustomerApiModule,
+    FormButtonsModule,
     RouterModule.forChild([
       {
         path: '',

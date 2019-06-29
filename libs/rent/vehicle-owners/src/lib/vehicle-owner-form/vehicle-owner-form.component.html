@@ -1,3 +1,85 @@
-<p>
-  vehicle-owner-form works!
-</p>
+<form [formGroup]="vehicleOwnerForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-12">
+            <label for="partnerName">Partner Name</label>
+            <input
+              type="text"
+              name="partnerName"
+              id="partnerName"
+              class="e-input"
+              formControlName="PartnerName"
+              placeholder="Partner Name"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label for="mainPhone">Main Phonenumber</label>
+            <input
+              type="text"
+              name="mainPhone"
+              id="mainPhone"
+              class="e-input"
+              formControlName="MobileNumber"
+              placeholder="Main Phonenumber"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label for="city">City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              class="e-input"
+              formControlName="City"
+              placeholder="City"
+            />
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <label for="SubCity">Sub-City</label>
+            <input
+              type="text"
+              name="SubCity"
+              id="SubCity"
+              class="e-input"
+              formControlName="SubCity"
+              placeholder="Sub-City"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-6">
+            <label for="Wereda">Wereda</label>
+            <input
+              type="text"
+              name="Wereda"
+              id="Wereda"
+              class="e-input"
+              formControlName="Wereda"
+              placeholder="Wereda"
+            />
+          </div>
+          <div class="col-xs-12 col-6">
+            <label for="houseNumber">House Number</label>
+            <input
+              type="text"
+              name="houseNumber"
+              id="houseNumber"
+              class="e-input"
+              formControlName="HouseNumber"
+              placeholder="House Number"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="vehicleOwnerForm.invalid"
+  ></bionic-form-options>
+</form>

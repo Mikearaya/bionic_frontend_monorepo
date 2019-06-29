@@ -1,3 +1,160 @@
-<p>
-  customer-form works!
-</p>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-12">
+            <label for="customerName">Customer Name</label>
+            <input
+              type="text"
+              name="customerName"
+              id="customerName"
+              formControlName="CustomerName"
+              placeholder="Customer Name"
+              class="e-input"
+            />
+            <div *ngIf="CustomerName.errors" class="e-error">
+              <div *ngIf="CustomerName.errors['required']">
+                Customer Name Is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <label for="driversLicense">Drivers License Code</label>
+            <input
+              type="text"
+              name="driversLicense"
+              id="driversLicense"
+              class="e-input"
+              formControlName="DrivingLicenceId"
+              placeholder="Drivers License Code"
+            />
+            <div *ngIf="DrivingLicenceId.errors" class="e-error">
+              <div *ngIf="DrivingLicenceId.errors['required']">
+                Driving License Id Is required
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="passport">Passport Number</label>
+            <input
+              type="text"
+              name="passport"
+              id="passport"
+              class="e-input"
+              formControlName="PassportNumber"
+              placeholder="Passport Number"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <label for="Nationality">Nationality</label>
+            <input
+              type="text"
+              name="Nationality"
+              id="Nationality"
+              class="e-input"
+              formControlName="Nationality"
+              placeholder="Nationality"
+            />
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="Country">Country</label>
+            <input
+              type="text"
+              name="Country"
+              id="Country"
+              class="e-input"
+              formControlName="Country"
+              placeholder="Country"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <label for="city">City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              class="e-input"
+              formControlName="City"
+              placeholder="City"
+            />
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="houseNo">House Number</label>
+            <input
+              type="text"
+              name="houseNo"
+              id="houseNo"
+              class="e-input"
+              formControlName="HouseNo"
+              placeholder="House Number"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <label for="mobileNumber">Main Phone Number</label>
+            <input
+              type="text"
+              name="mobileNumber"
+              id=",obileNumber"
+              class="e-input"
+              formControlName="MobileNumber"
+              placeholder="Main Phone"
+            />
+            <div *ngIf="MobileNumber.errors" class="e-error">
+              <div *ngIf="MobileNumber.errors['required']">
+                Mobile Number Is required
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="otherPhone">Other Phone</label>
+            <input
+              type="text"
+              name="otherPhone"
+              id="otherPhone"
+              class="e-input"
+              formControlName="OtherPhone"
+              placeholder="Other Phone"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <label for="hotelName">Hotel Name</label>
+            <input
+              type="text"
+              name="hotelName"
+              id="hotelName"
+              class="e-input"
+              formControlName="HotelName"
+              placeholder="Hotel Name"
+            />
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label for="hotelNumber">Hotel Phone</label>
+            <input
+              type="text"
+              name="hotelNumber"
+              id="hotelNumber"
+              class="e-input"
+              formControlName="HotelPhone"
+              placeholder="Hotel Phone"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="customerForm.invalid"
+  ></bionic-form-options>
+</form>
