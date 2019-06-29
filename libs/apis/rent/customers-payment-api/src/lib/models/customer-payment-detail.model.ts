@@ -1,1 +1,5 @@
-export interface CustomerPaymentDetail {}
+export interface CustomerPaymentDetail {
+  Id: number | null;
+  RentId: number;
+  Amount: number;
+}
