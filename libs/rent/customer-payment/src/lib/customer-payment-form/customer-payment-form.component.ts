@@ -10,10 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 import {
   CustomersPaymentApiService,
   CustomerPaymentView,
-  CustomerPaymentDetail,
-  CustomerPayment
+  CustomerPayment,
+  UnpaidCustomerRent
 } from '@bionic/apis/rent/customers-payment-api';
 import { HttpErrorResponse } from '@angular/common/http';
+import {
+  CustomersApiService,
+  CustomerViewModel
+} from '@bionic/apis/rent/customer-api';
 
 @Component({
   selector: 'bionic-customer-payment-form',
@@ -24,24 +28,23 @@ export class CustomerPaymentFormComponent implements OnInit {
   customerPaymentForm: FormGroup;
   isUpdate: boolean;
   private paymentId: number;
-
+  customers: CustomerViewModel[] = [];
+  unpaidRents: UnpaidCustomerRent[] = [];
+  customerFields: { text: string; value: string };
   constructor(
     private customerPaymentApi: CustomersPaymentApiService,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private customerApi: CustomersApiService
   ) {
     this.createForm();
+    this.customerFields = { text: 'CustomerName', value: 'Id' };
   }
 
   ngOnInit() {
-    this.paymentId = +this.activatedRoute.snapshot.paramMap.get('paymentId');
-
-    if (this.paymentId) {
-      this.isUpdate = true;
-      this.customerPaymentApi
-        .getCustomerPaymentById(this.paymentId)
-        .subscribe((data: CustomerPaymentView) => this.initializeForm(data));
-    }
+    this.customerApi
+      .getCustomersList({})
+      .subscribe((data: any) => (this.customers = data.Items));
   }
 
   private createForm(): void {
@@ -52,29 +55,24 @@ export class CustomerPaymentFormComponent implements OnInit {
     });
   }
 
-  private initializeRentEntry(rents: CustomerPaymentDetail): FormGroup {
-    return this.formBuilder.group({
-      Id: [rents.Id, Validators.required],
-      RentId: [rents.RentId, Validators.required],
-      Amount: [rents.Amount, Validators.required]
-    });
+  customerChanged(event: any) {
+    this.customerPaymentApi
+      .getUnpaidCustomerRent(event.itemData['Id'])
+      .subscribe((data: UnpaidCustomerRent[]) =>
+        this.initializeUnpaidRents(data)
+      );
   }
 
-  private getCustomerPayments() {}
-
-  private createRentEntry(): FormGroup {
-    return this.formBuilder.group({
-      RentId: ['', Validators.required],
-      Amount: ['', Validators.required]
-    });
-  }
-
-  private initializeForm(payment: CustomerPaymentView): void {
-    this.customerPaymentForm = this.formBuilder.group({
-      Id: ['', Validators.required],
-      CustomerId: ['', Validators.required],
-      Date: ['', Validators.required],
-      Rents: this.formBuilder.array([])
+  private initializeUnpaidRents(rents: UnpaidCustomerRent[]): void {
+    this.unpaidRents = rents;
+    this.Rents.controls = [];
+    rents.forEach(element => {
+      this.Rents.push(
+        this.formBuilder.group({
+          RentId: [element.RentId, Validators.required],
+          PaymentAmount: [element.RemainingAmount]
+        })
+      );
     });
   }
 
@@ -93,15 +91,7 @@ export class CustomerPaymentFormComponent implements OnInit {
   onSubmit(): void {
     const paymentForm = this.prepareData(this.customerPaymentForm);
 
-    if (this.isUpdate && paymentForm) {
-      this.customerPaymentApi
-        .updateCustomerPayment(paymentForm)
-        .subscribe(
-          () => alert('Customer Payment updated successfuly'),
-          (error: HttpErrorResponse) =>
-            alert('Failed while updating customer payment try again later')
-        );
-    } else if (paymentForm) {
+    if (paymentForm) {
       this.customerPaymentApi
         .addNewCustomerPayment(paymentForm)
         .subscribe(
@@ -115,10 +105,22 @@ export class CustomerPaymentFormComponent implements OnInit {
     }
   }
 
-  deleteCustomerPayment(rent: CustomerPaymentDetail) {}
-
   private prepareData(form: FormGroup): CustomerPayment | null {
     if (form.valid) {
+      const customerPayment: CustomerPayment = {
+        CustomerId: this.CustomerId.value,
+        Date: this.Date.value,
+        Rents: []
+      };
+
+      this.Rents.controls.forEach(element => {
+        customerPayment.Rents.push({
+          RentId: element.get('RentId').value,
+          Amount: element.get('PaymentAmount').value
+        });
+      });
+
+      return customerPayment;
     } else {
       return null;
     }

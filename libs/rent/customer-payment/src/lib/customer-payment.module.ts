@@ -5,12 +5,22 @@ import { CustomerPaymentFormComponent } from './customer-payment-form/customer-p
 import { CustomerPaymentViewComponent } from './customer-payment-view/customer-payment-view.component';
 import { DataGridModule } from '@bionic/components/data-grid';
 import { CustomersPaymentApiModule } from '@bionic/apis/rent/customers-payment-api';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
+import { FormButtonsModule } from '@bionic/components/form-buttons';
 
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
+    DropDownListModule,
+    ReactiveFormsModule,
+    DatePickerModule,
     CustomersPaymentApiModule,
+    FormButtonsModule,
+    CustomerApiModule,
     RouterModule.forChild([
       {
         path: '',

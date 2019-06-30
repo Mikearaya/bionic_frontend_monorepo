@@ -1,5 +1,5 @@
 export interface CustomerPaymentDetail {
-  Id: number | null;
+  Id?: number | null;
   RentId: number;
   Amount: number;
 }

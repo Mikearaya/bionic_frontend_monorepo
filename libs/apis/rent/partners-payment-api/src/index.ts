@@ -8,3 +8,4 @@ export {
   PartnerPaymentListView
 } from './lib/models/partner-payment-list-view.model';
 export { PartnerPayment } from './lib/models/partner-payment.model';
+export { UnpaidPartnerRent } from './lib/models/unpaid-partner-rent.model';

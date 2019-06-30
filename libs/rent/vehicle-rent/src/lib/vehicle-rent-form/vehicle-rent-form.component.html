@@ -1,10 +1,7 @@
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()" class="card">
   <ejs-tab>
-    <e-tabitems id>
-      <e-tabitem>
-        <ng-template #headerText>
-          <strong>General Information </strong>
-        </ng-template>
+    <e-tabitems id="element">
+      <e-tabitem [header]="headerText[0]">
         <ng-template #content>
           <div class="container-fluid">
             <div class="row">
@@ -103,10 +100,7 @@
           </div>
         </ng-template>
       </e-tabitem>
-      <e-tabitem>
-        <ng-template #headerText>
-          <strong>Vehicle Condition</strong>
-        </ng-template>
+      <e-tabitem [header]="headerText[1]">
         <ng-template #content>
           <div class="container" formGroupName="VehicleCondition">
             <div class="row">

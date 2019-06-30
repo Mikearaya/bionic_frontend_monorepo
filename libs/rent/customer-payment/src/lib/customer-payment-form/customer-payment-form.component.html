@@ -1,3 +1,55 @@
-<p>
-  customer-payment-form works!
-</p>
+<form class="card" (ngSubmit)="onSubmit()" [formGroup]="customerPaymentForm">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col--sm-12 col-md-9">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <label for="customer">Customer</label>
+            <ejs-dropdownlist
+              [fields]="customerFields"
+              [dataSource]="customers"
+              formControlName="CustomerId"
+              [allowFiltering]="true"
+              (select)="customerChanged($event)"
+            ></ejs-dropdownlist>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label for="date">Date</label>
+            <ejs-datepicker formControlName="Date"></ejs-datepicker>
+          </div>
+        </div>
+        <div class="container-fluid mt-5" formArrayName="Rents">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">Rent Id</div>
+            <div class="col-sm-12 col-md-3">ToTal Amount</div>
+            <div class="col-sm-12 col-md-3">Remaining</div>
+            <div class="col-sm-12 col-md-3">Payment</div>
+          </div>
+          <div
+            class="row"
+            *ngFor="let rent of Rents.controls; let i = index; let last = last"
+            [formGroup]="rent"
+          >
+            <div class="col-sm-12 col-md-3">{{ unpaidRents[i].RentId }}</div>
+            <div class="col-sm-12 col-md-3">{{ unpaidRents[i].Amount }}</div>
+            <div class="col-sm-12 col-md-3">
+              {{ unpaidRents[i].RemainingAmount }}
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <input
+                type="text"
+                name="payment"
+                id="payment"
+                class="e-input"
+                formControlName="PaymentAmount"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="customerPaymentForm.invalid || Rents.controls.length < 1"
+  ></bionic-form-options>
+</form>

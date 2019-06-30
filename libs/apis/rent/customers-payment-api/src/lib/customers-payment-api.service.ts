@@ -7,6 +7,7 @@ import { CustomerPayment } from './models/customer-payment.model';
 import { QueryString } from '@bionic/components/data-grid';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
+import { UnpaidCustomerRent } from './models/unpaid-customer-rent.model';
 
 @Injectable()
 export class CustomersPaymentApiService extends Subject<
@@ -14,7 +15,7 @@ export class CustomersPaymentApiService extends Subject<
 > {
   private apiUrl = `http://${
     window.location.hostname
-  }:5000/api/customer/payments`;
+  }:5000/api/customer-payments`;
 
   constructor(private httpClient: HttpClient) {
     super();
@@ -22,6 +23,12 @@ export class CustomersPaymentApiService extends Subject<
 
   getCustomerPaymentById(id: number): Observable<CustomerPaymentView> {
     return this.httpClient.get<CustomerPaymentView>(`${this.apiUrl}/${id}`);
+  }
+
+  getUnpaidCustomerRent(customerId: number): Observable<UnpaidCustomerRent[]> {
+    return this.httpClient.get<UnpaidCustomerRent[]>(
+      `${this.apiUrl}/unpaid/${customerId}`
+    );
   }
 
   getCustomerPaymentsList(): Observable<CustomerPaymentListView[]> {

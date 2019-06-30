@@ -10,3 +10,4 @@ export {
   CustomerPaymentListView
 } from './lib/models/customer-payment-list-view.model';
 export { CustomerPayment } from './lib/models/customer-payment.model';
+export { UnpaidCustomerRent } from './lib/models/unpaid-customer-rent.model';

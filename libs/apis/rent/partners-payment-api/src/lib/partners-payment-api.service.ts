@@ -7,6 +7,7 @@ import { QueryString } from '@bionic/components/data-grid';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { UnpaidPartnerRent } from './models/unpaid-partner-rent.model';
 
 @Injectable()
 export class PartnersPaymentApiService extends Subject<
@@ -14,7 +15,7 @@ export class PartnersPaymentApiService extends Subject<
 > {
   private apiUrl = `http://${
     window.location.hostname
-  }:5000/api/partner/payments`;
+  }:5000/api/partner-payments`;
 
   constructor(private httpClient: HttpClient) {
     super();
@@ -22,6 +23,12 @@ export class PartnersPaymentApiService extends Subject<
 
   getPartnerPaymentById(id: number): Observable<PartnerPaymentView> {
     return this.httpClient.get<PartnerPaymentView>(`${this.apiUrl}/${id}`);
+  }
+
+  getUnpaidPartnerRents(partnerId: number): Observable<UnpaidPartnerRent[]> {
+    return this.httpClient.get<UnpaidPartnerRent[]>(
+      `${this.apiUrl}/unpaid/${partnerId}`
+    );
   }
 
   getPartnerPaymentsList(): Observable<PartnerPaymentListView[]> {

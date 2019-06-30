@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {
   PartnersPaymentApiService,
-  PartnerPaymentDetail,
   PartnerPaymentView,
-  PartnerPayment
+  PartnerPayment,
+  UnpaidPartnerRent
 } from '@bionic/apis/rent/partners-payment-api';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormArray,
+  FormControl
+} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import {
+  VehicleOwnerViewModel,
+  VehicleOwnersApiService
+} from '@bionic/apis/rent/vehicle-owners-api';
 
 @Component({
   selector: 'bionic-partners-payment-form',
@@ -17,23 +26,23 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PartnersPaymentFormComponent implements OnInit {
   partnerPaymentForm: FormGroup;
   isUpdate: boolean;
-  private paymentId: number;
+  partnersField: { text: string; value: string };
+  unpaidRents: UnpaidPartnerRent[] = [];
+  partners: VehicleOwnerViewModel[] = [];
 
   constructor(
     private partnerPaymentApi: PartnersPaymentApiService,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private partnersApi: VehicleOwnersApiService
+  ) {
+    this.partnersField = { text: 'PartnerName', value: 'Id' };
+    this.createForm();
+  }
 
   ngOnInit() {
-    this.paymentId = +this.activatedRoute.snapshot.paramMap.get('paymentId');
-
-    if (this.paymentId) {
-      this.isUpdate = true;
-      this.partnerPaymentApi
-        .getPartnerPaymentById(this.paymentId)
-        .subscribe((data: PartnerPaymentView) => this.initializeForm(data));
-    }
+    this.partnersApi
+      .getVehicleOwnersList({})
+      .subscribe((data: any) => (this.partners = data.Items));
   }
 
   private createForm(): void {
@@ -44,33 +53,42 @@ export class PartnersPaymentFormComponent implements OnInit {
     });
   }
 
-  private initializeForm(payment: PartnerPaymentView): void {
-    this.partnerPaymentForm = this.formBuilder.group({
-      PartnerId: ['', Validators.required],
-      Date: ['', Validators.required],
-      Rents: this.formBuilder.array([])
+  partnerChanged(event: any) {
+    this.partnerPaymentApi
+      .getUnpaidPartnerRents(event.itemData['Id'])
+      .subscribe((data: UnpaidPartnerRent[]) =>
+        this.initializeUnpaidRents(data)
+      );
+  }
+
+  private initializeUnpaidRents(rents: UnpaidPartnerRent[]): void {
+    this.unpaidRents = rents;
+    this.Rents.controls = [];
+    rents.forEach(element => {
+      this.Rents.push(
+        this.formBuilder.group({
+          RentId: [element.RentId, Validators.required],
+          PaymentAmount: [element.RemainingAmount]
+        })
+      );
     });
   }
 
-  private prepareData(form: FormGroup): PartnerPayment | null {
-    if (form.valid) {
-    } else {
-      return null;
-    }
+  get Rents(): FormArray {
+    return this.partnerPaymentForm.get('Rents') as FormArray;
+  }
+  get PartnerId(): FormControl {
+    return this.partnerPaymentForm.get('PartnerId') as FormControl;
+  }
+
+  get Date(): FormControl {
+    return this.partnerPaymentForm.get('Date') as FormControl;
   }
 
   onSubmit(): void {
     const paymentForm = this.prepareData(this.partnerPaymentForm);
 
-    if (this.isUpdate && paymentForm) {
-      this.partnerPaymentApi
-        .updatePartnerPayment(paymentForm)
-        .subscribe(
-          () => alert('Partner payment updated successfuly'),
-          (error: HttpErrorResponse) =>
-            alert('Error while updating partner payment, try again later')
-        );
-    } else if (paymentForm) {
+    if (paymentForm) {
       this.partnerPaymentApi
         .addNewPartnerPayment(paymentForm)
         .subscribe(
@@ -81,6 +99,26 @@ export class PartnersPaymentFormComponent implements OnInit {
               'Error while attempting to update partner payment, try agin later '
             )
         );
+    }
+  }
+
+  private prepareData(form: FormGroup): PartnerPayment | null {
+    if (form.valid) {
+      const partnerPayment: PartnerPayment = {
+        PartnerId: this.PartnerId.value,
+        Date: this.Date.value,
+        Rents: []
+      };
+
+      this.Rents.controls.forEach(element => {
+        partnerPayment.Rents.push({
+          RentId: element.get('RentId').value,
+          Amount: element.get('PaymentAmount').value
+        });
+      });
+      return partnerPayment;
+    } else {
+      return null;
     }
   }
 }

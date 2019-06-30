@@ -21,8 +21,6 @@ import { TabComponent } from '@syncfusion/ej2-angular-navigations';
   styleUrls: ['./vehicle-rent-form.component.css']
 })
 export class VehicleRentFormComponent implements OnInit {
-  @ViewChild('tab')
-  public tab: TabComponent;
   private rentId: number;
   rentForm: FormGroup;
   isUpdate: boolean;

@@ -13,7 +13,7 @@ import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { CustomerSelectorComponent } from '@bionic/rent/customers';
 import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
-import { TabModule } from '@syncfusion/ej2-angular-navigations';
+import { TabModule, TabAllModule } from '@syncfusion/ej2-angular-navigations';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     CustomerApiModule,
     FormButtonsModule,
     RentsApiModule,
-
+    TabAllModule,
     RouterModule.forChild([
       {
         path: '',
@@ -55,6 +55,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
   declarations: [
     VehicleRentFormComponent,
     VehicleRentViewComponent,
+
     VehicleRentContractComponent,
     VehicleSelectorComponent,
     CustomerSelectorComponent

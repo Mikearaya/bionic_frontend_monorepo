@@ -5,10 +5,21 @@ import { PartnersPaymentViewComponent } from './partners-payment-view/partners-p
 import { PartnersPaymentFormComponent } from './partners-payment-form/partners-payment-form.component';
 import { DataGridModule } from '@bionic/components/data-grid';
 import { PartnersPaymentApiModule } from '@bionic/apis/rent/partners-payment-api';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
+import { FormButtonsModule } from '@bionic/components/form-buttons';
+
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
+    DropDownListModule,
+    DatePickerModule,
+    FormButtonsModule,
+    ReactiveFormsModule,
+    VehicleOwnersApiModule,
     PartnersPaymentApiModule,
     RouterModule.forChild([
       {
