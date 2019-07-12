@@ -1,4 +1,4 @@
 export class RoleClaimModel {
   ClaimType: string;
-  ClaimValue: string;
+  ClaimValue?: string;
 }

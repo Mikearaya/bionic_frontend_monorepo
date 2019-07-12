@@ -24,8 +24,6 @@ export class VehicleFormComponent implements OnInit {
   transmissionTypes = ['Automatic', 'Manual'];
   plateCodes = ['2', '3'];
   fuielTypes = ['Benzine', 'Diesel'];
-  vehicleColor = ['White', 'Black', 'Red', 'Blue', 'Yellow', 'Green'];
-  vehicleTypes = ['Hatchback', 'Sedan', 'Pickup', 'SUV', 'Limosine', 'Motor'];
   Years: string[] = [];
 
   private vehicleId: number;
@@ -68,7 +66,7 @@ export class VehicleFormComponent implements OnInit {
       MotorNumber: [''],
       FuielType: ['', Validators.required],
       Cc: [''],
-      TotalPassanger: ['', Validators.required],
+      TotalPassanger: [''],
       CylinderCount: [''],
       LibreNo: [''],
       PlateCode: ['', Validators.required],
@@ -89,7 +87,7 @@ export class VehicleFormComponent implements OnInit {
       MotorNumber: [vehicle.MotorNumber],
       FuielType: [vehicle.FuielType, Validators.required],
       Cc: [vehicle.Cc],
-      TotalPassanger: [vehicle.TotalPassanger, Validators.required],
+      TotalPassanger: [vehicle.TotalPassanger],
       CylinderCount: [vehicle.CylinderCount],
       LibreNo: [vehicle.LibreNo],
       PlateCode: [vehicle.PlateCode, Validators.required],

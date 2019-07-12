@@ -8,12 +8,14 @@ import { DataGridModule } from '@bionic/components/data-grid';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
     CommonModule,
     SystemRolesApiModule,
     TreeViewModule,
+    ButtonModule,
     ReactiveFormsModule,
     FormButtonsModule,
     DataGridModule,
@@ -21,7 +23,7 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
       {
         path: '',
         component: SystemRoleViewComponent,
-        data: { breadCrum: 'Roles', title: 'Roles' }
+        data: { breadCrum: 'View', title: 'Roles' }
       },
       {
         path: 'add',

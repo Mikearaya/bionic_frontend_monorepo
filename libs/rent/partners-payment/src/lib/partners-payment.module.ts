@@ -34,12 +34,20 @@ import { PrintHeadersModule } from '@bionic/components/page-informations';
       {
         path: '',
         component: PartnersPaymentViewComponent,
-        data: { breadCrum: 'view', claim: 'canViewPartnerPayments' }
+        data: {
+          breadCrum: 'view',
+          claim: 'canViewPartnerPayments',
+          title: 'Partner Payments'
+        }
       },
       {
         path: 'add',
         component: PartnersPaymentFormComponent,
-        data: { breadCrum: 'Add', claim: 'canAddPartnerPayments' }
+        data: {
+          breadCrum: 'Add',
+          claim: 'canAddPartnerPayments',
+          title: 'New Partner Payment'
+        }
       },
       {
         path: ':paymentId/update',

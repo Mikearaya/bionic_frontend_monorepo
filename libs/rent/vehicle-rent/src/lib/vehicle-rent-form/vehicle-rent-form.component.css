@@ -1,0 +1,9 @@
+input {
+  width: 150px;
+  margin-left: 1em;
+  text-align: center;
+}
+
+input.e-input.large {
+  width: 100%
+}

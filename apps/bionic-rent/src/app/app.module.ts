@@ -73,11 +73,13 @@ import { DynamicFormControlsModule } from '@bionic/components/dynamic-form-contr
           },
           {
             path: 'settings/system-roles',
-            loadChildren: '@bionic/components/system-role#SystemRoleModule'
+            loadChildren: '@bionic/components/system-role#SystemRoleModule',
+            data: { breadCrum: 'Settings > Roles' }
           },
           {
             path: 'settings/system-users',
-            loadChildren: '@bionic/components/system-users#SystemUsersModule'
+            loadChildren: '@bionic/components/system-users#SystemUsersModule',
+            data: { breadCrum: 'Settings > Users' }
           },
           {
             path: 'reports',

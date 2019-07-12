@@ -13,7 +13,7 @@ import {
   VehicleRent
 } from '@bionic/apis/rent/rents-api';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TabComponent } from '@syncfusion/ej2-angular-navigations';
+
 
 @Component({
   selector: 'bionic-vehicle-rent-form',

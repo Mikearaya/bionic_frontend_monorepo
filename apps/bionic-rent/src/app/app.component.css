@@ -103,7 +103,8 @@
 
 .content-head {
   height: 3em;
-  background: #ecf0f5;
+  background: rgb(64, 150, 163) !important;
+
 }
 
 .sidebar-header {

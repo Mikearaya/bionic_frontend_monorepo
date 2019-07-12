@@ -1,0 +1,14 @@
+td:not(:first-child) {
+  padding: 0;
+  text-align: center;
+  width: 12%;
+
+}
+td:first-child {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+th {
+  text-align: center;
+}

@@ -33,12 +33,12 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
       {
         path: '',
         component: VehicleRentViewComponent,
-        data: { breadCrum: 'view', title: 'Vehicle Rents' }
+        data: { breadCrum: 'view', title: 'Rents' }
       },
       {
         path: 'add',
         component: VehicleRentFormComponent,
-        data: { breadCrum: 'add', title: 'Create New Rent' }
+        data: { breadCrum: 'add', title: 'New Rent' }
       },
       {
         path: ':rentId/update',

@@ -24,17 +24,17 @@ import { PartnerSelectorModule } from './partner-selector/partner-selector.modul
       {
         path: '',
         component: VehicleOwnerViewComponent,
-        data: { breadCrum: 'view', title: 'Vehicle Owners' }
+        data: { breadCrum: 'view', title: 'Partners' }
       },
       {
         path: 'add',
         component: VehicleOwnerFormComponent,
-        data: { breadCrum: 'add', title: 'Add New Vehicle Owner' }
+        data: { breadCrum: 'add', title: 'New Partner' }
       },
       {
         path: ':ownerId/update',
         component: VehicleOwnerFormComponent,
-        data: { breadCrum: 'update', title: 'Update Vehicle Owner' }
+        data: { breadCrum: 'update', title: 'Update Partner' }
       }
     ]),
     PartnerSelectorModule

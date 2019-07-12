@@ -29,24 +29,24 @@ import { SystemRoleSelectorModule } from '@bionic/components/system-role';
       {
         path: '',
         component: UserViewComponent,
-        data: { title: 'Users', breadcrum: 'system-users' }
+        data: { title: 'Users', breadCrum: 'View' }
       },
       {
         path: 'add',
         component: UserFormComponent,
-        data: { title: 'Create user', breadcrum: 'system-users/new' }
+        data: { title: 'Create user', breadCrum: 'Add' }
       },
       {
         path: ':userId/update',
         component: UserFormComponent,
-        data: { title: 'Update user', breadcrum: 'system-users' }
+        data: { title: 'Update user', breadCrum: 'Update' }
       },
       {
         path: ':userId/password',
         component: PasswordChangeFormComponent,
         data: {
           title: 'Update user password',
-          breadcrum: '/system-users/password'
+          breadCrum: 'update password'
         }
       }
     ])

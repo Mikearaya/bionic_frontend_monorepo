@@ -16,134 +16,74 @@
         <thead>
           <tr>
             <th>Function</th>
-            <th>Create</th>
+            <th>View</th>
             <th>Create</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Other</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Vehicle</td>
-            <td>
-              <input type="checkbox" name="vehicleView" id="vehicleView" />
-            </td>
-            <td><input type="checkbox" name="vehicleAdd" id="vehicleAdd" /></td>
-            <td>
-              <input type="checkbox" name="vehicleEdit" id="vehicleEdit" />
-            </td>
-            <td>
-              <input type="checkbox" name="vehicleDelete" id="vehicleDelete" />
-            </td>
-          </tr>
-          <tr>
-            <td>Partner</td>
-            <td>
-              <input type="checkbox" name="partnerView" id="partnerView" />
-            </td>
-            <td><input type="checkbox" name="partnerAdd" id="partnerAdd" /></td>
-            <td>
-              <input type="checkbox" name="partnerEdit" id="partnerEdit" />
-            </td>
-            <td>
-              <input type="checkbox" name="partnerDelete" id="partnerDelete" />
-            </td>
-          </tr>
-          <tr>
-            <td>Customer</td>
-            <td>
-              <input type="checkbox" name="customerView" id="customerView" />
-            </td>
-            <td>
-              <input type="checkbox" name="customerAdd" id="customerAdd" />
-            </td>
-            <td>
-              <input type="checkbox" name="customerEdit" id="customerEdit" />
-            </td>
+          <tr *ngFor="let r of role; let i = index">
+            <td>{{ r.function }}</td>
             <td>
               <input
+                *ngIf="r.view"
                 type="checkbox"
-                name="customerDelete"
-                id="customerDelete"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Rent</td>
-            <td><input type="checkbox" name="rentView" id="rentView" /></td>
-            <td><input type="checkbox" name="rentAdd" id="rentAdd" /></td>
-            <td><input type="checkbox" name="rentEdit" id="rentEdit" /></td>
-            <td><input type="checkbox" name="rentDelete" id="rentDelete" /></td>
-          </tr>
-          <tr>
-            <td>System Lookups</td>
-            <td><input type="checkbox" name="lookupView" id="lookupView" /></td>
-            <td><input type="checkbox" name="lookupAdd" id="lookupAdd" /></td>
-            <td><input type="checkbox" name="lookupEdit" id="lookupEdit" /></td>
-            <td>
-              <input type="checkbox" name="lookupDelete" id="lookupDelete" />
-            </td>
-          </tr>
-          <tr>
-            <td>Customer Payments</td>
-            <td>
-              <input
-                type="checkbox"
-                name="customerPaymentView"
-                id="customerPaymentView"
+                (change)="onChange(r.view, $event.target.checked)"
+                name="vehicleView"
+                id="vehicleView"
+                [checked]="isChecked(r.view)"
+                [value]="r.view"
               />
             </td>
             <td>
               <input
                 type="checkbox"
-                name="customerPaymentAdd"
-                id="customerPaymentAdd"
+                *ngIf="r.add"
+                (change)="onChange(r.add, $event.target.checked)"
+                name="vehicleAdd"
+                id="vehicleAdd"
+                [value]="r.add"
+                [checked]="isChecked(r.add)"
               />
             </td>
             <td>
               <input
                 type="checkbox"
-                name="customerPaymentEdit"
-                id="customerPaymentEdit"
+                *ngIf="r.edit"
+                (change)="onChange(r.edit, $event.target.checked)"
+                name="vehicleEdit"
+                id="vehicleEdit"
+                [checked]="isChecked(r.edit)"
+                [value]="r.edit"
               />
             </td>
             <td>
               <input
                 type="checkbox"
-                name="customerPaymentDelete"
-                id="customerPaymentDelete"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Partner Payment</td>
-            <td>
-              <input
-                type="checkbox"
-                name="partnerPaymentView"
-                id="partnerPaymentView"
+                *ngIf="r.delete"
+                [checked]="isChecked(r.delete)"
+                name="vehicleDelete"
+                id="vehicleDelete"
+                (change)="onChange(r.delete, $event.target.checked)"
+                [value]="r.delete"
               />
             </td>
             <td>
-              <input
-                type="checkbox"
-                name="partnerPaymentAdd"
-                id="partnerPaymentAdd"
-              />
-            </td>
-            <td>
-              <input
-                type="checkbox"
-                name="partnerPaymentEdit"
-                id="partnerPaymentEdit"
-              />
-            </td>
-            <td>
-              <input
-                type="checkbox"
-                name="partnerPaymentDelete"
-                id="partnerPaymentDelete"
-              />
+              <div *ngIf="r.others.length > 0">
+                <div *ngFor="let o of r.others; let oi = index">
+                  <label for="oi">{{ o.title }}</label>
+                  <input
+                    type="checkbox"
+                    [checked]="isChecked(o.value)"
+                    name="vehicleDelete{oi}"
+                    id="vehicleDelete{{oi}}"
+                    (change)="onChange(o.value, $event.target.checked)"
+                    [value]="o.value"
+                  />
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>

@@ -9,6 +9,7 @@
 body {
   background-color: #ecf0f5 !important;
   padding: 0px;
+  font-family: serif !important;
 }
 
 .e-plus-icon::before {

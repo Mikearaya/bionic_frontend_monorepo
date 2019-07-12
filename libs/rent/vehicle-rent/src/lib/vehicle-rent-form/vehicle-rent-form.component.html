@@ -10,354 +10,367 @@
   </button>
 </div>
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()" class="card">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="row">
-          <div class="col-sm-12 col-md-12">
-            <label for="customer">Customer</label>
-            <bionic-customer-selector
-              name="customer"
-              id="customer"
-              placeholder="Select Customer"
-              formControlName="CustomerId"
-            ></bionic-customer-selector>
+  <ejs-tab id="element" #tab>
+    <e-tabitems>
+      <e-tabitem [header]="headerText[0]">
+        <ng-template #content>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <label for="customer">Customer</label>
+                    <bionic-customer-selector
+                      name="customer"
+                      id="customer"
+                      placeholder="Select Customer"
+                      formControlName="CustomerId"
+                    ></bionic-customer-selector>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <label for="vehicle">Vehicle</label>
+                    <bionic-vehicle-selector
+                      formControlName="VehicleId"
+                    ></bionic-vehicle-selector>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <label for="StartDate">Start Date </label>
+                    <ejs-datepicker
+                      name="StartDate"
+                      id="StartDate"
+                      formControlName="StartDate"
+                      placeholder="Start Date"
+                      class="e-input"
+                    >
+                    </ejs-datepicker>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label for="EndDate">End Date </label>
+                    <ejs-datepicker
+                      name="EndDate"
+                      id="EndDate"
+                      formControlName="ReturnDate"
+                      placeholder="End Date"
+                      class="e-input"
+                    ></ejs-datepicker>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <label for="ownerRentingPrice">Owner Renting Price </label>
+                    <input
+                      type="number"
+                      name="ownerRentingPrice"
+                      id="ownerRentingPrice"
+                      formControlName="OwnerRentingPrice"
+                      placeholder="Owners Price"
+                      class="e-input"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label for="RentingPrice">Renting Price </label>
+                    <input
+                      type="number"
+                      name="RentingPrice"
+                      id="RentingPrice"
+                      formControlName="RentedPrice"
+                      placeholder="Renting Price"
+                      class="e-input"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <label for="collateral">Collateral</label>
+                    <input
+                      type="number"
+                      name="collateral"
+                      id="collateral"
+                      placeholder="Collateral"
+                      formControlName="CollateralDeposit"
+                      class="e-input"
+                    />
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label for="initialPayment">Initial Payment</label>
+                    <input
+                      type="number"
+                      name="initialPayment"
+                      id="initialPayment"
+                      placeholder="Initial Payment"
+                      class="e-input"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-12">
-            <label for="vehicle">Vehicle</label>
-            <bionic-vehicle-selector
-              formControlName="VehicleId"
-            ></bionic-vehicle-selector>
+        </ng-template>
+      </e-tabitem>
+      <e-tabitem [header]="headerText[1]">
+        <ng-template #content>
+          <div class="container" formGroupName="VehicleCondition">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="windowController">Window Controller</label>
+                <input
+                  type="number"
+                  name="windowController"
+                  id="windowController"
+                  formControlName="WindowController"
+                  placeholder="Window Controllers"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="seatBelt">Seat Belts </label>
+                <input
+                  type="number"
+                  name="seatBelt"
+                  id="seatBelt"
+                  placeholder="Seat Belt"
+                  formControlName="SeatBelt"
+                  class="e-input"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="spareTires">Spare Tire</label>
+                <input
+                  type="number"
+                  name="spareTires"
+                  id="spareTires"
+                  formControlName="SpareTire"
+                  placeholder="Spare Tires"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="wipers">Wipers</label>
+                <input
+                  type="number"
+                  name="wipers"
+                  id="wipers"
+                  placeholder="Wipwers"
+                  formControlName="Wiper"
+                  class="e-input"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="CrickWrench">Crick Wrench</label>
+                <input
+                  type="number"
+                  name="CrickWrench"
+                  id="CrickWrench"
+                  formControlName="CrickWrench"
+                  placeholder="Crick Wrench"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="Crick">Crick</label>
+                <input
+                  type="number"
+                  name="Crick"
+                  id="Crick"
+                  placeholder="Crick"
+                  formControlName="Crick"
+                  class="e-input"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="DashboardClose">Dashboard Cloth</label>
+                <input
+                  type="number"
+                  name="DashboardClose"
+                  id="DashboardClose"
+                  formControlName="DashboardClose"
+                  placeholder="Dashboard Cloth"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="MudeProtector">Mude Protectors</label>
+                <input
+                  type="number"
+                  name="MudeProtector"
+                  id="MudeProtector"
+                  class="e-input"
+                  placeholder="Mude Protectors"
+                  formControlName="MudeProtecter"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="SpokioOuter">Outter Spokio</label>
+                <input
+                  type="number"
+                  name="SpokioOuter"
+                  id="SpokioOuter"
+                  class="e-input"
+                  formControlName="SpokioOuter"
+                  placeholder="Outter Spokio"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="SpokioInner"> Inner Spokios</label>
+                <input
+                  type="number"
+                  name="SpokioInner"
+                  id="SpokioInner"
+                  placeholder="Inner Spokios"
+                  class="e-input"
+                  formControlName="SpokioInner"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="SunVisor">Sun Visor</label>
+                <input
+                  type="number"
+                  name="SunVisor"
+                  id="SunVisor"
+                  formControlName="SunVisor"
+                  placeholder="Sun Visor"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="MatInner">Inside Mats</label>
+                <input
+                  type="number"
+                  name="MatInner"
+                  id="MatInner"
+                  placeholder="Inside Mats"
+                  formControlName="MatInner"
+                  class="e-input"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="WindProtector">Wind Protector</label>
+                <input
+                  type="number"
+                  name="WindProtector"
+                  id="WindProtector"
+                  formControlName="WindProtecter"
+                  placeholder="Wind Protector"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="Blinker">Blinkers</label>
+                <input
+                  type="number"
+                  name="Blinker"
+                  id="Blinker"
+                  placeholder="Blinker"
+                  formControlName="Blinker"
+                  class="e-input"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="CigaretLighter">Cigaret Lighter</label>
+                <input
+                  type="number"
+                  name="CigaretLighter"
+                  id="CigaretLighter"
+                  formControlName="CigaretLighter"
+                  placeholder="Cigaret Lighter"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="FuielLid">Fuiel Lid</label>
+                <input
+                  type="number"
+                  name="FuielLid"
+                  id="FuielLid"
+                  placeholder="Fuiel Lid"
+                  class="e-input"
+                  formControlName="FuielLid"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="RadiatorLid">Radiator Lid</label>
+                <input
+                  type="number"
+                  name="RadiatorLid"
+                  id="RadiatorLid"
+                  formControlName="RadiatorLid"
+                  placeholder="Radiator Lid"
+                  class="e-input"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="TotalKilometer">Total Kilometer</label>
+                <input
+                  type="number"
+                  name="TotalKilometer"
+                  id="TotalKilometer"
+                  placeholder="Total Kilometer"
+                  class="e-input"
+                  formControlName="TotalKilometer"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <label for="Radio">Radio</label>
+                <input
+                  type="text"
+                  name="Radio"
+                  id="Radio"
+                  formControlName="Radio"
+                  placeholder="Radio"
+                  class="e-input large"
+                />
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="FuielLevel">Fuiel Level</label>
+                <input
+                  type="text"
+                  name="FuielLevel"
+                  id="FuielLevel"
+                  placeholder="Fuiel Level"
+                  formControlName="FuielLevel"
+                  class="e-input"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="extraComment">Extra Notes</label>
+                <textarea
+                  name="extraNote"
+                  id="extraNote"
+                  class="e-input"
+                  formControlName="Comment"
+                ></textarea>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <label for="StartDate">Start Date </label>
-            <ejs-datepicker
-              name="StartDate"
-              id="StartDate"
-              formControlName="StartDate"
-              placeholder="Start Date"
-              class="e-input"
-            >
-            </ejs-datepicker>
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <label for="EndDate">End Date </label>
-            <ejs-datepicker
-              name="EndDate"
-              id="EndDate"
-              formControlName="ReturnDate"
-              placeholder="End Date"
-              class="e-input"
-            ></ejs-datepicker>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <label for="ownerRentingPrice">Owner Renting Price </label>
-            <input
-              type="number"
-              name="ownerRentingPrice"
-              id="ownerRentingPrice"
-              formControlName="OwnerRentingPrice"
-              placeholder="Owners Price"
-              class="e-input"
-            />
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <label for="RentingPrice">Renting Price </label>
-            <input
-              type="number"
-              name="RentingPrice"
-              id="RentingPrice"
-              formControlName="RentedPrice"
-              placeholder="Renting Price"
-              class="e-input"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <label for="collateral">Collateral</label>
-            <input
-              type="number"
-              name="collateral"
-              id="collateral"
-              placeholder="Collateral"
-              formControlName="CollateralDeposit"
-              class="e-input"
-            />
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <label for="initialPayment">Initial Payment</label>
-            <input
-              type="number"
-              name="initialPayment"
-              id="initialPayment"
-              placeholder="Initial Payment"
-              class="e-input"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container" formGroupName="VehicleCondition">
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="windowController">Window Controller</label>
-        <input
-          type="number"
-          name="windowController"
-          id="windowController"
-          formControlName="WindowController"
-          placeholder="Window Controllers"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="seatBelt">Seat Belts </label>
-        <input
-          type="number"
-          name="seatBelt"
-          id="seatBelt"
-          placeholder="Seat Belt"
-          formControlName="SeatBelt"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="spareTires">Spare Tire</label>
-        <input
-          type="number"
-          name="spareTires"
-          id="spareTires"
-          formControlName="SpareTire"
-          placeholder="Spare Tires"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="wipers">Wipers</label>
-        <input
-          type="number"
-          name="wipers"
-          id="wipers"
-          placeholder="Wipwers"
-          formControlName="Wiper"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="CrickWrench">Crick Wrench</label>
-        <input
-          type="number"
-          name="CrickWrench"
-          id="CrickWrench"
-          formControlName="CrickWrench"
-          placeholder="Crick Wrench"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="Crick">Crick</label>
-        <input
-          type="number"
-          name="Crick"
-          id="Crick"
-          placeholder="Crick"
-          formControlName="Crick"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="DashboardClose">Dashboard Cloth</label>
-        <input
-          type="number"
-          name="DashboardClose"
-          id="DashboardClose"
-          formControlName="DashboardClose"
-          placeholder="Dashboard Cloth"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="MudeProtector">Mude Protectors</label>
-        <input
-          type="number"
-          name="MudeProtector"
-          id="MudeProtector"
-          class="e-input"
-          placeholder="Mude Protectors"
-          formControlName="MudeProtecter"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="SpokioOuter">Outter Spokio</label>
-        <input
-          type="number"
-          name="SpokioOuter"
-          id="SpokioOuter"
-          class="e-input"
-          formControlName="SpokioOuter"
-          placeholder="Outter Spokio"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="SpokioInner"> Inner Spokios</label>
-        <input
-          type="number"
-          name="SpokioInner"
-          id="SpokioInner"
-          placeholder="Inner Spokios"
-          class="e-input"
-          formControlName="SpokioInner"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="SunVisor">Sun Visor</label>
-        <input
-          type="number"
-          name="SunVisor"
-          id="SunVisor"
-          formControlName="SunVisor"
-          placeholder="Sun Visor"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="MatInner">Inside Mats</label>
-        <input
-          type="number"
-          name="MatInner"
-          id="MatInner"
-          placeholder="Inside Mats"
-          formControlName="MatInner"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="WindProtector">Wind Protector</label>
-        <input
-          type="number"
-          name="WindProtector"
-          id="WindProtector"
-          formControlName="WindProtecter"
-          placeholder="Wind Protector"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="Blinker">Blinkers</label>
-        <input
-          type="number"
-          name="Blinker"
-          id="Blinker"
-          placeholder="Blinker"
-          formControlName="Blinker"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="Radio">Radio</label>
-        <input
-          type="text"
-          name="Radio"
-          id="Radio"
-          formControlName="Radio"
-          placeholder="Radio"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="FuielLevel">Fuiel Level</label>
-        <input
-          type="text"
-          name="FuielLevel"
-          id="FuielLevel"
-          placeholder="Fuiel Level"
-          formControlName="FuielLevel"
-          class="e-input"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="CigaretLighter">Cigaret Lighter</label>
-        <input
-          type="number"
-          name="CigaretLighter"
-          id="CigaretLighter"
-          formControlName="CigaretLighter"
-          placeholder="Cigaret Lighter"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="FuielLid">Fuiel Lid</label>
-        <input
-          type="number"
-          name="FuielLid"
-          id="FuielLid"
-          placeholder="Fuiel Lid"
-          class="e-input"
-          formControlName="FuielLid"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="RadiatorLid">Radiator Lid</label>
-        <input
-          type="number"
-          name="RadiatorLid"
-          id="RadiatorLid"
-          formControlName="RadiatorLid"
-          placeholder="Radiator Lid"
-          class="e-input"
-        />
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="TotalKilometer">Total Kilometer</label>
-        <input
-          type="number"
-          name="TotalKilometer"
-          id="TotalKilometer"
-          placeholder="Total Kilometer"
-          class="e-input"
-          formControlName="TotalKilometer"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <label for="extraComment">Extra Notes</label>
-        <textarea
-          name="extraNote"
-          id="extraNote"
-          class="e-input"
-          formControlName="Comment"
-        ></textarea>
-      </div>
-    </div>
-  </div>
+        </ng-template>
+      </e-tabitem>
+    </e-tabitems>
+  </ejs-tab>
 
   <bionic-form-options
     [submitDisabled]="rentForm.invalid"
