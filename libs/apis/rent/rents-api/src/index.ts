@@ -4,3 +4,4 @@ export { VehicleRent } from './lib/models/vehicle-rent.model';
 export { VehicleRentView } from './lib/models/vehicle-rent-view.model';
 export { VehicleCondition } from './lib/models/vehicle-condition.model';
 export { VehicleRentListModel } from './lib/models/vehicle-rent-list.model';
+export { RentContractModel } from './lib/models/rent-contract.model';

@@ -9,16 +9,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
-import { FormButtonsModule } from '@bionic/components/form-buttons';
-
+import {
+  FormButtonsModule,
+  PrintButtonsModule
+} from '@bionic/components/form-buttons';
+import { CustomerPaymentRecieptComponent } from './customer-payment-reciept/customer-payment-reciept.component';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { PrintHeadersModule } from '@bionic/components/page-informations';
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
     DropDownListModule,
+    PrintHeadersModule,
+    PrintButtonsModule,
     ReactiveFormsModule,
+
     DatePickerModule,
     CustomersPaymentApiModule,
+    ButtonModule,
     FormButtonsModule,
     CustomerApiModule,
     RouterModule.forChild([
@@ -34,12 +43,20 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
       },
       {
         path: ':paymentId/update',
-        component: CustomerPaymentFormComponent,
-        data: { breadCrum: 'update', claim: 'canUpdateCustomerPayments' }
+        component: CustomerPaymentRecieptComponent,
+        data: {
+          breadCrum: 'Reciept',
+          claim: 'canViewCustomerPaymentReciept',
+          title: 'Customer Payment Reciept'
+        }
       }
     ])
   ],
-  declarations: [CustomerPaymentFormComponent, CustomerPaymentViewComponent],
+  declarations: [
+    CustomerPaymentFormComponent,
+    CustomerPaymentViewComponent,
+    CustomerPaymentRecieptComponent
+  ],
   exports: [CustomerPaymentFormComponent, CustomerPaymentViewComponent]
 })
 export class CustomerPaymentModule {}

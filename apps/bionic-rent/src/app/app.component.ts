@@ -13,6 +13,7 @@ import {
   TreeViewComponent,
   NodeSelectEventArgs
 } from '@syncfusion/ej2-angular-navigations';
+import { DynamicFormDataService } from '@bionic/components/dynamic-form-controls';
 
 @Component({
   selector: 'bionic-root',
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
       text: 'Sign out'
     }
   ];
+
   constructor(
     private router: Router,
     private securityService: SecurityService

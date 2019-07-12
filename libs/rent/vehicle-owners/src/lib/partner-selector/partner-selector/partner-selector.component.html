@@ -1,0 +1,13 @@
+<ejs-dropdownlist
+  id="partners"
+  [enabled]="!disabled"
+  name="partners"
+  placeholder="Search Partner"
+  [text]="text"
+  [allowFiltering]="true"
+  [fields]="fields"
+  (filtering)="onFiltering($event)"
+  [dataSource]="partners"
+  (change)="partnerChanged($event)"
+>
+</ejs-dropdownlist>

@@ -13,6 +13,11 @@
               formControlName="PartnerName"
               placeholder="Partner Name"
             />
+            <div *ngIf="PartnerName.errors" class="e-error">
+              <div *ngIf="PartnerName.errors['required']">
+                Partner Name is Required
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -26,6 +31,11 @@
               formControlName="MobileNumber"
               placeholder="Main Phonenumber"
             />
+            <div class="e-error" *ngIf="MobileNumber.errors">
+              <div *ngIf="MobileNumber.errors['required']">
+                Mobile number is Required
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">

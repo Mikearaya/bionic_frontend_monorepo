@@ -37,11 +37,8 @@ export class PartnersPaymentApiService extends Subject<
 
   addNewPartnerPayment(
     payment: PartnerPayment
-  ): Observable<PartnerPaymentListView> {
-    return this.httpClient.post<PartnerPaymentListView>(
-      `${this.apiUrl}`,
-      payment
-    );
+  ): Observable<PartnerPaymentView> {
+    return this.httpClient.post<PartnerPaymentView>(`${this.apiUrl}`, payment);
   }
 
   updatePartnerPayment(payment: PartnerPayment): Observable<void> {

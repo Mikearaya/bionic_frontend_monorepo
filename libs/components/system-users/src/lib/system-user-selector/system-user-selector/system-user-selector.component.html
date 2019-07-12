@@ -1,0 +1,14 @@
+<ejs-dropdownlist
+  id="user"
+  [enabled]="!disabled"
+  name="user"
+  placeholder="Search User"
+  [text]="text"
+  [allowFiltering]="true"
+  [fields]="fields"
+  (filtering)="onFiltering($event)"
+  [dataSource]="users"
+  [filterBarPlaceholder]="searchBarPlaceholder"
+  (change)="userChanged($event)"
+>
+</ejs-dropdownlist>

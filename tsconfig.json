@@ -56,6 +56,37 @@
       ],
       "@bionic/apis/rent/customers-payment-api": [
         "libs/apis/rent/customers-payment-api/src/index.ts"
+      ],
+      "@bionic/rent/reports": ["libs/rent/reports/src/index.ts"],
+      "@bionic/apis/rent/reports-api": [
+        "libs/apis/rent/reports-api/src/index.ts"
+      ],
+      "@bionic/components/system-lookup": [
+        "libs/components/system-lookup/src/index.ts"
+      ],
+      "@bionic/apis/common/system-lookup-api": [
+        "libs/apis/common/system-lookup-api/src/index.ts"
+      ],
+      "@bionic/components/system-role": [
+        "libs/components/system-role/src/index.ts"
+      ],
+      "@bionic/components/system-users": [
+        "libs/components/system-users/src/index.ts"
+      ],
+      "@bionic/apis/common/system-users-api": [
+        "libs/apis/common/system-users-api/src/index.ts"
+      ],
+      "@bionic/apis/common/system-roles-api": [
+        "libs/apis/common/system-roles-api/src/index.ts"
+      ],
+      "@bionic/components/dynamic-form-controls": [
+        "libs/components/dynamic-form-controls/src/index.ts"
+      ],
+      "@bionic/rent/rent-dash-board": [
+        "libs/rent/rent-dash-board/src/index.ts"
+      ],
+      "@bionic/apis/rent/rent-dash-board-api": [
+        "libs/apis/rent/rent-dash-board-api/src/index.ts"
       ]
     }
   },

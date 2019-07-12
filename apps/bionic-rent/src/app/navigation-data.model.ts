@@ -4,84 +4,39 @@ export const NAVIGATION_LINKS = [
     name: 'Dashboard',
     enabled: true,
     expanded: false,
-    url: '',
+    url: '/',
     selected: true,
     icon: 'fas fa-columns'
   },
   {
     id: '01',
-    name: 'Partners Managment',
+    name: 'Partners',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/vehicle-owners',
     icon: 'fas fa-sitemap',
     selected: false,
-    privilage: 'canViewAccount',
-    subChild: [
-      {
-        id: '01-01',
-        name: 'Vehicle Owners',
-        url: '/vehicle-owners',
-        expanded: false,
-        selected: false,
-        enabled: true,
-        privilage: 'canViewAccount'
-      },
-      {
-        id: '01-02',
-        name: 'Partner Payments',
-        url: '/partner-payments',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    privilage: 'canViewPartners'
   },
   {
     id: '02',
-    name: 'Vehicles Managment',
+    name: 'Vehicles',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/vehicles',
     selected: false,
     icon: 'fas fa-book-open',
-    subChild: [
-      {
-        id: '02-01',
-        name: 'Vehicles',
-        url: '/vehicles',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    privilage: 'canViewVehicles'
   },
   {
     id: '03',
-    name: 'Customers Managment',
+    name: 'Customers',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/customers',
     selected: false,
     icon: 'fas fa-cogs',
-    subChild: [
-      {
-        id: '03-01',
-        name: 'Customers',
-        url: '/customers',
-        expanded: false,
-        enabled: true,
-        selected: false
-      },
-      {
-        id: '03-02',
-        name: 'Customer Payments',
-        url: '/customer-payments',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    privilage: 'canViewCustomers'
   },
   {
     id: '05',
@@ -103,6 +58,35 @@ export const NAVIGATION_LINKS = [
     ]
   },
   {
+    id: '06',
+    name: 'Payments',
+    expanded: false,
+    enabled: true,
+    url: 'parent',
+    selected: false,
+    icon: 'fas fa-cogs',
+    subChild: [
+      {
+        id: '06-01',
+        name: 'Customer Payments',
+        url: '/customer-payments',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewCustomerPayments'
+      },
+      {
+        id: '06-02',
+        name: 'Partner Payments',
+        url: '/partner-payments',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewPartnerPayments'
+      }
+    ]
+  },
+  {
     id: '04',
     name: 'Settings',
     expanded: false,
@@ -113,11 +97,30 @@ export const NAVIGATION_LINKS = [
     subChild: [
       {
         id: '04-01',
-        name: 'lookups',
-        url: '/lookups',
+        name: 'Lookups',
+        url: '/settings/system-lookups',
         expanded: false,
         enabled: true,
-        selected: false
+        selected: false,
+        privilages: 'canViewSystemLookups'
+      },
+      {
+        id: '04-02',
+        name: 'Role',
+        url: '/settings/system-roles',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilages: 'canViewSystemRoles'
+      },
+      {
+        id: '04-03',
+        name: 'Users',
+        url: '/settings/system-users',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilages: 'canViewSystemUsers'
       }
     ]
   },
@@ -129,6 +132,52 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-briefcase',
-    subChild: []
+    subChild: [
+      {
+        id: '07-00',
+        name: 'Rent History',
+        url: '/reports/rent-history',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewRentHistory'
+      },
+      {
+        id: '07-01',
+        name: 'Remaining Customer Payments',
+        url: '/reports/customer-payments',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewCustomerPaymentsReport'
+      },
+      {
+        id: '07-02',
+        name: 'Remaining Partner Payments',
+        url: '/reports/partner-payments',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewPartnerPaymentsReport'
+      },
+      {
+        id: '07-03',
+        name: 'Customer Payments',
+        url: '/reports/customer-payments-history',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewPartnerPaymentsReport'
+      },
+      {
+        id: '07-04',
+        name: 'Partner Payments',
+        url: '/reports/partner-payments-history',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewPartnerPaymentsReport'
+      }
+    ]
   }
 ];

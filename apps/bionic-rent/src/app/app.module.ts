@@ -10,6 +10,7 @@ import {
   TreeViewAllModule
 } from '@syncfusion/ej2-angular-navigations';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { DynamicFormControlsModule } from '@bionic/components/dynamic-form-controls';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,12 +19,23 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     SidebarModule,
     TreeViewAllModule,
     ButtonModule,
+    DynamicFormControlsModule,
 
     RouterModule.forRoot([
+      {
+        path: 'home',
+        loadChildren: '@bionic/rent/rent-dash-board#RentDashBoardModule',
+        data: { breadCrum: 'home', title: 'Dashboard' }
+      },
       {
         path: '',
         data: { breadCrum: 'Home' },
         children: [
+          {
+            path: '',
+            redirectTo: '/home',
+            pathMatch: 'full'
+          },
           {
             path: 'customers',
             loadChildren: '@bionic/rent/customers#CustomersModule',
@@ -53,6 +65,24 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
             path: 'partner-payments',
             loadChildren: '@bionic/rent/partners-payment#PartnersPaymentModule',
             data: { breadCrum: 'Partner Payments' }
+          },
+          {
+            path: 'settings/system-lookups',
+            loadChildren: '@bionic/components/system-lookup#SystemLookupModule',
+            data: { breadCrum: 'Settings > System Lookups' }
+          },
+          {
+            path: 'settings/system-roles',
+            loadChildren: '@bionic/components/system-role#SystemRoleModule'
+          },
+          {
+            path: 'settings/system-users',
+            loadChildren: '@bionic/components/system-users#SystemUsersModule'
+          },
+          {
+            path: 'reports',
+            loadChildren: '@bionic/rent/reports#ReportsModule',
+            data: { breadCrum: 'Reports', title: 'Reports' }
           }
         ]
       }

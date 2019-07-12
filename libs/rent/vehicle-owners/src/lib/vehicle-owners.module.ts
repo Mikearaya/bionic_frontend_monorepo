@@ -8,15 +8,15 @@ import {
   VehicleOwnersApiService,
   VehicleOwnersApiModule
 } from '@bionic/apis/rent/vehicle-owners-api';
-import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
-
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { PartnerSelectorModule } from './partner-selector/partner-selector.module';
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
-    AutoCompleteModule,
+    DropDownListModule,
     ReactiveFormsModule,
     FormButtonsModule,
     VehicleOwnersApiModule,
@@ -36,7 +36,8 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
         component: VehicleOwnerFormComponent,
         data: { breadCrum: 'update', title: 'Update Vehicle Owner' }
       }
-    ])
+    ]),
+    PartnerSelectorModule
   ],
   declarations: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],
   exports: [VehicleOwnerFormComponent, VehicleOwnerViewComponent],

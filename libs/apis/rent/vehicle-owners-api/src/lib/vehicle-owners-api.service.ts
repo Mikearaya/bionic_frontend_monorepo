@@ -20,8 +20,12 @@ export class VehicleOwnersApiService extends Subject<DataStateChangeEventArgs> {
     return this.httpClient.get<VehicleOwnerViewModel>(`${this.apiUrl}/${id}`);
   }
 
-  getVehicleOwnersIndex(name: string = ''): Observable<VehicleOwnersIndex> {
-    return this.httpClient.get<VehicleOwnersIndex>(`${this.apiUrl}/index`);
+  getVehicleOwnersIndex(
+    searchString: string = ''
+  ): Observable<VehicleOwnersIndex> {
+    return this.httpClient.get<VehicleOwnersIndex>(
+      `${this.apiUrl}/index?searchString=${searchString}`
+    );
   }
 
   getVehicleOwnersList(filter: any): Observable<VehicleOwnerViewModel[]> {

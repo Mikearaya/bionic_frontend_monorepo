@@ -1,0 +1,10 @@
+<bionic-data-view
+  [data]="data"
+  (deleteRecord)="deleteRole($event)"
+  [showAdd]="true"
+  [showUpdate]="true"
+  [showDelete]="true"
+  [enableSorting]="true"
+  (dataStateChaged)="onDataStateChanged($event)"
+  [columnsList]="columnBluePrint"
+></bionic-data-view>

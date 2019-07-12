@@ -5,16 +5,15 @@ import { VehicleRentFormComponent } from './vehicle-rent-form/vehicle-rent-form.
 import { VehicleRentViewComponent } from './vehicle-rent-view/vehicle-rent-view.component';
 import { VehicleRentContractComponent } from './vehicle-rent-contract/vehicle-rent-contract.component';
 import { DataGridModule } from '@bionic/components/data-grid';
-import { VehiclesApiModule } from '@bionic/apis/rent/vehicles-api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RentsApiModule } from '@bionic/apis/rent/rents-api';
-import { VehicleSelectorComponent } from '@bionic/rent/vehicles';
 import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
-import { CustomerSelectorComponent } from '@bionic/rent/customers';
-import { CustomerApiModule } from '@bionic/apis/rent/customer-api';
+import { CustomersSelectorModule } from '@bionic/rent/customers';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { TabModule, TabAllModule } from '@syncfusion/ej2-angular-navigations';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { VehiclesSelectorModule } from '@bionic/rent/vehicles';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
@@ -22,10 +21,11 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     DataGridModule,
     ReactiveFormsModule,
     AutoCompleteModule,
-    VehiclesApiModule,
+    VehiclesSelectorModule,
     TabModule,
+    ButtonModule,
+    CustomersSelectorModule,
     DatePickerModule,
-    CustomerApiModule,
     FormButtonsModule,
     RentsApiModule,
     TabAllModule,
@@ -55,10 +55,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
   declarations: [
     VehicleRentFormComponent,
     VehicleRentViewComponent,
-
-    VehicleRentContractComponent,
-    VehicleSelectorComponent,
-    CustomerSelectorComponent
+    VehicleRentContractComponent
   ],
   exports: [
     VehicleRentFormComponent,

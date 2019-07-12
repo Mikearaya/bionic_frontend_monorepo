@@ -1,0 +1,51 @@
+<ejs-grid
+  #grid
+  [dataSource]="data | async"
+  [childGrid]="childGrid"
+  [allowSorting]="true"
+  [allowResizing]="true"
+  [allowExcelExport]="true"
+  [allowFiltering]="true"
+  [filterSettings]="filterOptions"
+  [allowPaging]="true"
+  [pageSettings]="initialPage"
+  [allowGrouping]="false"
+  [toolbar]="toolbar"
+  (dataStateChange)="onDataStateChange($event)"
+  (toolbarClick)="clickHandler($event)"
+>
+  <e-columns>
+    <e-column
+      field="RentId"
+      headerText="Rent ID"
+      textAlign="Right"
+      width="50"
+    ></e-column>
+    <e-column
+      field="PartnerName"
+      headerText="Partner Name"
+      width="150"
+    ></e-column>
+
+    <e-column field="Vehicle" headerText="Vehicle" width="100"></e-column>
+    <e-column
+      field="PlateNumber"
+      headerText="Plate Number"
+      width="100"
+    ></e-column>
+    <e-column
+      field="RentStart"
+      headerText="Start"
+      type="date"
+      format="yMd"
+      width="100"
+    ></e-column>
+    <e-column
+      field="RentEnd"
+      headerText="End"
+      type="date"
+      format="yMd"
+      width="100"
+    ></e-column>
+  </e-columns>
+</ejs-grid>

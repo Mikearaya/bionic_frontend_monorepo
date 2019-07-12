@@ -1,0 +1,156 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="userRoleForm" class="card">
+  <div class="e-card">
+    <label>Role Name</label>
+    <input class="e-input" placeholder="Role Name" formControlName="roleName" />
+    <div id="treeparent">
+      <button
+        (click)="selectAll()"
+        type="button"
+        ejs-button
+        class="e-primary e-small"
+      >
+        Select All
+      </button>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Create</th>
+            <th>Create</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vehicle</td>
+            <td>
+              <input type="checkbox" name="vehicleView" id="vehicleView" />
+            </td>
+            <td><input type="checkbox" name="vehicleAdd" id="vehicleAdd" /></td>
+            <td>
+              <input type="checkbox" name="vehicleEdit" id="vehicleEdit" />
+            </td>
+            <td>
+              <input type="checkbox" name="vehicleDelete" id="vehicleDelete" />
+            </td>
+          </tr>
+          <tr>
+            <td>Partner</td>
+            <td>
+              <input type="checkbox" name="partnerView" id="partnerView" />
+            </td>
+            <td><input type="checkbox" name="partnerAdd" id="partnerAdd" /></td>
+            <td>
+              <input type="checkbox" name="partnerEdit" id="partnerEdit" />
+            </td>
+            <td>
+              <input type="checkbox" name="partnerDelete" id="partnerDelete" />
+            </td>
+          </tr>
+          <tr>
+            <td>Customer</td>
+            <td>
+              <input type="checkbox" name="customerView" id="customerView" />
+            </td>
+            <td>
+              <input type="checkbox" name="customerAdd" id="customerAdd" />
+            </td>
+            <td>
+              <input type="checkbox" name="customerEdit" id="customerEdit" />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="customerDelete"
+                id="customerDelete"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td><input type="checkbox" name="rentView" id="rentView" /></td>
+            <td><input type="checkbox" name="rentAdd" id="rentAdd" /></td>
+            <td><input type="checkbox" name="rentEdit" id="rentEdit" /></td>
+            <td><input type="checkbox" name="rentDelete" id="rentDelete" /></td>
+          </tr>
+          <tr>
+            <td>System Lookups</td>
+            <td><input type="checkbox" name="lookupView" id="lookupView" /></td>
+            <td><input type="checkbox" name="lookupAdd" id="lookupAdd" /></td>
+            <td><input type="checkbox" name="lookupEdit" id="lookupEdit" /></td>
+            <td>
+              <input type="checkbox" name="lookupDelete" id="lookupDelete" />
+            </td>
+          </tr>
+          <tr>
+            <td>Customer Payments</td>
+            <td>
+              <input
+                type="checkbox"
+                name="customerPaymentView"
+                id="customerPaymentView"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="customerPaymentAdd"
+                id="customerPaymentAdd"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="customerPaymentEdit"
+                id="customerPaymentEdit"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="customerPaymentDelete"
+                id="customerPaymentDelete"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Partner Payment</td>
+            <td>
+              <input
+                type="checkbox"
+                name="partnerPaymentView"
+                id="partnerPaymentView"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="partnerPaymentAdd"
+                id="partnerPaymentAdd"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="partnerPaymentEdit"
+                id="partnerPaymentEdit"
+              />
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                name="partnerPaymentDelete"
+                id="partnerPaymentDelete"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="userRoleForm.invalid"
+  ></bionic-form-options>
+</form>

@@ -1,11 +1,12 @@
 <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="card">
   <div class="container">
     <div class="row">
+      {{vehicleForm.value | json}}
       <div class="col-sm-6 col-xs-12">
         <label for="owners">Owner</label>
-        <bionic-vehicle-owners-selector
+        <bionic-partner-selector
           formControlName="OwnerId"
-        ></bionic-vehicle-owners-selector>
+        ></bionic-partner-selector>
       </div>
       <div class="col-sm-6 col-xs-12">
         <label for="vehicleMake"> Make</label>
@@ -59,29 +60,25 @@
     <div class="row">
       <div class="col-sm-6 col-xs-12">
         <label for="color">Color</label>
-        <ejs-dropdownlist
+
+        <bionic-system-lookup-selector
+          [lookupType]="'Color'"
+          [searchBarPlaceholder]="'Search For Color'"
           formControlName="Color"
-          [dataSource]="vehicleColor"
-          [width]="250"
-          id="color"
-          name="color"
-          [filterBarPlaceholder]="'Search for Color'"
-          placeholder="Color"
-        ></ejs-dropdownlist>
+        >
+        </bionic-system-lookup-selector>
         <div *ngIf="Color.errors" class="e-error">
           <div *ngIf="Color.errors['required']">Vehicle Color is required</div>
         </div>
       </div>
       <div class="col-sm-6 col-xs-12">
         <label for="type">Type</label>
-        <ejs-dropdownlist
+
+        <bionic-system-lookup-selector
+          [lookupType]="'vehicle type'"
           formControlName="Type"
-          [dataSource]="vehicleTypes"
-          id="type"
-          [width]="250"
-          placeholder="Vehicle Type"
-          name="type"
-        ></ejs-dropdownlist>
+          [searchBarPlaceholder]="'Search by Plate No.'"
+        ></bionic-system-lookup-selector>
         <div *ngIf="Type.errors" class="e-error">
           <div *ngIf="Type.errors['required']">Vehicle Type is required</div>
         </div>

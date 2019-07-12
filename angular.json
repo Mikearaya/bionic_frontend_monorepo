@@ -25,12 +25,10 @@
             "styles": [
               "apps/bionic-rent/src/styles.css",
               "./node_modules/@syncfusion/ej2-base/styles/material.css",
-
               "./node_modules/@syncfusion/ej2-angular-buttons/styles/material.css",
               "./node_modules/@syncfusion/ej2-calendars/styles/material.css",
               "./node_modules/@syncfusion/ej2-dropdowns/styles/material.css",
               "./node_modules/@syncfusion/ej2-inputs/styles/material.css",
-
               "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
               "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -810,6 +808,380 @@
             "main": "libs/apis/rent/customers-payment-api/src/test.ts",
             "tsConfig": "libs/apis/rent/customers-payment-api/tsconfig.spec.json",
             "karmaConfig": "libs/apis/rent/customers-payment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-reports": {
+      "root": "libs/rent/reports",
+      "sourceRoot": "libs/rent/reports/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/reports/tsconfig.lib.json",
+            "project": "libs/rent/reports/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/reports/tsconfig.lib.json",
+              "libs/rent/reports/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/reports/src/test.ts",
+            "tsConfig": "libs/rent/reports/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/reports/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-reports-api": {
+      "root": "libs/apis/rent/reports-api",
+      "sourceRoot": "libs/apis/rent/reports-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/reports-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/reports-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/reports-api/tsconfig.lib.json",
+              "libs/apis/rent/reports-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/reports-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/reports-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/reports-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-system-lookup": {
+      "root": "libs/components/system-lookup",
+      "sourceRoot": "libs/components/system-lookup/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/system-lookup/tsconfig.lib.json",
+            "project": "libs/components/system-lookup/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/system-lookup/tsconfig.lib.json",
+              "libs/components/system-lookup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/system-lookup/src/test.ts",
+            "tsConfig": "libs/components/system-lookup/tsconfig.spec.json",
+            "karmaConfig": "libs/components/system-lookup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-common-system-lookup-api": {
+      "root": "libs/apis/common/system-lookup-api",
+      "sourceRoot": "libs/apis/common/system-lookup-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/common/system-lookup-api/tsconfig.lib.json",
+            "project": "libs/apis/common/system-lookup-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/common/system-lookup-api/tsconfig.lib.json",
+              "libs/apis/common/system-lookup-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/apis/common/system-lookup-api/jest.config.js",
+            "tsConfig": "libs/apis/common/system-lookup-api/tsconfig.spec.json",
+            "setupFile": "libs/apis/common/system-lookup-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-system-role": {
+      "root": "libs/components/system-role",
+      "sourceRoot": "libs/components/system-role/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/system-role/tsconfig.lib.json",
+            "project": "libs/components/system-role/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/system-role/tsconfig.lib.json",
+              "libs/components/system-role/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/system-role/src/test.ts",
+            "tsConfig": "libs/components/system-role/tsconfig.spec.json",
+            "karmaConfig": "libs/components/system-role/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-system-users": {
+      "root": "libs/components/system-users",
+      "sourceRoot": "libs/components/system-users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/system-users/tsconfig.lib.json",
+            "project": "libs/components/system-users/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/system-users/tsconfig.lib.json",
+              "libs/components/system-users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/system-users/src/test.ts",
+            "tsConfig": "libs/components/system-users/tsconfig.spec.json",
+            "karmaConfig": "libs/components/system-users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-common-system-users-api": {
+      "root": "libs/apis/common/system-users-api",
+      "sourceRoot": "libs/apis/common/system-users-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/common/system-users-api/tsconfig.lib.json",
+            "project": "libs/apis/common/system-users-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/common/system-users-api/tsconfig.lib.json",
+              "libs/apis/common/system-users-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/common/system-users-api/src/test.ts",
+            "tsConfig": "libs/apis/common/system-users-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/common/system-users-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-common-system-roles-api": {
+      "root": "libs/apis/common/system-roles-api",
+      "sourceRoot": "libs/apis/common/system-roles-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/common/system-roles-api/tsconfig.lib.json",
+            "project": "libs/apis/common/system-roles-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/common/system-roles-api/tsconfig.lib.json",
+              "libs/apis/common/system-roles-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/common/system-roles-api/src/test.ts",
+            "tsConfig": "libs/apis/common/system-roles-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/common/system-roles-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-dynamic-form-controls": {
+      "root": "libs/components/dynamic-form-controls",
+      "sourceRoot": "libs/components/dynamic-form-controls/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/dynamic-form-controls/tsconfig.lib.json",
+            "project": "libs/components/dynamic-form-controls/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/dynamic-form-controls/tsconfig.lib.json",
+              "libs/components/dynamic-form-controls/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/dynamic-form-controls/src/test.ts",
+            "tsConfig": "libs/components/dynamic-form-controls/tsconfig.spec.json",
+            "karmaConfig": "libs/components/dynamic-form-controls/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-rent-dash-board": {
+      "root": "libs/rent/rent-dash-board",
+      "sourceRoot": "libs/rent/rent-dash-board/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/rent-dash-board/tsconfig.lib.json",
+            "project": "libs/rent/rent-dash-board/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/rent-dash-board/tsconfig.lib.json",
+              "libs/rent/rent-dash-board/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/rent-dash-board/src/test.ts",
+            "tsConfig": "libs/rent/rent-dash-board/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/rent-dash-board/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-rent-rent-dash-board-api": {
+      "root": "libs/apis/rent/rent-dash-board-api",
+      "sourceRoot": "libs/apis/rent/rent-dash-board-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/rent/rent-dash-board-api/tsconfig.lib.json",
+            "project": "libs/apis/rent/rent-dash-board-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/rent/rent-dash-board-api/tsconfig.lib.json",
+              "libs/apis/rent/rent-dash-board-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/rent/rent-dash-board-api/src/test.ts",
+            "tsConfig": "libs/apis/rent/rent-dash-board-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/rent/rent-dash-board-api/karma.conf.js"
           }
         }
       },

@@ -1,0 +1,14 @@
+<ejs-dropdownlist
+  id="lookups"
+  [enabled]="!disabled"
+  name="lookups"
+  placeholder="Search Lookups"
+  [text]="text"
+  [allowFiltering]="true"
+  [fields]="fields"
+  (filtering)="onFiltering($event)"
+  [dataSource]="lookups"
+  [filterBarPlaceholder]="searchBarPlaceholder"
+  (change)="lookupChanged($event)"
+>
+</ejs-dropdownlist>

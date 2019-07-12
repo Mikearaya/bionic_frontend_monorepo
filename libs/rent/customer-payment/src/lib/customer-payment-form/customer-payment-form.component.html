@@ -20,9 +20,10 @@
         </div>
         <div class="container-fluid mt-5" formArrayName="Rents">
           <div class="row">
-            <div class="col-sm-12 col-md-3">Rent Id</div>
-            <div class="col-sm-12 col-md-3">ToTal Amount</div>
-            <div class="col-sm-12 col-md-3">Remaining</div>
+            <div class="col-sm-12 col-md-2">Rent Id</div>
+            <div class="col-sm-12 col-md-3">Date</div>
+            <div class="col-sm-12 col-md-2">ToTal Amount</div>
+            <div class="col-sm-12 col-md-2">Remaining</div>
             <div class="col-sm-12 col-md-3">Payment</div>
           </div>
           <div
@@ -30,9 +31,13 @@
             *ngFor="let rent of Rents.controls; let i = index; let last = last"
             [formGroup]="rent"
           >
-            <div class="col-sm-12 col-md-3">{{ unpaidRents[i].RentId }}</div>
-            <div class="col-sm-12 col-md-3">{{ unpaidRents[i].Amount }}</div>
+            <div class="col-sm-12 col-md-2">{{ unpaidRents[i].RentId }}</div>
             <div class="col-sm-12 col-md-3">
+              {{ unpaidRents[i].StartDate | date }} -
+              {{ unpaidRents[0].EndDate | date }}
+            </div>
+            <div class="col-sm-12 col-md-2">{{ unpaidRents[i].Amount }}</div>
+            <div class="col-sm-12 col-md-2">
               {{ unpaidRents[i].RemainingAmount }}
             </div>
             <div class="col-sm-12 col-md-3">

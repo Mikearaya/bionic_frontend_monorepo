@@ -10,10 +10,13 @@ import {
   DropDownListModule,
   AutoCompleteModule
 } from '@syncfusion/ej2-angular-dropdowns';
-import { VehicleOwnersSelectorComponent } from '@bionic/rent/vehicle-owners';
+
+import { PartnerSelectorModule } from '@bionic/rent/vehicle-owners';
+
 import { VehiclesApiModule } from '@bionic/apis/rent/vehicles-api';
 import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
-
+import { VehiclesSelectorModule } from './vehicles-selector/vehicles-selector.module';
+import { SystemLookupSelectorModule } from '@bionic/components/system-lookup';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +27,8 @@ import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
     VehicleOwnersApiModule,
     AutoCompleteModule,
     FormButtonsModule,
+    SystemLookupSelectorModule,
+    PartnerSelectorModule,
 
     RouterModule.forChild([
       {
@@ -41,13 +46,11 @@ import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
         component: VehicleFormComponent,
         data: { breadCrum: 'Update', title: 'Update Vehicle' }
       }
-    ])
+    ]),
+
+    VehiclesSelectorModule
   ],
-  declarations: [
-    VehicleFormComponent,
-    VehicleViewComponent,
-    VehicleOwnersSelectorComponent
-  ],
+  declarations: [VehicleFormComponent, VehicleViewComponent],
   exports: [VehicleFormComponent, VehicleViewComponent],
   providers: []
 })

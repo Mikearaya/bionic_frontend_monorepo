@@ -10,6 +10,7 @@ import {
 } from '@syncfusion/ej2-angular-grids';
 import { HttpClient } from '@angular/common/http';
 import { VehicleRentListModel } from './models/vehicle-rent-list.model';
+import { RentContractModel } from './models/rent-contract.model';
 
 @Injectable()
 export class RentsApiService extends Subject<DataStateChangeEventArgs> {
@@ -19,6 +20,11 @@ export class RentsApiService extends Subject<DataStateChangeEventArgs> {
     super();
   }
 
+  getRentContract(id: number): Observable<RentContractModel> {
+    return this.httpClient.get<RentContractModel>(
+      `${this.apiUrl}/${id}/contract`
+    );
+  }
   getRentById(id: number): Observable<VehicleRentView> {
     return this.httpClient.get<VehicleRentView>(`${this.apiUrl}/${id}`);
   }

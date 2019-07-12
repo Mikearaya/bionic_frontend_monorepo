@@ -5,7 +5,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   RentsApiService,
   VehicleRentView,
@@ -32,7 +32,8 @@ export class VehicleRentFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private rentApi: RentsApiService
+    private rentApi: RentsApiService,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -63,25 +64,25 @@ export class VehicleRentFormComponent implements OnInit {
 
   private createVehicleConditionForm(): FormGroup {
     return this.formBuilder.group({
-      WindowController: '',
-      SeatBelt: '',
-      SpareTire: '',
-      Wiper: '',
-      CrickWrench: '',
-      DashboardClose: '',
-      MudeProtecter: '',
-      SpokioOuter: '',
-      SpokioInner: '',
-      SunVisor: '',
-      MatInner: '',
-      WindProtecter: '',
-      Blinker: '',
+      WindowController: 4,
+      SeatBelt: 4,
+      SpareTire: 1,
+      Wiper: 2,
+      CrickWrench: 1,
+      DashboardClose: 0,
+      MudeProtecter: 4,
+      SpokioOuter: 2,
+      SpokioInner: 1,
+      SunVisor: 2,
+      MatInner: 4,
+      WindProtecter: 4,
+      Blinker: 4,
       Radio: '',
       FuielLevel: '',
-      CigaretLighter: '',
-      FuielLid: '',
-      RadiatorLid: '',
-      Crick: '',
+      CigaretLighter: 1,
+      FuielLid: 1,
+      RadiatorLid: 1,
+      Crick: 1,
       Comment: '',
       TotalKilometer: ''
     });
@@ -134,6 +135,9 @@ export class VehicleRentFormComponent implements OnInit {
     return this.rentForm.get(field) as FormControl;
   }
 
+  printContract(): void {
+    this.router.navigate([`vehicle-rent/${this.rentId}/contract`]);
+  }
   getCondition(condition: string): FormControl {
     return (this.rentForm.get('VehicleCondition') as FormGroup).get(
       condition
@@ -156,7 +160,8 @@ export class VehicleRentFormComponent implements OnInit {
       this.rentApi.addNewRent(rentData).subscribe(
         (rent: VehicleRentView) => {
           alert('Rent saved successfuly');
-          this.rentForm.reset();
+          this.rentId = rent.Id;
+          this.isUpdate = true;
         },
         (error: HttpErrorResponse) =>
           alert('Unable to register rent please try again later')

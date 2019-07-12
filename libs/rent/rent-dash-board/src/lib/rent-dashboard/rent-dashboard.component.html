@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12 ">
+      <a
+        href="#"
+        [routerLink]="['/customers']"
+        class="info-box shadow-lg  rounded"
+      >
+        <span class="info-box-icon bg-success">
+          <i class="fa fa-address-book " aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Customers </span>
+          <span class="info-box-number"> {{ dashboard?.TotalCustomers }} </span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12 ">
+      <a
+        href="#"
+        [routerLink]="['/vehicle-owners']"
+        class="info-box shadow-lg  rounded"
+      >
+        <span class="info-box-icon bg-primary">
+          <i class="fa fa-handshake" aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Parters </span>
+          <span class="info-box-number"> {{ dashboard?.TotalPartners }} </span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12 ">
+      <a
+        href="#"
+        class="info-box shadow-lg  rounded"
+        [routerLink]="['/vehicles']"
+      >
+        <span class="info-box-icon bg-warning">
+          <i class="fa fa-car" aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Vehicles </span>
+          <span class="info-box-number"> {{ dashboard?.TotalVehicles }} </span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12 ">
+      <a
+        href="#"
+        [routerLink]="['/vehicle-rent']"
+        class="info-box shadow-lg  rounded"
+      >
+        <span class="info-box-icon bg-info">
+          <i class="fa fa-file-signature" aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Rents </span>
+          <span class="info-box-number"> {{ dashboard?.TotalRent }} </span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12 ">
+      <a
+        href="#"
+        [routerLink]="['/vehicle-rent']"
+        class="info-box shadow-lg  rounded"
+      >
+        <span class="info-box-icon bg-dark">
+          <i class="fa fa-hourglass-end " aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Active Rents </span>
+          <span class="info-box-number"> {{ dashboard?.ActiveRents }} </span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <a
+        href="#"
+        [routerLink]="['/vehicle-rent']"
+        class="info-box shadow-lg  rounded"
+      >
+        <span class="info-box-icon bg-warning">
+          <i class="fa fa-hourglass-start" aria-hidden="true"> </i>
+        </span>
+        <div class="info-box-content">
+          <span class="info-box-text"> Overdue Rents </span>
+          <span class="info-box-number"> {{ dashboard?.OverdueRents }} </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

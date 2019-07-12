@@ -1,3 +1,239 @@
-<p>
-  vehicle-rent-contract works!
-</p>
+<button ejs-button (click)="printContrat()" class="e-success e-large">
+  Print
+</button>
+<section class="mt-4 p-3 print-section card">
+  <h1 class="text-center">
+    <strong> ክፍሎም ፀጋዬ የመኪና ኪራይ ስምምነት Rent Id {{ rentInfo?.Id }} </strong>
+  </h1>
+  <p>
+    የተከራይ ሙሉ ስም እስከ አያት <u>{{ rentInfo.CustomerName }}</u> ዜግነት
+    <u>{{ rentInfo.Nationality }}</u> አድራሻ &nbsp;, {{ rentInfo.City }}
+    {{ rentInfo.Country }} የቤት ቁጥር {{ rentInfo.HouseNumber }} ወረዳ የመንጃ ፈቃድ ቁጥር
+    {{ rentInfo.DrivingLicenseNo }} ስልክ ቁጥር {{ rentInfo.MainPhone }} ከውጭ ሃገር ከመጡ
+    የፓስፖርት ቁጥር {{ rentInfo.PassportNumber }} ያረፉበት ሆቴል ስም
+    {{ rentInfo.HotelName }} ስልክ {{ rentInfo.HotelNumber }}
+  </p>
+
+  <h2><strong>1. የተከራይ / የውል ተቀባይ / ግዴታ ና </strong></h2>
+
+  <ol>
+    <li>በተረከብኩበት መኪና ህገወጥ የሆነ እቃ ጭኜ ብገኝ ሀላፊነቱን ሙሉ በሙሉ እወስዳለሁ</li>
+    <li>
+      በተረከብኩበት መኪና ከእኔ በቀር ለሶስተኛ አካል ወይም ድርጅት አሳልፌ ብሰጥ በህገ መንግስቱ አንቀጽ 600/2000
+      መሰረት ቅጣቱን ሀላፊነት እወስዳለሁ
+    </li>
+    <li>
+      በተረከብኩት መኪና የትራፊክ ደንብ መተላለፍ ማንኛውም ወንጀል ተሰርቶ ቢገኝ ከተዋዋልንበት አዲስ አበባ ውጭ ባልፍና
+      ብታይ እንዲሁም መኪናው ላይ ጉዳት ቢደርስ አስፈላጊ ሆኖ ከተገኘ ወደ ህግ አካል ቀርቤ ላስረዳ እንዲሁም ኪሳራውን ሙሉ
+      በኪ.ሜ ልከፍል ተስማምቻለሁ
+    </li>
+    <li>
+      ሁልግዜም ጠዋት የመኪናውን ውሃና ዘይት መመልክት ይህን ሳላደርግ ቀርቼ መኪናው ላይ ችግር ቢፈጠር ተጠያቂ ነኝ
+    </li>
+    <li>
+      መኪናውን ይዤ ስንቀሳቀስ ብጋጭ ወይም ሰው ላይ አደጋ ባደርስ ወዲያውኑ ለአከራይ / ለውል ሰጭና ለትራፊክ ፖሊስ
+      ላስውቅ ተስማምቻለው
+    </li>
+    <li>
+      የተረከብኩት መኪና ስራውን ጨርሶ ሲመለስ ማንኛውም ጉድለት ቢኖር ግጭት ቢገኝበት በአያያዝ ጉድለት ከስራ ላይ የቆመ
+      ከሆነና ስራ ላይ ሊውል የማይችል ከሆነ የደረሰበትን ግጭትም ሆነ ሌሎች ችግሮችን ላሰራ ወይም ግምቱን ልከፍል እንዲሁም
+      ሊሰራ በቆመበት ጊዜ ያለስራ የቆመበትን ቀን ሲከራይ ከተስማማሁበትን የኪራይ ውል መሰረት ልከፍል ተስማምቻለው
+    </li>
+    <li>
+      መኪናውን ለመመለስ ከተዋዋልኩበት ቀን በላይም መጠቀም ብፈልግ በአካል ቢሮ ድረስ በመሄድ ለመቀጠል የፈለኩበትን ቀን
+      ሂሳብ የመስጠት ግዴታ አለብዎት
+    </li>
+    <li>መኪናው ከተከራየበት ሰዓት ጀምሮ በ24 ሰዓት 1 ቀን ይሞላል</li>
+  </ol>
+
+  <h2><strong>2. የአከራይ / ውል ሰጭ / ግዴታ </strong></h2>
+
+  <ol>
+    <li>መኪናውን በተሟላ መንገድ ማስረከብ</li>
+    <li>
+      ባከራየሁት መኪና ላይ የቴክኒክ ችግር ሲገጥማቸው ወዲያውኑ ያሉበት ድረስ በመሄድ እርዳታ ማድረግ ወይም ችግሩን
+      ማስወገድ
+    </li>
+    <li>
+      ባከራየሁት መኪና ላይ የቴክኒክ ችግር ሲገጥማቸው ወዲያውኑ ያሉበት ድረስ በመሄድ እርዳታ ማድረግ ወይም ችግሩን
+      ማስወገድ
+    </li>
+    <li>ተከራይ የኪራይ ግዜያቸው ጨርሰው መኪናውን ሲመልሱ ያስያዙት ብር መመለስ</li>
+  </ol>
+
+  <h2><strong>3. የመኪናውን ያረካከብ ሁኔታ </strong></h2>
+
+  <p></p>
+  <table style="width: 100%;">
+    <thead class="text-center">
+      <tr>
+        <th colspan="7">መኪናው</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>መኪናው ስም</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>ቀለም</th>
+        <th>Code</th>
+        <th>ሰሌዳ ቁጥር</th>
+        <th>Type</th>
+      </tr>
+      <tr>
+        <td>{{ rentInfo.VehicleMake }}</td>
+        <td>{{ rentInfo.VehicleModel }}</td>
+        <td>{{ rentInfo.YearMade }}</td>
+        <td>{{ rentInfo.VehicleColor }}</td>
+        <td>{{ rentInfo.PlateCode }}</td>
+        <td>{{ rentInfo.PlateNumber }}</td>
+        <td>{{ rentInfo.VehicleType }}</td>
+      </tr>
+      <tr>
+        <th>Total passagers</th>
+        <th>Fuiel Type</th>
+        <th>cyliner</th>
+        <th>የመኪናው አቅም/CC</th>
+        <th>Chassis Number</th>
+        <th>Motor Number</th>
+        <th>Libre No</th>
+      </tr>
+      <tr>
+        <td>{{ rentInfo.TotalPassangers }}</td>
+        <td>{{ rentInfo.FuielType }}</td>
+        <td>{{ rentInfo.CylinderCount }}</td>
+        <td>{{ rentInfo.VehicleCC }}</td>
+        <td>{{ rentInfo.ChassisNumber }}</td>
+        <td>{{ rentInfo.MotorNumber }}</td>
+        <td>{{ rentInfo.LibreNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="mt-2" style="width: 100%;">
+    <thead class="text-center">
+      <th colspan="5">ኪራይ ስምምነት</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>መኪናውን የተረከበበት ቀን</th>
+        <th>ሰዓት</th>
+        <th>Return Date</th>
+        <th>ሰዓት</th>
+        <th>የቀኑ ብዛት</th>
+      </tr>
+
+      <tr>
+        <td>{{ rentInfo.StartDate | date: 'fullDate' }}</td>
+        <td>{{ rentInfo.StartDate | date: 'shortTime' }}</td>
+        <td>{{ rentInfo.ReturnDate | date: 'fullDate' }}</td>
+        <td>{{ rentInfo.ReturnDate | date: 'shortTime' }}</td>
+        <td>{{ rentInfo.Duration }}</td>
+      </tr>
+      <tr>
+        <th>የአንድ ቀን የኪራይ ክፍያ</th>
+        <th>Initial Payment</th>
+        <th>
+          ጠቅላላ ክፍያ <br />
+          Total payment
+        </th>
+        <th>Remaining Payment</th>
+        <th>ለዋስትና ያስያዙት ብር <br />colateral detposit</th>
+      </tr>
+      <tr>
+        <td>{{ rentInfo.RentPrice }}</td>
+        <td>{{ rentInfo.initial_payment }}</td>
+        <td>{{ rentInfo.Duration * rentInfo.RentPrice }}</td>
+        <td>{{ rentInfo.remaining_payment }}</td>
+        <td>{{ rentInfo.CollateralDeposit }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="width: 100%" class="mt-2">
+    <thead class="text-center">
+      <tr>
+        <th colspan="8">Vehicle Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Cigaret Lighter</th>
+        <td>{{ rentInfo.VehicleCondition.CigaretLighter }}</td>
+        <th>Fuiel Lid</th>
+        <td>{{ rentInfo.VehicleCondition.FuielLid }}</td>
+        <th>Spare Tire</th>
+        <td>{{ rentInfo.VehicleCondition.SpareTire }}</td>
+        <th>Dashboard Close</th>
+        <td>{{ rentInfo.VehicleCondition.DashboardClose }}</td>
+      </tr>
+      <tr>
+        <th>Crick</th>
+        <td>{{ rentInfo.VehicleCondition.Crick }}</td>
+        <th>Crick wrench</th>
+        <td>{{ rentInfo.VehicleCondition.CrickWrench }}</td>
+        <th>
+          Window <br />
+          Controller
+        </th>
+        <td>{{ rentInfo.VehicleCondition.WindowController }}</td>
+        <th>Radiator Lid</th>
+        <td>{{ rentInfo.VehicleCondition.RadiatorLid }}</td>
+      </tr>
+      <tr>
+        <th>Seat Belt</th>
+        <td>{{ rentInfo.VehicleCondition.SeatBelt }}</td>
+        <th>Outer Spokio</th>
+        <td>{{ rentInfo.VehicleCondition.SpokioOuter }}</td>
+        <th>Inside Mirror</th>
+        <td>{{ rentInfo.VehicleCondition.SpokioInner }}</td>
+        <th>Mud Protector</th>
+        <td>{{ rentInfo.VehicleCondition.MudeProtecter }}</td>
+      </tr>
+      <tr>
+        <th>Sun Visor</th>
+        <td>{{ rentInfo.VehicleCondition.SunVisor }}</td>
+        <th>Blinker</th>
+        <td>{{ rentInfo.VehicleCondition.Blinker }}</td>
+        <th>Inside Mat</th>
+        <td>{{ rentInfo.VehicleCondition.MatInner }}</td>
+        <th>Wind Protector</th>
+        <td>{{ rentInfo.VehicleCondition.WindProtecter }}</td>
+      </tr>
+      <tr>
+        <th>ኪ.ሜ</th>
+        <td colspan="3">{{ rentInfo.VehicleCondition.TotalKilometer }}</td>
+        <th>Fuiel Level</th>
+        <td colspan="3">{{ rentInfo.VehicleCondition.FuielLevel }}</td>
+      </tr>
+      <tr>
+        <th>Radio</th>
+        <td colspan="7">{{ rentInfo.VehicleCondition.Radio }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          <strong>Comment </strong> <br />
+          {{ rentInfo.VehicleCondition.Comment }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot style="line-height: 40px;">
+      <tr>
+        <th>የመኪና ተረካቢ ስም</th>
+        <td colspan="3">{{ rentInfo.CustomerName }}</td>
+        <th colspan="2">ፊርማ</th>
+        <th colspan="2">ቀን</th>
+      </tr>
+      <tr>
+        <th>የመኪና አስረኪ ስም</th>
+        <td colspan="3">{{ rentInfo.RentedBy }}</td>
+        <th colspan="2">ፊርማ</th>
+        <th colspan="2">ቀን</th>
+      </tr>
+    </tfoot>
+  </table>
+  <p>
+    <strong>
+      ማሳሰቢያ መኪናውን በሚያቆሙበት ግዜ ለጥበቃ ምቹ በሆነ ቦታ ማቆሞትን በሮች በሚገባ መዘጋታቸውን ማረጋገጥ ቅዳሜ
+      ከሰዓትና እሁድ ሙሉ ቀን ስራ የለም
+    </strong>
+  </p>
+</section>

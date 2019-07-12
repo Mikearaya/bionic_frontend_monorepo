@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 
 import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { CustomersSelectorModule } from './customers-selector/customers-selector.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +34,8 @@ import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
         component: CustomerFormComponent,
         data: { breadCrum: 'Update', title: 'Update Customer' }
       }
-    ])
+    ]),
+    CustomersSelectorModule
   ],
   declarations: [CustomerFormComponent, CustomerViewComponent],
   exports: [CustomerFormComponent, CustomerViewComponent],

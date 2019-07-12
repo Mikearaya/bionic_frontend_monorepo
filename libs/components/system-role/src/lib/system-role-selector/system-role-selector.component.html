@@ -1,0 +1,14 @@
+<ejs-dropdownlist
+  id="role"
+  [enabled]="!disabled"
+  name="role"
+  placeholder="Search Role"
+  [text]="text"
+  [allowFiltering]="true"
+  [fields]="fields"
+  (filtering)="onFiltering($event)"
+  [dataSource]="roles"
+  [filterBarPlaceholder]="searchBarPlaceholder"
+  (change)="roleChanged($event)"
+>
+</ejs-dropdownlist>

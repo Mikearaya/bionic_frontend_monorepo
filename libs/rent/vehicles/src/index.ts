@@ -1,7 +1,3 @@
-export {
-  VehicleSelectorComponent
-} from './lib/vehicle-selector/vehicle-selector.component';
-
 export * from './lib/vehicles.module';
 export {
   VehicleFormComponent
@@ -9,3 +5,6 @@ export {
 export {
   VehicleViewComponent
 } from './lib/vehicle-view/vehicle-view.component';
+export {
+  VehiclesSelectorModule
+} from './lib/vehicles-selector/vehicles-selector.module';

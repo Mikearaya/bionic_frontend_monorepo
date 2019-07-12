@@ -26,7 +26,7 @@ export class QueryString {
   sortBy = "";
   searchString = "";
   pageNumber = 0;
-  pageSize = 10;
+  pageSize = 50;
   filter: FilterEventModel[] = [];
 }
 

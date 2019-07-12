@@ -7,5 +7,5 @@ export {
   VehicleOwnerViewComponent
 } from './lib/vehicle-owner-view/vehicle-owner-view.component';
 export {
-  VehicleOwnersSelectorComponent
-} from './lib/vehicle-owners-selector/vehicle-owners-selector.component';
+  PartnerSelectorModule
+} from './lib/partner-selector/partner-selector.module';

@@ -67,6 +67,39 @@
     },
     "apis-rent-customers-payment-api": {
       "tags": ["rent"]
+    },
+    "rent-reports": {
+      "tags": ["rent"]
+    },
+    "apis-rent-reports-api": {
+      "tags": ["rent"]
+    },
+    "components-system-lookup": {
+      "tags": ["lookup"]
+    },
+    "apis-common-system-lookup-api": {
+      "tags": ["common"]
+    },
+    "components-system-role": {
+      "tags": ["shared"]
+    },
+    "components-system-users": {
+      "tags": ["shared"]
+    },
+    "apis-common-system-users-api": {
+      "tags": ["shared"]
+    },
+    "apis-common-system-roles-api": {
+      "tags": ["shared"]
+    },
+    "components-dynamic-form-controls": {
+      "tags": ["shared"]
+    },
+    "rent-rent-dash-board": {
+      "tags": ["rent"]
+    },
+    "apis-rent-rent-dash-board-api": {
+      "tags": ["rent"]
     }
   }
 }

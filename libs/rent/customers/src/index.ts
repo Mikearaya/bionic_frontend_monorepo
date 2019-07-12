@@ -6,5 +6,5 @@ export {
   CustomerViewComponent
 } from './lib/customer-view/customer-view.component';
 export {
-  CustomerSelectorComponent
-} from './lib/customer-selector/customer-selector.component';
+  CustomersSelectorModule
+} from './lib/customers-selector/customers-selector.module';

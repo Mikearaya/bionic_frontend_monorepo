@@ -42,8 +42,12 @@ export class CustomersApiService extends Subject<DataStateChangeEventArgs> {
     this.getData(state).subscribe(a => this.next(a));
   }
 
-  getVehiclesIndex(): Observable<CustomerIndexModel[]> {
-    return this.httpClient.get<CustomerIndexModel[]>(`${this.apiUrl}/index`);
+  getCustomersIndex(
+    searchString: string = ''
+  ): Observable<CustomerIndexModel[]> {
+    return this.httpClient.get<CustomerIndexModel[]>(
+      `${this.apiUrl}/index?searchString=${searchString}`
+    );
   }
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
