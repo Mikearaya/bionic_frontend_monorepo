@@ -48,14 +48,10 @@ export class SystemRoleFormComponent implements OnInit {
 
   onChange(email: string, isChecked: boolean) {
     if (isChecked) {
-      console.log(`checked ${email}`);
       this.selectedRoles.push(email);
     } else {
-      console.log(`unchecked ${email}`);
-
       this.selectedRoles.splice(this.selectedRoles.indexOf(email), 1);
     }
-    console.log(this.selectedRoles);
   }
   ngOnInit() {
     this.roleId = this.activatedRoute.snapshot.paramMap.get('roleId');

@@ -1,28 +1,13 @@
-import { Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
-import { Router } from '@angular/router';
-import {
-  SecurityService,
-  AppUserAuth
-} from '@bionic/services/security-service';
-import { NAVIGATION_LINKS } from './navigation-data.model';
 import { ItemModel, MenuEventArgs, Item } from '@syncfusion/ej2-splitbuttons';
-import {
-  SidebarComponent,
-  TreeViewComponent,
-  NodeSelectEventArgs
-} from '@syncfusion/ej2-angular-navigations';
-import { DynamicFormDataService } from '@bionic/components/dynamic-form-controls';
 
 @Component({
   selector: 'bionic-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  public securityObject: AppUserAuth;
-
+export class AppComponent {
   public cssClass = 'custom';
 
   public items: ItemModel[] = [
@@ -31,62 +16,5 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private router: Router,
-    private securityService: SecurityService
-  ) {
-    this.yearFields = { key: 'Year', value: 'Year' };
-    this.field = {
-      dataSource: NAVIGATION_LINKS,
-      id: 'id',
-      text: 'name',
-      child: 'subChild',
-      expanded: 'expanded',
-      selected: 'selected',
-      enabled: 'enabled'
-    };
-  }
-
-  @ViewChild('sidebar')
-  public sidebar: SidebarComponent;
-  public type = 'Auto';
-  public target = '.content';
-  @ViewChild('tree')
-  public tree: TreeViewComponent;
-  @ViewChild('togglebtn')
-  public togglebtn: ButtonComponent;
-
-  public smartAccountingLinks: object[] = NAVIGATION_LINKS;
-
-  public field: object;
-  public yearFields: { key: string; value: string };
-
-  ngOnInit(): void {
-    this.securityObject = this.securityService.securityObject;
-  }
-
-  public loadRoutingContent(args: NodeSelectEventArgs): void {
-    const data: any = this.tree.getTreeData(args.node);
-    const routerLink: string = data[0].url;
-
-    if (routerLink !== 'parent') {
-      this.router.navigate([routerLink]);
-    }
-  }
-
-  public select(args: MenuEventArgs) {
-    if (args.item.text === 'Sign out') {
-      this.securityService.logOut();
-    }
-  }
-
-  btnClick() {
-    if (this.togglebtn.element.classList.contains('e-active')) {
-      this.togglebtn.content = '';
-      this.sidebar.show();
-    } else {
-      this.togglebtn.content = '';
-      this.sidebar.hide();
-    }
-  }
+  constructor() {}
 }

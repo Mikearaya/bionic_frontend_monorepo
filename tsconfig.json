@@ -87,6 +87,12 @@
       ],
       "@bionic/apis/rent/rent-dash-board-api": [
         "libs/apis/rent/rent-dash-board-api/src/index.ts"
+      ],
+      "@bionic/components/authentication": [
+        "libs/components/authentication/src/index.ts"
+      ],
+      "@bionic/apis/common/access-control-api": [
+        "libs/apis/common/access-control-api/src/index.ts"
       ]
     }
   },

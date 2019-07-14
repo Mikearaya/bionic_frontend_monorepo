@@ -18,14 +18,11 @@ export const ROLES: SystemsRoles[] = [
   },
   {
     function: 'Partners',
-    view: 'canViewPartner',
+    view: 'canViewPartners',
     add: 'canAddPartners',
     edit: 'canEditPartners',
     delete: 'canDeletePartners',
-    others: [
-      { title: 'other1', value: 'other1' },
-      { title: 'other2', value: 'other2' }
-    ]
+    others: []
   },
   {
     function: 'Customers',
@@ -33,10 +30,7 @@ export const ROLES: SystemsRoles[] = [
     add: 'canAddCustomers',
     edit: 'canEditCustomers',
     delete: 'canDeleteCustomers',
-    others: [
-      { title: 'other1', value: 'other1' },
-      { title: 'other2', value: 'other2' }
-    ]
+    others: []
   },
   {
     function: 'Rents',

@@ -5,6 +5,9 @@
   [showUpdate]="true"
   [showDelete]="true"
   [enableSorting]="true"
+  [addPrivilage]="'canAddRoles'"
+  [updatePrivilage]="'canEditRoles'"
+  [deletePrivilage]="'canDeleteRoles'"
   (dataStateChaged)="onDataStateChanged($event)"
   [columnsList]="columnBluePrint"
 ></bionic-data-view>

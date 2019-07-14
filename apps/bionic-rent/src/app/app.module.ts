@@ -4,93 +4,36 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { SecurityService } from '@bionic/services/security-service';
-import { PageInformationsModule } from '@bionic/components/page-informations';
-import {
-  SidebarModule,
-  TreeViewAllModule
-} from '@syncfusion/ej2-angular-navigations';
-import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { DynamicFormControlsModule } from '@bionic/components/dynamic-form-controls';
+import { AccessControlApiModule } from '@bionic/apis/common/access-control-api';
+import { AuthenticationGuard } from './authentication.guard';
+import { PageInformationsModule } from '@bionic/components/page-informations';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    PageInformationsModule,
-    SidebarModule,
-    TreeViewAllModule,
-    ButtonModule,
     DynamicFormControlsModule,
+    PageInformationsModule,
 
     RouterModule.forRoot([
       {
-        path: 'home',
-        loadChildren: '@bionic/rent/rent-dash-board#RentDashBoardModule',
-        data: { breadCrum: 'home', title: 'Dashboard' }
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
       },
       {
         path: '',
-        data: { breadCrum: 'Home' },
-        children: [
-          {
-            path: '',
-            redirectTo: '/home',
-            pathMatch: 'full'
-          },
-          {
-            path: 'customers',
-            loadChildren: '@bionic/rent/customers#CustomersModule',
-            data: { breadCrum: 'Customers' }
-          },
-          {
-            path: 'vehicle-rent',
-            loadChildren: '@bionic/rent/vehicle-rent#VehicleRentModule',
-            data: { breadCrum: 'Rent' }
-          },
-          {
-            path: 'vehicles',
-            loadChildren: '@bionic/rent/vehicles#VehiclesModule',
-            data: { breadCrum: 'Vehicle' }
-          },
-          {
-            path: 'vehicle-owners',
-            loadChildren: '@bionic/rent/vehicle-owners#VehicleOwnersModule',
-            data: { breadCrum: 'Vehicle Owners' }
-          },
-          {
-            path: 'customer-payments',
-            loadChildren: '@bionic/rent/customer-payment#CustomerPaymentModule',
-            data: { breadCrum: 'Customer Payments' }
-          },
-          {
-            path: 'partner-payments',
-            loadChildren: '@bionic/rent/partners-payment#PartnersPaymentModule',
-            data: { breadCrum: 'Partner Payments' }
-          },
-          {
-            path: 'settings/system-lookups',
-            loadChildren: '@bionic/components/system-lookup#SystemLookupModule',
-            data: { breadCrum: 'Settings > System Lookups' }
-          },
-          {
-            path: 'settings/system-roles',
-            loadChildren: '@bionic/components/system-role#SystemRoleModule',
-            data: { breadCrum: 'Settings > Roles' }
-          },
-          {
-            path: 'settings/system-users',
-            loadChildren: '@bionic/components/system-users#SystemUsersModule',
-            data: { breadCrum: 'Settings > Users' }
-          },
-          {
-            path: 'reports',
-            loadChildren: '@bionic/rent/reports#ReportsModule',
-            data: { breadCrum: 'Reports', title: 'Reports' }
-          }
-        ]
+        loadChildren: './features/features.module#FeaturesModule',
+        data: { breadCrum: 'home' },
+        canActivate: [AuthenticationGuard]
+      },
+      {
+        path: 'login',
+        loadChildren: '@bionic/components/authentication#AuthenticationModule'
       }
     ])
   ],
-  providers: [SecurityService],
+  providers: [SecurityService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

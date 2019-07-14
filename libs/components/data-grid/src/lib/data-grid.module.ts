@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataViewComponent } from './data-view/data-view.component';
 import { GroupedDataViewComponent } from './grouped-data-view/grouped-data-view.component';
+import { AuthorizationApiService } from '@bionic/apis/common/access-control-api';
 import {
   GridModule,
   AggregateService,
@@ -46,7 +47,8 @@ import { SecurityService } from '@bionic/services/security-service';
     ResizeService,
     PageService,
     ContextMenuService,
-    SecurityService
+    SecurityService,
+    AuthorizationApiService
   ]
 })
 export class DataGridModule {}

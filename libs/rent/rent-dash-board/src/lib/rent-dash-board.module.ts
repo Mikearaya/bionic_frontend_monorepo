@@ -11,7 +11,7 @@ import { RentDashBoardApiModule } from '@bionic/apis/rent/rent-dash-board-api';
       {
         path: '',
         component: RentDashboardComponent,
-        data: { breadCrum: 'Dashboard' }
+        data: { breadCrum: 'Dashboard', title: 'DashBoard' }
       }
     ])
   ],

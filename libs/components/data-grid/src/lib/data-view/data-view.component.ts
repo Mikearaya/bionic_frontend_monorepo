@@ -29,6 +29,7 @@ import {
 import { Subject } from 'rxjs';
 import { SecurityService } from '@bionic/services/security-service';
 import { PageSizes } from '../grid-config-data.model';
+import { AuthorizationApiService } from '@bionic/apis/common/access-control-api';
 
 @Component({
   selector: 'bionic-data-view',
@@ -127,7 +128,7 @@ export class DataViewComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private securityService: SecurityService
+    private securityService: AuthorizationApiService
   ) {
     this.initialPage = { pageSize: 50, pageSizes: this.pageSizes };
     this.query = new QueryString();
@@ -156,7 +157,7 @@ export class DataViewComponent implements OnInit {
   }
   initilizeCommandColumn(): void {
     if (
-      this.showUpdate ||
+      this.showUpdate &&
       this.securityService.hasClaim(this.updatePrivilage)
     ) {
       this.commands.push({
@@ -169,7 +170,7 @@ export class DataViewComponent implements OnInit {
     }
 
     if (
-      this.showDelete ||
+      this.showDelete &&
       this.securityService.hasClaim(this.deletePrivilage)
     ) {
       this.commands.push({
@@ -247,8 +248,7 @@ export class DataViewComponent implements OnInit {
   }
 
   initializeToolBar(): void {
-    if (this.showAdd || this.securityService.hasClaim(this.addPrivilage)) {
-      console.log('iside ca add function');
+    if (this.showAdd && this.securityService.hasClaim(this.addPrivilage)) {
       this.toolbar.push('Add');
     }
 

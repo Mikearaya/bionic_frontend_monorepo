@@ -6,7 +6,8 @@ export const NAVIGATION_LINKS = [
     expanded: false,
     url: '/',
     selected: true,
-    icon: 'fas fa-columns'
+    icon: 'fas fa-columns',
+    privilage: 'canViewDashboard'
   },
   {
     id: '01',
@@ -46,11 +47,13 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cogs',
+    privilage: 'canViewSettings',
     subChild: [
       {
         id: '05-01',
         name: 'Rents List',
         url: '/vehicle-rent',
+        privilage: 'canViewRents',
         expanded: false,
         enabled: true,
         selected: false
@@ -65,6 +68,7 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cogs',
+    privilage: 'canViewSettings',
     subChild: [
       {
         id: '06-01',
@@ -94,6 +98,7 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cogs',
+    privilage: 'canViewSettings',
     subChild: [
       {
         id: '04-01',
@@ -102,7 +107,7 @@ export const NAVIGATION_LINKS = [
         expanded: false,
         enabled: true,
         selected: false,
-        privilages: 'canViewSystemLookups'
+        privilage: 'canViewSystemLookups'
       },
       {
         id: '04-02',
@@ -111,7 +116,7 @@ export const NAVIGATION_LINKS = [
         expanded: false,
         enabled: true,
         selected: false,
-        privilages: 'canViewSystemRoles'
+        privilage: 'canViewRoles'
       },
       {
         id: '04-03',
@@ -120,7 +125,7 @@ export const NAVIGATION_LINKS = [
         expanded: false,
         enabled: true,
         selected: false,
-        privilages: 'canViewSystemUsers'
+        privilage: 'canViewUsers'
       }
     ]
   },
@@ -132,6 +137,7 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-briefcase',
+    privilage: 'canViewSettings',
     subChild: [
       {
         id: '07-00',
@@ -140,7 +146,7 @@ export const NAVIGATION_LINKS = [
         expanded: false,
         enabled: true,
         selected: false,
-        privilage: 'canViewRentHistory'
+        privilage: 'canViewRentHistoryReport'
       },
       {
         id: '07-01',

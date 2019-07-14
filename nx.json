@@ -100,6 +100,12 @@
     },
     "apis-rent-rent-dash-board-api": {
       "tags": ["rent"]
+    },
+    "components-authentication": {
+      "tags": ["shared"]
+    },
+    "apis-common-access-control-api": {
+      "tags": ["shared"]
     }
   }
 }
