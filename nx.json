@@ -106,6 +106,12 @@
     },
     "apis-common-access-control-api": {
       "tags": ["shared"]
+    },
+    "shipment-location": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-location-api": {
+      "tags": []
     }
   }
 }

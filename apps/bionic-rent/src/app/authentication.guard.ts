@@ -24,8 +24,6 @@ export class AuthenticationGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    const claimType: string = route.data['claimType'];
-
     if (this.authorizationApi.securityObject.IsAuthenticated) {
       return true;
     } else {

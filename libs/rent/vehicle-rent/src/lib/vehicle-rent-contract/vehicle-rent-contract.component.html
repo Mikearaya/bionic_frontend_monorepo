@@ -1,4 +1,9 @@
-<button ejs-button (click)="printContrat()" class="e-success e-large">
+<button
+  ejs-button
+  (click)="printContrat()"
+  class="e-success e-large"
+  bionicHasClaim="'caPrintentContract'"
+>
   Print
 </button>
 <section class="mt-4 p-3 print-section card">
@@ -6,12 +11,12 @@
     <strong> ክፍሎም ፀጋዬ የመኪና ኪራይ ስምምነት Rent Id {{ rentInfo?.Id }} </strong>
   </h1>
   <p>
-    የተከራይ ሙሉ ስም እስከ አያት <u>{{ rentInfo.CustomerName }}</u> ዜግነት
-    <u>{{ rentInfo.Nationality }}</u> አድራሻ &nbsp;, {{ rentInfo.City }}
-    {{ rentInfo.Country }} የቤት ቁጥር {{ rentInfo.HouseNumber }} ወረዳ የመንጃ ፈቃድ ቁጥር
-    {{ rentInfo.DrivingLicenseNo }} ስልክ ቁጥር {{ rentInfo.MainPhone }} ከውጭ ሃገር ከመጡ
-    የፓስፖርት ቁጥር {{ rentInfo.PassportNumber }} ያረፉበት ሆቴል ስም
-    {{ rentInfo.HotelName }} ስልክ {{ rentInfo.HotelNumber }}
+    የተከራይ ሙሉ ስም እስከ አያት <u>{{ rentInfo?.CustomerName }}</u> ዜግነት
+    <u>{{ rentInfo?.Nationality }}</u> አድራሻ &nbsp;, {{ rentInfo?.City }}
+    {{ rentInfo?.Country }} የቤት ቁጥር {{ rentInfo?.HouseNumber }} ወረዳ የመንጃ ፈቃድ ቁጥር
+    {{ rentInfo?.DrivingLicenseNo }} ስልክ ቁጥር {{ rentInfo?.MainPhone }} ከውጭ ሃገር
+    ከመጡ የፓስፖርት ቁጥር {{ rentInfo?.PassportNumber }} ያረፉበት ሆቴል ስም
+    {{ rentInfo?.HotelName }} ስልክ {{ rentInfo?.HotelNumber }}
   </p>
 
   <h2><strong>1. የተከራይ / የውል ተቀባይ / ግዴታ ና </strong></h2>
@@ -81,13 +86,13 @@
         <th>Type</th>
       </tr>
       <tr>
-        <td>{{ rentInfo.VehicleMake }}</td>
-        <td>{{ rentInfo.VehicleModel }}</td>
-        <td>{{ rentInfo.YearMade }}</td>
-        <td>{{ rentInfo.VehicleColor }}</td>
-        <td>{{ rentInfo.PlateCode }}</td>
-        <td>{{ rentInfo.PlateNumber }}</td>
-        <td>{{ rentInfo.VehicleType }}</td>
+        <td>{{ rentInfo?.VehicleMake }}</td>
+        <td>{{ rentInfo?.VehicleModel }}</td>
+        <td>{{ rentInfo?.YearMade }}</td>
+        <td>{{ rentInfo?.VehicleColor }}</td>
+        <td>{{ rentInfo?.PlateCode }}</td>
+        <td>{{ rentInfo?.PlateNumber }}</td>
+        <td>{{ rentInfo?.VehicleType }}</td>
       </tr>
       <tr>
         <th>Total passagers</th>
@@ -99,13 +104,13 @@
         <th>Libre No</th>
       </tr>
       <tr>
-        <td>{{ rentInfo.TotalPassangers }}</td>
-        <td>{{ rentInfo.FuielType }}</td>
-        <td>{{ rentInfo.CylinderCount }}</td>
-        <td>{{ rentInfo.VehicleCC }}</td>
-        <td>{{ rentInfo.ChassisNumber }}</td>
-        <td>{{ rentInfo.MotorNumber }}</td>
-        <td>{{ rentInfo.LibreNumber }}</td>
+        <td>{{ rentInfo?.TotalPassangers }}</td>
+        <td>{{ rentInfo?.FuielType }}</td>
+        <td>{{ rentInfo?.CylinderCount }}</td>
+        <td>{{ rentInfo?.VehicleCC }}</td>
+        <td>{{ rentInfo?.ChassisNumber }}</td>
+        <td>{{ rentInfo?.MotorNumber }}</td>
+        <td>{{ rentInfo?.LibreNumber }}</td>
       </tr>
     </tbody>
   </table>
@@ -123,11 +128,11 @@
       </tr>
 
       <tr>
-        <td>{{ rentInfo.StartDate | date: 'fullDate' }}</td>
-        <td>{{ rentInfo.StartDate | date: 'shortTime' }}</td>
-        <td>{{ rentInfo.ReturnDate | date: 'fullDate' }}</td>
-        <td>{{ rentInfo.ReturnDate | date: 'shortTime' }}</td>
-        <td>{{ rentInfo.Duration }}</td>
+        <td>{{ rentInfo?.StartDate | date: 'fullDate' }}</td>
+        <td>{{ rentInfo?.StartDate | date: 'shortTime' }}</td>
+        <td>{{ rentInfo?.ReturnDate | date: 'fullDate' }}</td>
+        <td>{{ rentInfo?.ReturnDate | date: 'shortTime' }}</td>
+        <td>{{ rentInfo?.Duration }}</td>
       </tr>
       <tr>
         <th>የአንድ ቀን የኪራይ ክፍያ</th>
@@ -140,11 +145,11 @@
         <th>ለዋስትና ያስያዙት ብር <br />colateral detposit</th>
       </tr>
       <tr>
-        <td>{{ rentInfo.RentPrice }}</td>
-        <td>{{ rentInfo.initial_payment }}</td>
-        <td>{{ rentInfo.Duration * rentInfo.RentPrice }}</td>
-        <td>{{ rentInfo.remaining_payment }}</td>
-        <td>{{ rentInfo.CollateralDeposit }}</td>
+        <td>{{ rentInfo?.RentPrice }}</td>
+        <td>{{ rentInfo?.initial_payment }}</td>
+        <td>{{ rentInfo?.Duration * rentInfo?.RentPrice }}</td>
+        <td>{{ rentInfo?.remaining_payment }}</td>
+        <td>{{ rentInfo?.CollateralDeposit }}</td>
       </tr>
     </tbody>
   </table>
@@ -157,74 +162,74 @@
     <tbody>
       <tr>
         <th>Cigaret Lighter</th>
-        <td>{{ rentInfo.VehicleCondition.CigaretLighter }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.CigaretLighter }}</td>
         <th>Fuiel Lid</th>
-        <td>{{ rentInfo.VehicleCondition.FuielLid }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.FuielLid }}</td>
         <th>Spare Tire</th>
-        <td>{{ rentInfo.VehicleCondition.SpareTire }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.SpareTire }}</td>
         <th>Dashboard Close</th>
-        <td>{{ rentInfo.VehicleCondition.DashboardClose }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.DashboardClose }}</td>
       </tr>
       <tr>
         <th>Crick</th>
-        <td>{{ rentInfo.VehicleCondition.Crick }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.Crick }}</td>
         <th>Crick wrench</th>
-        <td>{{ rentInfo.VehicleCondition.CrickWrench }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.CrickWrench }}</td>
         <th>
           Window <br />
           Controller
         </th>
-        <td>{{ rentInfo.VehicleCondition.WindowController }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.WindowController }}</td>
         <th>Radiator Lid</th>
-        <td>{{ rentInfo.VehicleCondition.RadiatorLid }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.RadiatorLid }}</td>
       </tr>
       <tr>
         <th>Seat Belt</th>
-        <td>{{ rentInfo.VehicleCondition.SeatBelt }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.SeatBelt }}</td>
         <th>Outer Spokio</th>
-        <td>{{ rentInfo.VehicleCondition.SpokioOuter }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.SpokioOuter }}</td>
         <th>Inside Mirror</th>
-        <td>{{ rentInfo.VehicleCondition.SpokioInner }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.SpokioInner }}</td>
         <th>Mud Protector</th>
-        <td>{{ rentInfo.VehicleCondition.MudeProtecter }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.MudeProtecter }}</td>
       </tr>
       <tr>
         <th>Sun Visor</th>
-        <td>{{ rentInfo.VehicleCondition.SunVisor }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.SunVisor }}</td>
         <th>Blinker</th>
-        <td>{{ rentInfo.VehicleCondition.Blinker }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.Blinker }}</td>
         <th>Inside Mat</th>
-        <td>{{ rentInfo.VehicleCondition.MatInner }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.MatInner }}</td>
         <th>Wind Protector</th>
-        <td>{{ rentInfo.VehicleCondition.WindProtecter }}</td>
+        <td>{{ rentInfo?.VehicleCondition?.WindProtecter }}</td>
       </tr>
       <tr>
         <th>ኪ.ሜ</th>
-        <td colspan="3">{{ rentInfo.VehicleCondition.TotalKilometer }}</td>
+        <td colspan="3">{{ rentInfo?.VehicleCondition?.TotalKilometer }}</td>
         <th>Fuiel Level</th>
-        <td colspan="3">{{ rentInfo.VehicleCondition.FuielLevel }}</td>
+        <td colspan="3">{{ rentInfo?.VehicleCondition?.FuielLevel }}</td>
       </tr>
       <tr>
         <th>Radio</th>
-        <td colspan="7">{{ rentInfo.VehicleCondition.Radio }}</td>
+        <td colspan="7">{{ rentInfo?.VehicleCondition?.Radio }}</td>
       </tr>
       <tr>
         <td colspan="8">
           <strong>Comment </strong> <br />
-          {{ rentInfo.VehicleCondition.Comment }}
+          {{ rentInfo?.VehicleCondition?.Comment }}
         </td>
       </tr>
     </tbody>
     <tfoot style="line-height: 40px;">
       <tr>
         <th>የመኪና ተረካቢ ስም</th>
-        <td colspan="3">{{ rentInfo.CustomerName }}</td>
+        <td colspan="3">{{ rentInfo?.CustomerName }}</td>
         <th colspan="2">ፊርማ</th>
         <th colspan="2">ቀን</th>
       </tr>
       <tr>
         <th>የመኪና አስረኪ ስም</th>
-        <td colspan="3">{{ rentInfo.RentedBy }}</td>
+        <td colspan="3">{{ rentInfo?.RentedBy }}</td>
         <th colspan="2">ፊርማ</th>
         <th colspan="2">ቀን</th>
       </tr>

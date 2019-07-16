@@ -38,7 +38,7 @@ export const ROLES: SystemsRoles[] = [
     add: 'canAddRents',
     edit: 'canEditRents',
     delete: 'canDeleteRents',
-    others: []
+    others: [{ title: 'Print Contract', value: 'canPrintRentContract' }]
   },
   {
     function: 'Customer Payments',

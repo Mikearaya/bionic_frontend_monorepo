@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { PartnerSelectorModule } from './partner-selector/partner-selector.module';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,17 +25,32 @@ import { PartnerSelectorModule } from './partner-selector/partner-selector.modul
       {
         path: '',
         component: VehicleOwnerViewComponent,
-        data: { breadCrum: 'view', title: 'Partners' }
+        data: {
+          breadCrum: 'view',
+          title: 'Partners',
+          claimType: 'canViewPartners'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
         component: VehicleOwnerFormComponent,
-        data: { breadCrum: 'add', title: 'New Partner' }
+        data: {
+          breadCrum: 'add',
+          title: 'New Partner',
+          claimType: 'canAddPartners'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':ownerId/update',
         component: VehicleOwnerFormComponent,
-        data: { breadCrum: 'update', title: 'Update Partner' }
+        data: {
+          breadCrum: 'update',
+          title: 'Update Partner',
+          claimType: 'canEditPartners'
+        },
+        canActivate: [ActivationGuard]
       }
     ]),
     PartnerSelectorModule

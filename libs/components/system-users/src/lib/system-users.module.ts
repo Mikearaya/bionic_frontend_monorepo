@@ -13,6 +13,7 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { SystemRoleSelectorModule } from '@bionic/components/system-role';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 
 @NgModule({
   imports: [
@@ -29,17 +30,27 @@ import { SystemRoleSelectorModule } from '@bionic/components/system-role';
       {
         path: '',
         component: UserViewComponent,
-        data: { title: 'Users', breadCrum: 'View' }
+        data: { title: 'Users', breadCrum: 'View', claimType: 'canViewUsers' }
       },
       {
         path: 'add',
         component: UserFormComponent,
-        data: { title: 'Create user', breadCrum: 'Add' }
+        data: {
+          title: 'Create user',
+          breadCrum: 'Add',
+          claimType: 'canAddUsers'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':userId/update',
         component: UserFormComponent,
-        data: { title: 'Update user', breadCrum: 'Update' }
+        data: {
+          title: 'Update user',
+          breadCrum: 'Update',
+          claimType: 'canEditUsers'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':userId/password',
@@ -47,7 +58,8 @@ import { SystemRoleSelectorModule } from '@bionic/components/system-role';
         data: {
           title: 'Update user password',
           breadCrum: 'update password'
-        }
+        },
+        canActivate: [ActivationGuard]
       }
     ])
   ],

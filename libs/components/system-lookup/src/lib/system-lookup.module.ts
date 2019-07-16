@@ -10,6 +10,7 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { SystemLookupSelectorModule } from './system-lookup-selector/system-lookup-selector.module';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,8 +27,9 @@ import { SystemLookupSelectorModule } from './system-lookup-selector/system-look
         data: {
           breadCrum: 'View',
           title: 'System Lookups',
-          claim: 'canViewSystemLookups'
-        }
+          claimType: 'canViewSystemLookups'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
@@ -35,8 +37,9 @@ import { SystemLookupSelectorModule } from './system-lookup-selector/system-look
         data: {
           breadCrum: 'Add',
           title: 'Add System Lookup',
-          claim: 'canAddSystemLookups'
-        }
+          claimType: 'canAddSystemLookups'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':lookupId/update',
@@ -44,8 +47,9 @@ import { SystemLookupSelectorModule } from './system-lookup-selector/system-look
         data: {
           breadCrum: 'Update',
           title: 'Update System Lookup',
-          claim: 'canUpdateSystemLookups'
-        }
+          claimType: 'canEditSystemLookups'
+        },
+        canActivate: [ActivationGuard]
       }
     ]),
     SystemLookupSelectorModule

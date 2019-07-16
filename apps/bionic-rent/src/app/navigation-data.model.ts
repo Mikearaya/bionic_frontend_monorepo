@@ -6,7 +6,7 @@ export const NAVIGATION_LINKS = [
     expanded: false,
     url: '/',
     selected: true,
-    icon: 'fas fa-columns',
+    icon: 'fas fa-tachometer-alt',
     privilage: 'canViewDashboard'
   },
   {
@@ -15,7 +15,7 @@ export const NAVIGATION_LINKS = [
     expanded: false,
     enabled: true,
     url: '/vehicle-owners',
-    icon: 'fas fa-sitemap',
+    icon: 'fas fa-handshake',
     selected: false,
     privilage: 'canViewPartners'
   },
@@ -26,7 +26,7 @@ export const NAVIGATION_LINKS = [
     enabled: true,
     url: '/vehicles',
     selected: false,
-    icon: 'fas fa-book-open',
+    icon: 'fas fa-car',
     privilage: 'canViewVehicles'
   },
   {
@@ -36,7 +36,7 @@ export const NAVIGATION_LINKS = [
     enabled: true,
     url: '/customers',
     selected: false,
-    icon: 'fas fa-cogs',
+    icon: 'fas fa-address-book',
     privilage: 'canViewCustomers'
   },
   {
@@ -46,7 +46,7 @@ export const NAVIGATION_LINKS = [
     enabled: true,
     url: 'parent',
     selected: false,
-    icon: 'fas fa-cogs',
+    icon: 'fas fa-file-contract',
     privilage: 'canViewSettings',
     subChild: [
       {
@@ -67,7 +67,7 @@ export const NAVIGATION_LINKS = [
     enabled: true,
     url: 'parent',
     selected: false,
-    icon: 'fas fa-cogs',
+    icon: 'fas fa-cash-register',
     privilage: 'canViewSettings',
     subChild: [
       {
@@ -86,7 +86,8 @@ export const NAVIGATION_LINKS = [
         expanded: false,
         enabled: true,
         selected: false,
-        privilage: 'canViewPartnerPayments'
+        privilage: 'canViewPartnerPayments',
+        icon: 'cash-register'
       }
     ]
   },

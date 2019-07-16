@@ -11,6 +11,7 @@ import { CustomerPaymentHistoryModule } from './customer-payment-history/custome
 import { CustomerPaymentHistoryComponent } from './customer-payment-history/customer-payment-history.component';
 import { PartnerPaymentsHistoryModule } from './partner-payments-history/partner-payments-history.module';
 import { PartnerPaymentsHistoryComponent } from './partner-payments-history/partner-payments-history.component';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 
 @NgModule({
   imports: [
@@ -22,8 +23,9 @@ import { PartnerPaymentsHistoryComponent } from './partner-payments-history/part
         data: {
           breadCrum: 'Remaining Partner Payments',
           title: 'Remaining Partner Payments',
-          claim: 'canViewRemainingPartnerPayments'
-        }
+          claimType: 'canViewRemainingPartnerPaymentsReport'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'customer-payments',
@@ -31,35 +33,39 @@ import { PartnerPaymentsHistoryComponent } from './partner-payments-history/part
         data: {
           breadCrum: 'Remaining Customer Payments',
           title: 'Remaining Customer Payments',
-          claim: 'canViewRemainingCustomerPayments'
-        }
+          claimType: 'canViewRemainingCustomerPaymentsReport'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'rent-history',
         component: RentHistoryComponent,
         data: {
           breadCrum: 'rent history',
-          claim: 'canViewRentHistory',
+          claimType: 'canViewRentHistoryReport',
           title: 'Rent History'
-        }
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'customer-payments-history',
         component: CustomerPaymentHistoryComponent,
         data: {
           breadCrum: 'Customers payment history',
-          claim: 'canViewRentHistory',
+          claimType: 'canViewCustomerPaymentsReport',
           title: 'Rent History'
-        }
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'partner-payments-history',
         component: PartnerPaymentsHistoryComponent,
         data: {
           breadCrum: 'Partners Payment history',
-          claim: 'canViewRentHistory',
+          claimType: 'canViewPartnerPaymentsReport',
           title: 'Rent History'
-        }
+        },
+        canActivate: [ActivationGuard]
       }
     ]),
 

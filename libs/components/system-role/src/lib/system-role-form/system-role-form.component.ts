@@ -144,9 +144,9 @@ export class SystemRoleFormComponent implements OnInit {
       }
 
       roleModel.Name = this.roleName.value;
-      this.selectedRoles.forEach(element => {
+      this.selectedRoles.forEach(elemnt => {
         roleModel.Claims.push({
-          ClaimType: element,
+          ClaimType: elemnt,
           ClaimValue: 'true'
         });
       });

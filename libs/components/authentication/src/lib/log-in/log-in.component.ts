@@ -32,7 +32,7 @@ export class LogInComponent implements OnInit {
     const userData = this.prepareFormData();
     this.authentication.logIn(userData).subscribe(
       (data: any) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['/home']);
       },
       error => {
         alert('Invalid username or password');

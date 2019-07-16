@@ -10,6 +10,7 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
 
 import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { CustomersSelectorModule } from './customers-selector/customers-selector.module';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,17 +23,32 @@ import { CustomersSelectorModule } from './customers-selector/customers-selector
       {
         path: '',
         component: CustomerViewComponent,
-        data: { breadCrum: 'View', title: 'Customers' }
+        data: {
+          breadCrum: 'View',
+          title: 'Customers',
+          claimType: 'canViewCustomers'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
         component: CustomerFormComponent,
-        data: { breadCrum: 'add', title: 'Add New Customer' }
+        data: {
+          breadCrum: 'add',
+          title: 'Add New Customer',
+          claimType: 'canAddCustomers'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':customerId/update',
         component: CustomerFormComponent,
-        data: { breadCrum: 'Update', title: 'Update Customer' }
+        data: {
+          breadCrum: 'Update',
+          title: 'Update Customer',
+          claimType: 'canEditCustomers'
+        },
+        canActivate: [ActivationGuard]
       }
     ]),
     CustomersSelectorModule

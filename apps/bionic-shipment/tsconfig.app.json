@@ -5,5 +5,20 @@
     "types": []
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts"]
+  "include": [
+    "**/*.ts",
+    "../../libs/rent/customers/src/index.ts",
+
+    "../../libs/rent/vehicles/src/index.ts",
+
+    "../../libs/components/system-lookup/src/index.ts",
+
+    "../../libs/components/system-role/src/index.ts",
+
+    "../../libs/components/system-users/src/index.ts",
+
+    "../../libs/components/authentication/src/index.ts",
+
+    "../../libs/shipment/location/src/index.ts"
+  ]
 }

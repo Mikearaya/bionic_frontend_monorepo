@@ -3,4 +3,6 @@ export { AuthenticationModel } from './lib/models/authentication.model';
 export { AuthorizationModel } from './lib/models/authorization.model';
 export { AuthenticationApiService } from './lib/authentication-api.service';
 export { AuthorizationApiService } from './lib/authorization-api.service';
-export {AuthorizationGuard} from './lib/authorization.guard';
+export { AuthorizationGuard } from './lib/authorization.guard';
+export { ActivationGuard } from './lib/activation.guard';
+export { HasClaimDirective } from './lib/has-claim.directive';

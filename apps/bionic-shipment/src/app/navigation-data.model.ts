@@ -4,106 +4,61 @@ export const NAVIGATION_LINKS = [
     name: 'Dashboard',
     enabled: true,
     expanded: false,
-    url: '',
+    url: '/',
     selected: true,
-    icon: 'fas fa-columns'
+    icon: 'fas fa-tachometer-alt',
+    privilage: 'canViewDashboard'
   },
   {
     id: '01',
-    name: 'Vehicles',
-    expanded: false,
-    enabled: true,
-    url: 'parent',
-    icon: 'fas fa-sitemap',
-    selected: false,
-    privilage: 'canViewAccount',
-    subChild: [
-      {
-        id: '01-01',
-        name: 'Vehicles',
-        url: '/vehicle',
-        expanded: false,
-        selected: false,
-        enabled: true,
-        privilage: 'canViewVehicles'
-      }
-    ]
-  },
-  {
-    id: '02',
     name: 'Drivers',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/vehicle-owners',
+    icon: 'fas fa-handshake',
     selected: false,
-    icon: 'fas fa-book-open',
-    subChild: [
-      {
-        id: '02-01',
-        name: 'Drivers',
-        url: '/vehicles',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    privilage: 'canViewPartners'
+  },
+  {
+    id: '02',
+    name: 'Vehicles',
+    expanded: false,
+    enabled: true,
+    url: '/vehicles',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewVehicles'
   },
   {
     id: '03',
-    name: 'Customers Managment',
+    name: 'Customers',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/customers',
     selected: false,
-    icon: 'fas fa-cogs',
-    subChild: [
-      {
-        id: '03-01',
-        name: 'Customers',
-        url: '/customers',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    icon: 'fas fa-address-book',
+    privilage: 'canViewCustomers'
   },
   {
-    id: '10',
+    id: '05',
     name: 'Operations',
     expanded: false,
     enabled: true,
     url: 'parent',
     selected: false,
-    icon: 'fas fa-cogs',
-    subChild: [
-      {
-        id: '10-01',
-        name: 'Operations',
-        url: '/vehicle-rent',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    icon: 'fas fa-file-contract',
+    privilage: 'canViewSettings'
   },
   {
-    id: '05',
-    name: 'Operation Payments',
+    id: '06',
+    name: 'Payments',
     expanded: false,
     enabled: true,
     url: 'parent',
     selected: false,
-    icon: 'fas fa-cogs',
-    subChild: [
-      {
-        id: '05-01',
-        name: 'Payments',
-        url: '/lookups',
-        expanded: false,
-        enabled: true,
-        selected: false
-      }
-    ]
+    icon: 'fas fa-cash-register',
+    privilage: 'canViewSettings',
+    subChild: []
   },
   {
     id: '04',
@@ -113,30 +68,43 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cogs',
+    privilage: 'canViewSettings',
     subChild: [
       {
         id: '04-01',
-        name: 'lookups',
-        url: '/lookups',
+        name: 'Lookups',
+        url: '/settings/system-lookups',
         expanded: false,
         enabled: true,
-        selected: false
+        selected: false,
+        privilage: 'canViewSystemLookups'
       },
       {
         id: '04-02',
         name: 'Locations',
-        url: '/lookups',
+        url: '/settings/locations',
         expanded: false,
         enabled: true,
-        selected: false
+        selected: false,
+        privilage: 'canViewSystemLookups'
       },
       {
         id: '04-03',
-        name: 'Bank Accounts',
-        url: '/lookups',
+        name: 'Role',
+        url: '/settings/system-roles',
         expanded: false,
         enabled: true,
-        selected: false
+        selected: false,
+        privilage: 'canViewRoles'
+      },
+      {
+        id: '04-04',
+        name: 'Users',
+        url: '/settings/system-users',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewUsers'
       }
     ]
   },
@@ -148,6 +116,7 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-briefcase',
+    privilage: 'canViewSettings',
     subChild: []
   }
 ];

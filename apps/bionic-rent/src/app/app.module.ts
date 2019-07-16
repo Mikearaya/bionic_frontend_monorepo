@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { SecurityService } from '@bionic/services/security-service';
 import { DynamicFormControlsModule } from '@bionic/components/dynamic-form-controls';
-import { AccessControlApiModule } from '@bionic/apis/common/access-control-api';
+
 import { AuthenticationGuard } from './authentication.guard';
 import { PageInformationsModule } from '@bionic/components/page-informations';
 @NgModule({

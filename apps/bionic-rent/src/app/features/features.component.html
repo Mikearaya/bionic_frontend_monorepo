@@ -13,6 +13,14 @@
           id="treeelement"
           [fields]="field"
         >
+          <ng-template #nodeTemplate="" let-data="">
+            <div>
+              <div>
+                <i [attr.class]="data.icon" aria-hidden="true"> </i
+                >{{ data.name }}
+              </div>
+            </div>
+          </ng-template>
         </ejs-treeview>
       </div>
     </ejs-sidebar>
@@ -32,14 +40,11 @@
         ></button>
         <button
           ejs-button
-          id="toggle"
-          #togglebtn
-          cssClass="e-flat"
-          iconCss="e-icons burg-icon"
+          cssClass=" logout-button"
           isToggle="true"
           (click)="logOut()"
         >
-          Log Out
+          Log Out {{ securityObject.UserName }}
         </button>
       </div>
       <div id="targetcontent">

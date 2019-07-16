@@ -9,6 +9,7 @@ import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 
 @NgModule({
   imports: [
@@ -23,17 +24,24 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
       {
         path: '',
         component: SystemRoleViewComponent,
-        data: { breadCrum: 'View', title: 'Roles' }
+        data: { breadCrum: 'View', title: 'Roles', claimType: 'canViewRoles' },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
         component: SystemRoleFormComponent,
-        data: { breadCrum: 'Add', title: 'Add Role' }
+        data: { breadCrum: 'Add', title: 'Add Role', claimType: 'canAddRoles' },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':roleId/update',
         component: SystemRoleFormComponent,
-        data: { breadCrum: 'Update', title: 'Update Role' }
+        data: {
+          breadCrum: 'Update',
+          title: 'Update Role',
+          claimType: 'canEditRoles'
+        },
+        canActivate: [ActivationGuard]
       }
     ])
   ],

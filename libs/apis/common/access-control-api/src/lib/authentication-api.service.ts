@@ -6,7 +6,9 @@ import { Observable, of } from 'rxjs';
 import { AuthenticationModel } from './models/authentication.model';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthenticationApiService {
   securityObject: AuthorizationModel;
 

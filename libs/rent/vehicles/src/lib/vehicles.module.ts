@@ -17,6 +17,7 @@ import { VehiclesApiModule } from '@bionic/apis/rent/vehicles-api';
 import { VehicleOwnersApiModule } from '@bionic/apis/rent/vehicle-owners-api';
 import { VehiclesSelectorModule } from './vehicles-selector/vehicles-selector.module';
 import { SystemLookupSelectorModule } from '@bionic/components/system-lookup';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,17 +35,32 @@ import { SystemLookupSelectorModule } from '@bionic/components/system-lookup';
       {
         path: '',
         component: VehicleViewComponent,
-        data: { breadCrum: 'view', title: 'Vehicles' }
+        data: {
+          breadCrum: 'view',
+          title: 'Vehicles',
+          claimType: 'canViewVehicles'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
         component: VehicleFormComponent,
-        data: { breadCrum: 'add', title: 'Add New Vehicle' }
+        data: {
+          breadCrum: 'add',
+          title: 'Add New Vehicle',
+          claimType: 'canAddVehicles'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':vehicleId/update',
         component: VehicleFormComponent,
-        data: { breadCrum: 'Update', title: 'Update Vehicle' }
+        data: {
+          breadCrum: 'Update',
+          title: 'Update Vehicle',
+          claimType: 'canEditVehicles'
+        },
+        canActivate: [ActivationGuard]
       }
     ]),
 

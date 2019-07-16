@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import {
-  SidebarModule,
-  TreeViewAllModule
-} from '@syncfusion/ej2-angular-navigations';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { PageInformationsModule } from '@bionic/components/page-informations';
 import { SecurityService } from '@bionic/services/security-service';
@@ -16,10 +12,18 @@ import { SecurityService } from '@bionic/services/security-service';
   imports: [
     BrowserModule,
     PageInformationsModule,
-    SidebarModule,
-    TreeViewAllModule,
     ButtonModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot([
+      {
+        path: '',
+        loadChildren: './features/features.module#FeaturesModule',
+        data: { breadCrum: 'home' }
+      },
+      {
+        path: 'login',
+        loadChildren: '@bionic/components/authentication#AuthenticationModule'
+      }
+    ])
   ],
   providers: [SecurityService],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthorizationApiService } from './authorization-api.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthorizationGuard implements CanLoad {
   constructor(
     private router: Router,
@@ -24,8 +24,5 @@ export class AuthorizationGuard implements CanLoad {
       this.router.navigate(['/login']);
       return false;
     }
-  }
-  isAuthorized(): boolean {
-    return !!localStorage.getItem('bionicBearerToken');
   }
 }

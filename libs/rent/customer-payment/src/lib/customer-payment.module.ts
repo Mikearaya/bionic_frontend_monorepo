@@ -16,6 +16,7 @@ import {
 import { CustomerPaymentRecieptComponent } from './customer-payment-reciept/customer-payment-reciept.component';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { PrintHeadersModule } from '@bionic/components/page-informations';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,27 +37,30 @@ import { PrintHeadersModule } from '@bionic/components/page-informations';
         component: CustomerPaymentViewComponent,
         data: {
           breadCrum: 'View',
-          claim: 'canViewCustomerPayments',
-          title: 'Customer Payments'
-        }
+          title: 'Customer Payments',
+          claimType: 'canViewCustomerPayments'
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
         component: CustomerPaymentFormComponent,
         data: {
           breadCrum: 'add',
-          claim: 'canAddCustomerPayments',
+          claimType: 'canAddCustomerPayments',
           title: 'New Customer Payment'
-        }
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':paymentId/update',
         component: CustomerPaymentRecieptComponent,
         data: {
           breadCrum: 'Reciept',
-          claim: 'canViewCustomerPaymentReciept',
+          claimType: 'canPrintCustomerPaymentReciept',
           title: 'Customer Payment Reciept'
-        }
+        },
+        canActivate: [ActivationGuard]
       }
     ])
   ],

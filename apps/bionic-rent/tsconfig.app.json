@@ -18,6 +18,7 @@
     "../../libs/rent/customer-payment/src/index.ts",
 
     "../../libs/rent/partners-payment/src/index.ts",
+
     "../../libs/components/system-lookup/src/index.ts",
 
     "../../libs/rent/reports/src/index.ts",

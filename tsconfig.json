@@ -93,6 +93,10 @@
       ],
       "@bionic/apis/common/access-control-api": [
         "libs/apis/common/access-control-api/src/index.ts"
+      ],
+      "@bionic/shipment/location": ["libs/shipment/location/src/index.ts"],
+      "@bionic/apis/shipment/location-api": [
+        "libs/apis/shipment/location-api/src/index.ts"
       ]
     }
   },

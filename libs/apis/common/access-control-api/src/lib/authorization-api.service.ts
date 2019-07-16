@@ -9,7 +9,6 @@ export class AuthorizationApiService {
 
   constructor() {
     this.securityObject = JSON.parse(localStorage.getItem('bionicBearerToken'));
-    console.log(this.securityObject);
 
     if (!this.securityObject) {
       this.securityObject = new AuthorizationModel();

@@ -1,0 +1,92 @@
+<section>
+  <form [formGroup]="locationForm" (ngSubmit)="onSubmit()" name="lookupForm">
+    {{ locationForm.value | json }}
+    <div class="container-fluid card m-3" formArrayName="Locations">
+      <div
+        class="row"
+        *ngFor="
+          let location of Locations.controls;
+          let i = index;
+          let last = last
+        "
+        [formGroup]="location"
+      >
+        <div class="col-sm-4 col-xs-8">
+          <div>
+            <label for="isDomestic"> Domestic</label>
+            <div>
+              <input
+                type="checkbox"
+                name="isDomestic"
+                id="isDomestic"
+                formControlName="IsDomestic"
+              />
+            </div>
+            <div
+              class="e-error"
+              *ngIf="
+                location.get('IsDomestic').errors &&
+                location.get('IsDomestic').touched
+              "
+            >
+              <div *ngIf="location.get('IsDomestic').errors['required']">
+                Location Type is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+          <div>
+            <label for="Name">Name</label>
+            <input
+              type="text"
+              id="Name"
+              name="Name"
+              class="e-input"
+              formControlName="Name"
+            />
+            <div
+              class="e-error"
+              *ngIf="
+                location.get('Name').errors && location.get('Name').touched
+              "
+            >
+              <div *ngIf="location.get('Name').errors['required']">
+                *Name is Required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-1">
+          <label for="action">Action</label>
+          <div>
+            <button
+              *ngIf="last"
+              [disabled]="location.invalid"
+              type="button"
+              ejs-button
+              cssClass="e-round e-info e-small"
+              iconCss="e-icons e-plus-icon"
+              (click)="addRow()"
+            ></button>
+            <button
+              id="remove-button"
+              type="button"
+              ejs-button
+              cssClass="e-round e-danger e-small"
+              iconCss="e-icons e-close"
+              (click)="removeRow(i)"
+            ></button>
+          </div>
+        </div>
+      </div>
+
+      <bionic-form-options
+        [isUpdate]="isUpdate"
+        [submitDisabled]="locationForm.invalid"
+      ></bionic-form-options>
+
+      <div class="col-4"></div>
+    </div>
+  </form>
+</section>

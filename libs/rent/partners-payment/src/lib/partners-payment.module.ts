@@ -16,6 +16,7 @@ import {
 import { PartnerPaymentRecieptComponent } from './partner-payment-reciept/partner-payment-reciept.component';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { PrintHeadersModule } from '@bionic/components/page-informations';
+import { ActivationGuard } from '@bionic/apis/common/access-control-api';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PrintHeadersModule } from '@bionic/components/page-informations';
           breadCrum: 'view',
           claim: 'canViewPartnerPayments',
           title: 'Partner Payments'
-        }
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: 'add',
@@ -47,16 +49,18 @@ import { PrintHeadersModule } from '@bionic/components/page-informations';
           breadCrum: 'Add',
           claim: 'canAddPartnerPayments',
           title: 'New Partner Payment'
-        }
+        },
+        canActivate: [ActivationGuard]
       },
       {
         path: ':paymentId/update',
         component: PartnerPaymentRecieptComponent,
         data: {
           breadCrum: 'Reciept',
-          claim: 'canUpdatePartnerPayments',
+          claim: 'canPrintPartnerPaymentReciept',
           title: 'Partner Payment Reciept'
-        }
+        },
+        canActivate: [ActivationGuard]
       }
     ])
   ],
