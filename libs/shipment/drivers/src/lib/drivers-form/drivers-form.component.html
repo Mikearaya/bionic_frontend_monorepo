@@ -1,0 +1,39 @@
+<form [formGroup]="driverForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <label for="fullName">FullName</label>
+        <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          formControlName="FullName"
+          placeholder="Fullname"
+          class="e-input"
+        />
+        <div class="e-error" *ngIf="FullName.errors">
+          <div *ngIf="FullName.errors['required']">FullName is Required</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <label for="drivingLicenseId">Driving License Id</label>
+        <input
+          type="text"
+          name="drivingLicenseId"
+          id="drivingLicenseId"
+          formControlName="DrivingLicenseId"
+          placeholder="DrivingLicenseId"
+          class="e-input"
+        />
+        <div class="e-error" *ngIf="DrivingLicenseId.errors">
+          <div *ngIf="DrivingLicenseId.errors['required']">
+            Driving License Id is Required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="driverForm.invalid"
+  ></bionic-form-options>
+</form>

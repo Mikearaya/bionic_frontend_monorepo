@@ -6,6 +6,7 @@ import { LocationModel } from './models/location.model';
 import { QueryString } from '@bionic/components/data-grid';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
+import { LocationIndexModel } from './models/location-index.model';
 @Injectable()
 export class LocationApiService extends Subject<DataStateChangeEventArgs> {
   private apiUrl = `http://${window.location.hostname}:5000/api/locations`;
@@ -32,6 +33,14 @@ export class LocationApiService extends Subject<DataStateChangeEventArgs> {
 
   deleteLocation(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getLocationIndex(
+    filterString: string = ''
+  ): Observable<LocationIndexModel[]> {
+    return this.httpClient.get<LocationIndexModel[]>(
+      `${this.apiUrl}/index?searchString=${filterString}`
+    );
   }
 
   execute(state: QueryString): void {

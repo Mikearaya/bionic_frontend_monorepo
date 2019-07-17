@@ -112,6 +112,12 @@
     },
     "apis-shipment-location-api": {
       "tags": []
+    },
+    "apis-shipment-drivers-api": {
+      "tags": ["shipment"]
+    },
+    "shipment-drivers": {
+      "tags": ["shipment"]
     }
   }
 }

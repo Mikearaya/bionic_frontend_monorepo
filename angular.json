@@ -1322,6 +1322,74 @@
         }
       },
       "schematics": {}
+    },
+    "apis-shipment-drivers-api": {
+      "root": "libs/apis/shipment/drivers-api",
+      "sourceRoot": "libs/apis/shipment/drivers-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/drivers-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/drivers-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/drivers-api/tsconfig.lib.json",
+              "libs/apis/shipment/drivers-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/drivers-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/drivers-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/drivers-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shipment-drivers": {
+      "root": "libs/shipment/drivers",
+      "sourceRoot": "libs/shipment/drivers/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/drivers/tsconfig.lib.json",
+            "project": "libs/shipment/drivers/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/drivers/tsconfig.lib.json",
+              "libs/shipment/drivers/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/drivers/src/test.ts",
+            "tsConfig": "libs/shipment/drivers/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/drivers/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

@@ -19,6 +19,10 @@
 
     "../../libs/components/authentication/src/index.ts",
 
-    "../../libs/shipment/location/src/index.ts"
+    "../../libs/shipment/location/src/index.ts",
+
+    "../../libs/shipment/drivers/src/index.ts",
+
+    "../../libs/shipment/drivers/src/index.ts"
   ]
 }

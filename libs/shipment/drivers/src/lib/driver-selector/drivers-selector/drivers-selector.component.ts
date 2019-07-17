@@ -1,47 +1,47 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import {
-  LocationApiService,
-  LocationIndexModel
-} from '@bionic/apis/shipment/location-api';
+  DriversApiService,
+  DriversIndexModel
+} from '@bionic/apis/shipment/drivers-api';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'bionic-location-selector',
-  styleUrls: ['./location-selector.component.css'],
+  selector: 'bionic-drivers-selector',
   template: `
     <ejs-dropdownlist
-      id="location"
+      id="Drivers"
       [enabled]="!disabled"
-      name="location"
-      placeholder="Search Location"
+      name="Drivers"
+      placeholder="Search  Driver"
       [text]="text"
       [fields]="fields"
       (filtering)="onFiltering($event)"
       [allowFiltering]="true"
-      [dataSource]="locations"
-      (change)="locationChanged($event)"
+      [dataSource]="drivers"
+      (change)="driverChanged($event)"
     ></ejs-dropdownlist>
   `,
+  styleUrls: ['./drivers-selector.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => LocationSelectorComponent),
+      useExisting: forwardRef(() => DriversSelectorComponent),
       multi: true
     }
   ]
 })
-export class LocationSelectorComponent implements ControlValueAccessor {
-  constructor(private locationApi: LocationApiService) {}
+export class DriversSelectorComponent implements ControlValueAccessor {
+  constructor(private driversApi: DriversApiService) {}
   public _value: any;
   public disabled: boolean;
   public data;
 
-  public locations: any;
+  public drivers: any;
   public fields: object = { value: 'Id', text: 'Name' };
 
   public text = '';
 
-  locationChanged($event: any) {
+  driverChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
     } else {
@@ -54,9 +54,9 @@ export class LocationSelectorComponent implements ControlValueAccessor {
   public onFiltering(e) {
     e.preventDefaultAction = true;
 
-    this.locationApi
-      .getLocationIndex(e.text)
-      .subscribe((data: LocationIndexModel[]) => {
+    this.driversApi
+      .getDriversIndex(e.text)
+      .subscribe((data: DriversIndexModel[]) => {
         e.updateData(data);
       });
   }
@@ -67,13 +67,13 @@ export class LocationSelectorComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
     this._value = obj;
 
-    this.locationApi
-      .getLocationIndex()
-      .subscribe((result: LocationIndexModel[]) => {
-        this.locations = result;
+    this.driversApi
+      .getDriversIndex()
+      .subscribe((result: DriversIndexModel[]) => {
+        this.drivers = result;
         if (this._value) {
           if (obj !== 0) {
-            const data = this.locations.filter(a => a.Id === obj);
+            const data = this.drivers.filter(a => a.Id === obj);
             data.forEach(element => {
               this.text = element.Name;
             });

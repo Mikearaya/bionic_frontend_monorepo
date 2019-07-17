@@ -14,7 +14,7 @@ export const NAVIGATION_LINKS = [
     name: 'Drivers',
     expanded: false,
     enabled: true,
-    url: '/vehicle-owners',
+    url: '/drivers',
     icon: 'fas fa-handshake',
     selected: false,
     privilage: 'canViewPartners'

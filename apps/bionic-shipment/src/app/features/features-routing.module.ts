@@ -16,6 +16,15 @@ const routes: Routes = [
         canLoad: [AuthorizationGuard]
       },
       {
+        path: 'drivers',
+        loadChildren: '@bionic/shipment/drivers#DriversModule',
+        data: {
+          breadCrum: 'Drivers',
+          title: 'Drivers',
+          claimType: 'canViewDrivers'
+        }
+      },
+      {
         path: 'vehicles',
         loadChildren: '@bionic/rent/vehicles#VehiclesModule',
         data: { breadCrum: 'Vehicle', claimType: 'canViewVehicles' },
