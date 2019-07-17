@@ -44,7 +44,7 @@ export const NAVIGATION_LINKS = [
     name: 'Operations',
     expanded: false,
     enabled: true,
-    url: 'parent',
+    url: '/operations',
     selected: false,
     icon: 'fas fa-file-contract',
     privilage: 'canViewSettings'

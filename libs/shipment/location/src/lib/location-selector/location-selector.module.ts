@@ -6,6 +6,7 @@ import { LocationApiModule } from '@bionic/apis/shipment/location-api';
 
 @NgModule({
   declarations: [LocationSelectorComponent],
-  imports: [CommonModule, DropDownListModule, LocationApiModule]
+  imports: [CommonModule, DropDownListModule, LocationApiModule],
+  exports: [LocationSelectorComponent]
 })
 export class LocationSelectorModule {}

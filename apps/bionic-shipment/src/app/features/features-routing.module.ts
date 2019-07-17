@@ -25,6 +25,15 @@ const routes: Routes = [
         }
       },
       {
+        path: 'operations',
+        loadChildren: '@bionic/shipment/operations#OperationsModule',
+        data: {
+          breadCrum: 'Drivers',
+          title: 'Drivers',
+          claimType: 'canViewDrivers'
+        }
+      },
+      {
         path: 'vehicles',
         loadChildren: '@bionic/rent/vehicles#VehiclesModule',
         data: { breadCrum: 'Vehicle', claimType: 'canViewVehicles' },

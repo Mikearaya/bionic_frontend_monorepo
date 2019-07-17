@@ -118,6 +118,12 @@
     },
     "shipment-drivers": {
       "tags": ["shipment"]
+    },
+    "shipment-operations": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-operations-api": {
+      "tags": ["shipment"]
     }
   }
 }

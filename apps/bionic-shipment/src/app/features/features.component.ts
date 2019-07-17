@@ -40,7 +40,7 @@ export class FeaturesComponent implements OnInit {
       selected: 'selected',
       enabled: 'enabled'
     };
-    for (let index = 1; index < NAVIGATION_LINKS.length; index++) {
+    /*  for (let index = 1; index < NAVIGATION_LINKS.length; index++) {
       if (NAVIGATION_LINKS[index].subChild) {
         for (let i = NAVIGATION_LINKS[index].subChild.length - 1; i > -1; i--) {
           if (
@@ -61,7 +61,7 @@ export class FeaturesComponent implements OnInit {
           NAVIGATION_LINKS.splice(index, 1);
         }
       }
-    }
+    } */
   }
 
   public navigationLinks = NAVIGATION_LINKS;

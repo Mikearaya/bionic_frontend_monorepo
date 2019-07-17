@@ -10,7 +10,7 @@ import { DriversIndexModel } from './models/drivers-index.model';
 
 @Injectable()
 export class DriversApiService extends Subject<DataStateChangeEventArgs> {
-  private apiUrl = `http://localhost:5000/api/drivers`;
+  private apiUrl = `http://${window.location.hostname}:5000/api/drivers`;
 
   constructor(private httpClient: HttpClient) {
     super();

@@ -101,6 +101,10 @@
       "@bionic/shipment/drivers": ["libs/shipment/drivers/src/index.ts"],
       "@bionic/apis/shipment/drivers-api": [
         "libs/apis/shipment/drivers-api/src/index.ts"
+      ],
+      "@bionic/shipment/operations": ["libs/shipment/operations/src/index.ts"],
+      "@bionic/apis/shipment/operations-api": [
+        "libs/apis/shipment/operations-api/src/index.ts"
       ]
     }
   },

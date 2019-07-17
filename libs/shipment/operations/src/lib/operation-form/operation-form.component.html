@@ -1,0 +1,213 @@
+<form [formGroup]="operationForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-mg-6 col-sm-12">
+        <label for="customer">Customer</label>
+        <bionic-customer-selector
+          id="customer"
+          name="customer"
+          formControlName="CustomerId"
+        ></bionic-customer-selector>
+      </div>
+      <div class="col-mg-6 col-sm-12">
+        <label for="driver">Driver</label>
+        <bionic-drivers-selector
+          id="driver"
+          name="driver"
+          formControlName="DriverId"
+        ></bionic-drivers-selector>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-mg-6 col-sm-12">
+        <label for="vehicle">Vehicle</label>
+        <bionic-vehicle-selector
+          id="vehicle"
+          name="vehicle"
+          formControlName="VehicleId"
+        ></bionic-vehicle-selector>
+      </div>
+      <div class="col-mg-6 col-sm-12">
+        <label for="trailor">Trailor</label>
+        <bionic-vehicle-selector
+          id="trailor"
+          name="trailor"
+          formControlName="TrailorId"
+        ></bionic-vehicle-selector>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="startpoint">Starting Location</label>
+          <bionic-location-selector
+            id="startpoint"
+            name="startpoint"
+            formControlName="StartPoint"
+          ></bionic-location-selector>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="destination">Destination</label>
+          <bionic-location-selector
+            id="destination"
+            name="destination"
+            formControlName="Destination"
+          ></bionic-location-selector>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="scheduleddeparture">Scheduled Departure</label>
+          <ejs-datetimepicker
+            id="scheduleddeparture"
+            name="scheduleddeparture"
+            formControlName="ScheduledDeparture"
+          ></ejs-datetimepicker>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="scheduledarrival">Scheduled Arrival</label>
+          <ejs-datetimepicker
+            id="scheduledarrival"
+            name="scheduledarrival"
+            formControlName="ScheduleArrival"
+          ></ejs-datetimepicker>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="departuredate">Departured On</label>
+          <ejs-datetimepicker
+            id="departuredate"
+            name="departuredate"
+            formControlName="DepartureDate"
+          ></ejs-datetimepicker>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="arrivaldate">Arrival Date</label>
+          <ejs-datetimepicker
+            id="arrivaldate"
+            name="arrivaldate"
+            formControlName="ArrivalDate"
+          ></ejs-datetimepicker>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label for="cargotype">Cargo Type</label>
+          <bionic-system-lookup-selector
+            formControlName="CargoType"
+            [lookupType]="'cargo_type'"
+            id="cargotype"
+            name="cargotype"
+          ></bionic-system-lookup-selector>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label for="cargoweight">Cargo Weight</label>
+          <input
+            type="number"
+            class="e-input"
+            name="cargoweight"
+            id="cargoweight"
+            formControlName="CargoWeight"
+          />
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label for="distance">Distance</label>
+          <input
+            type="number"
+            class="e-input"
+            name="distance"
+            id="distance"
+            formControlName="Distance"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <label for="price">Price</label>
+          <input
+            class="e-input"
+            type="number"
+            name="price"
+            id="price"
+            formControlName="Price"
+          />
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <label for="drivercost">Driver Cost</label>
+          <input
+            class="e-input"
+            type="number"
+            name="DriverCost"
+            id="DriverCost"
+            formControlName="DriverCost"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="loadedby">Loaded By</label>
+        <input
+          type="text"
+          id="loadedby"
+          name="loadedby"
+          class="e-input"
+          formControlName="LoadedBy"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="loaderpaidby">Loader Paid By</label>
+        <input
+          type="text"
+          name="loaderpaidby"
+          id="loaderPaidBy"
+          class="e-input"
+          formControlName="LoaderPaidBy"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="TransitNumber">Transit Number </label>
+        <input
+          type="text"
+          id="TransitNumber"
+          name="TransitNumber"
+          formControlName="TransitNumber"
+          class="e-input"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="WayBillNumber">Waybill Number</label>
+        <input
+          type="text"
+          name="WayBillNumber"
+          id="WayBillNumber"
+          formControlName="WayBillNumber"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="extranote">Extra Note</label>
+        <textarea
+          name="extranote"
+          id="extranote"
+          cols="30"
+          rows="10"
+          class="e-input"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <bionic-form-options
+    [submitDisabled]="operationForm.invalid"
+  ></bionic-form-options>
+</form>

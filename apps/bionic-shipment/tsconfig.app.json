@@ -23,6 +23,8 @@
 
     "../../libs/shipment/drivers/src/index.ts",
 
-    "../../libs/shipment/drivers/src/index.ts"
+    "../../libs/shipment/drivers/src/index.ts",
+
+    "../../libs/shipment/operations/src/index.ts"
   ]
 }
