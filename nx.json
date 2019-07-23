@@ -124,6 +124,12 @@
     },
     "apis-shipment-operations-api": {
       "tags": ["shipment"]
+    },
+    "shipment-bank-account": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-bank-account-api": {
+      "tags": ["shipment"]
     }
   }
 }

@@ -1,0 +1,39 @@
+<form [formGroup]="bankAccountForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="bankName">Bank Name</label>
+        <input
+          type="text"
+          name="bankName"
+          id="bankName"
+          class="e-input"
+          formControlName="BankName"
+        />
+        <div *ngIf="getControl('BankName').errors" class="e-error">
+          <div *ngIf="getControl('BankName').errors['required']">
+            Bank Name is Required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="accountNumber">Account Number</label>
+        <input
+          type="text"
+          name="accountNumber"
+          id="accountNumber"
+          class="e-input"
+          formControlName="AccountNumber"
+        />
+        <div *ngIf="getControl('AccountNumber').errors" class="e-error">
+          <div *ngIf="getControl('AccountNumber').errors['required']">
+            Account Number is Required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="bankAccountForm.invalid"
+  ></bionic-form-options>
+</form>

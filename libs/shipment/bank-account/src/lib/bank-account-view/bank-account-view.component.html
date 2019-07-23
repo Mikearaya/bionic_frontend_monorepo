@@ -1,0 +1,17 @@
+<bionic-data-view
+  [data]="data"
+  [showAdd]="true"
+  [showDelete]="true"
+  [enableSorting]="true"
+  [showUpdate]="true"
+  [addPrivilage]="'canAddBankAccounts'"
+  [updatePrivilage]="'canEditBankAccounts'"
+  [deletePrivilage]="'canDeleteBankAccounts'"
+  (deleteRecord)="deleteAccount($event)"
+  [showPdfExport]="true"
+  [showPrint]="true"
+  [columnsList]="columnBluePrint"
+  (dataStateChaged)="onDataStateChange($event)"
+  [enableSearching]="true"
+  [showColumnChooser]="true"
+></bionic-data-view>

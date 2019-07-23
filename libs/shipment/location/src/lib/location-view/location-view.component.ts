@@ -21,24 +21,40 @@ export class LocationViewComponent implements OnInit {
       type: 'number'
     },
     {
-      key: 'Name',
+      key: 'LocationName',
       header: 'Name',
       visible: true,
       type: 'string'
     },
     {
-      key: 'Province',
-      header: 'Province',
+      key: 'Country',
+      header: 'Country',
       visible: true,
       width: 100,
       type: 'string'
     },
     {
-      key: 'IsDomestic',
+      key: 'IsLocal',
       header: 'Domestic',
       visible: true,
       width: 50,
       type: 'boolean'
+    },
+    {
+      key: 'DateAdded',
+      header: 'Added',
+      visible: false,
+      width: 50,
+      type: 'date',
+      format: 'yMd'
+    },
+    {
+      key: 'DateUpdated',
+      header: 'Updated',
+      visible: false,
+      width: 50,
+      type: 'date',
+      format: 'yMd'
     }
   ];
 

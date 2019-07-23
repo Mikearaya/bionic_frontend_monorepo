@@ -25,6 +25,8 @@
 
     "../../libs/shipment/drivers/src/index.ts",
 
-    "../../libs/shipment/operations/src/index.ts"
+    "../../libs/shipment/operations/src/index.ts",
+
+    "../../libs/shipment/bank-account/src/index.ts"
   ]
 }

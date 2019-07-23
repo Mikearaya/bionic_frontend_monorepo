@@ -105,6 +105,12 @@
       "@bionic/shipment/operations": ["libs/shipment/operations/src/index.ts"],
       "@bionic/apis/shipment/operations-api": [
         "libs/apis/shipment/operations-api/src/index.ts"
+      ],
+      "@bionic/shipment/bank-account": [
+        "libs/shipment/bank-account/src/index.ts"
+      ],
+      "@bionic/apis/shipment/bank-account-api": [
+        "libs/apis/shipment/bank-account-api/src/index.ts"
       ]
     }
   },

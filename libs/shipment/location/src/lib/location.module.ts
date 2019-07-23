@@ -49,15 +49,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
       }
     ])
   ],
-  declarations: [
-    LocationFormComponent,
-    LocationViewComponent,
-    LocationSelectorComponent
-  ],
-  exports: [
-    LocationFormComponent,
-    LocationViewComponent,
-    LocationSelectorComponent
-  ]
+  declarations: [LocationFormComponent, LocationViewComponent],
+  exports: [LocationFormComponent, LocationViewComponent]
 })
 export class LocationModule {}

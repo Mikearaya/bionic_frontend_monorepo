@@ -1,6 +1,8 @@
 export interface LocationViewModel {
   Id: number;
-  IsDomestic: boolean;
-  Name: string;
-  Province: string;
+  IsLocal: boolean;
+  LocationName: string;
+  Country: string;
+  DateAdded: Date;
+  DateUpdated: Date;
 }

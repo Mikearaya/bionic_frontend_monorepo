@@ -156,10 +156,7 @@ export class DataViewComponent implements OnInit {
     };
   }
   initilizeCommandColumn(): void {
-    if (
-      this.showUpdate &&
-      this.securityService.hasClaim(this.updatePrivilage)
-    ) {
+    if (this.showUpdate) {
       this.commands.push({
         buttonOption: {
           iconCss: 'e-icons e-edit',
@@ -169,10 +166,7 @@ export class DataViewComponent implements OnInit {
       });
     }
 
-    if (
-      this.showDelete &&
-      this.securityService.hasClaim(this.deletePrivilage)
-    ) {
+    if (this.showDelete) {
       this.commands.push({
         buttonOption: {
           iconCss: 'e-icons e-delete',
@@ -248,7 +242,7 @@ export class DataViewComponent implements OnInit {
   }
 
   initializeToolBar(): void {
-    if (this.showAdd && this.securityService.hasClaim(this.addPrivilage)) {
+    if (this.showAdd) {
       this.toolbar.push('Add');
     }
 

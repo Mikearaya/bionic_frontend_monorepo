@@ -105,6 +105,15 @@ export const NAVIGATION_LINKS = [
         enabled: true,
         selected: false,
         privilage: 'canViewUsers'
+      },
+      {
+        id: '04-05',
+        name: 'Bank Accounts',
+        url: '/settings/bank-accounts',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewSystemLookups'
       }
     ]
   },

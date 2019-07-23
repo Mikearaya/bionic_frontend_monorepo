@@ -48,8 +48,9 @@ export class LocationFormComponent implements OnInit {
     this.locationForm = this.formBuilder.group({
       Locations: this.formBuilder.array([
         this.formBuilder.group({
-          IsDomestic: [''],
-          Name: ['', Validators.required]
+          IsLocal: [''],
+          LocationName: ['', Validators.required],
+          Country: ['']
         })
       ])
     });
@@ -60,8 +61,9 @@ export class LocationFormComponent implements OnInit {
       Locations: this.formBuilder.array([
         this.formBuilder.group({
           Id: [data.Id, Validators.required],
-          IsDomestic: [data.IsDomestic],
-          Name: [data.Name, Validators.required]
+          IsLocal: [data.IsLocal],
+          LocationName: [data.LocationName, Validators.required],
+          Country: [data.Country]
         })
       ])
     });
@@ -118,8 +120,9 @@ export class LocationFormComponent implements OnInit {
   addRow(): void {
     this.Locations.push(
       this.formBuilder.group({
-        IsDomestic: ['', Validators.required],
-        Name: ['', Validators.required]
+        IsLocal: ['', Validators.required],
+        LocationName: ['', Validators.required],
+        Country: ['']
       })
     );
   }

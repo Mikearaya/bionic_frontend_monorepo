@@ -56,6 +56,14 @@ const routes: Routes = [
             canLoad: [AuthorizationGuard]
           },
           {
+            path: 'bank-accounts',
+            loadChildren: '@bionic/shipment/bank-account#BankAccountModule',
+            data: {
+              breadCrum: 'Banks',
+              claimType: 'canViewBankAccounts'
+            }
+          },
+          {
             path: 'system-roles',
             loadChildren: '@bionic/components/system-role#SystemRoleModule',
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
