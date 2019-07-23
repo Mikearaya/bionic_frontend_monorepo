@@ -1,0 +1,70 @@
+<form [formGroup]="trailorForm" class="card" (ngSubmit)="onSubmit()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="make">Make </label>
+        <input
+          type="text"
+          name="make"
+          id="make"
+          class="e-input"
+          formControlName="Make"
+          placeholder="Make"
+        />
+
+        <div class="e-error" *ngIf="getControl('Make').errors">
+          <div *ngIf="getControl('Make').errors['required']">
+            Trailor Make Is Required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="plateNumber">Plate Number</label>
+        <input
+          type="text"
+          name="platenumber"
+          id="platenumber"
+          class="e-input"
+          formControlName="PlateNumber"
+          placeholder="Plate Number"
+        />
+        <div class="e-error" *ngIf="getControl('PlateNumber').errors">
+          <div *ngIf="getControl('PlateNumber').errors['required']">
+            Trailor PlateNumber Is Required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="color">Color</label>
+        <bionic-system-lookup-selector
+          [lookupType]="'Color'"
+          [searchBarPlaceholder]="'Selct Color'"
+          formControlName="Color"
+        ></bionic-system-lookup-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="year">Year Made</label>
+        <ejs-dropdownlist
+          type="text"
+          [width]="100"
+          formControlName="YearMade"
+          name="year"
+          placeholder="Year made"
+          id="year"
+          [dataSource]="Years"
+          class="e-input"
+        ></ejs-dropdownlist>
+        <div *ngIf="getControl('YearMade').errors" class="e-error">
+          <div *ngIf="getControl('YearMade').errors['required']">
+            Vehicle Year Made is required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="trailorForm.invalid"
+  ></bionic-form-options>
+</form>

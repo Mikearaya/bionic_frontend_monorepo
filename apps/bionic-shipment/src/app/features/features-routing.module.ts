@@ -40,6 +40,11 @@ const routes: Routes = [
         canLoad: [AuthorizationGuard]
       },
       {
+        path: 'trailors',
+        loadChildren: '@bionic/shipment/vehicle-trailor#VehicleTrailorModule',
+        data: { breadCrum: 'Trailors', claimType: 'canViewVehicles' }
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',

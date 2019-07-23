@@ -1526,6 +1526,74 @@
         }
       },
       "schematics": {}
+    },
+    "shipment-vehicle-trailor": {
+      "root": "libs/shipment/vehicle-trailor",
+      "sourceRoot": "libs/shipment/vehicle-trailor/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/vehicle-trailor/tsconfig.lib.json",
+            "project": "libs/shipment/vehicle-trailor/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/vehicle-trailor/tsconfig.lib.json",
+              "libs/shipment/vehicle-trailor/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/vehicle-trailor/src/test.ts",
+            "tsConfig": "libs/shipment/vehicle-trailor/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/vehicle-trailor/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-shipment-vehicle-trailor-api": {
+      "root": "libs/apis/shipment/vehicle-trailor-api",
+      "sourceRoot": "libs/apis/shipment/vehicle-trailor-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/vehicle-trailor-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/vehicle-trailor-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/vehicle-trailor-api/tsconfig.lib.json",
+              "libs/apis/shipment/vehicle-trailor-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/vehicle-trailor-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/vehicle-trailor-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/vehicle-trailor-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

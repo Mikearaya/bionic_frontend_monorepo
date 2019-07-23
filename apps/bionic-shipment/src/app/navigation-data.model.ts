@@ -21,6 +21,16 @@ export const NAVIGATION_LINKS = [
   },
   {
     id: '02',
+    name: 'Trailors',
+    expanded: false,
+    enabled: true,
+    url: '/trailors',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewVehicles'
+  },
+  {
+    id: '08',
     name: 'Vehicles',
     expanded: false,
     enabled: true,

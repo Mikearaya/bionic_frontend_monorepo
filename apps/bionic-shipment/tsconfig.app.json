@@ -27,6 +27,8 @@
 
     "../../libs/shipment/operations/src/index.ts",
 
-    "../../libs/shipment/bank-account/src/index.ts"
+    "../../libs/shipment/bank-account/src/index.ts",
+
+    "../../libs/shipment/vehicle-trailor/src/index.ts"
   ]
 }

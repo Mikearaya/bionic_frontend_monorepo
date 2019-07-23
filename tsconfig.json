@@ -111,6 +111,12 @@
       ],
       "@bionic/apis/shipment/bank-account-api": [
         "libs/apis/shipment/bank-account-api/src/index.ts"
+      ],
+      "@bionic/shipment/vehicle-trailor": [
+        "libs/shipment/vehicle-trailor/src/index.ts"
+      ],
+      "@bionic/apis/shipment/vehicle-trailor-api": [
+        "libs/apis/shipment/vehicle-trailor-api/src/index.ts"
       ]
     }
   },

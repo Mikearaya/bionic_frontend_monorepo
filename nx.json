@@ -130,6 +130,12 @@
     },
     "apis-shipment-bank-account-api": {
       "tags": ["shipment"]
+    },
+    "shipment-vehicle-trailor": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-vehicle-trailor-api": {
+      "tags": ["shipment"]
     }
   }
 }
