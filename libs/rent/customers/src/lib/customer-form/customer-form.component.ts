@@ -131,12 +131,13 @@ export class CustomerFormComponent implements OnInit {
           (error: HttpErrorResponse) => alert(error.message)
         );
     } else if (customerData) {
-      this.customerApi
-        .addCustomer(customerData)
-        .subscribe(
-          (customer: CustomerViewModel) => alert('Customer added successfuly'),
-          (error: HttpErrorResponse) => alert(error.message)
-        );
+      this.customerApi.addCustomer(customerData).subscribe(
+        (customer: CustomerViewModel) => {
+          this.customerForm.reset();
+          alert('Customer added successfuly');
+        },
+        (error: HttpErrorResponse) => alert(error.message)
+      );
     }
   }
 

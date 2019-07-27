@@ -21,35 +21,41 @@ export class OperationViewComponent implements OnInit {
       type: 'number'
     },
     {
-      key: 'CustomerName',
+      key: 'Customer',
       header: 'Customer',
       visible: true,
-      type: 'string',
-      width: 150
-    },
-    {
-      key: 'DriverName',
-      header: 'Driver',
-      visible: true,
-      width: 100,
       type: 'string'
     },
     {
-      key: 'StartPoint',
+      key: 'StartLocation',
       header: 'Start',
       visible: true,
       width: 100,
       type: 'string'
     },
     {
-      key: 'Destination',
+      key: 'DestinationLocation',
       header: 'Destination',
       visible: true,
       width: 100,
       type: 'string'
     },
     {
-      key: 'ScheduledDepature',
+      key: 'StartCountry',
+      header: 'Start',
+      visible: true,
+      width: 100,
+      type: 'string'
+    },
+    {
+      key: 'DestinationCountry',
+      header: 'Destination',
+      visible: true,
+      width: 100,
+      type: 'string'
+    },
+    {
+      key: 'ScheduleDeparture',
       header: 'Scheduled Departure',
       visible: true,
       width: 100,
@@ -63,36 +69,6 @@ export class OperationViewComponent implements OnInit {
       width: 100,
       type: 'date',
       format: 'yMd'
-    },
-    {
-      key: 'DepatureDate',
-      header: ' Departure',
-      visible: true,
-      width: 100,
-      type: 'date',
-      format: 'yMd'
-    },
-    {
-      key: 'ArrivalDate',
-      header: 'Arrival',
-      visible: true,
-      width: 100,
-      type: 'date',
-      format: 'yMd'
-    },
-    {
-      key: 'CargoType',
-      header: 'Cargo Type',
-      visible: true,
-      width: 100,
-      type: 'number'
-    },
-    {
-      key: 'CargoWeight',
-      header: 'Weight',
-      visible: true,
-      width: 100,
-      type: 'number'
     },
     {
       key: 'DateAdded',

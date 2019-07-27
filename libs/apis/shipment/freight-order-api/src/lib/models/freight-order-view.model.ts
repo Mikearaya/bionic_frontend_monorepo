@@ -1,0 +1,33 @@
+export interface FreightOrderViewModel {
+  Id: number;
+  OperationId: number | null;
+  CustomerName: string;
+  VehicleId: number;
+  VehiclePlate: string;
+  TrailorId: number | null;
+  TrailorPlate: string;
+  CargoTypeId: number;
+  CargoType: string;
+  Weight: number;
+  Distance: number;
+  Price: number;
+  DriverCost: number;
+  ArrShipper: Date | string | null;
+  LoadingCompleted: Date | string | null;
+  ArrConsignee: Date | string | null;
+  UnloadingCompleted: Date | string | null;
+  StatusId: number | null;
+  Status: string;
+  ShippedBy: string;
+  ConsigneeBy: string;
+  DriverId: number;
+  Driver: string;
+  DispatchCompletedOn: Date | string | null;
+  FreightOrderNo: string;
+  WayBillNo: string;
+  DispatcherName: string;
+  DateAdded: Date | string | null;
+  DateUpdated: Date | string | null;
+  StartPoint: string;
+  Destination: string;
+}

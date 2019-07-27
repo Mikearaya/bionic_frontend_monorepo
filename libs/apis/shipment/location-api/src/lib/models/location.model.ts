@@ -1,5 +1,11 @@
+export class LocationModelDto {
+  Locations: LocationModel[] = [];
+  DeletedIds?: number[] = [];
+}
+
 export interface LocationModel {
   Id?: number;
-  IsDomestic: boolean;
-  Name: string;
+  IsLocal: number;
+  LocationName: string;
+  Country: string;
 }

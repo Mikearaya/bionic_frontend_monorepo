@@ -38,16 +38,16 @@ export class CustomerPaymentViewComponent implements OnInit {
       header: 'Added',
       visible: false,
       width: 100,
-      format: 'dYm',
-      type: 'datetime'
+      format: 'yMd',
+      type: 'date'
     },
     {
       key: 'DateUpdated',
       header: 'Updated',
       visible: false,
       width: 100,
-      format: 'dYm',
-      type: 'datetime'
+      format: 'yMd',
+      type: 'date'
     }
   ];
 

@@ -16,6 +16,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     DataGridModule,
     ButtonModule,
     LocationApiModule,
+
     ReactiveFormsModule,
     FormButtonsModule,
 

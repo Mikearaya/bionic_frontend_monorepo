@@ -1594,6 +1594,142 @@
         }
       },
       "schematics": {}
+    },
+    "shipment-distance": {
+      "root": "libs/shipment/distance",
+      "sourceRoot": "libs/shipment/distance/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/distance/tsconfig.lib.json",
+            "project": "libs/shipment/distance/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/distance/tsconfig.lib.json",
+              "libs/shipment/distance/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/distance/src/test.ts",
+            "tsConfig": "libs/shipment/distance/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/distance/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-shipment-distance-api": {
+      "root": "libs/apis/shipment/distance-api",
+      "sourceRoot": "libs/apis/shipment/distance-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/distance-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/distance-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/distance-api/tsconfig.lib.json",
+              "libs/apis/shipment/distance-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/distance-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/distance-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/distance-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shipment-freight-order": {
+      "root": "libs/shipment/freight-order",
+      "sourceRoot": "libs/shipment/freight-order/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/freight-order/tsconfig.lib.json",
+            "project": "libs/shipment/freight-order/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/freight-order/tsconfig.lib.json",
+              "libs/shipment/freight-order/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/freight-order/src/test.ts",
+            "tsConfig": "libs/shipment/freight-order/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/freight-order/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-shipment-freight-order-api": {
+      "root": "libs/apis/shipment/freight-order-api",
+      "sourceRoot": "libs/apis/shipment/freight-order-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/freight-order-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/freight-order-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/freight-order-api/tsconfig.lib.json",
+              "libs/apis/shipment/freight-order-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/freight-order-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/freight-order-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/freight-order-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

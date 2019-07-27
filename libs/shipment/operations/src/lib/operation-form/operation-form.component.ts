@@ -9,8 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 import {
   OperationsApiService,
   OperationViewModel,
-  OperationModel
+  OperationModel,
+  OperationsDetailViewModel
 } from '@bionic/apis/shipment/operations-api';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'bionic-operation-form',
@@ -39,70 +41,71 @@ export class OperationFormComponent implements OnInit {
       this.isUpdate = true;
       this.operationApi
         .getOperationById(this.operationId)
-        .subscribe((data: OperationViewModel) => this.initializeForm(data));
+        .subscribe((data: OperationsDetailViewModel) =>
+          this.initializeForm(data)
+        );
     }
   }
 
   private createForm(): void {
     this.operationForm = this.formBuilder.group({
       CustomerId: ['', Validators.required],
-      DriverId: ['', Validators.required],
-      VehicleId: ['', Validators.required],
-      TrailorId: [''],
       StartPoint: ['', Validators.required],
       Destination: ['', Validators.required],
-      ScheduledDeparture: ['', Validators.required],
-      ScheduleArrival: ['', Validators.required],
-      ArrivalDate: [''],
-      DepartureDate: [''],
+      ScheduleDeparture: ['', Validators.required],
+      ScheduledArrival: ['', Validators.required],
       DocumentsRecievedOn: [''],
-      CargoWeight: ['', Validators.required],
-      CargoType: ['', Validators.required],
-      Distance: ['', Validators.required],
-      Price: ['', Validators.required],
-      DriverCost: ['', Validators.required],
-      LoadedBy: [''],
-      LoaderPaidBy: [''],
-      TransitNumber: [''],
-      WayBillNumber: [''],
       ExtraNote: ['']
     });
   }
 
-  private initializeForm(operation: OperationViewModel): void {
-    this.operationForm = this.formBuilder.group({
-      CustomerId: [operation.CustomerId, Validators.required],
-      DriverId: [operation.DriverId, Validators.required],
-      VehicleId: [operation.VehicleId, Validators.required],
-      TrailorId: [operation.TrailorId],
-      StartPoint: [operation.StartPoint, Validators.required],
-      Destination: [operation.Destination, Validators.required],
-      ScheduledDeparture: [operation.ScheduledDeparture, Validators.required],
-      ScheduleArrival: [operation.ScheduledArrival, Validators.required],
-      ArrivalDate: [operation.ArrivalDate],
-      DepartureDate: [operation.DepartureDate],
-      DocumentsRecievedOn: [operation.DocumentsRecievedOn],
-      CargoWeight: [operation.CargoWeight, Validators.required],
-      CargoType: [operation.CargoType, Validators.required],
-      Distance: [operation.Distance, Validators.required],
-      Price: [operation.Price, Validators.required],
-      DriverCost: [operation.DriverCost, Validators.required],
-      LoadedBy: [operation.LoadedBy],
-      LoaderPaidBy: [operation.LoaderPaidBy],
-      TransitNumber: [operation.TransitNumber],
-      WayBillNumber: [operation.WayBillNumber],
-      ExtraNote: [operation.ExtraNote]
-    });
+  private initializeForm(operation: OperationsDetailViewModel): void {
+    this.operationForm.patchValue(operation);
   }
 
   getFormControl(control: string): FormControl {
     return this.operationForm.get(control) as FormControl;
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    const formData = this.prepareFormData(this.operationForm);
+
+    if (this.isUpdate && formData) {
+      this.operationApi
+        .updateOperation(formData)
+        .subscribe(
+          () => alert('operation updated successfuly'),
+          (error: HttpErrorResponse) =>
+            alert('Unable to update operation try again later')
+        );
+    } else if (formData) {
+      this.operationApi.createOperation(formData).subscribe(
+        () => {
+          this.operationForm.reset();
+          alert('operation created successfuly');
+        },
+        (error: HttpErrorResponse) =>
+          alert('Unable to create operation try again later')
+      );
+    }
+  }
 
   private prepareFormData(form: FormGroup): OperationModel | null {
     if (form.valid) {
+      const operation: OperationModel = {
+        CustomerId: this.getFormControl('CustomerId').value,
+        StartPoint: this.getFormControl('StartPoint').value,
+        Destination: this.getFormControl('Destination').value,
+        ScheduleDeparture: this.getFormControl('ScheduledDeparture').value,
+        ScheduledArrival: this.getFormControl('ScheduleArrival').value,
+        DocumentsRecievedOn: this.getFormControl('DocumentsRecievedOn').value,
+        ExtraNote: this.getFormControl('ExtraNote').value
+      };
+
+      if (this.operationId) {
+        operation.Id = this.operationId;
+      }
+      return operation;
     } else {
       return null;
     }

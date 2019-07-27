@@ -1,0 +1,63 @@
+<form [formGroup]="distanceForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div
+      class="row"
+      *ngFor="
+        let distance of Distances.controls;
+        let i = index;
+        let last = last
+      "
+      [formGroup]="distance"
+    >
+      <div class="col-md-4 col-sm-12">
+        <label for="fromLocation">From</label>
+        <bionic-location-selector
+          id="formLocation"
+          name="fromLocation"
+          formControlName="FromLocation"
+        ></bionic-location-selector>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label for="toLocation">To</label>
+        <bionic-location-selector
+          id="fromLocation"
+          name="toLocation"
+          formControlName="ToLocation"
+        ></bionic-location-selector>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <label for="cost">Distance</label>
+        <input
+          type="number"
+          name="cost"
+          class="e-input"
+          id="cost"
+          formControlName="Cost"
+          placeholder="Distance"
+        />
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <button
+          *ngIf="last"
+          [disabled]="distance.invalid"
+          type="button"
+          ejs-button
+          cssClass="e-round e-info e-small"
+          iconCss="e-icons e-plus-icon"
+          (click)="addRow()"
+        ></button>
+        <button
+          id="remove-button"
+          type="button"
+          ejs-button
+          cssClass="e-round e-danger e-small"
+          iconCss="e-icons e-close"
+          (click)="removeRow(i)"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="distanceForm.invalid"
+  ></bionic-form-options>
+</form>

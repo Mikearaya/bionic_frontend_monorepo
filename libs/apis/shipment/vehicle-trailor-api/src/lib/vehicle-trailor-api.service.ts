@@ -69,7 +69,7 @@ export class VehicleTrailorApiService extends Subject<
     filterString: string = ''
   ): Observable<VehicleTrailorIndex[]> {
     return this.httpClient.get<VehicleTrailorIndex[]>(
-      `${this.apiUrl}/index?searchString=${filterString}`
+      `${this.apiUrl}/index?plateNumber=${filterString}`
     );
   }
 }

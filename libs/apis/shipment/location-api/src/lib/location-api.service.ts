@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { LocationViewModel } from './models/location-view.model';
-import { LocationModel } from './models/location.model';
+import { LocationModel, LocationModelDto } from './models/location.model';
 import { QueryString } from '@bionic/components/data-grid';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
@@ -23,12 +23,12 @@ export class LocationApiService extends Subject<DataStateChangeEventArgs> {
     return this.httpClient.get<LocationViewModel[]>(`${this.apiUrl}`);
   }
 
-  createLocation(location: LocationModel[]): Observable<LocationViewModel> {
+  createLocation(location: LocationModelDto): Observable<LocationViewModel> {
     return this.httpClient.post<LocationViewModel>(`${this.apiUrl}`, location);
   }
 
-  updateLocation(location: LocationModel): Observable<void> {
-    return this.httpClient.put<void>(`${this.apiUrl}/${location.Id}`, location);
+  updateLocation(location: LocationModelDto): Observable<void> {
+    return this.httpClient.put<void>(`${this.apiUrl}`, location);
   }
 
   deleteLocation(id: number): Observable<void> {

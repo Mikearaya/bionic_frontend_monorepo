@@ -51,13 +51,35 @@ export const NAVIGATION_LINKS = [
   },
   {
     id: '05',
-    name: 'Operations',
+    name: 'Customer Orders',
     expanded: false,
     enabled: true,
-    url: '/operations',
+    url: 'parent',
     selected: false,
-    icon: 'fas fa-file-contract',
-    privilage: 'canViewSettings'
+    icon: 'fas fa-cogs',
+    privilage: 'canViewSettings',
+    subChild: [
+      {
+        id: '05-01',
+        name: 'Operations',
+        expanded: false,
+        enabled: true,
+        url: '/operations',
+        selected: false,
+        icon: 'fas fa-file-contract',
+        privilage: 'canViewSettings'
+      },
+      {
+        id: '05-02',
+        name: 'Freight Orders',
+        expanded: false,
+        enabled: true,
+        url: '/freight-orders',
+        selected: false,
+        icon: 'fas fa-cash-register',
+        privilage: 'canViewSettings'
+      }
+    ]
   },
   {
     id: '06',
@@ -67,8 +89,7 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cash-register',
-    privilage: 'canViewSettings',
-    subChild: []
+    privilage: 'canViewSettings'
   },
   {
     id: '04',
@@ -120,6 +141,15 @@ export const NAVIGATION_LINKS = [
         id: '04-05',
         name: 'Bank Accounts',
         url: '/settings/bank-accounts',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewSystemLookups'
+      },
+      {
+        id: '04-06',
+        name: 'Distances',
+        url: '/settings/distances',
         expanded: false,
         enabled: true,
         selected: false,

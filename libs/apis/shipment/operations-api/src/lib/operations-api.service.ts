@@ -6,6 +6,8 @@ import { OperationModel } from './models/operation.model';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { QueryString } from '@bionic/components/data-grid';
 import { map } from 'rxjs/operators';
+import { OperationsDetailViewModel } from './models/operation-detail-view.model';
+import { OperationIndex } from './models/operation-index.model';
 
 @Injectable()
 export class OperationsApiService extends Subject<DataStateChangeEventArgs> {
@@ -15,8 +17,16 @@ export class OperationsApiService extends Subject<DataStateChangeEventArgs> {
     super();
   }
 
-  getOperationById(id: number): Observable<OperationViewModel> {
-    return this.httpClient.get<OperationViewModel>(`${this.apiUrl}/${id}`);
+  getOperationById(id: number): Observable<OperationsDetailViewModel> {
+    return this.httpClient.get<OperationsDetailViewModel>(
+      `${this.apiUrl}/${id}`
+    );
+  }
+
+  getOperationIndex(filterString: string = ''): Observable<OperationIndex[]> {
+    return this.httpClient.get<OperationIndex[]>(
+      `${this.apiUrl}/index?Name=${filterString}`
+    );
   }
 
   getOperationsList(): Observable<OperationViewModel[]> {

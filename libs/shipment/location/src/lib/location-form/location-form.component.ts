@@ -3,7 +3,9 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   LocationApiService,
-  LocationViewModel
+  LocationViewModel,
+  LocationModel,
+  LocationModelDto
 } from '@bionic/apis/shipment/location-api';
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,6 +20,7 @@ export class LocationFormComponent implements OnInit {
   public isUpdate = false;
   public locationId: any;
   public lookupFields: { value: string; text: string };
+  private deletedIds: number[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,16 +78,8 @@ export class LocationFormComponent implements OnInit {
       const confirmation = confirm('Are you sure you want to delete this item');
 
       if (confirmation) {
-        this.locationApi.deleteLocation(id.value).subscribe(
-          () => {
-            this.location.back();
-            alert('lookup deleted successfuly');
-          },
-          () =>
-            alert(
-              'Unknown error occured while attempting to delete system lookup'
-            )
-        );
+        this.deletedIds.push(id.value);
+        this.Locations.removeAt(index);
       }
     } else {
       this.Locations.removeAt(index);
@@ -93,9 +88,11 @@ export class LocationFormComponent implements OnInit {
 
   onSubmit() {
     // check if  current operation is update
-    if (!this.isUpdate) {
-      console.log(this.locationForm.value);
-      this.locationApi.createLocation(this.locationForm.value).subscribe(
+
+    const formData = this.prepareFormData(this.locationForm);
+
+    if (!this.isUpdate && formData) {
+      this.locationApi.createLocation(formData).subscribe(
         success => {
           alert('Locations Created Successfully');
           this.location.back(); // on success return back to where the user previously was
@@ -104,8 +101,8 @@ export class LocationFormComponent implements OnInit {
           alert(error.message); // on error show the error message
         }
       );
-    } else {
-      this.locationApi.updateLocation(this.locationForm.value).subscribe(
+    } else if (formData) {
+      this.locationApi.updateLocation(formData).subscribe(
         () => {
           alert('Locations Updated Successfully'); // on success return back to where the user previously was
           this.location.back();
@@ -117,10 +114,34 @@ export class LocationFormComponent implements OnInit {
     }
   }
 
+  private prepareFormData(form: FormGroup): LocationModelDto | null {
+    if (form.valid) {
+      const locations: LocationModelDto = new LocationModelDto();
+      this.Locations.controls.forEach(element => {
+        const location: LocationModel = {
+          LocationName: element.get('LocationName').value,
+          Country: element.get('Country').value,
+          IsLocal: element.get('IsLocal').value ? 1 : 0
+        };
+
+        if (element.get('Id')) {
+          location.Id = element.get('Id').value;
+        }
+        locations.Locations.push(location);
+      });
+
+      locations.DeletedIds = this.deletedIds;
+
+      return locations;
+    } else {
+      return null;
+    }
+  }
+
   addRow(): void {
     this.Locations.push(
       this.formBuilder.group({
-        IsLocal: ['', Validators.required],
+        IsLocal: [false, Validators.required],
         LocationName: ['', Validators.required],
         Country: ['']
       })

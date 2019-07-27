@@ -38,7 +38,7 @@ export class VehicleTrailorSelectorComponent implements ControlValueAccessor {
   public data;
 
   public trailors: any;
-  public fields: object = { value: 'Id', text: 'Name' };
+  public fields: object = { value: 'Id', text: 'PlateNumber' };
 
   public text = '';
 
@@ -76,7 +76,7 @@ export class VehicleTrailorSelectorComponent implements ControlValueAccessor {
           if (obj !== 0) {
             const data = this.trailors.filter(a => a.Id === obj);
             data.forEach(element => {
-              this.text = element.Name;
+              this.text = element.PlateNumber;
             });
           }
         }

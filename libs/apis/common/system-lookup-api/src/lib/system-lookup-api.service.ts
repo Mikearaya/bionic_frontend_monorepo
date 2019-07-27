@@ -13,9 +13,7 @@ import { catchError, map } from 'rxjs/operators';
 import { LookupsIndexModel } from './models/system-lookup-index.model';
 import { SystemLookupCategoriesModel } from './models/system-lookup-category.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SystemLookupApiService extends Subject<DataStateChangeEventArgs> {
   private apiUrl = `http://${window.location.hostname}:5000/api/system-lookups`;
   private query = new QueryString();

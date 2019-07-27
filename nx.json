@@ -136,6 +136,18 @@
     },
     "apis-shipment-vehicle-trailor-api": {
       "tags": ["shipment"]
+    },
+    "shipment-distance": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-distance-api": {
+      "tags": ["shipment"]
+    },
+    "shipment-freight-order": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-freight-order-api": {
+      "tags": ["shipment"]
     }
   }
 }

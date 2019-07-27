@@ -1,0 +1,217 @@
+<form [formGroup]="freightOrderForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="operation">Operation</label>
+        <bionic-operation-selector
+          id="operation"
+          name="operation"
+          formControlName="OperationId"
+        ></bionic-operation-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="cargoType"> Cargo Type</label>
+        <bionic-system-lookup-selector
+          id="cargoType"
+          name="cargoType"
+          [lookupType]="'cargo type'"
+          formControlName="CargoType"
+        ></bionic-system-lookup-selector>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="vehicle">Vehicle</label>
+        <bionic-vehicle-selector
+          id="vehicle"
+          name="vehicle"
+          formControlName="VehicleId"
+        ></bionic-vehicle-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="trailor"> Trailor</label>
+        <bionic-vehicle-trailor-selector
+          id="trailor"
+          name="trailor"
+          formControlName="TrailorId"
+        >
+        </bionic-vehicle-trailor-selector>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="weight">Weight</label>
+        <input
+          type="number"
+          name="weight"
+          id="weight"
+          formControlName="Weight"
+          placeholder="Weight"
+          class="e-input"
+        />
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <label for="Distance">Distance</label>
+        <input
+          type="number"
+          name="Distance"
+          id="Distance"
+          formControlName="Distance"
+          placeholder="Distance"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="arrShipper">Arrived @ Shipper</label>
+          <ejs-datetimepicker
+            id="arrShipper"
+            name="arrShipper"
+            formControlName="ArrShipper"
+          ></ejs-datetimepicker>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="loadingComplete">Loaded</label>
+          <ejs-datetimepicker
+            id="loadingComplete"
+            name="loadingComplete"
+            formControlName="LoadingCompleted"
+          ></ejs-datetimepicker>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="arrConsignee"> Arrived @ Consignee </label>
+          <ejs-datetimepicker
+            id="arrConsignee"
+            name="arrConsignee"
+            formControlName="ArrConsignee"
+          ></ejs-datetimepicker>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="UnloadingCompleted"> Unloaded </label>
+          <ejs-datetimepicker
+            id="UnloadingCompleted"
+            name="UnloadingCompleted"
+            formControlName="UnloadingCompleted"
+          ></ejs-datetimepicker>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="status">Status</label>
+        <bionic-system-lookup-selector
+          id="Status"
+          name="Status"
+          [lookupType]="'freight order status'"
+          formControlName="Status"
+        ></bionic-system-lookup-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="DispatchCompletedOn"> Completed On </label>
+        <ejs-datetimepicker
+          id="DispatchCompletedOn"
+          name="DispatchCompletedOn"
+          formControlName="DispatchCompletedOn"
+        ></ejs-datetimepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="shippedBy">Shipped By</label>
+        <input
+          type="text"
+          name="shippedBy"
+          class="e-input"
+          id="shippedBy"
+          formControlName="ShippedBy"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="ConsigneeBy">Consignee By</label>
+        <input
+          type="text"
+          name="ConsigneeBy"
+          class="e-input"
+          id="ConsigneeBy"
+          formControlName="ConsigneeBy"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="DriverId">Driver</label>
+        <bionic-drivers-selector
+          type="text"
+          name="DriverId"
+          id="DriverId"
+          formControlName="DriverId"
+        >
+        </bionic-drivers-selector>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <label for="DriverCost">Driver Cost</label>
+        <input
+          type="text"
+          name="DriverCost"
+          id="DriverCost"
+          formControlName="DriverCost"
+          class="e-input"
+        />
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <label for="DriverCost">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          formControlName="Price"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="freightOrderNo">Freight Order No</label>
+        <input
+          type="text"
+          name="FreightOrderNo"
+          id="FreightOrderNo"
+          formControlName="FreightOrderNo"
+          class="e-input"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="WayBillNo">Way Bill No</label>
+        <input
+          type="text"
+          name="WayBillNo"
+          id="WayBillNo"
+          formControlName="WayBillNo"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12"></div>
+      <div class="col-md-6 col-sm-12">
+        <label for="DispatcherName">Dispatcher Name</label>
+        <input
+          type="text"
+          name="DispatcherName"
+          id="DispatcherName"
+          formControlName="DispatcherName"
+          placeholder="Dispatcher Name"
+          class="e-input"
+        />
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="freightOrderForm.invalid"
+  ></bionic-form-options>
+</form>

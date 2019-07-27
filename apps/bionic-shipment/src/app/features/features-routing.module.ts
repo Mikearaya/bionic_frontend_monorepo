@@ -34,6 +34,15 @@ const routes: Routes = [
         }
       },
       {
+        path: 'freight-orders',
+        loadChildren: '@bionic/shipment/freight-order#FreightOrderModule',
+        data: {
+          breadCrum: 'Freight Orders',
+          title: 'Freight Orders',
+          claimType: 'canViewFreightOrders'
+        }
+      },
+      {
         path: 'vehicles',
         loadChildren: '@bionic/rent/vehicles#VehiclesModule',
         data: { breadCrum: 'Vehicle', claimType: 'canViewVehicles' },
@@ -59,6 +68,14 @@ const routes: Routes = [
               claimType: 'canViewSystemLookups'
             },
             canLoad: [AuthorizationGuard]
+          },
+          {
+            path: 'distances',
+            loadChildren: '@bionic/shipment/distance#DistanceModule',
+            data: {
+              breadCrum: 'Distances',
+              claimType: 'canViewSystemLookups'
+            }
           },
           {
             path: 'bank-accounts',

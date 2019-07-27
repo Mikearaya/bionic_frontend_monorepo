@@ -117,6 +117,16 @@
       ],
       "@bionic/apis/shipment/vehicle-trailor-api": [
         "libs/apis/shipment/vehicle-trailor-api/src/index.ts"
+      ],
+      "@bionic/shipment/distance": ["libs/shipment/distance/src/index.ts"],
+      "@bionic/apis/shipment/distance-api": [
+        "libs/apis/shipment/distance-api/src/index.ts"
+      ],
+      "@bionic/shipment/freight-order": [
+        "libs/shipment/freight-order/src/index.ts"
+      ],
+      "@bionic/apis/shipment/freight-order-api": [
+        "libs/apis/shipment/freight-order-api/src/index.ts"
       ]
     }
   },

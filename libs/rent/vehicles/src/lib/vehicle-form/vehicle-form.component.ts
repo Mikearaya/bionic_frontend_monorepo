@@ -168,12 +168,13 @@ export class VehicleFormComponent implements OnInit {
         (error: HttpErrorResponse) => alert(error.message)
       );
     } else if (vehicleData) {
-      this.vehicleApi
-        .addVehicle(vehicleData)
-        .subscribe(
-          (vehicle: VehicleViewModel) => alert('Vehicle added Successfuly'),
-          (error: HttpErrorResponse) => alert(error.message)
-        );
+      this.vehicleApi.addVehicle(vehicleData).subscribe(
+        (vehicle: VehicleViewModel) => {
+          this.vehicleForm.reset();
+          alert('Vehicle added Successfuly');
+        },
+        (error: HttpErrorResponse) => alert(error.message)
+      );
     }
   }
 
