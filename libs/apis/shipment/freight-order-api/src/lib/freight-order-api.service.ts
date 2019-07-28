@@ -6,6 +6,7 @@ import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
 import { FreightOrderViewModel } from './models/freight-order-view.model';
 import { FreightOrder } from './models/freight-order.model';
+import { FreightOrderIndex } from './models/freight-order-index.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,14 @@ export class FreightOrderApiService extends Subject<DataStateChangeEventArgs> {
 
   getFreightOrderById(id: number): Observable<FreightOrderViewModel> {
     return this.httpClient.get<FreightOrderViewModel>(`${this.apiUrl}/${id}`);
+  }
+
+  getFreightOrderIndex(
+    searchString: string = ''
+  ): Observable<FreightOrderIndex[]> {
+    return this.httpClient.get<FreightOrderIndex[]>(
+      `${this.apiUrl}/index?Name=${searchString}`
+    );
   }
 
   getFreightOrdersList(): Observable<FreightOrderViewModel[]> {

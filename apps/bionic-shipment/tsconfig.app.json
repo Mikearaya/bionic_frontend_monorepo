@@ -33,6 +33,10 @@
 
     "../../libs/shipment/distance/src/index.ts",
 
-    "../../libs/shipment/freight-order/src/index.ts"
+    "../../libs/shipment/freight-order/src/index.ts",
+
+    "../../libs/shipment/freight-order-payment-request/src/index.ts",
+
+    "../../libs/shipment/freight-order-payment-recieving/src/index.ts"
   ]
 }

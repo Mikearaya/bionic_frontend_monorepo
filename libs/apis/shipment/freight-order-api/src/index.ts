@@ -6,3 +6,4 @@ export {
 } from './lib/models/freight-order-summary.model';
 
 export { FreightOrderApiService } from './lib/freight-order-api.service';
+export { FreightOrderIndex } from './lib/models/freight-order-index.model';

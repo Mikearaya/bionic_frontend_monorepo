@@ -1,0 +1,62 @@
+<form [formGroup]="paymentRecievingForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="requestId">Payment Request Id</label>
+        <input
+          type="text"
+          name="requestId"
+          id="requestId"
+          formControlName="Id"
+          placeholder="Reuest Id"
+          class="e-input"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="recievedAmount">Recieved Amount</label>
+        <input
+          type="number"
+          name="recievedAmount"
+          id="recievedAmount"
+          formControlName="RecievedAmount"
+          class="e-input"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="recievedDate">Recieved On</label>
+        <ejs-datetimepicker
+          id="recievedDate"
+          name="recievedDate"
+          formControlName="RecievedDate"
+        ></ejs-datetimepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="depositedTo">Deposited To</label>
+
+        <bionic-bank-account-selector
+          id="depositTo"
+          name="depositedTo"
+          formControlName="DepositedTo"
+        ></bionic-bank-account-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="checkNo">Check No</label>
+        <input
+          type="text"
+          name="checkNo"
+          class="e-input"
+          id="checkNo"
+          formControlName="CheckNo"
+          placeholder="Check No"
+        />
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="paymentRecievingForm.invalid"
+  ></bionic-form-options>
+</form>

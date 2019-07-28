@@ -1730,6 +1730,142 @@
         }
       },
       "schematics": {}
+    },
+    "shipment-freight-order-payment-request": {
+      "root": "libs/shipment/freight-order-payment-request",
+      "sourceRoot": "libs/shipment/freight-order-payment-request/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/freight-order-payment-request/tsconfig.lib.json",
+            "project": "libs/shipment/freight-order-payment-request/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/freight-order-payment-request/tsconfig.lib.json",
+              "libs/shipment/freight-order-payment-request/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/freight-order-payment-request/src/test.ts",
+            "tsConfig": "libs/shipment/freight-order-payment-request/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/freight-order-payment-request/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-shipment-freight-order-payment-request-api": {
+      "root": "libs/apis/shipment/freight-order-payment-request-api",
+      "sourceRoot": "libs/apis/shipment/freight-order-payment-request-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/freight-order-payment-request-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/freight-order-payment-request-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/freight-order-payment-request-api/tsconfig.lib.json",
+              "libs/apis/shipment/freight-order-payment-request-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/freight-order-payment-request-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/freight-order-payment-request-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/freight-order-payment-request-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shipment-freight-order-payment-recieving": {
+      "root": "libs/shipment/freight-order-payment-recieving",
+      "sourceRoot": "libs/shipment/freight-order-payment-recieving/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/freight-order-payment-recieving/tsconfig.lib.json",
+            "project": "libs/shipment/freight-order-payment-recieving/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/freight-order-payment-recieving/tsconfig.lib.json",
+              "libs/shipment/freight-order-payment-recieving/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/freight-order-payment-recieving/src/test.ts",
+            "tsConfig": "libs/shipment/freight-order-payment-recieving/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/freight-order-payment-recieving/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-shipment-freight-order-payment-recieving-api": {
+      "root": "libs/apis/shipment/freight-order-payment-recieving-api",
+      "sourceRoot": "libs/apis/shipment/freight-order-payment-recieving-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/shipment/freight-order-payment-recieving-api/tsconfig.lib.json",
+            "project": "libs/apis/shipment/freight-order-payment-recieving-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/shipment/freight-order-payment-recieving-api/tsconfig.lib.json",
+              "libs/apis/shipment/freight-order-payment-recieving-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/shipment/freight-order-payment-recieving-api/src/test.ts",
+            "tsConfig": "libs/apis/shipment/freight-order-payment-recieving-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/shipment/freight-order-payment-recieving-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

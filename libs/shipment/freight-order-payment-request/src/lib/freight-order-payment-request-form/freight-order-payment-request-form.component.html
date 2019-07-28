@@ -1,0 +1,40 @@
+<form [formGroup]="paymentRequestForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <label for="freightOrder">Freight Order</label>
+
+        <bionic-freight-order-selector
+          name="freightOrder"
+          id="freightOrder"
+          formControlName="FreightOrderId"
+        ></bionic-freight-order-selector>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="requested">Requested On</label>
+        <ejs-datetimepicker
+          type="text"
+          name="requested"
+          id="requested"
+          formControlName="RequestedDate"
+        >
+        </ejs-datetimepicker>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="scheduledFor">Scheduled Form</label>
+        <ejs-datetimepicker
+          type="text"
+          name="scheduledFor"
+          id="scheduledFor"
+          formControlName="ScheduledDate"
+        >
+        </ejs-datetimepicker>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="paymentRequestForm.invalid"
+  ></bionic-form-options>
+</form>

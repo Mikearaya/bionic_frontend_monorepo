@@ -127,6 +127,18 @@
       ],
       "@bionic/apis/shipment/freight-order-api": [
         "libs/apis/shipment/freight-order-api/src/index.ts"
+      ],
+      "@bionic/shipment/freight-order-payment-request": [
+        "libs/shipment/freight-order-payment-request/src/index.ts"
+      ],
+      "@bionic/apis/shipment/freight-order-payment-request-api": [
+        "libs/apis/shipment/freight-order-payment-request-api/src/index.ts"
+      ],
+      "@bionic/shipment/freight-order-payment-recieving": [
+        "libs/shipment/freight-order-payment-recieving/src/index.ts"
+      ],
+      "@bionic/apis/shipment/freight-order-payment-recieving-api": [
+        "libs/apis/shipment/freight-order-payment-recieving-api/src/index.ts"
       ]
     }
   },

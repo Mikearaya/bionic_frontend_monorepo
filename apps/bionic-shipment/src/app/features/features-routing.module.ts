@@ -54,6 +54,26 @@ const routes: Routes = [
         data: { breadCrum: 'Trailors', claimType: 'canViewVehicles' }
       },
       {
+        path: 'payments',
+        data: {
+          breadCrum: 'Payments'
+        },
+        children: [
+          {
+            path: 'requests',
+            loadChildren:
+              '@bionic/shipment/freight-order-payment-request#FreightOrderPaymentRequestModule',
+            data: { breadCrum: 'Requests' }
+          },
+          {
+            path: 'recievings',
+            loadChildren:
+              '@bionic/shipment/freight-order-payment-recieving#FreightOrderPaymentRecievingModule',
+            data: { breadCrum: 'Requests' }
+          }
+        ]
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',

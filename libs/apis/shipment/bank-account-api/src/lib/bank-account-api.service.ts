@@ -63,7 +63,7 @@ export class BankAccountApiService extends Subject<DataStateChangeEventArgs> {
     filterString: string = ''
   ): Observable<BankAccountIndex[]> {
     return this.httpClient.get<BankAccountIndex[]>(
-      `${this.apiUrl}/index?searchString=${filterString}`
+      `${this.apiUrl}/index?name=${filterString}`
     );
   }
 }

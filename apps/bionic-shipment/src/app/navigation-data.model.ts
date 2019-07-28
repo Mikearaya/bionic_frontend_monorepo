@@ -89,7 +89,27 @@ export const NAVIGATION_LINKS = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-cash-register',
-    privilage: 'canViewSettings'
+    privilage: 'canViewSettings',
+    subChild: [
+      {
+        id: '06-01',
+        name: 'Payment Requests',
+        url: '/payments/requests',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewSystemLookups'
+      },
+      {
+        id: '06-02',
+        name: 'Payment Recievings',
+        url: '/payments/recievings',
+        expanded: false,
+        enabled: true,
+        selected: false,
+        privilage: 'canViewSystemLookups'
+      }
+    ]
   },
   {
     id: '04',

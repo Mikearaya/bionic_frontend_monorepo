@@ -148,6 +148,18 @@
     },
     "apis-shipment-freight-order-api": {
       "tags": ["shipment"]
+    },
+    "shipment-freight-order-payment-request": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-freight-order-payment-request-api": {
+      "tags": ["shipment"]
+    },
+    "shipment-freight-order-payment-recieving": {
+      "tags": ["shipment"]
+    },
+    "apis-shipment-freight-order-payment-recieving-api": {
+      "tags": ["shipment"]
     }
   }
 }
