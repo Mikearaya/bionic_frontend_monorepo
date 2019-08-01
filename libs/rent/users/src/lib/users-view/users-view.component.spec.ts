@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SystemRoleViewComponent } from './system-role-view.component';
+import { UsersViewComponent } from './users-view.component';
 
-describe('SystemRoleViewComponent', () => {
-  let component: SystemRoleViewComponent;
-  let fixture: ComponentFixture<SystemRoleViewComponent>;
+describe('UsersViewComponent', () => {
+  let component: UsersViewComponent;
+  let fixture: ComponentFixture<UsersViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SystemRoleViewComponent ]
+      declarations: [ UsersViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SystemRoleViewComponent);
+    fixture = TestBed.createComponent(UsersViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

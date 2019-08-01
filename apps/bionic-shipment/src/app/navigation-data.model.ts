@@ -151,7 +151,7 @@ export const NAVIGATION_LINKS = [
       {
         id: '04-04',
         name: 'Users',
-        url: '/settings/system-users',
+        url: '/settings/users',
         expanded: false,
         enabled: true,
         selected: false,

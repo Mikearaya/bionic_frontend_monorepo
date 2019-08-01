@@ -10,11 +10,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'bionic-role-form',
   template: `
-    kksk
     <bionic-system-role-form
       [RolesList]="roles"
       [Role]="currentRole"
-      (submitted)="onSubmit()"
+      (submitted)="onSubmit($event)"
     ></bionic-system-role-form>
   `,
   styleUrls: ['./role-form.component.css']
@@ -30,7 +29,6 @@ export class RoleFormComponent implements OnInit {
     private roleApi: SystemRoleApiService
   ) {
     this.roles = this.roleApi.Roles;
-    console.log(this.roles);
   }
 
   ngOnInit() {

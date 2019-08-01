@@ -1900,6 +1900,108 @@
         }
       },
       "schematics": {}
+    },
+    "rent-roles": {
+      "root": "libs/rent/roles",
+      "sourceRoot": "libs/rent/roles/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/roles/tsconfig.lib.json",
+            "project": "libs/rent/roles/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/roles/tsconfig.lib.json",
+              "libs/rent/roles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/roles/src/test.ts",
+            "tsConfig": "libs/rent/roles/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/roles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shipment-users": {
+      "root": "libs/shipment/users",
+      "sourceRoot": "libs/shipment/users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shipment/users/tsconfig.lib.json",
+            "project": "libs/shipment/users/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/users/tsconfig.lib.json",
+              "libs/shipment/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/users/src/test.ts",
+            "tsConfig": "libs/shipment/users/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-users": {
+      "root": "libs/rent/users",
+      "sourceRoot": "libs/rent/users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/rent/users/tsconfig.lib.json",
+            "project": "libs/rent/users/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/users/tsconfig.lib.json",
+              "libs/rent/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/users/src/test.ts",
+            "tsConfig": "libs/rent/users/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

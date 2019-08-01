@@ -163,6 +163,15 @@
     },
     "shipment-roles": {
       "tags": ["shipment"]
+    },
+    "rent-roles": {
+      "tags": ["rent"]
+    },
+    "shipment-users": {
+      "tags": ["shipment"]
+    },
+    "rent-users": {
+      "tags": ["rent"]
     }
   }
 }

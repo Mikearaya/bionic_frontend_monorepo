@@ -10,14 +10,6 @@ export const ROLES: SystemsRoles[] = [
     others: []
   },
   {
-    function: 'Drivers',
-    view: 'canViewDrivers',
-    add: 'canAddDrivers',
-    edit: 'canEditDrivers',
-    delete: 'canDeleteDrivers',
-    others: []
-  },
-  {
     function: 'Trailors',
     view: 'canViewTrailors',
     add: 'canAddTrailors',
@@ -34,6 +26,14 @@ export const ROLES: SystemsRoles[] = [
     others: []
   },
   {
+    function: 'Drivers',
+    view: 'canViewDrivers',
+    add: 'canAddDrivers',
+    edit: 'canEditDrivers',
+    delete: 'canDeleteDrivers',
+    others: []
+  },
+  {
     function: 'Operations',
     view: 'canViewOperations',
     add: 'canAddOperations',
@@ -42,27 +42,19 @@ export const ROLES: SystemsRoles[] = [
     others: []
   },
   {
-    function: 'Freight Orders',
-    view: 'canViewFreightOrders',
-    add: 'canAddFreightOrders',
-    edit: 'canEditFreightOrders',
-    delete: 'canDeleteFreightOrders',
-    others: []
-  },
-  {
-    function: 'Payment Recievings',
-    view: 'canViewPaymentRequests',
-    add: 'canAddPaymentRequests',
-    edit: 'canDeletePaymentRequests',
-    delete: 'canDeletePaymentRequests',
-    others: []
-  },
-  {
-    function: 'Payment Request',
+    function: 'Payment Requests',
     view: 'canViewPaymentRequests',
     add: 'canAddPaymentRequests',
     edit: 'canEditPaymentRequests',
     delete: 'canDeletePaymentRequests',
+    others: []
+  },
+  {
+    function: 'Payment Recievings',
+    view: 'canViewPaymentRecievings',
+    add: 'canAddPaymentRecievings',
+    edit: 'canEditPaymentRecievings',
+    delete: 'canDeletePaymentRecievings',
     others: []
   },
   {
@@ -90,19 +82,19 @@ export const ROLES: SystemsRoles[] = [
     others: []
   },
   {
-    function: 'Locations',
-    view: 'canViewLocations',
-    add: 'canAddLocations',
-    edit: 'canEditLocations',
-    delete: 'canDeleteLocations',
-    others: []
-  },
-  {
     function: 'Bank Accounts',
     view: 'canViewBankAccounts',
     add: 'canAddBankAccounts',
     edit: 'canEditBankAccounts',
     delete: 'canDeleteBankAccounts',
+    others: []
+  },
+  {
+    function: 'Locations',
+    view: 'canViewLocations',
+    add: 'canAddLocations',
+    edit: 'canEditLocations',
+    delete: 'canDeleteLocations',
     others: []
   },
   {

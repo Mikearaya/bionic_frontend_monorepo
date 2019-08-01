@@ -7,5 +7,6 @@ import { SystemsRoles } from './models/role.model';
 })
 export class RoleOptionsService {
   ROLES: SystemsRoles[] = [];
+  apiUrl = 'system-roles';
   constructor() {}
 }

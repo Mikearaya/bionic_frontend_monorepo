@@ -15,46 +15,58 @@ import { RoleOptionsService } from './role-options.service';
   providedIn: 'root'
 })
 export class SystemRoleApiService extends Subject<DataStateChangeEventArgs> {
-  private apiUrl = `http://${window.location.hostname}:5000/api/system-roles`;
+  private apiUrl = `http://${window.location.hostname}:5000/api`;
   Roles: SystemsRoles[] = [];
+  private controller: string;
 
   constructor(
     private httpClient: HttpClient,
     private roleOptions: RoleOptionsService
   ) {
     super();
-    this.Roles = roleOptions.ROLES;
+    this.Roles = this.roleOptions.ROLES;
+
+    this.controller = roleOptions.apiUrl;
   }
 
   getSystemRoleById(roleId: string): Observable<SystemRoleModel> {
-    return this.httpClient.get<SystemRoleModel>(`${this.apiUrl}/${roleId}`);
+    return this.httpClient.get<SystemRoleModel>(
+      `${this.apiUrl}/${this.controller}${roleId}`
+    );
   }
 
   getAllSystemRoles(): Observable<RoleViewModel[]> {
-    return this.httpClient.get<RoleViewModel[]>(`${this.apiUrl}`);
+    return this.httpClient.get<RoleViewModel[]>(
+      `${this.apiUrl}/${this.controller}`
+    );
   }
 
   getSystemRolesIndex(
     searchString: string = ''
   ): Observable<SystemRoleIndexModel[]> {
     return this.httpClient.get<SystemRoleIndexModel[]>(
-      `${this.apiUrl}/index?searchString=${searchString}`
+      `${this.apiUrl}/${this.controller}/index?searchString=${searchString}`
     );
   }
 
   createSystemRole(newRole: SystemRoleModel): Observable<SystemRoleModel> {
-    return this.httpClient.post<SystemRoleModel>(`${this.apiUrl}`, newRole);
+    return this.httpClient.post<SystemRoleModel>(
+      `${this.apiUrl}/${this.controller}`,
+      newRole
+    );
   }
 
   updateSystemRole(updatedRole: SystemRoleModel): Observable<void> {
     return this.httpClient.put<void>(
-      `${this.apiUrl}/${updatedRole.Id}`,
+      `${this.apiUrl}/${this.controller}/${updatedRole.Id}`,
       updatedRole
     );
   }
 
   deleteSystemRole(roleId: string): Observable<void> {
-    return this.httpClient.delete<void>(`${this.apiUrl}/${roleId}`);
+    return this.httpClient.delete<void>(
+      `${this.apiUrl}/${this.controller}/${roleId}`
+    );
   }
 
   execute(state: QueryString): void {
@@ -63,7 +75,7 @@ export class SystemRoleApiService extends Subject<DataStateChangeEventArgs> {
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/filter`, state)
+      .post(`${this.apiUrl}/${this.controller}/filter`, state)
       .pipe(
         map(
           (response: any) =>

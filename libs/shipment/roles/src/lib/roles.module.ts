@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 import { RoleFormComponent } from './role-form/role-form.component';
 import { RoleViewComponent } from './role-view/role-view.component';
 import { SystemRolesApiModule } from '@bionic/apis/common/system-roles-api';
-import { ROLES } from './system-roles.model';
 import { SystemRoleModule } from '@bionic/components/system-role';
 import { DataGridModule } from '@bionic/components/data-grid';
+import { ROLES } from './system-role.model';
 @NgModule({
   imports: [
     CommonModule,

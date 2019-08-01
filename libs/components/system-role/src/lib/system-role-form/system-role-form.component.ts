@@ -1,29 +1,14 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  Output,
-  EventEmitter,
-  Input
-} from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   FormControl,
   Validators
 } from '@angular/forms';
-import { TreeViewComponent } from '@syncfusion/ej2-angular-navigations';
-import { NodeClickEventArgs } from '@syncfusion/ej2-angular-navigations';
-import { ActivatedRoute } from '@angular/router';
 import {
-  SystemRoleApiService,
   SystemRoleModel,
   SystemsRoles
 } from '@bionic/apis/common/system-roles-api';
-import { HttpErrorResponse } from '@angular/common/http';
-
-import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'bionic-system-role-form',
@@ -43,7 +28,7 @@ export class SystemRoleFormComponent implements OnInit {
   public Role: SystemRoleModel;
 
   @Output()
-  public submitted: EventEmitter<any> = new EventEmitter();
+  public submitted: EventEmitter<SystemRoleModel> = new EventEmitter();
 
   public field: {
     dataSource: Object[];
@@ -53,11 +38,7 @@ export class SystemRoleFormComponent implements OnInit {
   };
 
   selectedRoles: string[] = [];
-  constructor(
-    private roleApi: SystemRoleApiService,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
-  ) {
+  constructor(private formBuilder: FormBuilder) {
     this.createForm();
   }
 
@@ -93,9 +74,8 @@ export class SystemRoleFormComponent implements OnInit {
 
   onSubmit(): void {
     const role = this.prepareFormData();
-    if (role) {
-      this.submitted.emit(role);
-    }
+
+    this.submitted.emit(role);
   }
 
   selectAll(): void {

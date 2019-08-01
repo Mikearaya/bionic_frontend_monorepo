@@ -113,8 +113,8 @@ const routes: Routes = [
             canLoad: [AuthorizationGuard]
           },
           {
-            path: 'system-users',
-            loadChildren: '@bionic/components/system-users#SystemUsersModule',
+            path: 'users',
+            loadChildren: '@bionic/shipment/users#UsersModule',
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },

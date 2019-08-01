@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,18 +20,23 @@ import {
   SystemUserModel
 } from '@bionic/apis/common/system-users-api';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SystemRoleApiService } from '@bionic/apis/common/system-roles-api';
 
 @Component({
   selector: 'bionic-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnChanges {
   public userProfileForm: FormGroup;
   private userId: string;
+
+  @Output()
+  public submitted: EventEmitter<SystemUserModel> = new EventEmitter();
+
+  @Input()
+  public user: SystemUserViewModel;
   isUpdate: boolean;
-  rolesList: any;
+
   roleFields: { text: string; value: string };
 
   constructor(
@@ -35,74 +48,47 @@ export class UserFormComponent implements OnInit {
     this.roleFields = { text: 'name', value: 'id' };
   }
 
-  ngOnInit() {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
-
-    if (this.userId) {
-      this.isUpdate = true;
-      this.userApi
-        .getUserById(this.userId)
-        .subscribe((data: SystemUserViewModel) => this.initializeForm(data));
+  ngOnChanges() {
+    if (this.user) {
+      this.userProfileForm.patchValue(this.user);
     }
   }
 
   createForm(): void {
     this.userProfileForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      fullName: [''],
-      email: ['', Validators.email],
-      phoneNumber: [''],
-      roleId: ['']
-    });
-  }
-
-  initializeForm(user: SystemUserViewModel): void {
-    this.userProfileForm = this.formBuilder.group({
-      userName: [user.UserName, Validators.required],
-      fullName: [],
-      email: [user.Email, Validators.email],
-      phoneNumber: [user.PhoneNumber],
-      roleId: [user.RoleId]
+      UserName: ['', Validators.required],
+      FullName: [''],
+      Email: ['', Validators.email],
+      PhoneNumber: [''],
+      RoleId: ['']
     });
   }
 
   get userName(): FormControl {
-    return this.userProfileForm.get('userName') as FormControl;
+    return this.userProfileForm.get('UserName') as FormControl;
   }
 
   get fullName(): FormControl {
-    return this.userProfileForm.get('fullName') as FormControl;
+    return this.userProfileForm.get('FullName') as FormControl;
   }
 
   get email(): FormControl {
-    return this.userProfileForm.get('email') as FormControl;
+    return this.userProfileForm.get('Email') as FormControl;
   }
 
   get phoneNumber(): FormControl {
-    return this.userProfileForm.get('phoneNumber') as FormControl;
+    return this.userProfileForm.get('PhoneNumber') as FormControl;
   }
 
   get roleId(): FormControl {
-    return this.userProfileForm.get('roleId') as FormControl;
+    return this.userProfileForm.get('RoleId') as FormControl;
   }
 
   onSubmit(): void {
     const formData = this.prepareFormData();
 
-    if (formData && this.isUpdate) {
-      this.userApi.updateUser(formData).subscribe(
-        () => alert('Profile updated successfuly'),
-        (error: HttpErrorResponse) => {
-          alert('Failed while attemptin to update profile, Try again later');
-        }
-      );
-    } else if (formData) {
-      this.userApi.createUser(formData).subscribe(
-        () => alert('Profile Created successfuly'),
-        (error: HttpErrorResponse) => {
-          alert('Failed while attemptin to update profile, Try again later');
-        }
-      );
+    if (formData) {
+      this.submitted.emit(formData);
     }
   }
 

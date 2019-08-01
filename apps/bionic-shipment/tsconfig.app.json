@@ -13,8 +13,6 @@
 
     "../../libs/components/system-lookup/src/index.ts",
 
-    "../../libs/components/system-users/src/index.ts",
-
     "../../libs/components/authentication/src/index.ts",
 
     "../../libs/shipment/location/src/index.ts",
@@ -37,6 +35,8 @@
 
     "../../libs/shipment/freight-order-payment-recieving/src/index.ts",
 
-    "../../libs/shipment/roles/src/index.ts"
+    "../../libs/shipment/roles/src/index.ts",
+
+    "../../libs/shipment/users/src/index.ts"
   ]
 }

@@ -23,12 +23,12 @@
 
     "../../libs/rent/reports/src/index.ts",
 
-    "../../libs/components/system-role/src/index.ts",
-
-    "../../libs/components/system-users/src/index.ts",
-
     "../../libs/rent/rent-dash-board/src/index.ts",
 
-    "../../libs/components/authentication/src/index.ts"
+    "../../libs/components/authentication/src/index.ts",
+
+    "../../libs/rent/roles/src/index.ts",
+
+    "../../libs/rent/users/src/index.ts"
   ]
 }

@@ -8,7 +8,7 @@ import { SystemsRoles } from './models/role.model';
 
 // NOTE: This value has to be exported otherwise the AoT compiler won't see it.
 export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<RoleModuleOptions>(
-  'forRoot() MyService configuration.'
+  'forRoot() RoleService configuration.'
 );
 
 @NgModule({
@@ -43,6 +43,7 @@ export class SystemRolesApiModule {
 
 export interface RoleModuleOptions {
   ROLES: SystemsRoles[];
+  apiUrl?: string;
 }
 
 export function provideRoleModuleOptions(
@@ -57,6 +58,10 @@ export function provideRoleModuleOptions(
       roleServiceOptions.ROLES = options.ROLES;
     }
     roleServiceOptions.ROLES = options.ROLES;
+
+    if (typeof options.apiUrl === 'string') {
+      roleServiceOptions.apiUrl = options.apiUrl;
+    }
   }
 
   return roleServiceOptions;

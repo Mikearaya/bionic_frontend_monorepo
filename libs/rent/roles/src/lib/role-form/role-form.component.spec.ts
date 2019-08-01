@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserViewComponent } from './user-view.component';
+import { RoleFormComponent } from './role-form.component';
 
-describe('UserViewComponent', () => {
-  let component: UserViewComponent;
-  let fixture: ComponentFixture<UserViewComponent>;
+describe('RoleFormComponent', () => {
+  let component: RoleFormComponent;
+  let fixture: ComponentFixture<RoleFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserViewComponent ]
+      declarations: [ RoleFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserViewComponent);
+    fixture = TestBed.createComponent(RoleFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

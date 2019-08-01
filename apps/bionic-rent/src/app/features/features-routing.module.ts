@@ -72,14 +72,14 @@ const routes: Routes = [
             canLoad: [AuthorizationGuard]
           },
           {
-            path: 'system-roles',
-            loadChildren: '@bionic/components/system-role#SystemRoleModule',
+            path: 'roles',
+            loadChildren: '@bionic/rent/roles#RolesModule',
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
             canLoad: [AuthorizationGuard]
           },
           {
-            path: 'system-users',
-            loadChildren: '@bionic/components/system-users#SystemUsersModule',
+            path: 'users',
+            loadChildren: '@bionic/rent/users#UsersModule',
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },
