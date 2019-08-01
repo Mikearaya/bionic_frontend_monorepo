@@ -142,7 +142,7 @@ export const NAVIGATION_LINKS = [
       {
         id: '04-03',
         name: 'Role',
-        url: '/settings/system-roles',
+        url: '/settings/roles',
         expanded: false,
         enabled: true,
         selected: false,

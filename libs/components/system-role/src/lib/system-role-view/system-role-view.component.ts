@@ -1,8 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import {
-  GridComponent,
-  DataStateChangeEventArgs
-} from '@syncfusion/ej2-angular-grids';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { systemRoleColumnBluePrint } from './system-role-view-column.model';
 import {

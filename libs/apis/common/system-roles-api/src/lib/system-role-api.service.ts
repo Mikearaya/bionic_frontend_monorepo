@@ -8,13 +8,22 @@ import { SystemRoleIndexModel } from './models/system-role-index.model';
 import { QueryString } from '@bionic/components/data-grid';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
+import { SystemsRoles } from './models/role.model';
+import { RoleOptionsService } from './role-options.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SystemRoleApiService extends Subject<DataStateChangeEventArgs> {
   private apiUrl = `http://${window.location.hostname}:5000/api/system-roles`;
+  Roles: SystemsRoles[] = [];
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private roleOptions: RoleOptionsService
+  ) {
     super();
+    this.Roles = roleOptions.ROLES;
   }
 
   getSystemRoleById(roleId: string): Observable<SystemRoleModel> {

@@ -105,9 +105,10 @@ const routes: Routes = [
               claimType: 'canViewBankAccounts'
             }
           },
+
           {
-            path: 'system-roles',
-            loadChildren: '@bionic/components/system-role#SystemRoleModule',
+            path: 'roles',
+            loadChildren: '@bionic/shipment/roles#RolesModule',
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
             canLoad: [AuthorizationGuard]
           },

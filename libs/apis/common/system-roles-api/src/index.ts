@@ -4,3 +4,5 @@ export { RoleClaimModel } from './lib/models/system-role-claims.model';
 export { SystemRoleIndexModel } from './lib/models/system-role-index.model';
 export { SystemRoleModel } from './lib/models/system-role.model';
 export { RoleViewModel } from './lib/models/system-role-view.model';
+export { RoleOptionsService } from './lib/role-options.service';
+export { SystemsRoles } from './lib/models/role.model';

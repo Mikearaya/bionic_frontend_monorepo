@@ -1,11 +1,4 @@
-export interface SystemsRoles {
-  function: string;
-  view: string;
-  add: string;
-  edit: string;
-  delete: string;
-  others: { title: string; value: string }[];
-}
+import { SystemsRoles } from '@bionic/apis/common/system-roles-api';
 
 export const ROLES: SystemsRoles[] = [
   {

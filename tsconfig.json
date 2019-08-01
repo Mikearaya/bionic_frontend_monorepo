@@ -139,7 +139,8 @@
       ],
       "@bionic/apis/shipment/freight-order-payment-recieving-api": [
         "libs/apis/shipment/freight-order-payment-recieving-api/src/index.ts"
-      ]
+      ],
+      "@bionic/shipment/roles": ["libs/shipment/roles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

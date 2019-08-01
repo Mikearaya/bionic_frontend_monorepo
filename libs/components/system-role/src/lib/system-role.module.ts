@@ -19,32 +19,9 @@ import { ActivationGuard } from '@bionic/apis/common/access-control-api';
     ButtonModule,
     ReactiveFormsModule,
     FormButtonsModule,
-    DataGridModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: SystemRoleViewComponent,
-        data: { breadCrum: 'View', title: 'Roles', claimType: 'canViewRoles' },
-        canActivate: [ActivationGuard]
-      },
-      {
-        path: 'add',
-        component: SystemRoleFormComponent,
-        data: { breadCrum: 'Add', title: 'Add Role', claimType: 'canAddRoles' },
-        canActivate: [ActivationGuard]
-      },
-      {
-        path: ':roleId/update',
-        component: SystemRoleFormComponent,
-        data: {
-          breadCrum: 'Update',
-          title: 'Update Role',
-          claimType: 'canEditRoles'
-        },
-        canActivate: [ActivationGuard]
-      }
-    ])
+    DataGridModule
   ],
-  declarations: [SystemRoleFormComponent, SystemRoleViewComponent]
+  declarations: [SystemRoleFormComponent, SystemRoleViewComponent],
+  exports: [SystemRoleFormComponent]
 })
 export class SystemRoleModule {}

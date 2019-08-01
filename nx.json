@@ -160,6 +160,9 @@
     },
     "apis-shipment-freight-order-payment-recieving-api": {
       "tags": ["shipment"]
+    },
+    "shipment-roles": {
+      "tags": ["shipment"]
     }
   }
 }

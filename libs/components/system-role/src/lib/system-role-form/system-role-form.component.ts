@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+  Input
+} from '@angular/core';
 import { Location } from '@angular/common';
 import {
   FormGroup,
@@ -11,10 +18,11 @@ import { NodeClickEventArgs } from '@syncfusion/ej2-angular-navigations';
 import { ActivatedRoute } from '@angular/router';
 import {
   SystemRoleApiService,
-  SystemRoleModel
+  SystemRoleModel,
+  SystemsRoles
 } from '@bionic/apis/common/system-roles-api';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SystemsRoles, ROLES } from './system-role.model';
+
 import { element } from '@angular/core/src/render3';
 
 @Component({
@@ -29,13 +37,20 @@ export class SystemRoleFormComponent implements OnInit {
   public title: string;
   public isUpdate: Boolean;
 
+  @Input()
+  public RolesList: SystemsRoles[];
+  @Input()
+  public Role: SystemRoleModel;
+
+  @Output()
+  public submitted: EventEmitter<any> = new EventEmitter();
+
   public field: {
     dataSource: Object[];
     id: string;
     text: string;
     child: string;
   };
-  role: SystemsRoles[] = ROLES;
 
   selectedRoles: string[] = [];
   constructor(
@@ -54,18 +69,11 @@ export class SystemRoleFormComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.roleId = this.activatedRoute.snapshot.paramMap.get('roleId');
-
-    if (this.roleId) {
-      this.isUpdate = true;
-      this.roleApi
-        .getSystemRoleById(this.roleId)
-        .subscribe((data: SystemRoleModel) => {
-          data.Claims.forEach(elemet => {
-            this.selectedRoles.push(elemet.ClaimType);
-          });
-          this.roleName.setValue(data.Name);
-        });
+    if (this.Role) {
+      this.Role.Claims.forEach(elemet => {
+        this.selectedRoles.push(elemet.ClaimType);
+      });
+      this.roleName.setValue(this.Role.Name);
     }
   }
 
@@ -86,32 +94,13 @@ export class SystemRoleFormComponent implements OnInit {
   onSubmit(): void {
     const role = this.prepareFormData();
     if (role) {
-      if (this.isUpdate) {
-        this.roleApi.updateSystemRole(role).subscribe(
-          () => {
-            alert('Role Updated Successfully');
-          },
-          (error: HttpErrorResponse) => {
-            alert('Unable to update user role, pleace try again later');
-          }
-        );
-      } else {
-        this.roleApi.createSystemRole(role).subscribe(
-          (data: SystemRoleModel) => {
-            this.userRoleForm.reset();
-            alert('Role Created Successfully');
-          },
-          (error: HttpErrorResponse) => {
-            alert('Unable to create user role, pleace try again later');
-          }
-        );
-      }
+      this.submitted.emit(role);
     }
   }
 
   selectAll(): void {
     this.selectedRoles = [];
-    this.role.forEach(e => {
+    this.RolesList.forEach(e => {
       if (e.add) {
         this.selectedRoles.push(e.add);
       }
@@ -133,8 +122,9 @@ export class SystemRoleFormComponent implements OnInit {
     });
   }
 
-  public nodeCheck(args: NodeClickEventArgs): void {}
-  featureChecked(feature: any, active): void {}
+  deselectAll(): void {
+    this.selectedRoles = [];
+  }
 
   prepareFormData(): SystemRoleModel | null {
     const roleModel = new SystemRoleModel();
