@@ -1,0 +1,19 @@
+<bionic-data-view
+  [data]="data"
+  [showAdd]="true"
+  [showDelete]="true"
+  [enableSorting]="true"
+  [showUpdate]="true"
+  [addPrivilage]="'canAddVedors'"
+  [updatePrivilage]="'canEditVedors'"
+  [deletePrivilage]="'canDeleteVedors'"
+  (deleteRecord)="deleteVendor($event)"
+  [showPdfExport]="true"
+  [showPrint]="true"
+  [columnsList]="columnBluePrint"
+  (dataStateChaged)="onDataStateChange($event)"
+  [enableSearching]="true"
+  [showColumnChooser]="true"
+></bionic-data-view>
+
+<bionic-notification #notification></bionic-notification>

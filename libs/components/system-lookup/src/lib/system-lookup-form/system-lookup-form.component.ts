@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -13,7 +13,8 @@ import { Location } from '@angular/common';
 import {
   SystemLookupCategoriesModel,
   SystemLookupApiService,
-  LookupViewModel
+  LookupViewModel,
+  LookupModel
 } from '@bionic/apis/common/system-lookup-api';
 
 @Component({
@@ -22,6 +23,11 @@ import {
   styleUrls: ['./system-lookup-form.component.css']
 })
 export class SystemLookupFormComponent implements OnInit {
+  @Output()
+  public submitted: EventEmitter<LookupModel> = new EventEmitter();
+  @Input()
+  public lookup: LookupViewModel;
+
   public lookupForm: FormGroup;
   public isUpdate = false;
   public typeFields: object;

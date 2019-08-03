@@ -143,7 +143,28 @@
       "@bionic/shipment/roles": ["libs/shipment/roles/src/index.ts"],
       "@bionic/rent/roles": ["libs/rent/roles/src/index.ts"],
       "@bionic/shipment/users": ["libs/shipment/users/src/index.ts"],
-      "@bionic/rent/users": ["libs/rent/users/src/index.ts"]
+      "@bionic/rent/users": ["libs/rent/users/src/index.ts"],
+      "@bionic/apis/procurment/purchase-recieving-api": [
+        "libs/apis/procurment/purchase-recieving-api/src/index.ts"
+      ],
+      "@bionic/apis/procurment/vendor-api": [
+        "libs/apis/procurment/vendor-api/src/index.ts"
+      ],
+      "@bionic/procurment/vendor": ["libs/procurment/vendor/src/index.ts"],
+      "@bionic/procurment/roles": ["libs/procurment/roles/src/index.ts"],
+      "@bionic/procurment/users": ["libs/procurment/users/src/index.ts"],
+      "@bionic/apis/procurment/purchase-order-api": [
+        "libs/apis/procurment/purchase-order-api/src/index.ts"
+      ],
+      "@bionic/procurment/purchase-order": [
+        "libs/procurment/purchase-order/src/index.ts"
+      ],
+      "@bionic/procurment/purchase-recieving": [
+        "libs/procurment/purchase-recieving/src/index.ts"
+      ],
+      "@bionic/components/notification": [
+        "libs/components/notification/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

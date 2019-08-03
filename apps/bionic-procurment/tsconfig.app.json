@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/bionic-procurment",
+    "types": []
+  },
+  "exclude": ["src/test.ts", "**/*.spec.ts"],
+  "include": [
+    "**/*.ts",
+    "../../libs/components/authentication/src/index.ts",
+
+    "../../libs/procurment/vendor/src/index.ts",
+
+    "../../libs/procurment/roles/src/index.ts",
+
+    "../../libs/procurment/users/src/index.ts",
+
+    "../../libs/procurment/purchase-order/src/index.ts",
+
+    "../../libs/procurment/purchase-recieving/src/index.ts"
+  ]
+}

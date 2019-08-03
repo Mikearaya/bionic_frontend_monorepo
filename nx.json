@@ -172,6 +172,39 @@
     },
     "rent-users": {
       "tags": ["rent"]
+    },
+    "bionic-procurment": {
+      "tags": ["procurment"]
+    },
+    "bionic-procurment-e2e": {
+      "tags": []
+    },
+    "apis-procurment-purchase-recieving-api": {
+      "tags": ["procurment"]
+    },
+    "apis-procurment-vendor-api": {
+      "tags": ["procurment"]
+    },
+    "procurment-vendor": {
+      "tags": ["procurment"]
+    },
+    "procurment-roles": {
+      "tags": ["procurment"]
+    },
+    "procurment-users": {
+      "tags": ["procurment"]
+    },
+    "apis-procurment-purchase-order-api": {
+      "tags": ["procurment"]
+    },
+    "procurment-purchase-order": {
+      "tags": ["procurment"]
+    },
+    "procurment-purchase-recieving": {
+      "tags": ["procurment"]
+    },
+    "components-notification": {
+      "tags": ["shared"]
     }
   }
 }

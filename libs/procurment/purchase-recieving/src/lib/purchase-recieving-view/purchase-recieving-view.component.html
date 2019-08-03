@@ -1,0 +1,19 @@
+<bionic-data-view
+  [data]="data"
+  [showAdd]="true"
+  [showDelete]="true"
+  [enableSorting]="true"
+  [showUpdate]="true"
+  [addPrivilage]="'canAddPurchaseOrders'"
+  [updatePrivilage]="'canEditPurchaseOrders'"
+  [deletePrivilage]="'canDeletePurchaseOrders'"
+  (deleteRecord)="deletePurchaseRecieving($event)"
+  [showPdfExport]="true"
+  [showPrint]="true"
+  [columnsList]="columnBluePrint"
+  (dataStateChaged)="onDataStateChange($event)"
+  [enableSearching]="true"
+  [showColumnChooser]="true"
+></bionic-data-view>
+
+<bionic-notification #notification></bionic-notification>
