@@ -164,6 +164,16 @@
       ],
       "@bionic/components/notification": [
         "libs/components/notification/src/index.ts"
+      ],
+      "@bionic/inventory/item": ["libs/inventory/item/src/index.ts"],
+      "@bionic/apis/inventory/item-api": [
+        "libs/apis/inventory/item-api/src/index.ts"
+      ],
+      "@bionic/apis/procurment/purchase-term-api": [
+        "libs/apis/procurment/purchase-term-api/src/index.ts"
+      ],
+      "@bionic/procurment/purchase-term": [
+        "libs/procurment/purchase-term/src/index.ts"
       ]
     }
   },

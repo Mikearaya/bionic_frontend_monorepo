@@ -70,11 +70,11 @@ export class VendorFormComponent implements OnInit {
 
   private createForm(): void {
     this.vendorForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      phoneNumber: [''],
-      tinNumber: [''],
-      leadTime: [''],
-      paymentPeriod: ['']
+      Name: ['', Validators.required],
+      PhoneNumber: [''],
+      TinNumber: [''],
+      LeadTime: [''],
+      PaymentPeriod: ['']
     });
   }
 
@@ -83,23 +83,23 @@ export class VendorFormComponent implements OnInit {
   }
 
   get vendorName(): FormControl {
-    return this.vendorForm.get('name') as FormControl;
+    return this.vendorForm.get('Name') as FormControl;
   }
 
   get phoneNumber(): FormControl {
-    return this.vendorForm.get('phoneNumber') as FormControl;
+    return this.vendorForm.get('PhoneNumber') as FormControl;
   }
 
   get tinNumber(): FormControl {
-    return this.vendorForm.get('tinNumber') as FormControl;
+    return this.vendorForm.get('TinNumber') as FormControl;
   }
 
   get leadTime(): FormControl {
-    return this.vendorForm.get('leadTime') as FormControl;
+    return this.vendorForm.get('LeadTime') as FormControl;
   }
 
   get paymentPeriod(): FormControl {
-    return this.vendorForm.get('paymentPeriod') as FormControl;
+    return this.vendorForm.get('PaymentPeriod') as FormControl;
   }
 
   onSubmit(): void {

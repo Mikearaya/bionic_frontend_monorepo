@@ -7,3 +7,4 @@ export interface PurchaseRecievingItemModel {
   LotId: number;
   Quantity: number;
 }
+

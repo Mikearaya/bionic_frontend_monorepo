@@ -205,6 +205,24 @@
     },
     "components-notification": {
       "tags": ["shared"]
+    },
+    "inventory": {
+      "tags": []
+    },
+    "inventory-e2e": {
+      "tags": []
+    },
+    "inventory-item": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-item-api": {
+      "tags": ["inventory"]
+    },
+    "apis-procurment-purchase-term-api": {
+      "tags": ["procurment"]
+    },
+    "procurment-purchase-term": {
+      "tags": ["procurment"]
     }
   }
 }

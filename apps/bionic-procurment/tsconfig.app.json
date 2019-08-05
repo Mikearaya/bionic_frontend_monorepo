@@ -17,6 +17,8 @@
 
     "../../libs/procurment/purchase-order/src/index.ts",
 
-    "../../libs/procurment/purchase-recieving/src/index.ts"
+    "../../libs/procurment/purchase-recieving/src/index.ts",
+
+    "../../libs/procurment/purchase-term/src/index.ts"
   ]
 }

@@ -29,6 +29,15 @@ const routes: Routes = [
         }
       },
       {
+        path: 'purchase-terms',
+        loadChildren: '@bionic/procurment/purchase-term#PurchaseTermModule',
+        data: {
+          breadCrum: 'Purchase Terms',
+          title: 'Purchase Terms',
+          claimType: 'canViewPurchaseTerms'
+        }
+      },
+      {
         path: 'vendors',
         loadChildren: '@bionic/procurment/vendor#VendorModule',
         data: {

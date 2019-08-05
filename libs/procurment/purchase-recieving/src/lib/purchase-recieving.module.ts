@@ -10,6 +10,7 @@ import { VendorApiModule } from '@bionic/apis/procurment/vendor-api';
 import { PurchaseRecievingViewComponent } from './purchase-recieving-view/purchase-recieving-view.component';
 import { PurchaseRecievingFormComponent } from './purchase-recieving-form/purchase-recieving-form.component';
 import { PurchaseRecievingApiModule } from '@bionic/apis/procurment/purchase-recieving-api';
+import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +21,7 @@ import { PurchaseRecievingApiModule } from '@bionic/apis/procurment/purchase-rec
     PurchaseRecievingApiModule,
     VendorApiModule,
     ReactiveFormsModule,
+    NumericTextBoxModule,
 
     RouterModule.forChild([
       {

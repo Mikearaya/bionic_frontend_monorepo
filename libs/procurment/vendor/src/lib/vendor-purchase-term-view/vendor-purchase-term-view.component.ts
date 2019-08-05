@@ -19,6 +19,10 @@ import {
 import { Router } from '@angular/router';
 import { NotificationComponent } from '@bionic/components/notification';
 import { HttpErrorResponse } from '@angular/common/http';
+import {
+  PurchaseTermView,
+  PurchaseTermApiService
+} from '@bionic/apis/procurment/purchase-term-api';
 
 @Component({
   selector: 'bionic-vendor-purchase-term-view',
@@ -26,7 +30,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./vendor-purchase-term-view.component.css']
 })
 export class VendorPurchaseTermViewComponent implements AfterViewInit {
-  purchaseTerms: PurchaseTermViewModel[];
+  purchaseTerms: PurchaseTermView[];
 
   @Input()
   public vendorId: number;
@@ -78,9 +82,7 @@ export class VendorPurchaseTermViewComponent implements AfterViewInit {
     if (this.vendorId !== 0) {
       this.purchaseTermApi
         .getVendorPurchseTerms(this.vendorId)
-        .subscribe(
-          (data: PurchaseTermViewModel[]) => (this.purchaseTerms = data)
-        );
+        .subscribe((data: PurchaseTermView[]) => (this.purchaseTerms = data));
     }
   }
 

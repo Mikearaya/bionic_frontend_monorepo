@@ -20,6 +20,16 @@ export const NAVIGATION_LINKS = [
     privilage: 'canViewPartners'
   },
   {
+    id: '03',
+    name: 'Purchase Terms',
+    expanded: false,
+    enabled: true,
+    url: '/purchase-terms',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewPurchaseTerms'
+  },
+  {
     id: '02',
     name: 'Purchase Orders',
     expanded: false,
@@ -39,7 +49,6 @@ export const NAVIGATION_LINKS = [
     icon: 'fas fa-car',
     privilage: 'canViewVehicles'
   },
-
   {
     id: '04',
     name: 'Settings',

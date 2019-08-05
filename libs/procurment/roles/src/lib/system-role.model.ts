@@ -10,11 +10,11 @@ export const ROLES: SystemsRoles[] = [
     others: []
   },
   {
-    function: 'Purchase Requests',
-    view: 'canViewPurchaseRequests',
-    add: 'canAddPurchaseRequests',
-    edit: 'canEditPurchaseRequests',
-    delete: 'canDeletePurchaseRequests',
+    function: 'Purchase Recievigs',
+    view: 'canViewPurchaseRecievigs',
+    add: 'canAddPurchaseRecievigs',
+    edit: 'canEditPurchaseRecievigs',
+    delete: 'canDeletePurchaseRecievigs',
     others: []
   },
   {

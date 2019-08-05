@@ -2039,7 +2039,8 @@
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "./node_modules/@syncfusion/ej2-lists/styles/material.css",
               "./node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css",
-              "./node_modules/@syncfusion/ej2-angular-calendars/styles/material.css"
+              "./node_modules/@syncfusion/ej2-angular-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-notifications/styles/material.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -2440,6 +2441,260 @@
             "main": "libs/components/notification/src/test.ts",
             "tsConfig": "libs/components/notification/tsconfig.spec.json",
             "karmaConfig": "libs/components/notification/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory": {
+      "root": "apps/inventory/",
+      "sourceRoot": "apps/inventory/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/inventory",
+            "index": "apps/inventory/src/index.html",
+            "main": "apps/inventory/src/main.ts",
+            "polyfills": "apps/inventory/src/polyfills.ts",
+            "tsConfig": "apps/inventory/tsconfig.app.json",
+            "assets": [
+              "apps/inventory/src/favicon.ico",
+              "apps/inventory/src/assets"
+            ],
+            "styles": ["apps/inventory/src/styles.css"],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/inventory/src/environments/environment.ts",
+                  "with": "apps/inventory/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "inventory:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "inventory:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "inventory:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/inventory/tsconfig.app.json",
+              "apps/inventory/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/inventory/src/test.ts",
+            "tsConfig": "apps/inventory/tsconfig.spec.json",
+            "karmaConfig": "apps/inventory/karma.conf.js",
+            "polyfills": "apps/inventory/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "inventory-e2e": {
+      "root": "apps/inventory-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/inventory-e2e/cypress.json",
+            "tsConfig": "apps/inventory-e2e/tsconfig.e2e.json",
+            "devServerTarget": "inventory:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "inventory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/inventory-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "inventory-item": {
+      "root": "libs/inventory/item",
+      "sourceRoot": "libs/inventory/item/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/item/tsconfig.lib.json",
+            "project": "libs/inventory/item/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/item/tsconfig.lib.json",
+              "libs/inventory/item/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/item/src/test.ts",
+            "tsConfig": "libs/inventory/item/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/item/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-item-api": {
+      "root": "libs/apis/inventory/item-api",
+      "sourceRoot": "libs/apis/inventory/item-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/item-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/item-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/item-api/tsconfig.lib.json",
+              "libs/apis/inventory/item-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/item-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/item-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/item-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-procurment-purchase-term-api": {
+      "root": "libs/apis/procurment/purchase-term-api",
+      "sourceRoot": "libs/apis/procurment/purchase-term-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/procurment/purchase-term-api/tsconfig.lib.json",
+            "project": "libs/apis/procurment/purchase-term-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/procurment/purchase-term-api/tsconfig.lib.json",
+              "libs/apis/procurment/purchase-term-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/procurment/purchase-term-api/src/test.ts",
+            "tsConfig": "libs/apis/procurment/purchase-term-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/procurment/purchase-term-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "procurment-purchase-term": {
+      "root": "libs/procurment/purchase-term",
+      "sourceRoot": "libs/procurment/purchase-term/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/procurment/purchase-term/tsconfig.lib.json",
+            "project": "libs/procurment/purchase-term/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/procurment/purchase-term/tsconfig.lib.json",
+              "libs/procurment/purchase-term/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/procurment/purchase-term/src/test.ts",
+            "tsConfig": "libs/procurment/purchase-term/tsconfig.spec.json",
+            "karmaConfig": "libs/procurment/purchase-term/karma.conf.js"
           }
         }
       },

@@ -1,62 +1,63 @@
-export const vendorColumnBluePrint = [
+import { CustomGridColumns } from '@bionic/components/data-grid';
 
+export const vendorColumnBluePrint: CustomGridColumns[] = [
   {
-    key: 'id',
-    humanReadable: 'ID',
-    visable: false,
+    key: 'Id',
+    header: 'ID',
+    visible: false,
     type: 'number',
-    width: '20',
+    width: 20
   },
   {
-    key: 'name',
-    humanReadable: 'Vendor Name',
-    visable: true,
+    key: 'Name',
+    header: 'Vendor Name',
+    visible: true,
+    type: 'string'
+  },
+  {
+    key: 'TinNumber',
+    header: 'TIN',
+    visible: false,
     type: 'string',
+    width: 50
   },
   {
-    key: 'tinNumber',
-    humanReadable: 'TIN',
-    visable: true,
+    key: 'PhoneNumber',
+    header: 'Phone',
+    visible: true,
     type: 'string',
-    width: '50'
+    width: 50
   },
   {
-    key: 'phoneNumber',
-    humanReadable: 'Phone',
-    visable: true,
-    type: 'string',
-    width: '50'
-  },
-  {
-    key: 'leadTime',
-    humanReadable: 'Lead Time',
-    visable: true,
-    type: 'number',
-    format: '##',
-    width: '40'
-  },
-  {
-    key: 'paymentPeriod',
-    humanReadable: 'Payment Period',
-    visable: true,
+    key: 'LeadTime',
+    header: 'Lead Time',
+    visible: false,
     type: 'number',
     format: '##',
-    width: '40'
+    width: 40
   },
   {
-    key: 'dateAdded',
-    humanReadable: 'Added',
-    visable: false,
-    type: 'date',
-    format: 'dYm',
-    width: '35'
+    key: 'PaymentPeriod',
+    header: 'Payment Period',
+    visible: false,
+    type: 'number',
+    format: '##',
+    width: 40
   },
   {
-    key: 'dateUpdated',
-    humanReadable: 'Updated',
-    visable: false,
+    key: 'DateAdded',
+    header: 'Added',
+    visible: false,
     type: 'date',
     format: 'dYm',
-    width: '35'
+    width: 35
+  },
+  {
+    key: 'DateUpdated',
+    header: 'Updated',
+    visible: false,
+    type: 'date',
+    format: 'dYm',
+    width: 35
   }
 ];

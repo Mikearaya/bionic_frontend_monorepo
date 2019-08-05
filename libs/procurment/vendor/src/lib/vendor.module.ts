@@ -12,6 +12,7 @@ import { VendorApiModule } from '@bionic/apis/procurment/vendor-api';
 import { TabModule } from '@syncfusion/ej2-angular-navigations';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { PurchaseTermApiModule } from '@bionic/apis/procurment/purchase-term-api';
 
 @NgModule({
   imports: [
@@ -21,6 +22,8 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     DataGridModule,
     FormButtonsModule,
     GridModule,
+    NotificationModule,
+    PurchaseTermApiModule,
     TabModule,
     NumericTextBoxModule,
     VendorApiModule,

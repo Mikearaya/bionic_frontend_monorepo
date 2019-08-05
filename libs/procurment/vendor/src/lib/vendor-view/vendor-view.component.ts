@@ -1,5 +1,3 @@
-import { DataSourceChangedEventArgs } from '@syncfusion/ej2-navigations';
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { vendorColumnBluePrint } from './vendor-view-column.model';
@@ -8,6 +6,7 @@ import { NotificationComponent } from '@bionic/components/notification';
 import { VendorApiService } from '@bionic/apis/procurment/vendor-api';
 import { QueryString } from '@bionic/components/data-grid';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 
 @Component({
   templateUrl: './vendor-view.component.html',
@@ -17,11 +16,12 @@ export class VendorViewComponent implements OnInit {
   @ViewChild('notification')
   private notification: NotificationComponent;
 
-  public data: Subject<DataSourceChangedEventArgs>;
+  public data: Subject<DataStateChangeEventArgs>;
 
   public columnBluePrint = vendorColumnBluePrint;
 
   constructor(private vendorApi: VendorApiService) {
+    this.data = this.vendorApi;
     this.vendorApi.execute(new QueryString());
   }
 

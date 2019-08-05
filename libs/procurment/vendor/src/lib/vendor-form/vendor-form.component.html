@@ -1,9 +1,6 @@
 <bionic-notification #notification></bionic-notification>
-<form [formGroup]="vendorForm" (ngSubmit)="onSubmit()">
-  <bionic-form-options
-    [submitButtonText]="submitButtonText"
-    [submitDisabled]="vendorForm.invalid"
-  >
+<form [formGroup]="vendorForm" (ngSubmit)="onSubmit()" class="card">
+  <bionic-form-options [submitDisabled]="vendorForm.invalid">
   </bionic-form-options>
   <div class=" e-card">
     <ejs-tab id="element" class="e-fill" #element showCloseButton="false">
@@ -14,15 +11,15 @@
               <label
                 for="name"
                 i18n="@@supplierName"
-                class="col-xs-12 col-4 label-area"
+                class="col-sm-12 col-2 label-area"
               >
                 Vendor Name
               </label>
-              <div class="col-xs-12 col-8">
+              <div class="col-sm-12 col-8">
                 <input
                   type="text"
                   class=" e-input"
-                  formControlName="name"
+                  formControlName="Name"
                   name="name"
                   id="name"
                   placeholder="Vendor Name"
@@ -41,14 +38,14 @@
             <div class="row">
               <label
                 for="phoneNumber"
-                class="col-4 col-xs-12 label-area"
+                class="col-2 col-sm-12 label-area"
                 i18n="@@phoneNumber"
                 >Phone Number</label
               >
               <ejs-numerictextbox
                 type="text"
-                class="col-xs-12 col-8"
-                formControlName="phoneNumber"
+                class="col-sm-12 col-8"
+                formControlName="PhoneNumber"
                 id="phoneNumber"
                 name="phoneNumber"
                 format="#"
@@ -61,16 +58,16 @@
             <div class="row">
               <label
                 for="tinNumber"
-                class="col-4 col-xs-12 label-area"
+                class="col-2 col-sm-12 label-area"
                 i18n="@@tinNumber"
                 >TIN Number</label
               >
               <ejs-numerictextbox
                 type="text"
-                class="col-xs-12 col-8"
+                class="col-sm-12 col-8"
                 placeholder="Tin Number"
                 i18n-placeholder="Tin Number @@tinNumber"
-                formControlName="tinNumber"
+                formControlName="TinNumber"
                 id="tinNumber"
                 name="tinNumber"
                 format="#"
@@ -81,19 +78,19 @@
             <div class="row">
               <label
                 for="leadTime"
-                class="col-4 col-xs-12 label-area"
+                class="col-2 col-sm-12 label-area"
                 i18n="@@leadTime"
                 >Default Lead time (days)</label
               >
               <ejs-numerictextbox
                 type="text"
-                class="col-xs-12 col-8"
-                [width]="100"
+                class="col-sm-12 col-8"
+                [width]="150"
                 placeholder="Default Lead Time (Days)"
                 i18n-placeholder=" @@leadTime"
-                formControlName="leadTime"
+                formControlName="LeadTime"
                 id="leadTime"
-                name="leadTime"
+                name="LeadTime"
                 format="#"
               >
               </ejs-numerictextbox>
@@ -101,17 +98,17 @@
             <div class="row">
               <label
                 for="paymentPeriod"
-                class="col-4 col-xs-12 label-area"
+                class="col-2 col-sm-12 label-area"
                 i18n="@@paymentPeriod"
                 >Payment Periods (days)</label
               >
               <ejs-numerictextbox
                 type="text"
-                class="col-xs-12 col-8"
-                [width]="100"
+                class="col-sm-12 col-8"
+                [width]="150"
                 placeholder="Payment Period (Days)"
                 i18n-placeholder=" @@paymentPeriod"
-                formControlName="paymentPeriod"
+                formControlName="PaymentPeriod"
                 id="paymentPeriod"
                 name="paymentPeriod"
                 format="#"
@@ -122,18 +119,15 @@
         </e-tabitem>
         <e-tabitem [header]="headerText[1]" [disabled]="!created && !isUpdate">
           <ng-template #content>
-            <app-vendor-purchase-term-view
+            <bionic-vendor-purchase-term-view
               [vendorId]="vendorId"
-            ></app-vendor-purchase-term-view>
+            ></bionic-vendor-purchase-term-view>
           </ng-template>
         </e-tabitem>
       </e-tabitems>
     </ejs-tab>
   </div>
 
-  <bionic-form-options
-    [submitButtonText]="submitButtonText"
-    [submitDisabled]="vendorForm.invalid"
-  >
+  <bionic-form-options [submitDisabled]="vendorForm.invalid">
   </bionic-form-options>
 </form>

@@ -5,7 +5,7 @@ import { QueryString } from '@bionic/components/data-grid';
 import { Subject, Observable } from 'rxjs';
 import { PurchaseRecievingApiOptionsService } from './purchase-recieving-api-options.service';
 import { HttpClient } from '@angular/common/http';
-import { PurchaseRecievingIndex } from './models/purchase-recievig.model';
+import { PurchaseRecievingIndex } from './models/purchase-recievig-index.model';
 import { PurchaseRecievingModel } from './models/purchase-recieving.model';
 import { PurchaseOrderDetailView } from '@bionic/apis/procurment/purchase-order-api';
 
