@@ -120,7 +120,7 @@ export class VendorFormComponent implements OnInit {
       this.vendorApi.createVendor(vendor).subscribe(
         (data: VendorViewModel) => {
           this.created = true;
-          this.vendorId = data.id;
+          this.vendorId = data.Id;
           this.notification.showMessage('Vendor Created Successfuly');
         },
         (error: HttpErrorResponse) =>
@@ -137,15 +137,9 @@ export class VendorFormComponent implements OnInit {
       return null;
     }
 
-    const vendor: Vendor = {
-      name: this.vendorName.value,
-      phoneNumber: this.phoneNumber.value,
-      tinNumber: this.tinNumber.value,
-      leadTime: this.leadTime.value,
-      paymentPeriod: this.paymentPeriod.value
-    };
+    const vendor: Vendor = this.vendorForm.value;
     if (this.vendorId) {
-      vendor.id = this.vendorId;
+      vendor.Id = this.vendorId;
     }
 
     return vendor;

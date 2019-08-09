@@ -1,136 +1,130 @@
-export const purchaseOrderColumnBluePrint = [
+import { CustomGridColumns } from '@bionic/components/data-grid';
+
+export const purchaseOrderColumnBluePrint: CustomGridColumns[] = [
+  {
+    key: 'Id',
+    header: 'ID',
+    visible: true,
+    type: 'number',
+    width: 40
+  },
 
   {
-    key: 'id',
-    humanReadable: 'ID',
-    visable: true,
-    type: 'number',
-    width: '40',
-  },
-  {
-    key: 'vendorId',
-    humanReadable: 'Vendor id',
-    visable: false,
-    type: 'number',
-    width: '20',
-  },
-  {
-    key: 'vendor',
-    humanReadable: 'Vendor',
-    visable: true,
+    key: 'Vendor',
+    header: 'Vendor',
+    visible: true,
     type: 'string',
+    width: 150
   },
   {
-    key: 'status',
-    humanReadable: 'Status',
-    visable: true,
+    key: 'Status',
+    header: 'Status',
+    visible: true,
     type: 'string',
-    width: '50',
+    width: 50
   },
   {
-    key: 'expectedDate',
-    humanReadable: 'Expected date',
-    visable: true,
+    key: 'ExpectedDate',
+    header: 'Expected date',
+    visible: false,
     type: 'date',
-    width: '40',
+    width: 40,
     format: 'yMd'
   },
   {
-    key: 'orderedDate',
-    humanReadable: 'Ordered',
-    visable: true,
+    key: 'OrderedDate',
+    header: 'Ordered',
+    visible: true,
     type: 'date',
-    width: '40',
+    width: 60,
     format: 'yMd'
   },
   {
-    key: 'shippedDate',
-    humanReadable: 'Shipped date',
-    visable: false,
+    key: 'ShippedDate',
+    header: 'Shipped date',
+    visible: false,
     type: 'date',
-    width: '40',
+    width: 40,
     format: 'yMd'
   },
   {
-    key: 'totalCost',
-    humanReadable: 'Total cost',
-    visable: true,
+    key: 'TotalCost',
+    header: 'cost',
+    visible: true,
     type: 'number',
-    width: '30',
+    width: 50,
     format: '#'
   },
   {
-    key: 'additionalFee',
-    humanReadable: 'Additional Fee',
-    visable: false,
+    key: 'AdditionalFees',
+    header: 'Additional Fee',
+    visible: false,
     type: 'number',
-    width: '30',
+    width: 30,
     format: '#'
   },
   {
-    key: 'discount',
-    humanReadable: 'Discount',
-    visable: false,
+    key: 'Discount',
+    header: 'Discount',
+    visible: false,
     type: 'number',
-    width: '30',
+    width: 30,
     format: '#'
   },
   {
-    key: 'orderId',
-    humanReadable: 'Order id',
-    visable: false,
+    key: 'OrderId',
+    header: 'Order id',
+    visible: false,
     type: 'string',
-    width: '30',
-
+    width: 30
   },
   {
-    key: 'invoiceId',
-    humanReadable: 'Invoice id',
-    visable: false,
+    key: 'InvoiceId',
+    header: 'Invoice id',
+    visible: false,
     type: 'string',
-    width: '30',
+    width: 30
   },
   {
-    key: 'invoiceDate',
-    humanReadable: 'Invoice Date',
-    visable: false,
+    key: 'InvoiceDate',
+    header: 'Invoice Date',
+    visible: false,
     type: 'date',
-    width: '30',
+    width: 30,
     format: 'yMd'
   },
   {
-    key: 'paymentDate',
-    humanReadable: 'Payment date',
-    visable: false,
+    key: 'PaymentDate',
+    header: 'Payment date',
+    visible: false,
     type: 'date',
-    width: '30',
+    width: 30,
     format: 'yMd'
   },
-    {
-    key: 'arivalDate',
-    humanReadable: 'Recieved on',
-    visable: false,
+  {
+    key: 'ArivalDate',
+    header: 'Recieved on',
+    visible: false,
     type: 'date',
-    width: '30',
+    width: 30,
+    format: 'yMd'
+  },
+
+  {
+    key: 'DateAdded',
+    header: 'Create',
+    visible: false,
+    type: 'date',
+    width: 30,
     format: 'yMd'
   },
 
   {
-    key: 'dateAdded',
-    humanReadable: 'Create',
-    visable: false,
+    key: 'DateUpdated',
+    header: 'Updated',
+    visible: false,
     type: 'date',
-    width: '30',
-    format: 'yMd'
-  },
-
-
-  {
-    key: 'dateUpdated',
-    humanReadable: 'Updated',
-    visable: false,
-    type: 'date',
-    width: '30',
+    width: 30,
     format: 'yMd'
   }
 ];

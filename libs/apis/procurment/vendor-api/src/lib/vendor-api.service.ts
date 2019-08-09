@@ -83,7 +83,7 @@ export class VendorApiService extends Subject<DataStateChangeEventArgs> {
 
   updateVendor(updatedVendor: Vendor): Observable<Boolean> {
     return this.httpClient.put<Boolean>(
-      `${this.apiUrl}/${this.controller}/${updatedVendor.id}`,
+      `${this.apiUrl}/${this.controller}/${updatedVendor.Id}`,
       updatedVendor
     );
   }

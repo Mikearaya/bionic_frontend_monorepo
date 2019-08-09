@@ -18,14 +18,14 @@ import { QueryString } from '@bionic/components/data-grid';
 export class ItemApiService extends Subject<DataStateChangeEventArgs> {
   private apiUrl = `http://${window.location.hostname}:5000/api`;
 
-  private controller = 'stock/items';
+  private controller = 'inventory/items';
 
   constructor(
     private httpClient: HttpClient,
     private itemApiOptions: ItemApiOptionsService
   ) {
     super();
-    this.controller = itemApiOptions.apiUrl;
+    this.controller = this.itemApiOptions.apiUrl;
   }
 
   getLowInventoryItems(): Observable<CriticalItemModel[]> {
@@ -46,9 +46,14 @@ export class ItemApiService extends Subject<DataStateChangeEventArgs> {
     );
   }
 
-  getItemsIndex(searchString: string): Observable<ItemIndexModel[]> {
+  getItemsIndex(
+    searchString: string = '',
+    vendorId: number
+  ): Observable<ItemIndexModel[]> {
     return this.httpClient.get<ItemIndexModel[]>(
-      `${this.apiUrl}/${this.controller}/index?name=${searchString}`
+      `${this.apiUrl}/${
+        this.controller
+      }/index?searchstring=${searchString}&vendorId=${vendorId}`
     );
   }
 

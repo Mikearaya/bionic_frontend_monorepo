@@ -1,8 +1,8 @@
 export interface Vendor {
-  id?: number;
-  name: string;
-  phoneNumber: string;
-  tinNumber: string;
-  leadTime: number | null;
-  paymentPeriod: number | null;
+  Id?: number;
+  Name: string;
+  PhoneNumber: string;
+  TinNumber: string;
+  LeadTime: number | null;
+  PaymentPeriod: number | null;
 }

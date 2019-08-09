@@ -1,10 +1,10 @@
 export interface PurchaseTerm {
-  id: number | null;
-  vendorId: number;
-  itemId: number;
-  vendorProductId: string;
-  priority: number | null;
-  leadtime: number | null;
-  minimumQuantity: number | null;
-  unitPrice: number;
+  Id: number | null;
+  VendorId: number;
+  ItemId: number;
+  VendorProductId: string;
+  Priority: number | null;
+  Leadtime: number | null;
+  MinimumQuantity: number | null;
+  UnitPrice: number;
 }

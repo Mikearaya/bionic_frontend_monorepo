@@ -1,53 +1,59 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { VendorApiService } from '@bionic/apis/procurment/vendor-api';
-
-import { Query, Predicate } from '@syncfusion/ej2-data';
+import {
+  Component,
+  OnInit,
+  forwardRef,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
+import { ItemApiService } from '@bionic/apis/inventory/item-api';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Predicate, Query } from '@syncfusion/ej2-data';
 
 @Component({
-  selector: 'bionic-vendor-selector',
+  selector: 'bionic-item-selector',
   template: `
     <ejs-dropdownlist
-      id="vedors"
+      id="items"
       [enabled]="!disabled"
-      name="vedors"
-      placeholder="Search Vedors"
+      name="items"
+      placeholder="Search items"
       [text]="text"
       [allowFiltering]="true"
       [fields]="fields"
       (filtering)="onFiltering($event)"
-      [dataSource]="vedors"
+      [dataSource]="items"
       [filterBarPlaceholder]="searchBarPlaceholder"
-      (change)="lookupChanged($event)"
+      (change)="itemChanged($event)"
     >
     </ejs-dropdownlist>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => VendorSelectorComponent),
+      useExisting: forwardRef(() => ItemSelectorComponent),
       multi: true
     }
   ],
-  styleUrls: ['./vendor-selector.component.css']
+  styleUrls: ['./item-selector.component.css']
 })
-export class VendorSelectorComponent implements ControlValueAccessor {
-  @Input()
-  public searchBarPlaceholder: string;
-  @Input()
-  public lookupType: string;
-
+export class ItemSelectorComponent implements ControlValueAccessor, OnChanges {
   public _value: any;
   public disabled: boolean;
+  onChange;
   public data;
+  @Input()
+  public vendorId: number;
 
-  public vedors: any;
+  @Input()
+  public searchBarPlaceholder: string;
+  public items: any;
   public fields: object = { value: 'Id', text: 'Name' };
 
   public text = '';
-  constructor(private vendorApi: VendorApiService) {}
+  constructor(private itemApi: ItemApiService) {}
 
-  lookupChanged($event: any) {
+  itemChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
     } else {
@@ -55,6 +61,16 @@ export class VendorSelectorComponent implements ControlValueAccessor {
     }
 
     this.onTouched();
+  }
+
+  ngOnChanges(e: SimpleChanges): void {
+    console.log(e.vendorId);
+
+    if (e.vendorId) {
+      this.itemApi.getItemsIndex('', this.vendorId).subscribe(data => {
+        this.items = data;
+      });
+    }
   }
 
   public onFiltering(e) {
@@ -65,22 +81,22 @@ export class VendorSelectorComponent implements ControlValueAccessor {
 
     query = e.text !== '' ? query.where(predicate) : query;
 
-    this.vendorApi.getVendorIndex(e.text).subscribe(data => {
+    this.itemApi.getItemsIndex(e.text, this.vendorId).subscribe(data => {
       e.updateData(data);
     });
   }
 
-  onChanged: any = () => {};
+  onChanged: any = data => {};
   onTouched: any = () => {};
 
   writeValue(obj: any): void {
     this._value = obj;
 
-    this.vendorApi.getVendorIndex('').subscribe((result: any) => {
-      this.vedors = result;
+    this.itemApi.getItemsIndex('', this.vendorId).subscribe((result: any) => {
+      this.items = result;
       if (this._value) {
         if (obj !== 0) {
-          const data = this.vedors.filter(a => a.Id === obj);
+          const data = this.items.filter(a => a.Id === obj);
           data.forEach(element => {
             this.text = element.Name;
           });

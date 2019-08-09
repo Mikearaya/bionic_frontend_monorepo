@@ -10,9 +10,9 @@ import { VendorSelectorModule } from '@bionic/procurment/vendor';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { NotificationModule } from '@bionic/components/notification';
 import { PurchaseTermApiModule } from '@bionic/apis/procurment/purchase-term-api';
-import { ItemApiModule } from '@bionic/apis/inventory/item-api';
-import { VendorApiModule } from '@bionic/apis/procurment/vendor-api';
+
 import { PurchaseTermViewComponent } from './purchase-term-view/purchase-term-view.component';
+import { ItemSelectorModule } from '@bionic/inventory/item';
 
 @NgModule({
   declarations: [PurchaseTermFormComponent, PurchaseTermViewComponent],
@@ -25,15 +25,14 @@ import { PurchaseTermViewComponent } from './purchase-term-view/purchase-term-vi
     NumericTextBoxModule,
     NotificationModule,
     VendorSelectorModule,
-    ItemApiModule,
-    VendorApiModule,
     DropDownListModule,
+    ItemSelectorModule,
 
     RouterModule.forChild([
       {
         path: '',
         component: PurchaseTermViewComponent,
-        data: { title: '', breadCrum: 'Purchase terms' }
+        data: { title: 'Purchase Terms', breadCrum: 'Purchase terms' }
       },
       {
         path: 'add',

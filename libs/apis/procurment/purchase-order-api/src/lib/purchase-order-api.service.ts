@@ -86,7 +86,7 @@ export class PurchaseOrderApiService extends Subject<DataStateChangeEventArgs> {
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/filter`, state)
+      .post(`${this.apiUrl}/${this.controller}/filter`, state)
       .pipe(
         map(
           (response: any) =>

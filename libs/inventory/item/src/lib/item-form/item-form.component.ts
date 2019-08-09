@@ -8,40 +8,30 @@
  */
 
 import { ActivatedRoute } from '@angular/router';
-import { CommonProperties } from 'src/app/Modules/core/DataModels/common-properties.class';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CustomErrorResponse } from 'src/app/Modules/core/DataModels/system-data-models';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
-import {
-  ItemModel,
-  ItemView
-} from 'src/app/Modules/core/DataModels/item-data-models';
+
 import { Location } from '@angular/common';
-import { NotificationComponent } from 'src/app/Modules/shared/notification/notification.component';
-import { ProductGroupView } from 'src/app/Modules/core/DataModels/product-group.model';
-import { UnitOfMeasurmentApiService } from 'src/app/Modules/core/services/unit-of-measurment/unit-of-measurment-api.service';
-import { UnitOfMeasurmentView } from 'src/app/Modules/core/DataModels/unit-of-measurment.mode';
 import { TabComponent } from '@syncfusion/ej2-angular-navigations';
-import { StorageLocationApiService } from 'src/app/Modules/core/services/storage-location/storage-location-api.service';
-import { StorageLocationView } from 'src/app/Modules/core/DataModels/storage-location.model';
-import { ItemApiService } from 'src/app/Modules/core/services/item/item-api.service';
-import { ProductGroupApiService } from 'src/app/Modules/core/services/product-group/product-group-api.service';
+import { NotificationComponent } from '@bionic/components/notification';
 
 @Component({
-  template: './stock-form.component.html',
-  styleUrls: ['./stock-form.component.css']
+  template: './item-form.component.html',
+  styleUrls: ['./item-form.component.css']
 })
-export class ItemFormComponent extends CommonProperties implements OnInit {
+export class ItemFormComponent {
   @ViewChild('procured')
   public procured: any;
   @ViewChild('notification')
   public notification: NotificationComponent;
-  public itemGroups: ProductGroupView[];
+  /* public itemGroups: ProductGroupView[];
   public unitOfMesurmentList: UnitOfMeasurmentView[];
   public storagesList: StorageLocationView[];
   @ViewChild('element') tabObj: TabComponent;
@@ -265,5 +255,5 @@ export class ItemFormComponent extends CommonProperties implements OnInit {
       unitCost: form.unitCost,
       image: form.image
     };
-  }
+  } */
 }

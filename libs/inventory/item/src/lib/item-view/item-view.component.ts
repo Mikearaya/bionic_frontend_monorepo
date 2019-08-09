@@ -41,7 +41,7 @@ import { QueryString } from '@bionic/components/data-grid';
 
     <bionic-notification #notification></bionic-notification>
   `,
-  styleUrls: ['./stock-view.component.css']
+  styleUrls: ['./item-view.component.css']
 })
 export class ItemViewComponent implements OnInit {
   @ViewChild('notification')

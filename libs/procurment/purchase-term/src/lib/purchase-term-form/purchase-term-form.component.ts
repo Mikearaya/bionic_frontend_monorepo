@@ -10,10 +10,7 @@ import {
 import { Location } from '@angular/common';
 import { NotificationComponent } from '@bionic/components/notification';
 import { ItemView, ItemApiService } from '@bionic/apis/inventory/item-api';
-import {
-  VendorViewModel,
-  VendorApiService
-} from '@bionic/apis/procurment/vendor-api';
+import { VendorViewModel } from '@bionic/apis/procurment/vendor-api';
 import {
   PurchaseTermApiService,
   PurchaseTermView,
@@ -44,8 +41,6 @@ export class PurchaseTermFormComponent implements OnInit {
     private purchaseTermApi: PurchaseTermApiService,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private itemApi: ItemApiService,
-    private vendorApi: VendorApiService,
     private location: Location
   ) {
     this.vendorFields = { text: 'name', value: 'id' };
@@ -60,14 +55,6 @@ export class PurchaseTermFormComponent implements OnInit {
     this.title = 'Create Vendor Purchase Term';
     this.submitButtonText = 'Save';
 
-    this.itemApi
-      .getAllItems()
-      .subscribe((data: ItemView[]) => (this.itemsList = data));
-
-    this.vendorApi
-      .getAllVendors()
-      .subscribe((data: VendorViewModel[]) => (this.vendorsList = data));
-
     if (this.termId) {
       this.isUpdate = true;
       this.title = `Update Vendor Purchase Term #${this.termId}`;
@@ -78,16 +65,18 @@ export class PurchaseTermFormComponent implements OnInit {
         .subscribe((data: PurchaseTermView) => this.initializeForm(data));
     }
   }
-
+  changed(data: any): void {
+    alert(data);
+  }
   private createForm(): void {
     this.purchaseTermForm = this.formBuilder.group({
-      vendorId: ['', Validators.required],
-      itemId: ['', Validators.required],
-      vendorProductId: [''],
-      priority: ['', Validators.pattern('[0-9]*')],
-      leadTime: [''],
-      minimumQuantity: [''],
-      unitPrice: ['', Validators.required]
+      VendorId: ['', Validators.required],
+      ItemId: ['', Validators.required],
+      VendorProductId: [''],
+      Priority: ['', Validators.pattern('[0-9]*')],
+      Leadtime: [''],
+      MinimumQuantity: [''],
+      UnitPrice: ['', Validators.required]
     });
   }
 
@@ -96,31 +85,31 @@ export class PurchaseTermFormComponent implements OnInit {
   }
 
   get vendorId(): FormControl {
-    return this.purchaseTermForm.get('vendorId') as FormControl;
+    return this.purchaseTermForm.get('VendorId') as FormControl;
   }
 
   get itemId(): FormControl {
-    return this.purchaseTermForm.get('itemId') as FormControl;
+    return this.purchaseTermForm.get('ItemId') as FormControl;
   }
 
   get vendorProductId(): FormControl {
-    return this.purchaseTermForm.get('vendorProductId') as FormControl;
+    return this.purchaseTermForm.get('VendorProductId') as FormControl;
   }
 
   get priority(): FormControl {
-    return this.purchaseTermForm.get('priority') as FormControl;
+    return this.purchaseTermForm.get('Priority') as FormControl;
   }
 
   get leadTime(): FormControl {
-    return this.purchaseTermForm.get('leadTime') as FormControl;
+    return this.purchaseTermForm.get('LeadTime') as FormControl;
   }
 
   get minimumQuantity(): FormControl {
-    return this.purchaseTermForm.get('minimumQuantity') as FormControl;
+    return this.purchaseTermForm.get('MinimumQuantity') as FormControl;
   }
 
   get unitPrice(): FormControl {
-    return this.purchaseTermForm.get('unitPrice') as FormControl;
+    return this.purchaseTermForm.get('UnitPrice') as FormControl;
   }
 
   onSubmit(): void {
@@ -128,7 +117,7 @@ export class PurchaseTermFormComponent implements OnInit {
 
     if (this.isUpdate && purchaseTerm) {
       this.purchaseTermApi
-        .updatePurchaseTerm(purchaseTerm.id, purchaseTerm)
+        .updatePurchaseTerm(purchaseTerm.Id, purchaseTerm)
         .subscribe(() =>
           this.notification.showMessage('Purchase term Updated!!!')
         );
@@ -142,16 +131,11 @@ export class PurchaseTermFormComponent implements OnInit {
 
   private prepareFormData(): PurchaseTerm | null {
     if (this.purchaseTermForm.valid) {
-      const purchaseTerm: PurchaseTerm = {
-        id: this.termId ? this.termId : 0,
-        vendorId: this.vendorId.value,
-        itemId: this.itemId.value,
-        vendorProductId: this.vendorProductId.value,
-        priority: this.priority.value,
-        leadtime: this.leadTime.value,
-        minimumQuantity: this.minimumQuantity.value,
-        unitPrice: this.unitPrice.value
-      };
+      const purchaseTerm: PurchaseTerm = this.purchaseTermForm.value;
+
+      if (this.termId) {
+        purchaseTerm.Id = this.termId;
+      }
 
       return purchaseTerm;
     } else {

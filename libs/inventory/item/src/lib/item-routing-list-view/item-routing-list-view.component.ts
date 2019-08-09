@@ -24,11 +24,8 @@ import { NotificationComponent } from '@bionic/components/notification';
       [addPrivilage]="'canAddPurchaseOrders'"
       [updatePrivilage]="'canEditPurchaseOrders'"
       [deletePrivilage]="'canDeleteItems'"
-      (deleteRecord)="deleteItem($event)"
       [showPdfExport]="true"
       [showPrint]="true"
-      [columnsList]="columnBluePrint"
-      (dataStateChaged)="onDataStateChange($event)"
       [enableSearching]="true"
       [showColumnChooser]="true"
     ></bionic-data-view>
@@ -37,7 +34,7 @@ import { NotificationComponent } from '@bionic/components/notification';
   `,
   styleUrls: ['./item-routing-list-view.component.css']
 })
-export class ItemRoutingListViewComponent implements AfterViewInit {
+export class ItemRoutingListViewComponent {
   @ViewChild('notification')
   public notification: NotificationComponent;
   @Input()
@@ -45,7 +42,7 @@ export class ItemRoutingListViewComponent implements AfterViewInit {
 
   data: any[] = [];
   /* public data: RoutingViewModel[]; */
-
+  /*
   public editSettings: EditSettingsModel;
   public toolbar: ToolbarItems[];
   public commands: CommandModel[];
@@ -81,7 +78,7 @@ export class ItemRoutingListViewComponent implements AfterViewInit {
       allowDeleting: false
     };
     this.toolbar = ['Add'];
-  }
+  } */
 
   /*   ngAfterViewInit(): void {
     if (this.itemId !== 0) {

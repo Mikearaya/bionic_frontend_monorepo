@@ -5,7 +5,6 @@ export class PurchaseOrder {
   Status: string;
   VendorId: number;
   ArrivalDate: Date;
-
   ExpectedDate: Date | string;
   OrderedDate: Date | string | null;
   ShippedDate: Date | string | null;

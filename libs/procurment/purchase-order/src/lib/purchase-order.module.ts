@@ -11,6 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { VendorSelectorModule } from '@bionic/procurment/vendor';
+import { ItemSelectorModule } from '@bionic/inventory/item';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
@@ -19,6 +22,9 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
     FormButtonsModule,
     PurchaseOrderApiModule,
     NotificationModule,
+    VendorSelectorModule,
+    ItemSelectorModule,
+    ButtonModule,
     ReactiveFormsModule,
     NumericTextBoxModule,
     DatePickerModule,

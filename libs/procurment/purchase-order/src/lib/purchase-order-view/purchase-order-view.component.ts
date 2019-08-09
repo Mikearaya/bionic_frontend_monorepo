@@ -1,5 +1,3 @@
-import { DataSourceChangedEventArgs } from '@syncfusion/ej2-navigations';
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { purchaseOrderColumnBluePrint } from './purchase-order-view-column.model';
@@ -8,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { QueryString } from '@bionic/components/data-grid';
 import { NotificationComponent } from '@bionic/components/notification';
 import { Subject } from 'rxjs';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 
 @Component({
   selector: 'bionic-purchase-order-view',
@@ -18,11 +17,12 @@ export class PurchaseOrderViewComponent implements OnInit {
   @ViewChild('notification')
   private notification: NotificationComponent;
 
-  public data: Subject<DataSourceChangedEventArgs>;
+  public data: Subject<DataStateChangeEventArgs>;
 
   public columnBluePrint = purchaseOrderColumnBluePrint;
 
   constructor(private purchaseOrderApi: PurchaseOrderApiService) {
+    this.data = this.purchaseOrderApi;
     this.purchaseOrderApi.execute(new QueryString());
   }
 

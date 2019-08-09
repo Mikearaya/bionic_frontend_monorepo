@@ -9,26 +9,9 @@
       <div class="row">
         <div class="col-md-8 col-sm-12">
           <div class="row">
-            <label for="itemId" class="col-md-3 col-xs-12">Product</label>
-            <div class="col-md-9 col-xs-12">
-              <ejs-dropdownlist
-                [dataSource]="itemsList"
-                placeholder="Select Vendor"
-                formControlName="itemId"
-                name="itemId"
-                id="itemId"
-                [fields]="itemFields"
-              >
-              </ejs-dropdownlist>
-              <div class="e-error" *ngIf="itemId.errors && itemId.touched">
-                <div *ngIf="itemId.errors['required']">Product is required</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <label for="vendorId" class="col-md-3 col-xs-12">vendor</label>
             <div class="col-md-9 col-xs-12">
-              <bionic-vendor-selector formControlName="vendorId">
+              <bionic-vendor-selector formControlName="VendorId">
               </bionic-vendor-selector>
               <div class="e-error" *ngIf="vendorId.errors && vendorId.touched">
                 <div *ngIf="vendorId.errors['required']">
@@ -38,6 +21,21 @@
             </div>
           </div>
           <div class="row">
+            <label for="itemId" class="col-md-3 col-xs-12">Product</label>
+            <div class="col-md-9 col-xs-12">
+              <bionic-item-selector
+                formControlName="ItemId"
+                name="itemId"
+                id="itemId"
+              >
+              </bionic-item-selector>
+              <div class="e-error" *ngIf="itemId.errors && itemId.touched">
+                <div *ngIf="itemId.errors['required']">Product is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
             <label for="vendorProductId" class="col-md-3 col-xs-12"
               >Vendor Part no</label
             >
@@ -46,7 +44,7 @@
                 type="text"
                 id="vendorProductId"
                 name="vendorProductId"
-                formControlName="vendorProductId"
+                formControlName="VendorProductId"
                 class="e-input col-md-9 col-sm-12"
                 placeholder="Vendor Part No"
               />
@@ -60,7 +58,7 @@
               id="priority"
               [width]="150"
               name="priority"
-              formControlName="priority"
+              formControlName="Priority"
               class="col-md-9 col-sm-12"
               placeholder="Priority"
             >
@@ -73,7 +71,7 @@
               id="leadTime"
               [width]="150"
               name="leadTime"
-              formControlName="leadTime"
+              formControlName="Leadtime"
               class="col-md-9 col-sm-12"
               placeholder="Lead time"
             >
@@ -87,7 +85,7 @@
                 [width]="150"
                 id="unitPrice"
                 name="unitPrice"
-                formControlName="unitPrice"
+                formControlName="UnitPrice"
                 placeholder="Unit Price"
               >
               </ejs-numerictextbox>
@@ -110,24 +108,12 @@
               id="minimumQuantity"
               [width]="150"
               name="minimumQuantity"
-              formControlName="minimumQuantity"
+              formControlName="MinimumQuantity"
               class="col-md-9 col-sm-12"
               placeholder="Minimum Quantity"
             >
             </ejs-numerictextbox>
           </div>
-        </div>
-
-        <div class="col-md-4 col-sm-12 text-right" *ngIf="isUpdate">
-          <button
-            ejs-button
-            type="button"
-            class="e-warning "
-            iconCss="e-icons e-delete-icon"
-            (click)="deletePurchaseTerm()"
-          >
-            Delete
-          </button>
         </div>
       </div>
     </div>

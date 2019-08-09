@@ -11,7 +11,6 @@ import { NotificationComponent } from '@bionic/components/notification';
 import {
   PurchaseOrderApiService,
   PurchaseOrderDetailView,
-  PurchaseOrderItemView,
   PurchaseOrder
 } from '@bionic/apis/procurment/purchase-order-api';
 
@@ -61,7 +60,6 @@ export class PurchaseOrderFormComponent implements OnInit {
     this.purchaseOrderId = +this.activatedRoute.snapshot.paramMap.get(
       'purchaseOrderId'
     );
-    this.title = this.activatedRoute.snapshot.data['title'];
 
     if (this.purchaseOrderId) {
       this.isUpdate = true;
@@ -73,29 +71,23 @@ export class PurchaseOrderFormComponent implements OnInit {
     }
   }
 
-  vendorChanged(event: any) {
-    /* this.itemApi
-      .getVendorItems(event.value)
-      .subscribe((data: any[]) => (this.itemsList = data)); */
-  }
-
   private createForm(): void {
     this.purchaseOrderForm = this.formBuilder.group({
-      vendorId: ['', Validators.required],
-      status: ['', Validators.required],
-      expectedDate: ['', Validators.required],
-      tax: [''],
-      discount: [''],
-      additionalFees: [''],
-      note: [''],
-      orderId: [''],
-      orderDate: [''],
-      invoiceId: [''],
-      invoiceDate: [''],
-      paymentDate: [''],
-      shippedOn: [''],
-      arrivalDate: [''],
-      purchaseOrderItems: this.formBuilder.array([
+      VendorId: ['', Validators.required],
+      Status: ['', Validators.required],
+      ExpectedDate: ['', Validators.required],
+      Tax: [''],
+      Discount: [''],
+      AdditionalFees: [''],
+      Note: [''],
+      OrderId: [''],
+      OrderedDate: [''],
+      InvoiceId: [''],
+      InvoiceDate: [''],
+      PaymentDate: [''],
+      ShippedOn: [''],
+      ArrivalDate: [''],
+      PurchaseOrderItems: this.formBuilder.array([
         this.createPurchaseOrderItems()
       ])
     });
@@ -103,10 +95,10 @@ export class PurchaseOrderFormComponent implements OnInit {
     this.purchaseOrderItems.valueChanges.subscribe(e =>
       this.calculatePrices(e)
     );
-    this.discount.valueChanges.subscribe(() =>
+    this.getControl('Discount').valueChanges.subscribe(() =>
       this.purchaseOrderItems.updateValueAndValidity()
     );
-    this.tax.valueChanges.subscribe(() =>
+    this.getControl('Tax').valueChanges.subscribe(() =>
       this.purchaseOrderItems.updateValueAndValidity()
     );
   }
@@ -120,117 +112,31 @@ export class PurchaseOrderFormComponent implements OnInit {
       subTotals = subTotals + item.quantity * item.unitPrice;
     });
     this.totalBeforeDiscount =
-      subTotals - subTotals * (this.discount.value / 100);
+      subTotals - subTotals * (this.getControl('Discount').value / 100);
     this.totalAfterTax =
       this.totalBeforeDiscount -
-      this.totalBeforeDiscount * (this.tax.value / 100);
+      this.totalBeforeDiscount * (this.getControl('Tax').value / 100);
     this.totalAfterAdditionalFee =
-      this.totalAfterTax + this.additionalFees.value;
+      this.totalAfterTax + this.getControl('AdditionalFees').value;
   }
   private initializeForm(data: PurchaseOrderDetailView): void {
-    const vendor = { value: data.vendorId };
-
-    this.vendorChanged(vendor);
-
     this.purchaseOrderForm.patchValue(data);
-    /*
-    this.purchaseOrderItems.valueChanges.subscribe(e =>
-      this.calculatePrices(e)
-    );
-
-    this.discount.valueChanges.subscribe(() =>
-      this.purchaseOrderItems.updateValueAndValidity()
-    );
-    this.tax.valueChanges.subscribe(() =>
-      this.purchaseOrderItems.updateValueAndValidity()
-    );
-    this.purchaseOrderItems.updateValueAndValidity(); */
-  }
-
-  get vendorId(): FormControl {
-    return this.purchaseOrderForm.get('vendorId') as FormControl;
-  }
-
-  get status(): FormControl {
-    return this.purchaseOrderForm.get('status') as FormControl;
-  }
-  get expectedDate(): FormControl {
-    return this.purchaseOrderForm.get('expectedDate') as FormControl;
-  }
-
-  get tax(): FormControl {
-    return this.purchaseOrderForm.get('tax') as FormControl;
-  }
-
-  get discount(): FormControl {
-    return this.purchaseOrderForm.get('discount') as FormControl;
-  }
-  get additionalFees(): FormControl {
-    return this.purchaseOrderForm.get('additionalFees') as FormControl;
-  }
-
-  get note(): FormControl {
-    return this.purchaseOrderForm.get('note') as FormControl;
-  }
-  get orderId(): FormControl {
-    return this.purchaseOrderForm.get('orderId') as FormControl;
-  }
-
-  get orderDate(): FormControl {
-    return this.purchaseOrderForm.get('orderDate') as FormControl;
-  }
-
-  get invoiceId(): FormControl {
-    return this.purchaseOrderForm.get('invoiceId') as FormControl;
-  }
-
-  get invoiceDate(): FormControl {
-    return this.purchaseOrderForm.get('invoiceDate') as FormControl;
-  }
-  get paymentDate(): FormControl {
-    return this.purchaseOrderForm.get('paymentDate') as FormControl;
-  }
-
-  get shippedOn(): FormControl {
-    return this.purchaseOrderForm.get('shippedOn') as FormControl;
-  }
-
-  get arrivalDate(): FormControl {
-    return this.purchaseOrderForm.get('arrivalDate') as FormControl;
   }
 
   get purchaseOrderItems(): FormArray {
-    return this.purchaseOrderForm.get('purchaseOrderItems') as FormArray;
+    return this.purchaseOrderForm.get('PurchaseOrderItems') as FormArray;
   }
 
-  selectedItemUnitPrice(index: number): FormControl {
-    return this.purchaseOrderItems.controls[index].get(
-      'unitPrice'
-    ) as FormControl;
-  }
-
-  selectedItemId(index: number): FormControl {
-    return this.purchaseOrderItems.controls[index].get('itemId') as FormControl;
-  }
-
-  selectedItemQuantity(index: number): FormControl {
-    return this.purchaseOrderItems.controls[index].get(
-      'quantity'
-    ) as FormControl;
-  }
-
-  selectedItemExpectedDate(index: number): FormControl {
-    return this.purchaseOrderItems.controls[index].get(
-      'expectedDate'
-    ) as FormControl;
+  getControl(control: string): FormControl {
+    return this.purchaseOrderForm.get(control) as FormControl;
   }
 
   private createPurchaseOrderItems(): FormGroup {
     return this.formBuilder.group({
-      itemId: ['', Validators.required],
-      quantity: ['', Validators.required],
-      unitPrice: [''],
-      expectedDate: ['']
+      ItemId: ['', Validators.required],
+      Quantity: ['', Validators.required],
+      UnitPrice: [''],
+      ExpectedDate: ['']
     });
   }
 
@@ -271,43 +177,13 @@ export class PurchaseOrderFormComponent implements OnInit {
   }
 
   private prepareNewPurchaseOrderData(): PurchaseOrder {
-    const newPurchaseOrder = new PurchaseOrder();
-    newPurchaseOrder.VendorId = this.vendorId.value;
-    newPurchaseOrder.Status = this.status.value;
-    newPurchaseOrder.ExpectedDate = this.expectedDate.value;
-    newPurchaseOrder.Tax = this.tax.value;
-    newPurchaseOrder.Discount = this.discount.value;
-    newPurchaseOrder.AdditionalFee = this.additionalFees.value;
-    newPurchaseOrder.OrderId = this.orderId.value;
-    newPurchaseOrder.OrderedDate = this.orderDate.value;
-    newPurchaseOrder.InvoiceId = this.invoiceId.value;
-    newPurchaseOrder.InvoiceDate = this.invoiceDate.value;
-    newPurchaseOrder.PaymentDate = this.paymentDate.value;
-    newPurchaseOrder.ShippedDate = this.shippedOn.value;
-    newPurchaseOrder.ArrivalDate = this.arrivalDate.value;
-
-    this.purchaseOrderItems.controls.forEach(element => {
-      newPurchaseOrder.PurchaseOrderItems.push({
-        ExpectedDate: element.value.expectedDate,
-        ItemId: element.value.itemId,
-        Quantity: element.value.quantity,
-        UnitPrice: element.value.unitPrice,
-        Id: 0
-      });
-    });
+    const newPurchaseOrder: PurchaseOrder = this.purchaseOrderForm.value;
 
     return newPurchaseOrder;
   }
+
   itemChanged(event, i) {
     if (event.itemData) {
-      this.selectedItemUnitPrice(i).setValue(event.itemData.price);
-
-      this.selectedItemQuantity(i).clearValidators();
-      this.selectedItemQuantity(i).setValidators([
-        Validators.min(event.itemData.minimumQuantity),
-        Validators.required
-      ]);
-      this.selectedItemQuantity(i).setValue(event.itemData.minimumQuantity);
     }
   }
 }

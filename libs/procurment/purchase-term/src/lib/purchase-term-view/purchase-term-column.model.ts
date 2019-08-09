@@ -9,26 +9,40 @@ export const purchaseTermColumnBluePrint: CustomGridColumns[] = [
     visible: true,
     type: 'string'
   },
+  {
+    key: 'VendorProductId',
+    header: 'Product Id',
+    width: 80,
+    visible: true,
+    type: 'string'
+  },
   { key: 'Item', header: 'Item', width: 150, visible: true, type: 'string' },
   {
-    key: 'LeadTime',
+    key: 'Leadtime',
     header: 'Lead Time',
-    width: 50,
+    width: 80,
     visible: true,
     type: 'number'
   },
   {
     key: 'PaymentPeriod',
     header: 'PaymentPeriod',
-    width: 50,
+    width: 90,
+    visible: false,
+    type: 'number'
+  },
+  {
+    key: 'MinimumQuantity',
+    header: 'Minimum Qty',
+    width: 90,
     visible: true,
     type: 'number'
   },
   {
-    key: 'MiimumQuantity',
-    header: 'Minimum Quantity',
+    key: 'UnitPrice',
+    header: 'Unit Price',
     width: 50,
-    visible: true,
+    visible: false,
     type: 'number'
   },
   {

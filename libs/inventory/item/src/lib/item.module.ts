@@ -11,6 +11,7 @@ import { NotificationModule } from '@bionic/components/notification';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItemApiModule } from '@bionic/apis/inventory/item-api';
+import { PurchaseTermApiModule } from '@bionic/apis/procurment/purchase-term-api';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ItemApiModule } from '@bionic/apis/inventory/item-api';
     FormButtonsModule,
     NotificationModule,
     ReactiveFormsModule,
+    PurchaseTermApiModule,
     ItemApiModule,
     RouterModule.forChild([
       {
