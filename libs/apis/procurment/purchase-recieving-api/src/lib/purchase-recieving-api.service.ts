@@ -38,7 +38,7 @@ export class PurchaseRecievingApiService extends Subject<
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/filter`, state)
+      .post(`${this.apiUrl}/${this.controller}/filter`, state)
       .pipe(
         map(
           (response: any) =>
@@ -55,7 +55,7 @@ export class PurchaseRecievingApiService extends Subject<
     purchaseRecieving: PurchaseRecievingModel
   ): Observable<PurchaseOrderDetailView> {
     return this.httpClient.post<PurchaseOrderDetailView>(
-      `${this.apiUrl}/procurments/purchase-recievings`,
+      `${this.apiUrl}/${this.controller}`,
       purchaseRecieving
     );
   }

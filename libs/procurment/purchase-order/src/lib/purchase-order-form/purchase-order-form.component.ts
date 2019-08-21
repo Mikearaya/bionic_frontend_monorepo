@@ -161,7 +161,7 @@ export class PurchaseOrderFormComponent implements OnInit {
                 'Purchase order created successfully'
               );
               this.isUpdate = true;
-              this.purchaseOrderId = data.id;
+              this.purchaseOrderId = data.Id;
             });
         } else {
           this.purchaseOrderApi
@@ -169,7 +169,7 @@ export class PurchaseOrderFormComponent implements OnInit {
             .subscribe((data: PurchaseOrderDetailView) => {
               this.notification.showMessage('Quotation created successfully');
               this.isUpdate = true;
-              this.purchaseOrderId = data.id;
+              this.purchaseOrderId = data.Id;
             });
         }
       }

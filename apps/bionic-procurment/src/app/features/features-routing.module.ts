@@ -29,6 +29,16 @@ const routes: Routes = [
         }
       },
       {
+        path: 'purchase-order-payments',
+        loadChildren:
+          '@bionic/procurment/purchase-order-payment#PurchaseOrderPaymentModule',
+        data: {
+          breadCrum: 'Purchase Order Payment',
+          title: 'Purchase Order Payments',
+          claimType: 'canViewPurchaseOrderPayments'
+        }
+      },
+      {
         path: 'purchase-terms',
         loadChildren: '@bionic/procurment/purchase-term#PurchaseTermModule',
         data: {

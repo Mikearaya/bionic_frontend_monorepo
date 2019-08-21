@@ -2699,6 +2699,74 @@
         }
       },
       "schematics": {}
+    },
+    "procurment-purchase-order-payment": {
+      "root": "libs/procurment/purchase-order-payment",
+      "sourceRoot": "libs/procurment/purchase-order-payment/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/procurment/purchase-order-payment/tsconfig.lib.json",
+            "project": "libs/procurment/purchase-order-payment/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/procurment/purchase-order-payment/tsconfig.lib.json",
+              "libs/procurment/purchase-order-payment/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/procurment/purchase-order-payment/src/test.ts",
+            "tsConfig": "libs/procurment/purchase-order-payment/tsconfig.spec.json",
+            "karmaConfig": "libs/procurment/purchase-order-payment/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-procurment-purchase-order-payment-api": {
+      "root": "libs/apis/procurment/purchase-order-payment-api",
+      "sourceRoot": "libs/apis/procurment/purchase-order-payment-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/procurment/purchase-order-payment-api/tsconfig.lib.json",
+            "project": "libs/apis/procurment/purchase-order-payment-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/procurment/purchase-order-payment-api/tsconfig.lib.json",
+              "libs/apis/procurment/purchase-order-payment-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/procurment/purchase-order-payment-api/src/test.ts",
+            "tsConfig": "libs/apis/procurment/purchase-order-payment-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/procurment/purchase-order-payment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

@@ -1,0 +1,62 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="purchaseOrder">Purchase Order</label>
+        <bionic-purchase-order-selector
+          formControlName="PurchaseOrderId"
+          [type]="'balance'"
+          (selected)="onPurchaseOrderSelected($event)"
+          id="purchaseorder"
+        ></bionic-purchase-order-selector>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="date">Date</label>
+        <ejs-datetimepicker
+          formControlName="Date"
+          id="date"
+          name="date"
+        ></ejs-datetimepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          name="amount"
+          id="amount"
+          class="e-input"
+          formControlName="Amount"
+        />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="checkno">Check No</label>
+        <input
+          type="text"
+          name="checkno"
+          class="e-input"
+          id="checkno"
+          formControlName="CheckNo"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="note">Note</label>
+        <textarea
+          name="note"
+          id="note"
+          class="e-input"
+          rows="10"
+          formControlName="Note"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <bionic-form-options
+    [submitDisabled]="paymentForm.invalid"
+  ></bionic-form-options>
+</form>
+
+<bionic-notification #notification> </bionic-notification>

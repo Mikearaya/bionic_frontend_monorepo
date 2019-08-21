@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { DataStateChangeEventArgs, DataResult } from '@syncfusion/ej2-grids';
 import { QueryString } from '@bionic/components/data-grid';
 import { PurchaseOrderIndex } from './models/purchase-order-index.model';
+import { PurchaseOrderFilterModel } from './models/purchase-order-filter.model';
 
 @Injectable()
 export class PurchaseOrderApiService extends Subject<DataStateChangeEventArgs> {
@@ -29,10 +30,12 @@ export class PurchaseOrderApiService extends Subject<DataStateChangeEventArgs> {
     );
   }
   getPurchaseOrdersIndex(
-    searchString: string
+    filter: PurchaseOrderFilterModel
   ): Observable<PurchaseOrderIndex[]> {
     return this.httpClient.get<PurchaseOrderIndex[]>(
-      `${this.apiUrl}/${this.controller}/index?searchString=${searchString}`
+      `${this.apiUrl}/${this.controller}/index?id=${filter.Id}&type=${
+        filter.Type
+      }`
     );
   }
 
@@ -98,13 +101,4 @@ export class PurchaseOrderApiService extends Subject<DataStateChangeEventArgs> {
       )
       .pipe((data: any) => data);
   }
-
-  /*   addNewPurchaseRecieving(
-    purchaseRecieving: PurchaseRecievingModel
-  ): Observable<PurchaseOrderDetailView> {
-    return this.httpClient.post<PurchaseOrderDetailView>(
-      `${this.apiUrl}/procurments/purchase-recievings`,
-      purchaseRecieving
-    );
-  } */
 }

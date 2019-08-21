@@ -30,6 +30,16 @@ export const NAVIGATION_LINKS = [
     privilage: 'canViewPurchaseTerms'
   },
   {
+    id: '05',
+    name: 'Purchase Order Payments',
+    expanded: false,
+    enabled: true,
+    url: '/purchase-order-payments',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewPurchaseOrderPayments'
+  },
+  {
     id: '02',
     name: 'Purchase Orders',
     expanded: false,

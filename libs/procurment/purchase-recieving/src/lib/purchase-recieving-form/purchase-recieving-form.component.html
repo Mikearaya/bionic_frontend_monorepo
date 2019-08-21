@@ -10,14 +10,14 @@
         <div class="col-md-6 col-sm-12">
           <div class="row">
             <label for="vendorId" class="col-md-3 col-sm-12" i18n>Vendor</label>
-            <div class="col-md-9 col-sm-12">{{ purchaseOrder?.vendor }}</div>
+            <div class="col-md-9 col-sm-12">{{ purchaseOrder?.Vendor }}</div>
           </div>
           <div class="row">
             <label for="expectedDate" class="col-md-3 col-sm-12" i18n
               >Expected Date</label
             >
             <div class="col-md-9 col-sm-12">
-              {{ purchaseOrder?.expectedDate }}
+              {{ purchaseOrder?.ExpectedDate | date: 'shortDate' }}
             </div>
           </div>
         </div>
@@ -45,25 +45,36 @@
                 [formGroup]="purchaseItem"
               >
                 <td class="item-box">
-                  {{ (purchaseOrder?.OrderItems)[i].item }}
+                  {{ (purchaseOrder?.PurchaseOrderItems)[i]?.Item }}
                 </td>
-                <td>{{ (purchaseOrder?.OrderItems)[i].quantity }}</td>
-                <td>{{ (purchaseOrder?.OrderItems)[i].unitPrice }}</td>
-                <td>{{ (purchaseOrder?.OrderItems)[i].subTotal }}</td>
-                <td>{{ purchaseOrder?.expectedDate }}</td>
+                <td>{{ (purchaseOrder?.PurchaseOrderItems)[i]?.Quantity }}</td>
+                <td>
+                  {{
+                    (purchaseOrder?.PurchaseOrderItems)[i]?.UnitPrice
+                      | currency: ' '
+                  }}
+                </td>
+                <td>
+                  {{
+                    (purchaseOrder?.PurchaseOrderItems)[i]?.SubTotal | currency
+                  }}
+                </td>
+                <td>{{ purchaseOrder?.ExpectedDate | date: 'shortDate' }}</td>
                 <td>
                   <span
                     *ngIf="
-                      (purchaseOrder?.OrderItems)[i].status.toUpperCase() ==
-                      'RECIEVED'
+                      (purchaseOrder?.PurchaseOrderItems)[
+                        i
+                      ]?.Status.toUpperCase() == 'RECIEVED'
                     "
                   >
-                    {{ (purchaseOrder?.OrderItems)[i].status }}
+                    {{ (purchaseOrder?.PurchaseOrderItems)[i]?.Status }}
                   </span>
                   <ejs-numerictextbox
                     *ngIf="
-                      (purchaseOrder?.OrderItems)[i].status.toUpperCase() !=
-                      'RECIEVED'
+                      (purchaseOrder?.PurchaseOrderItems)[
+                        i
+                      ]?.Status.toUpperCase() != 'RECIEVED'
                     "
                     formControlName="recieved"
                     id="recievedAmount"

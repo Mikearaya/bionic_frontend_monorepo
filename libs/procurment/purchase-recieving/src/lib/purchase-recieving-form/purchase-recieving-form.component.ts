@@ -31,7 +31,7 @@ export class PurchaseRecievingFormComponent implements OnInit {
   public notification: NotificationComponent;
 
   public purchaseOrderForm: FormGroup;
-  public purchaseOrder: PurchaseOrderDetailView;
+  public purchaseOrder: PurchaseOrderDetailView = new PurchaseOrderDetailView();
   public title: string;
   public isUpdate: Boolean;
   public purchaseOrderStatus = [
@@ -93,7 +93,7 @@ export class PurchaseRecievingFormComponent implements OnInit {
 
     this.purchaseOrderForm = this.formBuilder.group({
       purchaseOrderItems: this.formBuilder.array(
-        data.OrderItems.map(i => this.initializePurchaseOrderItems(i))
+        data.PurchaseOrderItems.map(i => this.initializePurchaseOrderItems(i))
       )
     });
   }
@@ -104,9 +104,9 @@ export class PurchaseRecievingFormComponent implements OnInit {
 
   initializePurchaseOrderItems(data: PurchaseOrderItemView): FormGroup {
     return this.formBuilder.group({
-      lotId: [data.lotId, Validators.required],
+      lotId: [data.LotId, Validators.required],
       recieved: [
-        data.status.toUpperCase() === 'RECIEVED' ? 0 : data.quantity,
+        data.Status.toUpperCase() === 'RECIEVED' ? 0 : data.Quantity,
         Validators.required
       ]
     });
@@ -158,7 +158,7 @@ export class PurchaseRecievingFormComponent implements OnInit {
             'Purchase order items recieved successfully'
           );
           this.isUpdate = true;
-          this.purchaseOrderId = data.id;
+          this.purchaseOrderId = data.Id;
           this.initializeForm(data);
         });
     }
@@ -168,7 +168,7 @@ export class PurchaseRecievingFormComponent implements OnInit {
     const newPurchaseOrder = new PurchaseRecievingModel();
     newPurchaseOrder.PurchaseOrderId = this.purchaseOrderId;
     this.purchaseOrderItems.controls.forEach(element => {
-      newPurchaseOrder.RecievedItems.push({
+      newPurchaseOrder.PurchaseOrderItems.push({
         LotId: element.value.lotId,
         Quantity: element.value.recieved
       });

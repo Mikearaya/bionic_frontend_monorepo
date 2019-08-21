@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["jasmine"]
+  },
+  "include": [
+    "**/*.ts",
+    "../purchase-order-api/src/lib/models/purchase-order-filter.model.ts"
+  ]
+}

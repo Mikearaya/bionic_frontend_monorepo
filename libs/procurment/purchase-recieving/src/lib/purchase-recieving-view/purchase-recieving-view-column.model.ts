@@ -1,71 +1,60 @@
-export const purchaseRecievingColumnBluePrint = [
+import { CustomGridColumns } from '@bionic/components/data-grid';
 
+export const purchaseRecievingColumnBluePrint: CustomGridColumns[] = [
+  { key: 'Id', header: 'ID', visible: true, type: 'number', width: 40 },
   {
-    key: 'id',
-    humanReadable: 'ID',
-    visable: true,
-    type: 'number',
-    width: '40',
-  },
-  {
-    key: 'vendorId',
-    humanReadable: 'Vendor id',
-    visable: false,
-    type: 'number',
-    width: '20',
-  },
-  {
-    key: 'vendor',
-    humanReadable: 'Vendor',
-    visable: true,
+    key: 'Vendor',
+    header: 'Vendor',
+    visible: true,
     type: 'string',
+    width: 150
   },
   {
-    key: 'expectedDate',
-    humanReadable: 'Expected date',
-    visable: true,
+    key: 'ShippedDate',
+    header: 'Shipped date',
+    visible: true,
     type: 'date',
-    width: '40',
+    width: 60,
     format: 'yMd'
   },
   {
-    key: 'shippedDate',
-    humanReadable: 'Shipped date',
-    visable: false,
+    key: 'ExpectedDate',
+    header: 'Expected date',
+    visible: true,
     type: 'date',
-    width: '40',
+    width: 60,
     format: 'yMd'
   },
   {
-    key: 'totalCost',
-    humanReadable: 'Total cost',
-    visable: true,
+    key: 'TotalCost',
+    header: 'Total cost',
+    visible: false,
     type: 'number',
-    width: '30',
+    width: 30,
     format: '#'
   },
   {
-    key: 'additionalFee',
-    humanReadable: 'Additional Fee',
-    visable: false,
+    key: 'AdditionalFee',
+    header: 'Additional Fee',
+    visible: false,
     type: 'number',
-    width: '30',
+    width: 30,
     format: '#'
   },
   {
     key: 'dateAdded',
-    humanReadable: 'Create',
-    visable: false,
+    header: 'Create',
+    visible: false,
     type: 'date',
-    width: '30',
+    width: 30,
     format: 'yMd'
   },
   {
     key: 'dateUpdated',
-    humanReadable: 'Updated',
-    visable: false,
+    header: 'Updated',
+    visible: false,
     type: 'date',
-    width: '30',
+    width: 30,
     format: 'yMd'
   }
 ];

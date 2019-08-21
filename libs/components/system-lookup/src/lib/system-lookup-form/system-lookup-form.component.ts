@@ -121,6 +121,10 @@ export class SystemLookupFormComponent implements OnInit {
 
   onSubmit() {
     // check if  current operation is update
+    if (this.lookupForm.valid) {
+      this.submitted.emit(this.lookupForm.value);
+    }
+    /*
     if (!this.isUpdate) {
       this.lookupApi.createLookup(this.lookupForm.value).subscribe(
         success => {
@@ -141,7 +145,7 @@ export class SystemLookupFormComponent implements OnInit {
           alert(error.message); // on error show the error message
         }
       );
-    }
+    } */
   }
 
   addRow(): void {

@@ -1,5 +1,15 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { PurchaseOrderApiService } from '@bionic/apis/procurment/purchase-order-api';
+import {
+  Component,
+  OnInit,
+  Input,
+  forwardRef,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import {
+  PurchaseOrderApiService,
+  PurchaseOrderFilterModel
+} from '@bionic/apis/procurment/purchase-order-api';
 import { Predicate, Query } from '@syncfusion/ej2-data';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -33,13 +43,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class PurchaseOrderSelectorComponent implements ControlValueAccessor {
   @Input()
   public searchBarPlaceholder: string;
+  @Input()
+  public type: string;
+  @Output()
+  public selected: EventEmitter<any> = new EventEmitter();
 
   public _value: any;
   public disabled: boolean;
   public data;
 
   public purchaseOrders: any;
-  public fields: object = { value: 'Id', text: 'Name' };
+  public fields: object = { value: 'Id', text: 'Vendor' };
 
   public text = '';
   constructor(private purchaseOrderApi: PurchaseOrderApiService) {}
@@ -47,6 +61,7 @@ export class PurchaseOrderSelectorComponent implements ControlValueAccessor {
   purchaseOrderChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
+      this.selected.emit($event.itemData);
     } else {
       this.onChanged('');
     }
@@ -56,15 +71,17 @@ export class PurchaseOrderSelectorComponent implements ControlValueAccessor {
 
   public onFiltering(e) {
     e.preventDefaultAction = true;
-    const predicate = new Predicate('Name', 'Contains', e.text);
+    const predicate = new Predicate('Vendor', 'Contains', e.text);
 
     let query = new Query();
 
     query = e.text !== '' ? query.where(predicate) : query;
 
-    this.purchaseOrderApi.getPurchaseOrdersIndex(e.text).subscribe(data => {
-      e.updateData(data);
-    });
+    this.purchaseOrderApi
+      .getPurchaseOrdersIndex({ Id: e.text, Type: this.type })
+      .subscribe(data => {
+        e.updateData(data);
+      });
   }
 
   onChanged: any = () => {};
@@ -74,14 +91,14 @@ export class PurchaseOrderSelectorComponent implements ControlValueAccessor {
     this._value = obj;
 
     this.purchaseOrderApi
-      .getPurchaseOrdersIndex('')
+      .getPurchaseOrdersIndex({ Type: this.type })
       .subscribe((result: any) => {
         this.purchaseOrders = result;
         if (this._value) {
           if (obj !== 0) {
-            const data = this.purchaseOrders.filter(a => a.Name === obj);
+            const data = this.purchaseOrders.filter(a => a.Vendor === obj);
             data.forEach(element => {
-              this.text = element.Name;
+              this.text = element.Vendor;
             });
           }
         }

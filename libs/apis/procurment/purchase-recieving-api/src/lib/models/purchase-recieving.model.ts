@@ -1,10 +1,9 @@
 export class PurchaseRecievingModel {
   PurchaseOrderId: number;
-  RecievedItems: PurchaseRecievingItemModel[] = [];
+  PurchaseOrderItems: PurchaseRecievingItemModel[] = [];
 }
 
 export interface PurchaseRecievingItemModel {
   LotId: number;
   Quantity: number;
 }
-

@@ -8,3 +8,6 @@ export {
 export { PurchaseOrderItemModel } from './lib/models/purchase-order-item.model';
 export { PurchaseOrderApiService } from './lib/purchase-order-api.service';
 export { PurchaseOrderIndex } from './lib/models/purchase-order-index.model';
+export {
+  PurchaseOrderFilterModel
+} from './lib/models/purchase-order-filter.model';

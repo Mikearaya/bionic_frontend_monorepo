@@ -223,6 +223,12 @@
     },
     "procurment-purchase-term": {
       "tags": ["procurment"]
+    },
+    "procurment-purchase-order-payment": {
+      "tags": ["procurment"]
+    },
+    "apis-procurment-purchase-order-payment-api": {
+      "tags": ["procurment"]
     }
   }
 }

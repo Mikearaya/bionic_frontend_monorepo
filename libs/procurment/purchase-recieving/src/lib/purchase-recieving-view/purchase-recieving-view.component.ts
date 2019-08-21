@@ -5,6 +5,10 @@ import {
   PurchaseOrderView,
   PurchaseOrderApiService
 } from '@bionic/apis/procurment/purchase-order-api';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
+import { Subject } from 'rxjs';
+import { PurchaseRecievingApiService } from '@bionic/apis/procurment/purchase-recieving-api';
+import { QueryString } from '@bionic/components/data-grid';
 
 @Component({
   selector: 'bionic-purchase-recieving-view',
@@ -12,23 +16,22 @@ import {
   styleUrls: ['./purchase-recieving-view.component.css']
 })
 export class PurchaseRecievingViewComponent implements OnInit {
-  public data: PurchaseOrderView[];
+  public data: Subject<DataStateChangeEventArgs>;
 
   public columnBluePrint = purchaseRecievingColumnBluePrint;
   public customAttributes: { class: string };
   public filterOptions: { type: string };
 
-  constructor(private purchaseOrderApi: PurchaseOrderApiService) {}
-  dataBound() {}
+  constructor(private purchaseRecievingApi: PurchaseRecievingApiService) {
+    this.data = this.purchaseRecievingApi;
+    this.purchaseRecievingApi.execute(new QueryString());
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.purchaseRecievingApi.execute(new QueryString());
+  }
 
-  viewPurchaseOrder(args: Event): void {
-    /*     const rowObj: IRow<Column> = this.grid.getRowObjectFromUID(
-      closest(<Element>args.target, '.e-row').getAttribute('data-uid')
-    );
-    this.route.navigate([`${rowObj.data['id']}/new`], {
-      relativeTo: this.activatedRoute
-    }); */
+  onDataStateChange(query: QueryString): void {
+    this.purchaseRecievingApi.execute(query);
   }
 }
