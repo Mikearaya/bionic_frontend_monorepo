@@ -64,7 +64,7 @@ const routes: Routes = [
         children: [
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/components/system-lookup#SystemLookupModule',
+            loadChildren: '@bionic/rent/lookups#LookupsModule',
             data: {
               breadCrum: 'System Lookups',
               claimType: 'canViewSystemLookups'

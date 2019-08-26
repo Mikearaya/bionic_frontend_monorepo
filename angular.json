@@ -2446,124 +2446,6 @@
       },
       "schematics": {}
     },
-    "inventory": {
-      "root": "apps/inventory/",
-      "sourceRoot": "apps/inventory/src",
-      "projectType": "application",
-      "prefix": "bionic",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/inventory",
-            "index": "apps/inventory/src/index.html",
-            "main": "apps/inventory/src/main.ts",
-            "polyfills": "apps/inventory/src/polyfills.ts",
-            "tsConfig": "apps/inventory/tsconfig.app.json",
-            "assets": [
-              "apps/inventory/src/favicon.ico",
-              "apps/inventory/src/assets"
-            ],
-            "styles": ["apps/inventory/src/styles.css"],
-            "scripts": [],
-            "es5BrowserSupport": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/inventory/src/environments/environment.ts",
-                  "with": "apps/inventory/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "inventory:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "inventory:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "inventory:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/inventory/tsconfig.app.json",
-              "apps/inventory/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "apps/inventory/src/test.ts",
-            "tsConfig": "apps/inventory/tsconfig.spec.json",
-            "karmaConfig": "apps/inventory/karma.conf.js",
-            "polyfills": "apps/inventory/src/polyfills.ts",
-            "styles": [],
-            "scripts": [],
-            "assets": []
-          }
-        }
-      }
-    },
-    "inventory-e2e": {
-      "root": "apps/inventory-e2e",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/builders:cypress",
-          "options": {
-            "cypressConfig": "apps/inventory-e2e/cypress.json",
-            "tsConfig": "apps/inventory-e2e/tsconfig.e2e.json",
-            "devServerTarget": "inventory:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "inventory:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/inventory-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "inventory-item": {
       "root": "libs/inventory/item",
       "sourceRoot": "libs/inventory/item/src",
@@ -2767,6 +2649,256 @@
         }
       },
       "schematics": {}
+    },
+    "procurment-system-lookup": {
+      "root": "libs/procurment/system-lookup",
+      "sourceRoot": "libs/procurment/system-lookup/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/procurment/system-lookup/tsconfig.lib.json",
+              "libs/procurment/system-lookup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/procurment/system-lookup/src/test.ts",
+            "tsConfig": "libs/procurment/system-lookup/tsconfig.spec.json",
+            "karmaConfig": "libs/procurment/system-lookup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rent-lookups": {
+      "root": "libs/rent/lookups",
+      "sourceRoot": "libs/rent/lookups/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rent/lookups/tsconfig.lib.json",
+              "libs/rent/lookups/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/rent/lookups/src/test.ts",
+            "tsConfig": "libs/rent/lookups/tsconfig.spec.json",
+            "karmaConfig": "libs/rent/lookups/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shipment-lookups": {
+      "root": "libs/shipment/lookups",
+      "sourceRoot": "libs/shipment/lookups/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shipment/lookups/tsconfig.lib.json",
+              "libs/shipment/lookups/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shipment/lookups/src/test.ts",
+            "tsConfig": "libs/shipment/lookups/tsconfig.spec.json",
+            "karmaConfig": "libs/shipment/lookups/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "components-default-layout": {
+      "root": "libs/components/default-layout",
+      "sourceRoot": "libs/components/default-layout/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/default-layout/tsconfig.lib.json",
+            "project": "libs/components/default-layout/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/default-layout/tsconfig.lib.json",
+              "libs/components/default-layout/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/default-layout/src/test.ts",
+            "tsConfig": "libs/components/default-layout/tsconfig.spec.json",
+            "karmaConfig": "libs/components/default-layout/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "bionic-inventory": {
+      "root": "apps/bionic-inventory/",
+      "sourceRoot": "apps/bionic-inventory/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bionic-inventory",
+            "index": "apps/bionic-inventory/src/index.html",
+            "main": "apps/bionic-inventory/src/main.ts",
+            "polyfills": "apps/bionic-inventory/src/polyfills.ts",
+            "tsConfig": "apps/bionic-inventory/tsconfig.app.json",
+            "assets": [
+              "apps/bionic-inventory/src/favicon.ico",
+              "apps/bionic-inventory/src/assets"
+            ],
+            "styles": [
+              "apps/bionic-inventory/src/styles.css",
+              "./node_modules/@syncfusion/ej2-base/styles/material.css",
+              "./node_modules/@syncfusion/ej2-buttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-inputs/styles/material.css",
+              "./node_modules/@syncfusion/ej2-navigations/styles/material.css",
+              "./node_modules/@syncfusion/ej2-popups/styles/material.css",
+              "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/@syncfusion/ej2-lists/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-notifications/styles/material.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bionic-inventory/src/environments/environment.ts",
+                  "with": "apps/bionic-inventory/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bionic-inventory:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bionic-inventory:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bionic-inventory:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bionic-inventory/tsconfig.app.json",
+              "apps/bionic-inventory/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/bionic-inventory/src/test.ts",
+            "tsConfig": "apps/bionic-inventory/tsconfig.spec.json",
+            "karmaConfig": "apps/bionic-inventory/karma.conf.js",
+            "polyfills": "apps/bionic-inventory/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "bionic-inventory-e2e": {
+      "root": "apps/bionic-inventory-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/bionic-inventory-e2e/cypress.json",
+            "tsConfig": "apps/bionic-inventory-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bionic-inventory:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bionic-inventory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/bionic-inventory-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

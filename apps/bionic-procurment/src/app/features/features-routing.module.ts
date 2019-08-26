@@ -74,6 +74,10 @@ const routes: Routes = [
             loadChildren: '@bionic/procurment/users#UsersModule',
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
+          },
+          {
+            path: 'system-lookups',
+            loadChildren: '@bionic/procurment/system-lookup#LookupModule'
           }
         ]
       }

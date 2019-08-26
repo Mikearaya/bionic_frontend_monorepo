@@ -19,8 +19,6 @@
 
     "../../libs/rent/partners-payment/src/index.ts",
 
-    "../../libs/components/system-lookup/src/index.ts",
-
     "../../libs/rent/reports/src/index.ts",
 
     "../../libs/rent/rent-dash-board/src/index.ts",
@@ -29,6 +27,8 @@
 
     "../../libs/rent/roles/src/index.ts",
 
-    "../../libs/rent/users/src/index.ts"
+    "../../libs/rent/users/src/index.ts",
+
+    "../../libs/rent/lookups/src/index.ts"
   ]
 }

@@ -22,9 +22,9 @@ export class SystemLookupApiService extends Subject<DataStateChangeEventArgs> {
     super();
   }
 
-  createLookup(newLookup: LookupModel): Observable<LookupViewModel> {
+  createLookup(newLookup: LookupModel[]): Observable<LookupViewModel> {
     return this.httpClient
-      .post<LookupViewModel>(`${this.apiUrl}`, newLookup)
+      .post<LookupViewModel>(`${this.apiUrl}`, { Lookups: newLookup })
       .pipe(catchError(this.handleError));
   }
 
@@ -77,7 +77,7 @@ export class SystemLookupApiService extends Subject<DataStateChangeEventArgs> {
     );
   }
 
-  updateLookup(updatedLookup: LookupModel): Observable<void> {
+  updateLookup(updatedLookup: LookupModel[]): Observable<void> {
     return this.httpClient.put<void>(`${this.apiUrl}`, updatedLookup);
   }
 

@@ -180,6 +180,14 @@
       ],
       "@bionic/apis/procurment/purchase-order-payment-api": [
         "libs/apis/procurment/purchase-order-payment-api/src/index.ts"
+      ],
+      "@bionic/procurment/system-lookup": [
+        "libs/procurment/system-lookup/src/index.ts"
+      ],
+      "@bionic/rent/lookups": ["libs/rent/lookups/src/index.ts"],
+      "@bionic/shipment/lookups": ["libs/shipment/lookups/src/index.ts"],
+      "@bionic/components/default-layout": [
+        "libs/components/default-layout/src/index.ts"
       ]
     }
   },

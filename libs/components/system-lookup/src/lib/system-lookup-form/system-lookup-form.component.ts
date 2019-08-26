@@ -44,7 +44,7 @@ export class SystemLookupFormComponent implements OnInit {
     private lookupApi: SystemLookupApiService
   ) {
     this.createLookupForm();
-    this.typeList = ['Appdiv', 'Appdiv', 'appdiv'];
+
     this.lookupFields = { value: 'Id', text: 'Name' };
   }
 
@@ -55,13 +55,11 @@ export class SystemLookupFormComponent implements OnInit {
       .getSystemLookupCategories()
       .subscribe((e: SystemLookupCategoriesModel[]) => (this.lookupsList = e));
 
-    if (this.LookupId) {
+    if (this.lookup) {
       // if lookup id is present get the related account value
       this.isUpdate = true;
+      this.initializeLookup(this.lookup);
       // initialize the form with the retrived lookup value
-      this.lookupApi
-        .getLookupId(this.LookupId)
-        .subscribe((data: LookupViewModel) => this.initializeLookup(data));
     }
 
     this.typeFields = {
@@ -122,30 +120,9 @@ export class SystemLookupFormComponent implements OnInit {
   onSubmit() {
     // check if  current operation is update
     if (this.lookupForm.valid) {
-      this.submitted.emit(this.lookupForm.value);
+      console.log(this.lookupForm.value.Lookups);
+      this.submitted.emit(this.lookupForm.value.Lookups);
     }
-    /*
-    if (!this.isUpdate) {
-      this.lookupApi.createLookup(this.lookupForm.value).subscribe(
-        success => {
-          alert('Lookup Created Successfully');
-          this.location.back(); // on success return back to where the user previously was
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message); // on error show the error message
-        }
-      );
-    } else {
-      this.lookupApi.updateLookup(this.lookupForm.value).subscribe(
-        () => {
-          alert('Account catagory Updated Successfully'); // on success return back to where the user previously was
-          this.location.back();
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message); // on error show the error message
-        }
-      );
-    } */
   }
 
   addRow(): void {

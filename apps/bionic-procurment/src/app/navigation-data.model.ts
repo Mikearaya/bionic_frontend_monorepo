@@ -1,4 +1,6 @@
-export const NAVIGATION_LINKS = [
+import { DefaultLayoutModel } from '@bionic/components/default-layout';
+
+export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
   {
     id: '00',
     name: 'Dashboard',

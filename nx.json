@@ -206,12 +206,6 @@
     "components-notification": {
       "tags": ["shared"]
     },
-    "inventory": {
-      "tags": []
-    },
-    "inventory-e2e": {
-      "tags": []
-    },
     "inventory-item": {
       "tags": ["inventory"]
     },
@@ -229,6 +223,24 @@
     },
     "apis-procurment-purchase-order-payment-api": {
       "tags": ["procurment"]
+    },
+    "procurment-system-lookup": {
+      "tags": ["procurmet"]
+    },
+    "rent-lookups": {
+      "tags": ["rent"]
+    },
+    "shipment-lookups": {
+      "tags": ["rent"]
+    },
+    "components-default-layout": {
+      "tags": ["components"]
+    },
+    "bionic-inventory": {
+      "tags": ["inventory"]
+    },
+    "bionic-inventory-e2e": {
+      "tags": []
     }
   }
 }

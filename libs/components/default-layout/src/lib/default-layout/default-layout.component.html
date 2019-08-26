@@ -1,0 +1,59 @@
+<div class="main">
+  <div class="sidebar-content">
+    <ejs-sidebar id="default-sidebar" #sidebar [type]="type" [target]="target">
+      <div class="sidebar-header">{{ mainHeader }}</div>
+      <div class="user-panel">
+        <div class="image"><span class="e-avatar e-avatar-circle">B</span></div>
+        <div class="info">
+          <div class="name">{{ subHeader }}</div>
+        </div>
+      </div>
+      <div class="center-align">
+        <ejs-treeview
+          #tree
+          (nodeClicked)="loadRoutingContent($event)"
+          id="treeelement"
+          [fields]="field"
+        >
+          <ng-template #nodeTemplate="" let-data="">
+            <div>
+              <div>
+                <i [attr.class]="data.icon" aria-hidden="true"> </i
+                >{{ data.name }}
+              </div>
+            </div>
+          </ng-template>
+        </ejs-treeview>
+      </div>
+    </ejs-sidebar>
+  </div>
+  <div id="spinner-container"></div>
+  <div class="content">
+    <div>
+      <div id="head" class="d-print-none">
+        <button
+          ejs-button
+          id="toggle"
+          #togglebtn
+          cssClass="e-flat"
+          iconCss="e-icons burg-icon"
+          isToggle="true"
+          (click)="btnClick()"
+        ></button>
+        <button
+          ejs-button
+          cssClass=" logout-button"
+          isToggle="true"
+          (click)="onLogOut()"
+        >
+          Log Out {{ securityObject.UserName }}
+        </button>
+      </div>
+      <div id="targetcontent">
+        <div class="content-head"><app-page-identity></app-page-identity></div>
+
+        <div class="main-content"><router-outlet></router-outlet></div>
+      </div>
+    </div>
+  </div>
+</div>
