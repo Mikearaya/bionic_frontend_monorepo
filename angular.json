@@ -2899,6 +2899,87 @@
           }
         }
       }
+    },
+    "inventory-users": {
+      "root": "libs/inventory/users",
+      "sourceRoot": "libs/inventory/users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/users/tsconfig.lib.json",
+              "libs/inventory/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/users/src/test.ts",
+            "tsConfig": "libs/inventory/users/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-roles": {
+      "root": "libs/inventory/roles",
+      "sourceRoot": "libs/inventory/roles/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/roles/tsconfig.lib.json",
+              "libs/inventory/roles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/roles/src/test.ts",
+            "tsConfig": "libs/inventory/roles/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/roles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-system-lookup": {
+      "root": "libs/inventory/system-lookup",
+      "sourceRoot": "libs/inventory/system-lookup/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/system-lookup/tsconfig.lib.json",
+              "libs/inventory/system-lookup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/system-lookup/src/test.ts",
+            "tsConfig": "libs/inventory/system-lookup/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/system-lookup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

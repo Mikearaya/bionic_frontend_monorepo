@@ -8,7 +8,33 @@ const routes: Routes = [
     path: '',
     component: FeaturesComponent,
     data: { breadCrum: 'Home' },
-    children: []
+    children: [
+      {
+        path: 'settings',
+        data: {
+          breadCrum: 'Settings',
+          claimType: 'canViewSystemLookups'
+        },
+        children: [
+          {
+            path: 'roles',
+            loadChildren: '@bionic/inventory/roles#RolesModule',
+            data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
+            canLoad: [AuthorizationGuard]
+          },
+          {
+            path: 'users',
+            loadChildren: '@bionic/inventory/users#UsersModule',
+            data: { breadCrum: 'Users', claimType: 'canViewUsers' },
+            canLoad: [AuthorizationGuard]
+          },
+          {
+            path: 'system-lookups',
+            loadChildren: '@bionic/inventory/system-lookup#LookupModule'
+          }
+        ]
+      }
+    ]
   }
 ];
 

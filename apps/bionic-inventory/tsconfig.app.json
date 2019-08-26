@@ -5,5 +5,13 @@
     "types": []
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts", "../../libs/components/authentication/src/index.ts"]
+  "include": [
+    "**/*.ts",
+    "../../libs/components/authentication/src/index.ts",
+    "../../libs/inventory/users/src/index.ts",
+
+    "../../libs/inventory/roles/src/index.ts",
+
+    "../../libs/inventory/system-lookup/src/index.ts"
+  ]
 }

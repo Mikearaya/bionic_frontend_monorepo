@@ -241,6 +241,15 @@
     },
     "bionic-inventory-e2e": {
       "tags": []
+    },
+    "inventory-users": {
+      "tags": ["inventory"]
+    },
+    "inventory-roles": {
+      "tags": ["inventory"]
+    },
+    "inventory-system-lookup": {
+      "tags": ["inventory"]
     }
   }
 }

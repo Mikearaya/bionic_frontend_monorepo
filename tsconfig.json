@@ -188,6 +188,11 @@
       "@bionic/shipment/lookups": ["libs/shipment/lookups/src/index.ts"],
       "@bionic/components/default-layout": [
         "libs/components/default-layout/src/index.ts"
+      ],
+      "@bionic/inventory/users": ["libs/inventory/users/src/index.ts"],
+      "@bionic/inventory/roles": ["libs/inventory/roles/src/index.ts"],
+      "@bionic/inventory/system-lookup": [
+        "libs/inventory/system-lookup/src/index.ts"
       ]
     }
   },
