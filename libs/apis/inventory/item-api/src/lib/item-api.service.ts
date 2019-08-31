@@ -6,13 +6,13 @@ import { CriticalItemModel } from './models/critical-item.model';
 import { VendorItemViewModel } from './models/vendor-item.model';
 import { ItemView } from './models/item-view.model';
 import { ItemReportModel } from './models/item-report.model';
-import { ItemModel } from '..';
 
 import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 import { map } from 'rxjs/operators';
 import { DataResult } from '@syncfusion/ej2-angular-grids';
 import { ItemIndexModel } from './models/item-index.model';
 import { QueryString } from '@bionic/components/data-grid';
+import { ItemModel } from './models/item.model';
 
 @Injectable()
 export class ItemApiService extends Subject<DataStateChangeEventArgs> {
@@ -111,7 +111,7 @@ export class ItemApiService extends Subject<DataStateChangeEventArgs> {
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/filter`, state)
+      .post(`${this.apiUrl}/${this.controller}/filter`, state)
       .pipe(
         map(
           (response: any) =>

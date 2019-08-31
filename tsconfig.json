@@ -193,6 +193,24 @@
       "@bionic/inventory/roles": ["libs/inventory/roles/src/index.ts"],
       "@bionic/inventory/system-lookup": [
         "libs/inventory/system-lookup/src/index.ts"
+      ],
+      "@bionic/inventory/item-groups": [
+        "libs/inventory/item-groups/src/index.ts"
+      ],
+      "@bionic/inventory/unit-of-measurments": [
+        "libs/inventory/unit-of-measurments/src/index.ts"
+      ],
+      "@bionic/inventory/storage-locations": [
+        "libs/inventory/storage-locations/src/index.ts"
+      ],
+      "@bionic/apis/inventory/storage-locations-api": [
+        "libs/apis/inventory/storage-locations-api/src/index.ts"
+      ],
+      "@bionic/apis/inventory/item-groups-api": [
+        "libs/apis/inventory/item-groups-api/src/index.ts"
+      ],
+      "@bionic/apis/inventory/unit-of-measurments-api": [
+        "libs/apis/inventory/unit-of-measurments-api/src/index.ts"
       ]
     }
   },

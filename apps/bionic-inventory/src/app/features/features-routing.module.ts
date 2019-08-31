@@ -10,6 +10,14 @@ const routes: Routes = [
     data: { breadCrum: 'Home' },
     children: [
       {
+        path: 'items',
+        data: {
+          breadCrum: 'Settings',
+          claimType: 'canViewSystemLookups'
+        },
+        loadChildren: '@bionic/inventory/item#ItemModule'
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',
@@ -30,7 +38,34 @@ const routes: Routes = [
           },
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/inventory/system-lookup#LookupModule'
+            loadChildren: '@bionic/inventory/system-lookup#LookupModule',
+            data: {
+              breadCrum: 'System Lookups',
+              claimType: 'canViewSystemLookups'
+            }
+          },
+          {
+            path: 'item-groups',
+            loadChildren: '@bionic/inventory/item-groups#ItemGroupsModule',
+            data: { breadCrum: 'Item Groups', claimType: 'canViewItemGroups' }
+          },
+          {
+            path: 'unit-of-measurments',
+            loadChildren:
+              '@bionic/inventory/unit-of-measurments#UnitOfMeasurmentsModule',
+            data: {
+              breadCrum: 'Unit Of Measurments',
+              claimType: 'canViewUnitOfMeasurments'
+            }
+          },
+          {
+            path: 'storage-locations',
+            loadChildren:
+              '@bionic/inventory/storage-locations#StorageLocationsModule',
+            data: {
+              breadCrum: 'Storage Locations',
+              claimType: 'canViewStorageLocations'
+            }
           }
         ]
       }

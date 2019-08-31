@@ -1,0 +1,62 @@
+<bionic-notification #notification></bionic-notification>
+
+<form [formGroup]="itemGroupForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-xs-12">
+        <div class="row">
+          <label for="groupname" class="label-area col-xs-12 col-3">
+            Group Name
+          </label>
+          <input
+            type="text"
+            class="e-input col-xs-12 col-9"
+            id="groupname"
+            name="groupname"
+            floatLabelType="Auto"
+            formControlName="GroupName"
+            placeholder="Group Name"
+          />
+          <div class="e-error" *ngIf="groupName.errors">
+            <div *ngIf="groupName.errors['required']">
+              Group Name is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="label-area col-xs-12 col-3" for="parentGroup">
+            Parent Group
+          </label>
+          <bionic-item-group-selector
+            class="col-xs-12 col-9"
+            formControlName="ParentGroup"
+            placeholder="Parent Group"
+            id="parentGroup"
+            name="parentGroup"
+          ></bionic-item-group-selector>
+        </div>
+        <div class="row">
+          <label
+            for="description"
+            class="label-area col-xs-12 col-3"
+            i18n="item group description"
+          >
+            Description
+          </label>
+          <input
+            type="text"
+            class="e-input col-xs-12 col-9"
+            formControlName="Description"
+            id="description"
+            name="description"
+            placeholder="Description"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <bionic-form-options
+    [submitDisabled]="itemGroupForm.invalid"
+  ></bionic-form-options>
+</form>

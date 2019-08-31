@@ -250,6 +250,24 @@
     },
     "inventory-system-lookup": {
       "tags": ["inventory"]
+    },
+    "inventory-item-groups": {
+      "tags": ["inventory"]
+    },
+    "inventory-unit-of-measurments": {
+      "tags": ["inventory"]
+    },
+    "inventory-storage-locations": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-storage-locations-api": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-item-groups-api": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-unit-of-measurments-api": {
+      "tags": ["inventory"]
     }
   }
 }

@@ -2980,6 +2980,210 @@
         }
       },
       "schematics": {}
+    },
+    "inventory-item-groups": {
+      "root": "libs/inventory/item-groups",
+      "sourceRoot": "libs/inventory/item-groups/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/item-groups/tsconfig.lib.json",
+            "project": "libs/inventory/item-groups/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/item-groups/tsconfig.lib.json",
+              "libs/inventory/item-groups/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/item-groups/src/test.ts",
+            "tsConfig": "libs/inventory/item-groups/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/item-groups/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-unit-of-measurments": {
+      "root": "libs/inventory/unit-of-measurments",
+      "sourceRoot": "libs/inventory/unit-of-measurments/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/unit-of-measurments/tsconfig.lib.json",
+            "project": "libs/inventory/unit-of-measurments/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/unit-of-measurments/tsconfig.lib.json",
+              "libs/inventory/unit-of-measurments/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/unit-of-measurments/src/test.ts",
+            "tsConfig": "libs/inventory/unit-of-measurments/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/unit-of-measurments/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-storage-locations": {
+      "root": "libs/inventory/storage-locations",
+      "sourceRoot": "libs/inventory/storage-locations/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/storage-locations/tsconfig.lib.json",
+            "project": "libs/inventory/storage-locations/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/storage-locations/tsconfig.lib.json",
+              "libs/inventory/storage-locations/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/storage-locations/src/test.ts",
+            "tsConfig": "libs/inventory/storage-locations/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/storage-locations/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-storage-locations-api": {
+      "root": "libs/apis/inventory/storage-locations-api",
+      "sourceRoot": "libs/apis/inventory/storage-locations-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/storage-locations-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/storage-locations-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/storage-locations-api/tsconfig.lib.json",
+              "libs/apis/inventory/storage-locations-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/storage-locations-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/storage-locations-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/storage-locations-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-item-groups-api": {
+      "root": "libs/apis/inventory/item-groups-api",
+      "sourceRoot": "libs/apis/inventory/item-groups-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/item-groups-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/item-groups-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/item-groups-api/tsconfig.lib.json",
+              "libs/apis/inventory/item-groups-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/item-groups-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/item-groups-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/item-groups-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-unit-of-measurments-api": {
+      "root": "libs/apis/inventory/unit-of-measurments-api",
+      "sourceRoot": "libs/apis/inventory/unit-of-measurments-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/unit-of-measurments-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/unit-of-measurments-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/unit-of-measurments-api/tsconfig.lib.json",
+              "libs/apis/inventory/unit-of-measurments-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/unit-of-measurments-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/unit-of-measurments-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/unit-of-measurments-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

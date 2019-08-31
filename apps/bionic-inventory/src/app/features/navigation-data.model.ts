@@ -16,7 +16,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     name: 'Items',
     expanded: false,
     enabled: true,
-    url: '/vendors',
+    url: '/items',
     icon: 'fas fa-handshake',
     selected: false,
     privilage: 'canViewPartners'
@@ -91,7 +91,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
       {
         id: '05-04',
         name: 'Item Groups',
-        url: '/settings/roles',
+        url: '/settings/item-groups',
         expanded: false,
         enabled: true,
         selected: false,
@@ -100,7 +100,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
       {
         id: '05-05',
         name: 'Unit of Measurments',
-        url: '/settings/users',
+        url: '/settings/unit-of-measurments',
         expanded: false,
         enabled: true,
         selected: false,
@@ -109,7 +109,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
       {
         id: '05-06',
         name: 'Storage Locations',
-        url: '/settings/roles',
+        url: '/settings/storage-locations',
         expanded: false,
         enabled: true,
         selected: false,

@@ -1,21 +1,12 @@
-/*
- * @CreateTime: Sep 12, 2018 12:48 AM
- * @Author:  Mikael Araya
- * @Contact: MikaelAraya12@gmail.com
- * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Jan 31, 2019 8:12 PM
- * @Description: Modify Here, Please
- */
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { stockViewColumnBluePrint } from './item-column-blue-print';
-import { NotificationComponent } from '@bionic/components/notification';
-import { ItemApiService } from '@bionic/apis/inventory/item-api';
-import { Subject } from 'rxjs';
-
 import { HttpErrorResponse } from '@angular/common/http';
+import { itemGroupColumnBluePrint } from './item-group-view-blue-print';
+
+import { Subject } from 'rxjs';
+import { ItemGroupsApiService } from '@bionic/apis/inventory/item-groups-api';
 import { QueryString } from '@bionic/components/data-grid';
+import { NotificationComponent } from '@bionic/components/notification';
 import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 
 @Component({
@@ -40,34 +31,35 @@ import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 
     <bionic-notification #notification></bionic-notification>
   `,
-  styleUrls: ['./item-view.component.css']
+  styleUrls: ['./item-group-view.component.css']
 })
-export class ItemViewComponent implements OnInit {
+export class ItemGroupViewComponent implements OnInit {
   @ViewChild('notification')
   private notification: NotificationComponent;
 
   public data: Subject<DataStateChangeEventArgs>;
 
-  public columnBluePrint = stockViewColumnBluePrint;
+  public columnBluePrint = itemGroupColumnBluePrint;
 
-  constructor(private itemApi: ItemApiService) {
-    this.itemApi.execute(new QueryString());
+  constructor(private itemGroupApi: ItemGroupsApiService) {
+    this.data = this.itemGroupApi;
+    this.itemGroupApi.execute(new QueryString());
   }
 
   ngOnInit(): void {
-    this.itemApi.execute(new QueryString());
+    this.itemGroupApi.execute(new QueryString());
   }
 
   deleteItem(data: any): void {
-    this.itemApi.deleteItemById(data['Id']).subscribe(
-      () => this.notification.showMessage('Purchase Order Deleted'),
+    this.itemGroupApi.deleteItemGroup(data['Id']).subscribe(
+      () => this.notification.showMessage('Item Group Deleted'),
       (error: HttpErrorResponse) => {
-        this.notification.showMessage('Unable to Delete Stock Batch', 'error');
+        this.notification.showMessage('Unable to Delete Item Group', 'error');
       }
     );
   }
 
   onDataStateChange(state: QueryString): void {
-    this.itemApi.execute(state);
+    this.itemGroupApi.execute(state);
   }
 }
