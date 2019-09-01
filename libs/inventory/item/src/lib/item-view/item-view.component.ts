@@ -51,6 +51,7 @@ export class ItemViewComponent implements OnInit {
   public columnBluePrint = stockViewColumnBluePrint;
 
   constructor(private itemApi: ItemApiService) {
+    this.data = this.itemApi;
     this.itemApi.execute(new QueryString());
   }
 

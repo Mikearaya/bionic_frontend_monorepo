@@ -21,19 +21,22 @@ import {
 import { Location } from '@angular/common';
 import { TabComponent } from '@syncfusion/ej2-angular-navigations';
 import { NotificationComponent } from '@bionic/components/notification';
+import {
+  ItemApiService,
+  ItemView,
+  ItemModel
+} from '@bionic/apis/inventory/item-api';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  template: './item-form.component.html',
+  templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.css']
 })
-export class ItemFormComponent {
+export class ItemFormComponent implements OnInit {
   @ViewChild('procured')
   public procured: any;
   @ViewChild('notification')
   public notification: NotificationComponent;
-  /* public itemGroups: ProductGroupView[];
-  public unitOfMesurmentList: UnitOfMeasurmentView[];
-  public storagesList: StorageLocationView[];
   @ViewChild('element') tabObj: TabComponent;
 
   @ViewChild('headerStyles') listObj: TabComponent;
@@ -52,154 +55,98 @@ export class ItemFormComponent {
   public height: String = '220px';
   public value: String = 'default';
 
-  public submitButtonText: string;
-  public title: string;
   public productForm: FormGroup;
   public isUpdate: Boolean = false;
   public itemId: number;
-  public submitted: Boolean = false;
-  public itemGroupFields: { text: string; value: string };
-  public unitOfMeasureFields: { text: string; value: string };
-  public storageFields: { text: string; value: string };
 
   constructor(
     private itemApi: ItemApiService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private productGroupApi: ProductGroupApiService,
-    private unitOfMeasurmentApi: UnitOfMeasurmentApiService,
-    private location: Location,
-    private storageApi: StorageLocationApiService
+    private location: Location
   ) {
-    super();
     this.createForm();
-    this.itemGroupFields = { text: 'groupName', value: 'id' };
-    this.unitOfMeasureFields = { text: 'name', value: 'id' };
-    this.storageFields = { text: 'name', value: 'id' };
   }
 
   ngOnInit() {
     this.itemId = +this.activatedRoute.snapshot.paramMap.get('itemId');
 
-    this.productGroupApi
-      .getAllProductGroups()
-      .subscribe(
-        (data: ProductGroupView[]) => (this.itemGroups = data),
-        () => this.handleError
-      );
-
-    this.unitOfMeasurmentApi
-      .getAllUnitOfMeasures()
-      .subscribe(
-        (data: UnitOfMeasurmentView[]) => (this.unitOfMesurmentList = data),
-        this.handleError
-      );
-
-    this.storageApi
-      .getAllStorageLocations()
-      .subscribe(
-        (data: StorageLocationView[]) => (this.storagesList = data),
-        this.handleError
-      );
-
     if (this.itemId) {
-      this.title = 'Create New Item';
-      this.submitButtonText = 'Update';
       this.isUpdate = true;
       this.itemApi
         .getItemById(this.itemId)
-        .subscribe(
-          (data: ItemView) => this.initializeForm(data),
-          this.handleError
-        );
-    } else {
-      this.title = 'Update Item';
-      this.submitButtonText = 'Create';
+        .subscribe((data: ItemView) => this.initializeForm(data));
     }
   }
 
   get code(): FormControl {
-    return this.productForm.get('code') as FormControl;
+    return this.productForm.get('Code') as FormControl;
   }
   get name(): FormControl {
-    return this.productForm.get('name') as FormControl;
+    return this.productForm.get('Name') as FormControl;
   }
   get groupId(): FormControl {
-    return this.productForm.get('groupId') as FormControl;
+    return this.productForm.get('GroupId') as FormControl;
   }
 
   get primaryUomId(): FormControl {
-    return this.productForm.get('primaryUomId') as FormControl;
+    return this.productForm.get('PrimaryUomId') as FormControl;
   }
 
   get minimumQuantity(): FormControl {
-    return this.productForm.get('minimumQuantity') as FormControl;
+    return this.productForm.get('MinimumQuantity') as FormControl;
   }
 
   get storageId(): FormControl {
-    return this.productForm.get('storageId') as FormControl;
+    return this.productForm.get('DefaultStorageId') as FormControl;
   }
 
   get isProcured(): FormControl {
-    return this.productForm.get('isProcured') as FormControl;
+    return this.productForm.get('IsProcured') as FormControl;
   }
 
   get isInventoryItem(): FormControl {
-    return this.productForm.get('isInventoryItem') as FormControl;
+    return this.productForm.get('IsInventoryItem') as FormControl;
   }
 
   get weight(): FormControl {
-    return this.productForm.get('weight') as FormControl;
+    return this.productForm.get('Weight') as FormControl;
   }
 
   get shelfLife(): FormControl {
-    return this.productForm.get('shelfLife') as FormControl;
+    return this.productForm.get('ShelfLife') as FormControl;
   }
 
   get price(): FormControl {
-    return this.productForm.get('price') as FormControl;
+    return this.productForm.get('Price') as FormControl;
   }
   get image(): FormControl {
-    return this.productForm.get('image') as FormControl;
+    return this.productForm.get('Image') as FormControl;
   }
   get unitCost(): FormControl {
-    return this.productForm.get('unitCost') as FormControl;
+    return this.productForm.get('UnitCost') as FormControl;
   }
 
   createForm(): void {
     this.productForm = this.formBuilder.group({
-      code: ['', Validators.required],
-      name: ['', Validators.required],
-      groupId: ['', Validators.required],
-      storageId: ['', Validators.required],
-      primaryUomId: ['', Validators.required],
-      minimumQuantity: [0, Validators.min(0)],
-      isProcured: [false],
-      isInventoryItem: [true],
-      weight: ['', [Validators.required, Validators.min(0)]],
-      shelfLife: [0, [Validators.required, Validators.min(0)]],
-      price: ['', [Validators.required, Validators.min(0)]],
-      image: [''],
-      unitCost: ['', [Validators.required, Validators.min(0)]]
+      Code: ['', Validators.required],
+      Name: ['', Validators.required],
+      GroupId: ['', Validators.required],
+      DefaultStorageId: ['', Validators.required],
+      PrimaryUomId: ['', Validators.required],
+      MinimumQuantity: [0, Validators.min(0)],
+      IsProcured: [false],
+      IsInventoryItem: [true],
+      Weight: ['', [Validators.required, Validators.min(0)]],
+      ShelfLife: [0, [Validators.required, Validators.min(0)]],
+      Price: ['', [Validators.required, Validators.min(0)]],
+      Image: [''],
+      UnitCost: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
   initializeForm(item: ItemView) {
-    this.productForm = this.formBuilder.group({
-      code: [item.code, Validators.required],
-      name: [item.name, Validators.required],
-      groupId: [item.groupId, Validators.required],
-      primaryUomId: [item.primaryUomId, Validators.required],
-      unitCost: [item.unitCost, [Validators.required, Validators.min(0)]],
-      minimumQuantity: [item.minimumQuantity, Validators.min(0)],
-      isProcured: [item.isProcured ? true : false],
-      storageId: [item.defaultStorageId, Validators.required],
-      weight: [item.weight, [Validators.required, Validators.min(0)]],
-      isInventoryItem: [item.isInventoryItem ? true : false],
-      shelfLife: [item.shelfLife, [Validators.required, Validators.min(0)]],
-      price: [item.price, [Validators.required, Validators.min(0)]],
-      image: [item.photo]
-    });
+    this.productForm.patchValue(item);
   }
 
   onSubmit() {
@@ -209,13 +156,12 @@ export class ItemFormComponent {
       this.itemApi.saveItem(formData).subscribe(
         (data: ItemModel) => {
           this.notification.showMessage('Item Created!!!');
-          this.itemId = data.id;
+          this.itemId = data.Id;
           this.submited = true;
           this.created = true;
         },
-        (error: CustomErrorResponse) => {
+        (error: HttpErrorResponse) => {
           this.notification.showMessage('Item Creation Failed', 'error');
-          this.handleError(error);
           this.created = false;
           this.submited = false;
         }
@@ -226,12 +172,11 @@ export class ItemFormComponent {
           this.notification.showMessage('Item Updated!!!');
           this.location.back();
         },
-        (error: CustomErrorResponse) => {
+        (error: HttpErrorResponse) => {
           this.notification.showMessage(
-            'Failed while Updateing Item Failed',
+            'Item Update Failed, try again!',
             'error'
           );
-          this.handleError(error);
         }
       );
     }
@@ -239,21 +184,20 @@ export class ItemFormComponent {
 
   prepareFormData(form: any): ItemModel {
     return {
-      id: this.itemId,
-      code: form.code,
-      description: form.description,
-      name: form.name,
-      groupId: form.groupId,
-      primaryUomId: form.primaryUomId,
-      isProcured: form.isProcured,
-      isInventoryItem: form.isInventoryItem,
-      minimumQuantity: form.minimumQuantity,
-      defaultStorageId: form.storageId,
-      weight: form.weight,
-      price: form.price,
-      shelfLife: form.shelfLife,
-      unitCost: form.unitCost,
-      image: form.image
+      Id: this.itemId,
+      Code: this.code.value,
+      Name: this.name.value,
+      GroupId: this.groupId.value,
+      PrimaryUomId: this.primaryUomId.value,
+      IsProcured: this.isProcured.value,
+      IsInventoryItem: this.isInventoryItem.value,
+      MinimumQuantity: this.minimumQuantity.value,
+      DefaultStorageId: this.storageId.value,
+      Weight: this.weight.value,
+      Price: this.price.value,
+      ShelfLife: this.shelfLife.value,
+      UnitCost: this.unitCost.value,
+      Image: this.image.value
     };
-  } */
+  }
 }

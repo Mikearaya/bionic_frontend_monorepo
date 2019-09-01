@@ -1,17 +1,17 @@
 export interface ItemModel {
-  id: number;
-  code: string;
-  name: string;
-  minimumQuantity: number;
-  description: string;
-  weight: number;
-  unitCost: number;
-  defaultStorageId: number;
-  image: string;
-  isInventoryItem: number;
-  isProcured: number;
-  primaryUomId: number;
-  price: number | null;
-  shelfLife: number | null;
-  groupId: number;
+  Id: number;
+  Code: string;
+  Name: string;
+  MinimumQuantity: number;
+  Description?: string;
+  Weight: number;
+  UnitCost: number;
+  DefaultStorageId: number;
+  Image: string;
+  IsInventoryItem: number;
+  IsProcured: number;
+  PrimaryUomId: number;
+  Price: number | null;
+  ShelfLife: number | null;
+  GroupId: number;
 }

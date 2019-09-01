@@ -4,6 +4,7 @@ import { StorageLocationsApiService } from '@bionic/apis/inventory/storage-locat
 import { Predicate, Query } from '@syncfusion/ej2-data';
 
 @Component({
+  selector: 'bionic-storage-location-selector',
   template: `
     <ejs-dropdownlist
       id="uoms"

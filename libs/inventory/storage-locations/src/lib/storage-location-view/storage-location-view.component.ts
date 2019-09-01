@@ -1,20 +1,5 @@
-import { ClickEventArgs } from '@syncfusion/ej2-navigations';
-import { closest } from '@syncfusion/ej2-base';
-import {
-  Column,
-  CommandModel,
-  EditSettingsModel,
-  FilterSettingsModel,
-  IRow,
-  PageSettingsModel,
-  SortSettingsModel,
-  ToolbarItems,
-  DataStateChangeEventArgs
-} from '@syncfusion/ej2-grids';
-
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GridComponent } from '@syncfusion/ej2-angular-grids';
-import { Router, ActivatedRoute } from '@angular/router';
 import { storageLocationColumnBluePrint } from './storage-location-view.model';
 import { NotificationComponent } from '@bionic/components/notification';
 import { StorageLocationsApiService } from '@bionic/apis/inventory/storage-locations-api';

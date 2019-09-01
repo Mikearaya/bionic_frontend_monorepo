@@ -12,12 +12,24 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItemApiModule } from '@bionic/apis/inventory/item-api';
 import { PurchaseTermApiModule } from '@bionic/apis/procurment/purchase-term-api';
+import { ItemGroupSelectorModule } from '@bionic/inventory/item-groups';
+import { UnitOfMeasurmentSelectorModule } from '@bionic/inventory/unit-of-measurments';
+import { StorageLocationSelectorModule } from '@bionic/inventory/storage-locations';
+import { TabModule } from '@syncfusion/ej2-angular-navigations';
+import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { SwitchModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
+    NumericTextBoxModule,
+    SwitchModule,
+    TabModule,
     FormButtonsModule,
+    ItemGroupSelectorModule,
+    StorageLocationSelectorModule,
+    UnitOfMeasurmentSelectorModule,
     NotificationModule,
     ReactiveFormsModule,
     PurchaseTermApiModule,
