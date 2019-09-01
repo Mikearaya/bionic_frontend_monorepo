@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemGroupsApiService } from './item-groups-api.service';
 
 export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<ItemGroupModuleOptions>(
-  'forRoot() Item Api configuration.'
+  'forRoot() Item Group Api configuration.'
 );
 
 @NgModule({

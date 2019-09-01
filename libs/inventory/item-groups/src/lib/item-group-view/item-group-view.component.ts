@@ -17,10 +17,10 @@ import { DataStateChangeEventArgs } from '@syncfusion/ej2-grids';
       [showDelete]="true"
       [enableSorting]="true"
       [showUpdate]="true"
-      [addPrivilage]="'canAddPurchaseOrders'"
-      [updatePrivilage]="'canEditPurchaseOrders'"
-      [deletePrivilage]="'canDeleteItems'"
-      (deleteRecord)="deleteItem($event)"
+      [addPrivilage]="'canAddItemGroups'"
+      [updatePrivilage]="'canEditItemGroups'"
+      [deletePrivilage]="'canDeleteItemGroups'"
+      (deleteRecord)="deleteItemGroup($event)"
       [showPdfExport]="true"
       [showPrint]="true"
       [columnsList]="columnBluePrint"
@@ -50,7 +50,7 @@ export class ItemGroupViewComponent implements OnInit {
     this.itemGroupApi.execute(new QueryString());
   }
 
-  deleteItem(data: any): void {
+  deleteItemGroup(data: any): void {
     this.itemGroupApi.deleteItemGroup(data['Id']).subscribe(
       () => this.notification.showMessage('Item Group Deleted'),
       (error: HttpErrorResponse) => {
