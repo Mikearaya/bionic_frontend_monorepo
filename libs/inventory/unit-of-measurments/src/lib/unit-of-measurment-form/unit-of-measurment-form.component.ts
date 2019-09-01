@@ -113,7 +113,7 @@ export class UnitOfMeasurmentFormComponent implements OnInit {
     return {
       Id: this.uomId ? this.uomId : 0,
       Name: this.name.value,
-      Abrivation: this.abbrevation.value,
+      Abbrivation: this.abbrevation.value,
       Active: this.isActive.value
     };
   }

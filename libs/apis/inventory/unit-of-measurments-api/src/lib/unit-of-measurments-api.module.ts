@@ -6,7 +6,7 @@ import { UnitOfMeasurmentsApiService } from './unit-of-measurments-api.service';
 
 export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<
   UnitOfMeasurmentsModuleOptions
->('forRoot() Item Group Api configuration.');
+>('forRoot() Unit of Measurments Api configuration.');
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
