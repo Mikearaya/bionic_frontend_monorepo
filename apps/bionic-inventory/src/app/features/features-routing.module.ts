@@ -12,10 +12,18 @@ const routes: Routes = [
       {
         path: 'items',
         data: {
-          breadCrum: 'Settings',
-          claimType: 'canViewSystemLookups'
+          breadCrum: 'Items',
+          claimType: 'canViewItems'
         },
         loadChildren: '@bionic/inventory/item#ItemModule'
+      },
+      {
+        path: 'stock-batchs',
+        loadChildren: '@bionic/inventory/stock-batch#StockBatchModule',
+        data: {
+          breadCrum: 'Stock Batchs',
+          claimType: 'canViewStockBatchs'
+        }
       },
       {
         path: 'settings',

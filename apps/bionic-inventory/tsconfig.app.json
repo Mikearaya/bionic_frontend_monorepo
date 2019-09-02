@@ -18,6 +18,8 @@
 
     "../../libs/inventory/unit-of-measurments/src/index.ts",
 
-    "../../libs/inventory/storage-locations/src/index.ts"
+    "../../libs/inventory/storage-locations/src/index.ts",
+
+    "../../libs/inventory/stock-batch/src/index.ts"
   ]
 }

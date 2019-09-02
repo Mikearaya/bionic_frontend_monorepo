@@ -211,6 +211,12 @@
       ],
       "@bionic/apis/inventory/unit-of-measurments-api": [
         "libs/apis/inventory/unit-of-measurments-api/src/index.ts"
+      ],
+      "@bionic/inventory/stock-batch": [
+        "libs/inventory/stock-batch/src/index.ts"
+      ],
+      "@bionic/apis/inventory/stock-batch-api": [
+        "libs/apis/inventory/stock-batch-api/src/index.ts"
       ]
     }
   },

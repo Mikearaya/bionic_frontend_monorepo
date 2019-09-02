@@ -1,0 +1,250 @@
+<bionic-notification #notification></bionic-notification>
+
+<form [formGroup]="stockBatchForm" (ngSubmit)="onSubmit()" class="card">
+  <div class="e-card">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-xs-12">
+          <div class="row">
+            <label for="itemId" class="label-area col-md-3 col-xs-12" i18n
+              >Stock Item</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <bionic-item-selector
+                name="itemId"
+                id="itemId"
+                formControlName="ItemId"
+              ></bionic-item-selector>
+              <div class="e-error" *ngIf="itemId.errors">
+                <div *ngIf="itemId.errors['required']" i18n>
+                  Item is Required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label
+              for="status"
+              class="label-area col-md-3 col-xs-12"
+              i18n="@@status stock status"
+              >Status</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <ejs-dropdownlist
+                [dataSource]="stockBatchStatus"
+                i18n-placeholder="@@status"
+                placeholder="Status"
+                name="status"
+                id="status"
+                formControlName="Status"
+              ></ejs-dropdownlist>
+              <div class="e-error" *ngIf="status.errors">
+                <div *ngIf="status.errors['required']" i18n>
+                  Status is Required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label
+              for="quantity"
+              class="label-area col-md-3 col-xs-12"
+              i18n="@@quantity"
+              >Quantity</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <ejs-numerictextbox
+                format="##"
+                formControlName="Quantity"
+                id="quantity"
+                i18n-placeholder="@@quantity"
+                name="quantity"
+                placeholder="Quantity"
+                [width]="70"
+              ></ejs-numerictextbox>
+              <div class="e-error" *ngIf="quantity.errors">
+                <div *ngIf="quantity.errors['required']" i18n>
+                  Quantity is Required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label
+              for="unitCost"
+              class="label-area col-md-3 col-xs-12"
+              i18n="@@unitCost stock item unit cost"
+              >Unit Cost</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <ejs-numerictextbox
+                format="ETB ##.#"
+                i18n-placeholder="@@unitCost stock item unit cost"
+                formControlName="UnitCost"
+                id="unitCost"
+                name="unitCost"
+                placeholder="Unit Cost"
+                [width]="100"
+              ></ejs-numerictextbox>
+              <div class="e-error" *ngIf="unitCost.errors">
+                <div *ngIf="unitCost.errors['required']" i18n>
+                  Unit Cost is Required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label
+              for="availableFrom"
+              class="label-area col-md-3 col-xs-12"
+              i18n="@@availableDate stock item available date"
+              >Available From</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <ejs-datepicker
+                format="yyyy-MM-dd"
+                formControlName="AvailableFrom"
+                id="availableFrom"
+                i18n-placeholder="@@availableDate"
+                name="availableFrom"
+                placeholder="Available From"
+                [width]="150"
+              ></ejs-datepicker>
+              <div class="e-error" *ngIf="availableFrom.errors">
+                <div *ngIf="availableFrom.errors['required']" i18n>
+                  Available Date is Required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <label
+              for="expiryDate"
+              class="label-area col-md-3 col-xs-12"
+              i18n="@@expireDate stock item expiry date"
+              >Expiry Date</label
+            >
+            <div class="col-md-9 col-xs-12">
+              <ejs-datepicker
+                format="yyyy-MM-dd"
+                formControlName="ExpiryDate"
+                id="expiryDate"
+                i18n-placeholder="@@expireDate"
+                name="expiryDate"
+                placeholder="Expiry Date"
+                [width]="150"
+              ></ejs-datepicker>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th i18n>Storage Location</th>
+                    <th i18n="@@quantity">Quantity</th>
+                    <th>
+                      <button
+                        type="button"
+                        ejs-button
+                        *ngIf="!isUpdate"
+                        class="e-small e-primary"
+                        (click)="addStorage()"
+                        [disabled]="storageLocation.invalid"
+                        iconCss="e-icons e-add-icon"
+                        i18n="add stock item"
+                      >
+                        Add
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody formArrayName="storageLocation">
+                  <tr
+                    *ngFor="
+                      let storage of storageLocation.controls;
+                      let i = index;
+                      let last = last
+                    "
+                    [formGroup]="storage"
+                  >
+                    <td>
+                      <bionic-storage-location-selector
+                        formControlName="StorageId"
+                        id="storageId"
+                        name="storageId"
+                      ></bionic-storage-location-selector>
+
+                      <div
+                        class="e-error"
+                        *ngIf="storage.get('StorageId').errors"
+                      >
+                        <div
+                          *ngIf="storage.get('StorageId').errors['required']"
+                          i18n
+                        >
+                          Storage is Required
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <ejs-numerictextbox
+                        format="##"
+                        formControlName="Quantity"
+                        [attr.id]="'quantity' + i"
+                        name="'quantity'+i"
+                        placeholder="Quantity"
+                        i18n-placeholder="@@quantity"
+                        [width]="70"
+                      ></ejs-numerictextbox>
+                      <div
+                        class="e-error"
+                        *ngIf="storage.get('Quantity').errors"
+                      >
+                        <div
+                          *ngIf="storage.get('Quantity').errors['required']"
+                          i18n
+                        >
+                          QUantity is Required
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <button
+                        ejs-button
+                        type="button"
+                        *ngIf="isUpdate"
+                        class=" e-info e-small"
+                        (click)="moveStockLot(i)"
+                        iconCss="e-icons"
+                      >
+                        Move
+                      </button>
+                      <button
+                        ejs-button
+                        type="button"
+                        class="e-round-corner e-round e-danger e-small"
+                        *ngIf="
+                          last &&
+                          storageLocation.controls.length > 1 &&
+                          !isUpdate
+                        "
+                        (click)="deleteStorage(i)"
+                        iconCss="e-icons e-delete-icon"
+                      ></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <bionic-form-options
+    [submitDisabled]="stockBatchForm.invalid"
+  ></bionic-form-options>
+</form>

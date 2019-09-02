@@ -94,7 +94,7 @@ export class ItemApiService extends Subject<DataStateChangeEventArgs> {
 
   updateItem(updatedItem: ItemModel): Observable<Boolean> {
     return this.httpClient.put<Boolean>(
-      `${this.apiUrl}/${this.controller}/${updatedItem.id}`,
+      `${this.apiUrl}/${this.controller}/${updatedItem.Id}`,
       updatedItem
     );
   }

@@ -26,7 +26,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     name: 'Stock Batchs',
     expanded: false,
     enabled: true,
-    url: '/purchase-terms',
+    url: '/stock-batchs',
     selected: false,
     icon: 'fas fa-car',
     privilage: 'canViewPurchaseTerms'

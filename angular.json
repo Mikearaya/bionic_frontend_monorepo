@@ -3184,6 +3184,74 @@
         }
       },
       "schematics": {}
+    },
+    "inventory-stock-batch": {
+      "root": "libs/inventory/stock-batch",
+      "sourceRoot": "libs/inventory/stock-batch/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/stock-batch/tsconfig.lib.json",
+            "project": "libs/inventory/stock-batch/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/stock-batch/tsconfig.lib.json",
+              "libs/inventory/stock-batch/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/stock-batch/src/test.ts",
+            "tsConfig": "libs/inventory/stock-batch/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/stock-batch/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-stock-batch-api": {
+      "root": "libs/apis/inventory/stock-batch-api",
+      "sourceRoot": "libs/apis/inventory/stock-batch-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/stock-batch-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/stock-batch-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/stock-batch-api/tsconfig.lib.json",
+              "libs/apis/inventory/stock-batch-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/stock-batch-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/stock-batch-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/stock-batch-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
