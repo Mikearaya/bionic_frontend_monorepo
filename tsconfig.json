@@ -227,6 +227,12 @@
       "@bionic/inventory/shipment": ["libs/inventory/shipment/src/index.ts"],
       "@bionic/apis/inventory/shipment-api": [
         "libs/apis/inventory/shipment-api/src/index.ts"
+      ],
+      "@bionic/apis/inventory/stock-movement-api": [
+        "libs/apis/inventory/stock-movement-api/src/index.ts"
+      ],
+      "@bionic/inventory/stock-movement": [
+        "libs/inventory/stock-movement/src/index.ts"
       ]
     }
   },

@@ -10,3 +10,4 @@ export {
 export { StockBatchStorageModel } from './lib/models/stock-batch-storage.model';
 export { StockBatchListView } from './lib/models/stock-batch-view.model';
 export { StockBatchApiService } from './lib/stock-batch-api.service';
+export { StockBatchIndex } from './lib/models/stock-batch-index.model';

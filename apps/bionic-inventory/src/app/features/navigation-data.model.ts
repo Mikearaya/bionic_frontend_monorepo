@@ -46,7 +46,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     name: 'Stock Movements',
     expanded: false,
     enabled: true,
-    url: '/purchase-orders',
+    url: '/stock-movements',
     selected: false,
     icon: 'fas fa-car',
     privilage: 'canViewStockMovements'

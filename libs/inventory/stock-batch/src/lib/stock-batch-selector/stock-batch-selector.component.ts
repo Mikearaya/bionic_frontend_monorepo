@@ -1,58 +1,61 @@
 import {
   Component,
-  forwardRef,
+  OnInit,
   Input,
+  forwardRef,
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { ItemApiService } from '@bionic/apis/inventory/item-api';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Predicate, Query } from '@syncfusion/ej2-data';
+import { StockBatchApiService } from '@bionic/apis/inventory/stock-batch-api';
 
 @Component({
-  selector: 'bionic-item-selector',
+  selector: 'bionic-stock-batch-selector',
   template: `
     <ejs-dropdownlist
-      id="items"
+      id="batchs"
       [enabled]="!disabled"
-      name="items"
-      placeholder="Search items"
+      name="batchs"
+      placeholder="Search batchs"
       [text]="text"
       [allowFiltering]="true"
       [fields]="fields"
       (filtering)="onFiltering($event)"
-      [dataSource]="items"
+      [dataSource]="batchs"
       [filterBarPlaceholder]="searchBarPlaceholder"
-      (change)="itemChanged($event)"
+      (change)="batchChanged($event)"
     >
     </ejs-dropdownlist>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ItemSelectorComponent),
+      useExisting: forwardRef(() => StockBatchSelectorComponent),
       multi: true
     }
   ],
-  styleUrls: ['./item-selector.component.css']
+  styleUrls: ['./stock-batch-selector.component.css']
 })
-export class ItemSelectorComponent implements ControlValueAccessor, OnChanges {
+export class StockBatchSelectorComponent
+  implements ControlValueAccessor, OnChanges {
   public _value: any;
   public disabled: boolean;
   onChange;
   public data;
+
   @Input()
-  public vendorId: number;
+  public itemId: number;
 
   @Input()
   public searchBarPlaceholder: string;
-  public items: any;
+  public batchs: any;
   public fields: object = { value: 'Id', text: 'Name' };
 
   public text = '';
-  constructor(private itemApi: ItemApiService) {}
+  constructor(private stockBatchApi: StockBatchApiService) {}
 
-  itemChanged($event: any) {
+  batchChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
     } else {
@@ -64,8 +67,8 @@ export class ItemSelectorComponent implements ControlValueAccessor, OnChanges {
 
   ngOnChanges(e: SimpleChanges): void {
     if (e.vendorId) {
-      this.itemApi.getItemsIndex('', this.vendorId).subscribe(data => {
-        this.items = data;
+      this.stockBatchApi.getBatchsIndex('', this.itemId).subscribe(data => {
+        this.batchs = data;
       });
     }
   }
@@ -78,7 +81,7 @@ export class ItemSelectorComponent implements ControlValueAccessor, OnChanges {
 
     query = e.text !== '' ? query.where(predicate) : query;
 
-    this.itemApi.getItemsIndex(e.text, this.vendorId).subscribe(data => {
+    this.stockBatchApi.getBatchsIndex(e.text, this.itemId).subscribe(data => {
       e.updateData(data);
     });
   }
@@ -89,17 +92,19 @@ export class ItemSelectorComponent implements ControlValueAccessor, OnChanges {
   writeValue(obj: any): void {
     this._value = obj;
 
-    this.itemApi.getItemsIndex('', this.vendorId).subscribe((result: any) => {
-      this.items = result;
-      if (this._value) {
-        if (obj !== 0) {
-          const data = this.items.filter(a => a.Id === obj);
-          data.forEach(element => {
-            this.text = element.Name;
-          });
+    this.stockBatchApi
+      .getBatchsIndex('', this.itemId)
+      .subscribe((result: any) => {
+        this.batchs = result;
+        if (this._value) {
+          if (obj !== 0) {
+            const data = this.batchs.filter(a => a.Id === obj);
+            data.forEach(element => {
+              this.text = element.Name;
+            });
+          }
         }
-      }
-    });
+      });
   }
   registerOnChange(fn: any): void {
     this.onChanged = fn;

@@ -6,7 +6,7 @@ import { StockBatchApiService } from './stock-batch-api.service';
 
 export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<
   StockBatchApiModuleOptions
->('forRoot() Item Api configuration.');
+>('forRoot() Stock Batch Api configuration.');
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],

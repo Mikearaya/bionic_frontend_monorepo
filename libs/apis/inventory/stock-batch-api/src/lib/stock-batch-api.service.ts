@@ -13,6 +13,7 @@ import { DataResult } from '@syncfusion/ej2-angular-grids';
 
 import { QueryString } from '@bionic/components/data-grid';
 import { StockBatchApiOptionsService } from './stock-batch-api-options.service';
+import { StockBatchIndex } from './models/stock-batch-index.model';
 
 @Injectable()
 export class StockBatchApiService extends Subject<DataStateChangeEventArgs> {
@@ -92,8 +93,12 @@ export class StockBatchApiService extends Subject<DataStateChangeEventArgs> {
       .pipe((data: any) => data);
   }
 
-  /*   moveStockLot(lotMovement: StockLotMovementModel): Observable<StockBatchDetailView> {
-    return this.httpClient.post<StockBatchDetailView>(`${this.apiUrl}/${this.controller}/movements`, lotMovement);
+  getBatchsIndex(
+    filter: string = '',
+    itemId: number = null
+  ): Observable<StockBatchIndex[]> {
+    return this.httpClient.get<StockBatchIndex[]>(
+      `${this.apiUrl}/${this.controller}/index?name=${filter}&itemId=${itemId}`
+    );
   }
- */
 }

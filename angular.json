@@ -3388,6 +3388,74 @@
         }
       },
       "schematics": {}
+    },
+    "apis-inventory-stock-movement-api": {
+      "root": "libs/apis/inventory/stock-movement-api",
+      "sourceRoot": "libs/apis/inventory/stock-movement-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/stock-movement-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/stock-movement-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/stock-movement-api/tsconfig.lib.json",
+              "libs/apis/inventory/stock-movement-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/stock-movement-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/stock-movement-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/stock-movement-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-stock-movement": {
+      "root": "libs/inventory/stock-movement",
+      "sourceRoot": "libs/inventory/stock-movement/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/stock-movement/tsconfig.lib.json",
+            "project": "libs/inventory/stock-movement/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/stock-movement/tsconfig.lib.json",
+              "libs/inventory/stock-movement/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/stock-movement/src/test.ts",
+            "tsConfig": "libs/inventory/stock-movement/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/stock-movement/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

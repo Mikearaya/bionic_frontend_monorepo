@@ -286,6 +286,12 @@
     },
     "apis-inventory-shipment-api": {
       "tags": ["inventory"]
+    },
+    "apis-inventory-stock-movement-api": {
+      "tags": ["inventory"]
+    },
+    "inventory-stock-movement": {
+      "tags": ["inventory"]
     }
   }
 }

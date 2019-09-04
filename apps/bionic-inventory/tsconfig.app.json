@@ -24,6 +24,8 @@
 
     "../../libs/inventory/write-offs/src/index.ts",
 
-    "../../libs/inventory/shipment/src/index.ts"
+    "../../libs/inventory/shipment/src/index.ts",
+
+    "../../libs/inventory/stock-movement/src/index.ts"
   ]
 }

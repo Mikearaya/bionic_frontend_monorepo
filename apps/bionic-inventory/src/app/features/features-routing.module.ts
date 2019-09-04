@@ -42,6 +42,10 @@ const routes: Routes = [
         }
       },
       {
+        path: 'stock-movements',
+        loadChildren: '@bionic/inventory/stock-movement#StockMovementModule'
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',
