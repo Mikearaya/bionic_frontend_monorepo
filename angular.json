@@ -3252,6 +3252,142 @@
         }
       },
       "schematics": {}
+    },
+    "inventory-write-offs": {
+      "root": "libs/inventory/write-offs",
+      "sourceRoot": "libs/inventory/write-offs/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/write-offs/tsconfig.lib.json",
+            "project": "libs/inventory/write-offs/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/write-offs/tsconfig.lib.json",
+              "libs/inventory/write-offs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/write-offs/src/test.ts",
+            "tsConfig": "libs/inventory/write-offs/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/write-offs/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-write-offs-api": {
+      "root": "libs/apis/inventory/write-offs-api",
+      "sourceRoot": "libs/apis/inventory/write-offs-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/write-offs-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/write-offs-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/write-offs-api/tsconfig.lib.json",
+              "libs/apis/inventory/write-offs-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/write-offs-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/write-offs-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/write-offs-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "inventory-shipment": {
+      "root": "libs/inventory/shipment",
+      "sourceRoot": "libs/inventory/shipment/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/shipment/tsconfig.lib.json",
+            "project": "libs/inventory/shipment/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/shipment/tsconfig.lib.json",
+              "libs/inventory/shipment/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/shipment/src/test.ts",
+            "tsConfig": "libs/inventory/shipment/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/shipment/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-shipment-api": {
+      "root": "libs/apis/inventory/shipment-api",
+      "sourceRoot": "libs/apis/inventory/shipment-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/shipment-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/shipment-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/shipment-api/tsconfig.lib.json",
+              "libs/apis/inventory/shipment-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/shipment-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/shipment-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/shipment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

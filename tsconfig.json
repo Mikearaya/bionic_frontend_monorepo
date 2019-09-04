@@ -217,6 +217,16 @@
       ],
       "@bionic/apis/inventory/stock-batch-api": [
         "libs/apis/inventory/stock-batch-api/src/index.ts"
+      ],
+      "@bionic/inventory/write-offs": [
+        "libs/inventory/write-offs/src/index.ts"
+      ],
+      "@bionic/apis/inventory/write-offs-api": [
+        "libs/apis/inventory/write-offs-api/src/index.ts"
+      ],
+      "@bionic/inventory/shipment": ["libs/inventory/shipment/src/index.ts"],
+      "@bionic/apis/inventory/shipment-api": [
+        "libs/apis/inventory/shipment-api/src/index.ts"
       ]
     }
   },

@@ -26,6 +26,22 @@ const routes: Routes = [
         }
       },
       {
+        path: 'write-offs',
+        loadChildren: '@bionic/inventory/write-offs#WriteOffsModule',
+        data: {
+          breadCrum: 'Write Offs',
+          claimType: 'canViewWriteOffs'
+        }
+      },
+      {
+        path: 'shipments',
+        loadChildren: '@bionic/inventory/shipment#ShipmentModule',
+        data: {
+          breadCrum: 'Shipments',
+          claimType: 'canViewShipments'
+        }
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',

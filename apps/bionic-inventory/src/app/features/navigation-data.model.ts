@@ -19,7 +19,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     url: '/items',
     icon: 'fas fa-handshake',
     selected: false,
-    privilage: 'canViewPartners'
+    privilage: 'canViewItems'
   },
   {
     id: '02',
@@ -29,17 +29,17 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     url: '/stock-batchs',
     selected: false,
     icon: 'fas fa-car',
-    privilage: 'canViewPurchaseTerms'
+    privilage: 'canViewStockBatchs'
   },
   {
     id: '03',
     name: 'Write Offs',
     expanded: false,
     enabled: true,
-    url: '/purchase-order-payments',
+    url: '/write-offs',
     selected: false,
     icon: 'fas fa-car',
-    privilage: 'canViewPurchaseOrderPayments'
+    privilage: 'canViewWriteOffs'
   },
   {
     id: '04',
@@ -49,10 +49,20 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     url: '/purchase-orders',
     selected: false,
     icon: 'fas fa-car',
-    privilage: 'canViewVehicles'
+    privilage: 'canViewStockMovements'
   },
   {
     id: '05',
+    name: 'Shipments',
+    expanded: false,
+    enabled: true,
+    url: '/shipments',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewShipments'
+  },
+  {
+    id: '06',
     name: 'Settings',
     expanded: false,
     enabled: true,
@@ -62,7 +72,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewSettings',
     subChild: [
       {
-        id: '05-01',
+        id: '06-01',
         name: 'Lookups',
         url: '/settings/system-lookups',
         expanded: false,
@@ -71,7 +81,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewSystemLookups'
       },
       {
-        id: '05-02',
+        id: '06-02',
         name: 'Role',
         url: '/settings/roles',
         expanded: false,
@@ -80,7 +90,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '05-03',
+        id: '06-03',
         name: 'Users',
         url: '/settings/users',
         expanded: false,
@@ -89,7 +99,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '05-04',
+        id: '06-04',
         name: 'Item Groups',
         url: '/settings/item-groups',
         expanded: false,
@@ -98,7 +108,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '05-05',
+        id: '06-05',
         name: 'Unit of Measurments',
         url: '/settings/unit-of-measurments',
         expanded: false,
@@ -107,7 +117,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '05-06',
+        id: '06-06',
         name: 'Storage Locations',
         url: '/settings/storage-locations',
         expanded: false,
@@ -125,7 +135,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     url: 'parent',
     selected: false,
     icon: 'fas fa-briefcase',
-    privilage: 'canViewSettings',
+    privilage: 'canViewReports',
     subChild: []
   }
 ];

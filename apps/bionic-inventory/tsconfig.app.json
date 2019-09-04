@@ -20,6 +20,10 @@
 
     "../../libs/inventory/storage-locations/src/index.ts",
 
-    "../../libs/inventory/stock-batch/src/index.ts"
+    "../../libs/inventory/stock-batch/src/index.ts",
+
+    "../../libs/inventory/write-offs/src/index.ts",
+
+    "../../libs/inventory/shipment/src/index.ts"
   ]
 }

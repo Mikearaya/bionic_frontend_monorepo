@@ -1,0 +1,60 @@
+<bionic-notification #notification></bionic-notification>
+<h5 class="text-left text-primary">Shipmet</h5>
+<section class="e-card">
+  <div class="container">
+    <div class="row ">
+      <div class="col-8 col-xs-12">
+        <ol>
+          <dt i18n=" @@shipmentNo">Shipment No.</dt>
+          <dd>{{ shipment?.Id }}</dd>
+          <dt i18n="customer order @@customerOrder">Customer Order</dt>
+          <dd>{{ shipment?.CustomerOrderId }}</dd>
+          <dt i18n="shipment reservation making user ">Booked By</dt>
+          <dd>{{ shipment?.BookingUser }}</dd>
+          <dt i18n="shipment delivery date @@deliveryDate">Delivery Date</dt>
+          <dd>{{ shipment?.DeliveryDate }}</dd>
+          <dt i18n="date shipment was created">Created On</dt>
+          <dd>{{ shipment?.DateAdded }}</dd>
+          <dt i18n="shipment status">Status</dt>
+          <dd>{{ shipment?.Status }}</dd>
+        </ol>
+        <button
+          type="button"
+          (click)="pickShipment()"
+          id="pick-all-btn"
+          class="e-primary"
+          ejs-button
+          [disabled]="shipment?.Status == 'Picked'"
+          i18n="pick all items from inventory for shipment"
+        >
+          Pick All Items
+        </button>
+      </div>
+      <div class="col-4 col-xs-12"></div>
+    </div>
+    <div class="text-muted" i18n="items list included in a shipment">
+      Shipment Items
+    </div>
+    <div class="row ">
+      <div class="col-12">
+        <ejs-grid [dataSource]="shipment?.ShipmentItem" [rowHeight]="25">
+          <e-columns>
+            <e-column
+              *ngFor="
+                let col of columnBluePrint;
+                let i = index;
+                let last = last
+              "
+              [field]="col.key"
+              [headerText]="col.humanReadable"
+              [visible]="col.visable"
+              [width]="col.width"
+              [customAttributes]="customAttributes"
+            >
+            </e-column>
+          </e-columns>
+        </ejs-grid>
+      </div>
+    </div>
+  </div>
+</section>

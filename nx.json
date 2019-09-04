@@ -274,6 +274,18 @@
     },
     "apis-inventory-stock-batch-api": {
       "tags": ["inventory"]
+    },
+    "inventory-write-offs": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-write-offs-api": {
+      "tags": ["inventory"]
+    },
+    "inventory-shipment": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-shipment-api": {
+      "tags": ["inventory"]
     }
   }
 }
