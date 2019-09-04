@@ -233,6 +233,12 @@
       ],
       "@bionic/inventory/stock-movement": [
         "libs/inventory/stock-movement/src/index.ts"
+      ],
+      "@bionic/inventory/critical-inventory": [
+        "libs/inventory/critical-inventory/src/index.ts"
+      ],
+      "@bionic/apis/inventory/critical-inventory-api": [
+        "libs/apis/inventory/critical-inventory-api/src/index.ts"
       ]
     }
   },

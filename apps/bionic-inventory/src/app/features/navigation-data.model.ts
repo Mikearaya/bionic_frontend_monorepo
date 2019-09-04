@@ -63,6 +63,16 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
   },
   {
     id: '06',
+    name: 'Critical Inventory',
+    expanded: false,
+    enabled: true,
+    url: '/critical-inventories',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewCriticalInventories'
+  },
+  {
+    id: '07',
     name: 'Settings',
     expanded: false,
     enabled: true,
@@ -72,7 +82,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewSettings',
     subChild: [
       {
-        id: '06-01',
+        id: '07-01',
         name: 'Lookups',
         url: '/settings/system-lookups',
         expanded: false,
@@ -81,7 +91,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewSystemLookups'
       },
       {
-        id: '06-02',
+        id: '07-02',
         name: 'Role',
         url: '/settings/roles',
         expanded: false,
@@ -90,7 +100,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '06-03',
+        id: '07-03',
         name: 'Users',
         url: '/settings/users',
         expanded: false,
@@ -99,7 +109,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '06-04',
+        id: '07-04',
         name: 'Item Groups',
         url: '/settings/item-groups',
         expanded: false,
@@ -108,7 +118,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '06-05',
+        id: '07-05',
         name: 'Unit of Measurments',
         url: '/settings/unit-of-measurments',
         expanded: false,
@@ -117,7 +127,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '06-06',
+        id: '07-06',
         name: 'Storage Locations',
         url: '/settings/storage-locations',
         expanded: false,
@@ -128,7 +138,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     ]
   },
   {
-    id: '07',
+    id: '08',
     name: 'Reports',
     expanded: false,
     enabled: true,

@@ -18,6 +18,15 @@ const routes: Routes = [
         loadChildren: '@bionic/inventory/item#ItemModule'
       },
       {
+        path: 'critical-inventories',
+        loadChildren:
+          '@bionic/inventory/critical-inventory#CriticalInventoryModule',
+        data: {
+          breadCrum: 'Critical Items',
+          claimType: 'canViewCriticalInventories'
+        }
+      },
+      {
         path: 'stock-batchs',
         loadChildren: '@bionic/inventory/stock-batch#StockBatchModule',
         data: {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemApiOptionsService } from './item-api-options.service';
 import { Observable, Subject } from 'rxjs';
-import { CriticalItemModel } from './models/critical-item.model';
+import { CriticalItemModel } from '../../../critical-inventory-api/src/lib/models/critical-item.model';
 import { VendorItemViewModel } from './models/vendor-item.model';
 import { ItemView } from './models/item-view.model';
 import { ItemReportModel } from './models/item-report.model';
@@ -70,18 +70,6 @@ export class ItemApiService extends Subject<DataStateChangeEventArgs> {
   ItemCodeUnique(code: string): Observable<boolean> {
     return this.httpClient.get<boolean>(
       `${this.apiUrl}/${this.controller}/${code}/unique`
-    );
-  }
-
-  getCriticalProductById(id: number): Observable<CriticalItemModel> {
-    return this.httpClient.get<CriticalItemModel>(
-      `${this.apiUrl}/${this.controller}/${id}/critical`
-    );
-  }
-
-  getAllCriticalProduct(): Observable<CriticalItemModel[]> {
-    return this.httpClient.get<CriticalItemModel[]>(
-      `${this.apiUrl}/${this.controller}/critical?type=purchased`
     );
   }
 

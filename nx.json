@@ -292,6 +292,12 @@
     },
     "inventory-stock-movement": {
       "tags": ["inventory"]
+    },
+    "inventory-critical-inventory": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-critical-inventory-api": {
+      "tags": ["inventory"]
     }
   }
 }

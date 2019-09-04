@@ -1,6 +1,8 @@
 export * from './lib/item-api.module';
 export { ItemApiService } from './lib/item-api.service';
-export { CriticalItemModel } from './lib/models/critical-item.model';
+export {
+  CriticalItemModel
+} from '../../critical-inventory-api/src/lib/models/critical-item.model';
 export { ItemReportModel } from './lib/models/item-report.model';
 export { ItemView } from './lib/models/item-view.model';
 export { ItemModel } from './lib/models/item.model';

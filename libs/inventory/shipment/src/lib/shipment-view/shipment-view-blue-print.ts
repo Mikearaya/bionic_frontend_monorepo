@@ -1,59 +1,103 @@
+import { CustomGridColumns } from '@bionic/components/data-grid';
 
-export const shipmentBluePrint = [
+export const shipmentBluePrint: CustomGridColumns[] = [
   {
-    key: 'id', humanReadable: 'ID', primaryKey: true, type: 'number', dataType: 'numericedit',
-    width: '15', visable: true,
+    key: 'Id',
+    header: 'ID',
+    type: 'number',
+    width: 15,
+    visible: true
   },
   {
-    key: 'CustomerOrderId', humanReadable: 'Customer Order', type: 'number', allowGrouping: true,
-    dataType: 'numericedit', width: '28', visable: true,
+    key: 'CustomerOrderId',
+    header: 'Customer Order',
+    type: 'number',
+    width: 28,
+    visible: true
   },
   {
-    key: 'bookingUser', humanReadable: 'Sales Person', type: 'string', allowGrouping: true, dataType: 'textboxedit',
-    width: '28', visable: true,
+    key: 'BookingUser',
+    header: 'Sales Person',
+    type: 'string',
+    width: 28,
+    visible: true
   },
   {
-    key: 'deliveryDate', humanReadable: 'Delivery Date', type: 'date', allowGrouping: true,
-    dataType: 'datePickeredit', width: '28', format: 'yMd', visable: true,
+    key: 'DeliveryDate',
+    header: 'Delivery Date',
+    type: 'date',
+    width: 28,
+    format: 'yMd',
+    visible: true
   },
   {
-    key: 'status', humanReadable: 'Status', type: 'string', allowGrouping: true,
-    dataType: 'textboxedit', width: '28', format: '', visable: true,
+    key: 'Status',
+    header: 'Status',
+    type: 'string',
+    width: 28,
+    format: '',
+    visible: true
   },
   {
-    key: 'dateAdded', humanReadable: 'Date Added', type: 'date', allowGrouping: true, visable: true,
-    dataType: 'datePickeredit', width: '28', format: 'yMd'
+    key: 'DateAdded',
+    header: 'Date Added',
+    type: 'date',
+    width: 28,
+    format: 'yMd'
   },
   {
-    key: 'dateUpdated', humanReadable: 'Updated', type: 'date', allowGrouping: true, dataType: 'datePickeredit', width: '28', format: 'yMd'
-    , visable : false
+    key: 'DateUpdated',
+    header: 'Updated',
+    type: 'date',
+    width: 28,
+    format: 'yMd',
+    visible: false
   }
 ];
 
 // used for detail view component grid column mapping
-export const shipmentDetailBluePrint = [
+export const shipmentDetailBluePrint: CustomGridColumns[] = [
   {
-    key: 'customerOrderItemId', humanReadable: 'Order Item',  type: 'number', dataType: 'numericedit',
-    width: '15', visable: false,
+    key: 'CustomerOrderItemId',
+    header: 'Order Item',
+    type: 'number',
+    width: 15,
+    visible: false
   },
   {
-    key: 'itemName', humanReadable: 'Item Name', type: 'string',
-    dataType: 'textboxedit', width: '28', visable: true,
+    key: 'ItemName',
+    header: 'Item Name',
+    type: 'string',
+    width: 28,
+    visible: true
   },
   {
-    key: 'bookedQuantity', humanReadable: 'Booked Quantity', type: 'number',  dataType: 'numericedit',
-    width: '28', visable: true,
+    key: 'BookedQuantity',
+    header: 'Booked Quantity',
+    type: 'number',
+    width: 28,
+    visible: true
   },
   {
-    key: 'pickedQuantity', humanReadable: 'Picked Quantity', type: 'number',
-    dataType: 'numericedit', width: '28', visable: true,
+    key: 'PickedQuantity',
+    header: 'Picked Quantity',
+    type: 'number',
+    width: 28,
+    visible: true
   },
   {
-    key: 'remainingShipments', humanReadable: 'Remaining', type: 'number',
-    dataType: 'numericedit', width: '28', visable: true,
+    key: 'RemainingShipments',
+    header: 'Remaining',
+    type: 'number',
+
+    width: 28,
+    visible: true
   },
   {
-    key: 'status', humanReadable: 'Status', type: 'string',
-    dataType: 'textboxedit', width: '28', visable: true,
+    key: 'Status',
+    header: 'Status',
+    type: 'string',
+    width: 28,
+    visible: true
   }
 ];
