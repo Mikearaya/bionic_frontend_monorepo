@@ -28,6 +28,8 @@
 
     "../../libs/inventory/stock-movement/src/index.ts",
 
-    "../../libs/inventory/critical-inventory/src/index.ts"
+    "../../libs/inventory/critical-inventory/src/index.ts",
+
+    "../../libs/inventory/inventory-count/src/index.ts"
   ]
 }

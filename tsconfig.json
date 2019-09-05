@@ -239,6 +239,12 @@
       ],
       "@bionic/apis/inventory/critical-inventory-api": [
         "libs/apis/inventory/critical-inventory-api/src/index.ts"
+      ],
+      "@bionic/inventory/inventory-count": [
+        "libs/inventory/inventory-count/src/index.ts"
+      ],
+      "@bionic/apis/inventory/inventory-count-api": [
+        "libs/apis/inventory/inventory-count-api/src/index.ts"
       ]
     }
   },

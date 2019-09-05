@@ -298,6 +298,12 @@
     },
     "apis-inventory-critical-inventory-api": {
       "tags": ["inventory"]
+    },
+    "inventory-inventory-count": {
+      "tags": ["inventory"]
+    },
+    "apis-inventory-inventory-count-api": {
+      "tags": ["inventory"]
     }
   }
 }

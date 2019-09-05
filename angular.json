@@ -3524,6 +3524,74 @@
         }
       },
       "schematics": {}
+    },
+    "inventory-inventory-count": {
+      "root": "libs/inventory/inventory-count",
+      "sourceRoot": "libs/inventory/inventory-count/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/inventory/inventory-count/tsconfig.lib.json",
+            "project": "libs/inventory/inventory-count/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/inventory/inventory-count/tsconfig.lib.json",
+              "libs/inventory/inventory-count/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/inventory/inventory-count/src/test.ts",
+            "tsConfig": "libs/inventory/inventory-count/tsconfig.spec.json",
+            "karmaConfig": "libs/inventory/inventory-count/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-inventory-inventory-count-api": {
+      "root": "libs/apis/inventory/inventory-count-api",
+      "sourceRoot": "libs/apis/inventory/inventory-count-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/inventory-count-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/inventory-count-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/inventory-count-api/tsconfig.lib.json",
+              "libs/apis/inventory/inventory-count-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/inventory-count-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/inventory-count-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/inventory-count-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

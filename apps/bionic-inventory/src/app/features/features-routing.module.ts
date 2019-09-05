@@ -27,6 +27,14 @@ const routes: Routes = [
         }
       },
       {
+        path: 'inventory',
+        loadChildren: '@bionic/inventory/inventory-count#InventoryCountModule',
+        data: {
+          breadCrum: 'Inventory',
+          claimType: 'canViewInventory'
+        }
+      },
+      {
         path: 'stock-batchs',
         loadChildren: '@bionic/inventory/stock-batch#StockBatchModule',
         data: {

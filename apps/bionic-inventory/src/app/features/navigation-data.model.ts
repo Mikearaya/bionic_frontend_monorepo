@@ -63,6 +63,16 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
   },
   {
     id: '06',
+    name: 'Inventory',
+    expanded: false,
+    enabled: true,
+    url: '/inventory',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewInventory'
+  },
+  {
+    id: '07',
     name: 'Critical Inventory',
     expanded: false,
     enabled: true,
@@ -72,7 +82,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewCriticalInventories'
   },
   {
-    id: '07',
+    id: '08',
     name: 'Settings',
     expanded: false,
     enabled: true,
@@ -82,7 +92,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewSettings',
     subChild: [
       {
-        id: '07-01',
+        id: '08-01',
         name: 'Lookups',
         url: '/settings/system-lookups',
         expanded: false,
@@ -91,7 +101,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewSystemLookups'
       },
       {
-        id: '07-02',
+        id: '08-02',
         name: 'Role',
         url: '/settings/roles',
         expanded: false,
@@ -100,7 +110,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '07-03',
+        id: '08-03',
         name: 'Users',
         url: '/settings/users',
         expanded: false,
@@ -109,7 +119,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '07-04',
+        id: '08-04',
         name: 'Item Groups',
         url: '/settings/item-groups',
         expanded: false,
@@ -118,7 +128,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '07-05',
+        id: '08-05',
         name: 'Unit of Measurments',
         url: '/settings/unit-of-measurments',
         expanded: false,
@@ -127,7 +137,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewUsers'
       },
       {
-        id: '07-06',
+        id: '08-06',
         name: 'Storage Locations',
         url: '/settings/storage-locations',
         expanded: false,
@@ -138,7 +148,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     ]
   },
   {
-    id: '08',
+    id: '09',
     name: 'Reports',
     expanded: false,
     enabled: true,
