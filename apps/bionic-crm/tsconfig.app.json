@@ -5,5 +5,11 @@
     "types": []
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts", "../../libs/components/authentication/src/index.ts"]
+  "include": [
+    "**/*.ts",
+    "../../libs/components/authentication/src/index.ts",
+    "../../libs/crm/customers/src/index.ts",
+
+    "../../libs/crm/customer/src/index.ts"
+  ]
 }

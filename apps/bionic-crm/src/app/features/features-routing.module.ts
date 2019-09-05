@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FeaturesComponent } from './features.component';
-import { AuthorizationGuard } from '@bionic/apis/common/access-control-api';
 
 const routes: Routes = [
   {
     path: '',
     component: FeaturesComponent,
     data: { breadCrum: 'Home' },
-    children: []
+    children: [
+      {
+        path: 'customers',
+        loadChildren: '@bionic/crm/customer#CustomerModule',
+        data: { breadCrum: 'Customers', claimType: 'canViewCustomers' }
+      }
+    ]
   }
 ];
 

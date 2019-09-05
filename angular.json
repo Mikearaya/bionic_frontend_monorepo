@@ -3726,6 +3726,74 @@
           }
         }
       }
+    },
+    "apis-crm-customer-api": {
+      "root": "libs/apis/crm/customer-api",
+      "sourceRoot": "libs/apis/crm/customer-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/crm/customer-api/tsconfig.lib.json",
+            "project": "libs/apis/crm/customer-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/crm/customer-api/tsconfig.lib.json",
+              "libs/apis/crm/customer-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/crm/customer-api/src/test.ts",
+            "tsConfig": "libs/apis/crm/customer-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/crm/customer-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "crm-customer": {
+      "root": "libs/crm/customer",
+      "sourceRoot": "libs/crm/customer/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/customer/tsconfig.lib.json",
+            "project": "libs/crm/customer/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/customer/tsconfig.lib.json",
+              "libs/crm/customer/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/customer/src/test.ts",
+            "tsConfig": "libs/crm/customer/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/customer/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

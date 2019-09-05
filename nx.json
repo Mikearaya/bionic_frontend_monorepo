@@ -310,6 +310,12 @@
     },
     "bionic-crm-e2e": {
       "tags": []
+    },
+    "apis-crm-customer-api": {
+      "tags": ["crm"]
+    },
+    "crm-customer": {
+      "tags": ["crm"]
     }
   }
 }

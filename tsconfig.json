@@ -245,7 +245,11 @@
       ],
       "@bionic/apis/inventory/inventory-count-api": [
         "libs/apis/inventory/inventory-count-api/src/index.ts"
-      ]
+      ],
+      "@bionic/apis/crm/customer-api": [
+        "libs/apis/crm/customer-api/src/index.ts"
+      ],
+      "@bionic/crm/customer": ["libs/crm/customer/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
