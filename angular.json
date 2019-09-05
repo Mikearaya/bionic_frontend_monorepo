@@ -3592,6 +3592,140 @@
         }
       },
       "schematics": {}
+    },
+    "bionic-crm": {
+      "root": "apps/bionic-crm/",
+      "sourceRoot": "apps/bionic-crm/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bionic-crm",
+            "index": "apps/bionic-crm/src/index.html",
+            "main": "apps/bionic-crm/src/main.ts",
+            "polyfills": "apps/bionic-crm/src/polyfills.ts",
+            "tsConfig": "apps/bionic-crm/tsconfig.app.json",
+            "assets": [
+              "apps/bionic-crm/src/favicon.ico",
+              "apps/bionic-crm/src/assets"
+            ],
+            "styles": [
+              "apps/bionic-crm/src/styles.css",
+              "./node_modules/@syncfusion/ej2-base/styles/material.css",
+              "./node_modules/@syncfusion/ej2-buttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-calendars/styles/material.css",
+              "./node_modules/@syncfusion/ej2-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-inputs/styles/material.css",
+              "./node_modules/@syncfusion/ej2-navigations/styles/material.css",
+              "./node_modules/@syncfusion/ej2-popups/styles/material.css",
+              "./node_modules/@syncfusion/ej2-splitbuttons/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-grids/styles/material.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/@syncfusion/ej2-lists/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css",
+              "./node_modules/@syncfusion/ej2-angular-calendars/styles/material.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bionic-crm/src/environments/environment.ts",
+                  "with": "apps/bionic-crm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bionic-crm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bionic-crm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bionic-crm:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bionic-crm/tsconfig.app.json",
+              "apps/bionic-crm/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/bionic-crm/src/test.ts",
+            "tsConfig": "apps/bionic-crm/tsconfig.spec.json",
+            "karmaConfig": "apps/bionic-crm/karma.conf.js",
+            "polyfills": "apps/bionic-crm/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "bionic-crm-e2e": {
+      "root": "apps/bionic-crm-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/bionic-crm-e2e/cypress.json",
+            "tsConfig": "apps/bionic-crm-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bionic-crm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bionic-crm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/bionic-crm-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

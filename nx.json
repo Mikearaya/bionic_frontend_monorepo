@@ -304,6 +304,12 @@
     },
     "apis-inventory-inventory-count-api": {
       "tags": ["inventory"]
+    },
+    "bionic-crm": {
+      "tags": ["crm"]
+    },
+    "bionic-crm-e2e": {
+      "tags": []
     }
   }
 }
