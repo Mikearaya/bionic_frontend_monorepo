@@ -1,0 +1,181 @@
+<bionic-notification #notification></bionic-notification>
+<form
+  [formGroup]="salesOrderForm"
+  novalidate
+  class="card"
+  id="salesOrderForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="container">
+    <bionic-form-options
+      [submitDisabled]="salesOrderForm.invalid"
+      submitButtonText="Save"
+    ></bionic-form-options>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <bionic-customer-selector
+              name="client"
+              formControlName="Client"
+              id="client"
+            ></bionic-customer-selector>
+
+            <div class="e-error" *ngIf="client.errors">
+              <div
+                class="div"
+                *ngIf="client.errors['required']"
+                i18n="@@customerRequired"
+              >
+                You Must Select Customer
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-xs-12">
+            <ejs-dropdownlist
+              [allowFiltering]="true"
+              name="status"
+              formControlName="Status"
+              id="status"
+              placeholder="Status"
+              floatLabelType="Auto"
+              [dataSource]="orderStatus"
+              i18n-placeholder="customer order status input"
+            >
+            </ejs-dropdownlist>
+            <div class="e-error" *ngIf="status.errors">
+              <div
+                class="div"
+                *ngIf="status.errors['required']"
+                i18n="@@orderStatusRequired"
+              >
+                Order Status is Required
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class=" e-success ">
+              <input
+                class="e-input"
+                type="text"
+                floatLabelType="Auto"
+                formControlName="Description"
+                placeholder="Enter Description"
+                i18n-placeholder="order description input @@orderDescriptionInput"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-12">
+            <ejs-datepicker
+              floatLabelType="Auto"
+              placeholder="Select Due Date"
+              formControlName="DeliveryDate"
+              [min]="today"
+              id="deliveryDate"
+              name="deliveryDate"
+              format="yyyy-MM-dd hh:ss"
+              i18n-placeholder="Final order delivery date input @@orderDeliveryDate"
+            ></ejs-datepicker>
+            <div class="e-error" *ngIf="deliveryDate.errors">
+              <div
+                class="div"
+                *ngIf="deliveryDate.errors['required']"
+                i18n="@@orderDeliveryDateRequired"
+              >
+                Delivery Date is Required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h5 class="text-info" i18n="Section Header">Items</h5>
+
+    <div formArrayName="Orders">
+      <div
+        class="row"
+        *ngFor="let order of orders.controls; let i = index; let last = last"
+        [formGroup]="order"
+      >
+        <div class="col-sm-3 col-xs-12">
+          <bionic-item-selector
+            [attr.name]="itemId"
+            formControlName="ItemId"
+            [attr.id]="'itemId' + i"
+          ></bionic-item-selector>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+          <ejs-numerictextbox
+            [attr.class]="'e-input'"
+            min="1"
+            floatLabelType="Auto"
+            formControlName="Quantity"
+            [attr.name]="'quantity' + i"
+            placeholder="Quantity"
+            [attr.id]="'quantity' + i"
+            i18n-placeholder="Item Quantity @@itemQuantity"
+          >
+          </ejs-numerictextbox>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+          <ejs-numerictextbox
+            [attr.class]="'e-input'"
+            min="1"
+            floatLabelType="Auto"
+            formControlName="UnitPrice"
+            [attr.name]="'price' + i"
+            placeholder="Unit Price"
+            [attr.id]="'Price' + i"
+            i18n-placeholder="item unit price input @@itemUnitPriceInput"
+          >
+          </ejs-numerictextbox>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <ejs-datepicker
+            floatLabelType="Auto"
+            placeholder="Select Due Date"
+            formControlName="DueDate"
+            [attr.id]="'dueDate' + i"
+            [attr.name]="'dueDate' + i"
+            format="yyyy-MM-dd hh:ss"
+            i18n-placeholder="order due date select @@orderDueDateSelect"
+          ></ejs-datepicker>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+          <button
+            type="button"
+            ejs-button
+            class="e-warning e-outline e-small"
+            [disabled]="orders.length == 1"
+            (click)="orders.removeAt(i)"
+            i18n="delete @@deleteOption"
+          >
+            remove
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10 col-xs-12"></div>
+        <div class="col-2 col-xs-12">
+          <button
+            type="button"
+            ejs-button
+            class="e-info "
+            [disabled]="orders.invalid"
+            (click)="addOrder()"
+            i18n="add new option @@addOption"
+          >
+            add
+          </button>
+        </div>
+      </div>
+    </div>
+    <bionic-form-options
+      [submitDisabled]="salesOrderForm.invalid"
+    ></bionic-form-options>
+  </div>
+</form>

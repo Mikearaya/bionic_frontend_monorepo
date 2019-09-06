@@ -249,7 +249,14 @@
       "@bionic/apis/crm/customer-api": [
         "libs/apis/crm/customer-api/src/index.ts"
       ],
-      "@bionic/crm/customer": ["libs/crm/customer/src/index.ts"]
+      "@bionic/crm/customer": ["libs/crm/customer/src/index.ts"],
+      "@bionic/crm/customer-order": ["libs/crm/customer-order/src/index.ts"],
+      "@bionic/apis/crm/customer-order-api": [
+        "libs/apis/crm/customer-order-api/src/index.ts"
+      ],
+      "@bionic/wrp/users": ["libs/wrp/users/src/index.ts"],
+      "@bionic/wrp/roles": ["libs/wrp/roles/src/index.ts"],
+      "@bionic/wrp/system-lookup": ["libs/wrp/system-lookup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

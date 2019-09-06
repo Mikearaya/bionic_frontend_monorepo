@@ -316,6 +316,27 @@
     },
     "crm-customer": {
       "tags": ["crm"]
+    },
+    "crm-customer-order": {
+      "tags": ["crm"]
+    },
+    "apis-crm-customer-order-api": {
+      "tags": ["crm"]
+    },
+    "bionic-wrp": {
+      "tags": ["wrp"]
+    },
+    "bionic-wrp-e2e": {
+      "tags": []
+    },
+    "wrp-users": {
+      "tags": ["wrp"]
+    },
+    "wrp-roles": {
+      "tags": ["wrp"]
+    },
+    "wrp-system-lookup": {
+      "tags": ["wrp"]
     }
   }
 }

@@ -3794,6 +3794,294 @@
         }
       },
       "schematics": {}
+    },
+    "crm-customer-order": {
+      "root": "libs/crm/customer-order",
+      "sourceRoot": "libs/crm/customer-order/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/customer-order/tsconfig.lib.json",
+            "project": "libs/crm/customer-order/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/customer-order/tsconfig.lib.json",
+              "libs/crm/customer-order/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/customer-order/src/test.ts",
+            "tsConfig": "libs/crm/customer-order/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/customer-order/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-crm-customer-order-api": {
+      "root": "libs/apis/crm/customer-order-api",
+      "sourceRoot": "libs/apis/crm/customer-order-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/crm/customer-order-api/tsconfig.lib.json",
+            "project": "libs/apis/crm/customer-order-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/crm/customer-order-api/tsconfig.lib.json",
+              "libs/apis/crm/customer-order-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/crm/customer-order-api/src/test.ts",
+            "tsConfig": "libs/apis/crm/customer-order-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/crm/customer-order-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "bionic-wrp": {
+      "root": "apps/bionic-wrp/",
+      "sourceRoot": "apps/bionic-wrp/src",
+      "projectType": "application",
+      "prefix": "bionic",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bionic-wrp",
+            "index": "apps/bionic-wrp/src/index.html",
+            "main": "apps/bionic-wrp/src/main.ts",
+            "polyfills": "apps/bionic-wrp/src/polyfills.ts",
+            "tsConfig": "apps/bionic-wrp/tsconfig.app.json",
+            "assets": [
+              "apps/bionic-wrp/src/favicon.ico",
+              "apps/bionic-wrp/src/assets"
+            ],
+            "styles": ["apps/bionic-wrp/src/styles.css"],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bionic-wrp/src/environments/environment.ts",
+                  "with": "apps/bionic-wrp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bionic-wrp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bionic-wrp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bionic-wrp:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bionic-wrp/tsconfig.app.json",
+              "apps/bionic-wrp/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/bionic-wrp/src/test.ts",
+            "tsConfig": "apps/bionic-wrp/tsconfig.spec.json",
+            "karmaConfig": "apps/bionic-wrp/karma.conf.js",
+            "polyfills": "apps/bionic-wrp/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "bionic-wrp-e2e": {
+      "root": "apps/bionic-wrp-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/bionic-wrp-e2e/cypress.json",
+            "tsConfig": "apps/bionic-wrp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bionic-wrp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bionic-wrp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/bionic-wrp-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "wrp-users": {
+      "root": "libs/wrp/users",
+      "sourceRoot": "libs/wrp/users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/wrp/users/tsconfig.lib.json",
+            "project": "libs/wrp/users/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wrp/users/tsconfig.lib.json",
+              "libs/wrp/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/wrp/users/src/test.ts",
+            "tsConfig": "libs/wrp/users/tsconfig.spec.json",
+            "karmaConfig": "libs/wrp/users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "wrp-roles": {
+      "root": "libs/wrp/roles",
+      "sourceRoot": "libs/wrp/roles/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/wrp/roles/tsconfig.lib.json",
+            "project": "libs/wrp/roles/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wrp/roles/tsconfig.lib.json",
+              "libs/wrp/roles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/wrp/roles/src/test.ts",
+            "tsConfig": "libs/wrp/roles/tsconfig.spec.json",
+            "karmaConfig": "libs/wrp/roles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "wrp-system-lookup": {
+      "root": "libs/wrp/system-lookup",
+      "sourceRoot": "libs/wrp/system-lookup/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/wrp/system-lookup/tsconfig.lib.json",
+            "project": "libs/wrp/system-lookup/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wrp/system-lookup/tsconfig.lib.json",
+              "libs/wrp/system-lookup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/wrp/system-lookup/src/test.ts",
+            "tsConfig": "libs/wrp/system-lookup/tsconfig.spec.json",
+            "karmaConfig": "libs/wrp/system-lookup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
