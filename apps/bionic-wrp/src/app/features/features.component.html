@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <div id="head">
+    <ejs-toolbar>
+      <e-items>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/home"
+          text="Home"
+        ></e-item>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/dashboard"
+          text="Dashboard"
+        ></e-item>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/inventory"
+          text="Stocks"
+        ></e-item>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/crm"
+          text="CRM"
+        ></e-item>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/procurments"
+          text="Procurment"
+        ></e-item>
+        <e-item
+          prefixIcon="e-icons e-menu-icon"
+          [routerLinkActive]="'active-link inactive-link'"
+          routerLink="/settings"
+          text="Settings"
+        ></e-item>
+      </e-items>
+    </ejs-toolbar>
+
+    <div class="main-content"><router-outlet></router-outlet></div>
+  </div>
+</div>
