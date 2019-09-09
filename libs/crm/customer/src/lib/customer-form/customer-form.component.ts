@@ -13,13 +13,12 @@ import { NotificationComponent } from '@bionic/components/notification';
 import { Customer, CustomerApiService } from '@bionic/apis/crm/customer-api';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'bionic-customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.css']
 })
-export class CustomerFormComponent  implements OnInit {
+export class CustomerFormComponent implements OnInit {
   @ViewChild('notification')
   private notification: NotificationComponent;
   public customerTypes = ['Individual', 'Business'];
@@ -56,9 +55,7 @@ export class CustomerFormComponent  implements OnInit {
       this.isUpdate = true;
       this.customerService
         .getCustomerById(this.customerId)
-        .subscribe(
-          (customer: Customer) => this.initializeForm(customer)
-        );
+        .subscribe((customer: Customer) => this.initializeForm(customer));
     }
   }
 
@@ -155,8 +152,6 @@ export class CustomerFormComponent  implements OnInit {
     this.customerForm.patchValue(customer);
   }
 
-
-
   addPhone(): void {
     this.telephones.push(this.createTelephoneRecord());
   }
@@ -213,14 +208,14 @@ export class CustomerFormComponent  implements OnInit {
     const formModel = this.customerForm.value;
     const dataModel: Customer = {
       Id: this.customerId,
-      FullName: formModel.fullName,
-      Type: formModel.type,
-      Fax: formModel.fax,
-      Tin: formModel.tinNo,
-      PoBox: formModel.poBox,
-      CreditLimit: formModel.creditLimit,
-      PaymentPeriod: formModel.paymentPeriod,
-      Email: formModel.email,
+      FullName: formModel.FullName,
+      Type: formModel.Type,
+      Fax: formModel.Fax,
+      Tin: formModel.TinNo,
+      PoBox: formModel.PoBox,
+      CreditLimit: formModel.CreditLimit,
+      PaymentPeriod: formModel.PaymentPeriod,
+      Email: formModel.Email,
       Addresses: [],
       Telephones: [],
       SocialMedias: []
@@ -228,27 +223,27 @@ export class CustomerFormComponent  implements OnInit {
 
     this.addresses.controls.forEach(element => {
       dataModel.Addresses.push({
-        Id: element.value.id,
-        City: element.value.city,
-        Country: element.value.country,
-        SubCity: element.value.subCity,
-        Location: element.value.location
+        Id: element.value.Id,
+        City: element.value.City,
+        Country: element.value.Country,
+        SubCity: element.value.SubCity,
+        Location: element.value.Location
       });
     });
 
     this.socialMedias.controls.forEach(element => {
       dataModel.SocialMedias.push({
-        Id: element.value.id,
-        Site: element.value.site,
-        Address: element.value.address
+        Id: element.value.Id,
+        Site: element.value.Site,
+        Address: element.value.Address
       });
     });
 
     this.telephones.controls.forEach(element => {
       dataModel.Telephones.push({
         Id: element.value.Id,
-        Type: element.value.type,
-        Number: element.value.number
+        Type: element.value.Type,
+        Number: element.value.Number
       });
     });
 
@@ -269,9 +264,9 @@ export class CustomerFormComponent  implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.notification.showMessage(
-                  'Failed updating customer duplicate data exists',
-                  'error'
-                );
+            'Failed updating customer duplicate data exists',
+            'error'
+          );
         }
       );
     } else {
@@ -285,7 +280,6 @@ export class CustomerFormComponent  implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.notification.showMessage('Failed to Create Customer', 'error');
-
         }
       );
     }

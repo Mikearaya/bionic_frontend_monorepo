@@ -87,7 +87,7 @@ export class WriteOffFormComponent implements OnInit {
       Note: [''],
       Status: ['valid'],
       Type: ['', Validators.required],
-      WriteoffBatchs: this.formBuilder.array([])
+      WriteOffDetail: this.formBuilder.array([])
     });
 
     this.itemId.valueChanges.subscribe(data => {
@@ -103,17 +103,17 @@ export class WriteOffFormComponent implements OnInit {
 
   private createWriteOffBatchArea(batch: StockBatchListView): FormGroup {
     return this.formBuilder.group({
-      storageId: [batch.Id, Validators.required],
-      quantity: [0, Validators.required]
+      StorageId: [batch.Id, Validators.required],
+      Quantity: [0, Validators.required]
     });
   }
 
   private resetBatchItems(batchs: StockBatchListView[]): void {
-    this.writeoffBatchs.controls = [];
+    this.writeOffDetail.controls = [];
     this.itemBatchList = batchs;
     if (batchs.length > 0) {
       batchs.map(b =>
-        this.writeoffBatchs.push(this.createWriteOffBatchArea(b))
+        this.writeOffDetail.push(this.createWriteOffBatchArea(b))
       );
     }
   }
@@ -139,16 +139,16 @@ export class WriteOffFormComponent implements OnInit {
     return this.writeOffForm.get('Type') as FormControl;
   }
 
-  get writeoffBatchs(): FormArray {
-    return this.writeOffForm.get('WriteoffBatchs') as FormArray;
+  get writeOffDetail(): FormArray {
+    return this.writeOffForm.get('WriteOffDetail') as FormArray;
   }
 
   batchItem(index: number): FormControl {
-    return this.writeoffBatchs.controls[index].get('StorageId') as FormControl;
+    return this.writeOffDetail.controls[index].get('StorageId') as FormControl;
   }
 
   quantity(index: number): FormControl {
-    return this.writeoffBatchs.controls[index].get('Quantity') as FormControl;
+    return this.writeOffDetail.controls[index].get('Quantity') as FormControl;
   }
 
   onSubmit(): void {
@@ -208,12 +208,12 @@ export class WriteOffFormComponent implements OnInit {
         Note: this.note.value,
         Status: this.status.value,
         Type: this.type.value,
-        WriteOffBatchs: []
+        WriteOffDetail: []
       };
-      for (let i = 0; i < this.writeoffBatchs.controls.length; i++) {
+      for (let i = 0; i < this.writeOffDetail.controls.length; i++) {
         const quantity = this.quantity(i).value;
         if (quantity > 0) {
-          writeoff.WriteOffBatchs.push({
+          writeoff.WriteOffDetail.push({
             Quantity: quantity,
             BatchStorageId: this.batchItem(i).value
           });
@@ -233,14 +233,14 @@ export class WriteOffFormComponent implements OnInit {
         Note: this.note.value,
         Status: this.status.value,
         Type: this.type.value,
-        WriteOffBatchs: []
+        WriteOffDetail: []
       };
 
-      for (let i = 0; i < this.writeoffBatchs.controls.length; i++) {
+      for (let i = 0; i < this.writeOffDetail.controls.length; i++) {
         const quantity = this.quantity(i).value;
-        console.log(this.quantity(i).value);
+
         if (quantity > 0) {
-          writeoff.WriteOffBatchs.push({
+          writeoff.WriteOffDetail.push({
             Quantity: quantity,
             BatchStorageId: this.batchItem(i).value
           });

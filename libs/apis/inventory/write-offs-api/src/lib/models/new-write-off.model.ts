@@ -5,5 +5,5 @@ export class NewWriteOffModel {
   Note: string;
   Type: string;
   Status: string;
-  WriteOffBatchs: WriteOffItemModel[] = [];
+  WriteOffDetail: WriteOffItemModel[] = [];
 }

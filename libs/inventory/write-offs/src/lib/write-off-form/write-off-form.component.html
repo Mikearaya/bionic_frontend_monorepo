@@ -123,22 +123,22 @@
 										</th>
 									</tr>
 								</thead>
-								<tbody formArrayName="WriteoffBatchs">
+								<tbody formArrayName="WriteOffDetail">
 									<tr
 										*ngFor="
-											let batch of writeoffBatchs.controls;
+											let batch of writeOffDetail.controls;
 											let i = index;
 											let last = last
 										"
 										[formGroup]="batch"
 									>
-										<td>{{ itemBatchList[i]?.id }}</td>
-										<td>{{ itemBatchList[i]?.storageLocation }}</td>
-										<td>{{ itemBatchList[i]?.status }}</td>
-										<td>{{ itemBatchList[i]?.quantity }}</td>
-										<td>{{ itemBatchList[i]?.unitCost }}</td>
-										<td>{{ itemBatchList[i]?.totalBooked }}</td>
-										<td>{{ itemBatchList[i]?.totalWritenOff }}</td>
+										<td>{{ itemBatchList[i]?.Id }}</td>
+										<td>{{ itemBatchList[i]?.StorageLocation }}</td>
+										<td>{{ itemBatchList[i]?.Status }}</td>
+										<td>{{ itemBatchList[i]?.Quantity }}</td>
+										<td>{{ itemBatchList[i]?.UnitCost }}</td>
+										<td>{{ itemBatchList[i]?.TotalBooked }}</td>
+										<td>{{ itemBatchList[i]?.TotalWritenOff }}</td>
 										<td id="quantityBox" colspan="2">
 											<ejs-numerictextbox
 												formControlName="Quantity"
@@ -148,7 +148,7 @@
 												format="##"
 											></ejs-numerictextbox>
 											<div class="e-error" *ngIf="batch.get('Quantity').errors">
-												<div *ngIf="batch.get('quantity').errors['max']" i18n>
+												<div *ngIf="batch.get('Quantity').errors['max']" i18n>
 													Quantity Exceded available amount
 												</div>
 											</div>

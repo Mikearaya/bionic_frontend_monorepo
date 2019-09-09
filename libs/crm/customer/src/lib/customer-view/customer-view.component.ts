@@ -7,20 +7,18 @@
  * @Description: Modify Here, Please
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  DataStateChangeEventArgs
-} from '@syncfusion/ej2-angular-grids';
+import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
 
 import { Subject } from 'rxjs';
 import { QueryString } from '@bionic/components/data-grid';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationComponent } from '@bionic/components/notification';
-import { customerViewColumnsBluePrint } from './customer-view-blue-print.model';
-import { CustomerApiService } from '@bionic/apis/crm/customer-api';
 
+import { CustomerApiService } from '@bionic/apis/crm/customer-api';
+import { customerViewColumnsBluePrint } from './customer-view-blue-print.model';
 
 @Component({
-   template: `
+  template: `
     <bionic-data-view
       [data]="data"
       [showAdd]="true"
@@ -41,10 +39,10 @@ import { CustomerApiService } from '@bionic/apis/crm/customer-api';
 
     <bionic-notification #notification></bionic-notification>
   `,
-   styleUrls: ['./customer-view.component.css']
+  styleUrls: ['./customer-view.component.css']
 })
-export class CustomerViewComponent  implements OnInit {
-   @ViewChild('notification')
+export class CustomerViewComponent implements OnInit {
+  @ViewChild('notification')
   private notification: NotificationComponent;
 
   public data: Subject<DataStateChangeEventArgs>;
@@ -62,9 +60,9 @@ export class CustomerViewComponent  implements OnInit {
 
   deleteCustomer(data: any): void {
     this.customerApi.deleteCustomer(data['Id']).subscribe(
-      () => this.notification.showMessage('Item Group Deleted'),
+      () => this.notification.showMessage('Customer Deleted'),
       (error: HttpErrorResponse) => {
-        this.notification.showMessage('Unable to Delete Item Group', 'error');
+        this.notification.showMessage('Unable to Delete Customer', 'error');
       }
     );
   }

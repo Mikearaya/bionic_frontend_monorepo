@@ -12,7 +12,7 @@ import { StockBatchApiModule } from '@bionic/apis/inventory/stock-batch-api';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
-
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +20,7 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
     DataGridModule,
     ItemSelectorModule,
     NotificationModule,
+    ButtonModule,
     NumericTextBoxModule,
     StockBatchApiModule,
     DropDownListModule,
