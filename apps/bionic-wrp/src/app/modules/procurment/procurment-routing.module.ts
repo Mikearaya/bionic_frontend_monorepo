@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EntryComponent } from './entry/entry.component';
+import { ProcurmentDashboardComponent } from './procurment-dashboard/procurment-dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: EntryComponent,
     children: [
+      { path: '', component: ProcurmentDashboardComponent },
       {
         path: 'purchase-orders',
         loadChildren: '@bionic/procurment/purchase-order#PurchaseOrderModule',

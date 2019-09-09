@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EntryComponent } from './entry/entry.component';
+import { InventoryDashboardComponent } from './inventory-dashboard/inventory-dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: EntryComponent,
+    data: { breadCrum: 'Inventory' },
     children: [
+      {
+        path: '',
+        component: InventoryDashboardComponent,
+        data: {
+          breadCrum: 'Dashboard',
+          claimType: 'canViewItems'
+        }
+      },
       {
         path: 'items',
         data: {

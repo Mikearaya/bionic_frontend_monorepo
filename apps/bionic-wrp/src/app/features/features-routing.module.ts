@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: FeaturesComponent,
+    data: { breadCrum: 'Home', title: 'Home', breadCrum: 'Home' },
     children: [
       {
         path: 'procurments',
@@ -13,7 +14,12 @@ const routes: Routes = [
       },
       {
         path: 'inventory',
-        loadChildren: '../modules/inventory/inventory.module#InventoryModule'
+        loadChildren: '../modules/inventory/inventory.module#InventoryModule',
+        data: {
+          title: 'Inventory',
+          breadCrum: 'Home',
+          claimType: 'canAccessInventory'
+        }
       },
       {
         path: 'crm',

@@ -12,7 +12,7 @@
   allowResizing="true"
   allowFiltering="showFilter"
   [filterSettings]="filterSettings"
-  [allowGrouping]="groupByOptions != null ? true : false"
+  [allowGrouping]="allowGrouping"
   (toolbarClick)="toolbarClick($event)"
   (rowSelected)="rowIsSelected($event)"
   [allowPdfExport]="showPdfExport"

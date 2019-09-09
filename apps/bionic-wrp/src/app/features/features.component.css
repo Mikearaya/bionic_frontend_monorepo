@@ -1,0 +1,8 @@
+.e-toolbar, .e-toolbar-items {
+background: darkturquoise;
+}
+.content-head {
+  height: 3em;
+  background: rgb(64, 150, 163) !important;
+
+}

@@ -5,7 +5,7 @@
         <e-item
           prefixIcon="e-icons e-menu-icon"
           [routerLinkActive]="'active-link inactive-link'"
-          routerLink="/home"
+          routerLink="/"
           text="Home"
         ></e-item>
         <e-item
@@ -40,7 +40,7 @@
         ></e-item>
       </e-items>
     </ejs-toolbar>
-
+    <div class="content-head"><app-page-identity></app-page-identity></div>
     <div class="main-content"><router-outlet></router-outlet></div>
   </div>
 </div>
