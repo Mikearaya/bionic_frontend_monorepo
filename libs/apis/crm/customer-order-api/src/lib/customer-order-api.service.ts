@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { DataResult } from '@syncfusion/ej2-angular-grids';
 import { QueryString } from '@bionic/components/data-grid';
 import { Observable, Subject } from 'rxjs';
+import { CustomerOrderIndex } from './models/customer-order-index.model';
 
 @Injectable()
 export class CustomerOrderApiService extends Subject<DataStateChangeEventArgs> {
@@ -32,6 +33,12 @@ export class CustomerOrderApiService extends Subject<DataStateChangeEventArgs> {
   getCustomerOrderById(id: number): Observable<CustomerOrderDetailView> {
     return this.httpClient.get<CustomerOrderDetailView>(
       `${this.apiUrl}/${this.controller}/${id}`
+    );
+  }
+
+  getCustomerOrderIndex(filter: string): Observable<CustomerOrderIndex[]> {
+    return this.httpClient.get<CustomerOrderIndex[]>(
+      `${this.apiUrl}/${this.controller}/index?Name=${filter}`
     );
   }
 

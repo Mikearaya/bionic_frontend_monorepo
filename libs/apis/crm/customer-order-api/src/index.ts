@@ -11,3 +11,4 @@ export { CustomerOrderItemModel } from './lib/models/customer-order-item.model';
 export { CustomerOrderListView } from './lib/models/customer-order-list.model';
 export { CustomerOrder } from './lib/models/customer-order.model';
 export { NewCustomerOrderModel } from './lib/models/new-customer-order.model';
+export { CustomerOrderIndex } from './lib/models/customer-order-index.model';

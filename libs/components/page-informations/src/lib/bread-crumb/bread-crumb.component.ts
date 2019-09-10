@@ -40,6 +40,7 @@ export class BreadCrumbComponent implements OnInit {
         currentRoute = route;
       });
     } while (currentRoute);
-    this.breadcrumbs.splice(0, 1);
+    //console.log(this.breadcrumbs);
+    this.breadcrumbs.splice(1, 1);
   }
 }

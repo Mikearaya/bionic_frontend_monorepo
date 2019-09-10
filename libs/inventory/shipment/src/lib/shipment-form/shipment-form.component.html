@@ -25,23 +25,12 @@
     <div class="row">
       <div class="col-6 col-xs-12">
         <div i18n="@@customerOrder">Customer Order</div>
-
-        <!--
-          <ejs-dropdownlist
-            [allowFiltering]="true"
-            name="orderId"
-            formControlName="CustomerOrderId"
-            id="orderId"
-            placeholder="Select Customer Order"
-            [query]="orderQuery"
-            [fields]="orderFields"
-            [dataSource]="orderList"
-            filterBarPlaceholder="Search by Order Id"
-            i18n-filterbarplaceholder="@@customerOrderSelectPlaceholder"
-            i18n-placeholder="@@customerOrderPlaceholder"
-          >
-          </ejs-dropdownlist>
-        -->
+        <bionic-customer-order-selector
+          name="orderId"
+          formControlName="CustomerOrderId"
+          id="orderId"
+          placeholder="Select Customer Order"
+        ></bionic-customer-order-selector>
       </div>
     </div>
     <div class="row">

@@ -12,10 +12,11 @@ import { ShipmentApiModule } from '@bionic/apis/inventory/shipment-api';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
-
+import { CustomerOrderSelectorModule } from '@bionic/crm/customer-order';
 @NgModule({
   imports: [
     CommonModule,
+    CustomerOrderSelectorModule,
     DataGridModule,
     ShipmentApiModule,
     NotificationModule,

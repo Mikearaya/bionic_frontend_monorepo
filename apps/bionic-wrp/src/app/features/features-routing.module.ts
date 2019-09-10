@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: FeaturesComponent,
-    data: { breadCrum: 'Home', title: 'Home', breadCrum: 'Home' },
+    data: { breadCrum: 'Home', title: 'Home' },
     children: [
       {
         path: 'procurments',

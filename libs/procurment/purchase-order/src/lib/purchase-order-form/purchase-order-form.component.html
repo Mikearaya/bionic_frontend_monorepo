@@ -15,6 +15,7 @@
               <bionic-vendor-selector
                 formControlName="VendorId"
                 id="vendorId"
+                [newVendorLink]="'/procurments/vendors/add'"
                 name="vendorId"
                 i18n-placeholder
                 i18n-filterBarPlaceholder
@@ -149,7 +150,6 @@
                   <ejs-numerictextbox
                     #price
                     formControlName="UnitPrice"
-                    
                     [width]="100"
                     [attr.id]="'unitPrice' + i"
                     [attr.name]="'unitPrice' + i"
@@ -265,7 +265,7 @@
             <label for="orderDate" class="col-md-3 col-sm-12">Order Date</label>
             <div class="col-md-9 col-sm-12">
               <ejs-datepicker
-                formControlName="OrderDate"
+                formControlName="OrderedDate"
                 [width]="200"
                 name="orderDate"
                 id="orderDate"
