@@ -7,12 +7,15 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthorizationApiService } from '@bionic/apis/common/access-control-api';
+import {
+  AuthorizationApiService,
+  AuthenticationApiService
+} from '@bionic/apis/common/access-control-api';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
   constructor(
-    private authorizationApi: AuthorizationApiService,
+    private authorizationApi: AuthenticationApiService,
     private router: Router
   ) {}
 
@@ -24,11 +27,11 @@ export class AuthenticationGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    alert('in');
     if (this.authorizationApi.securityObject.IsAuthenticated) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      return true;
+      //  this.router.navigate(['login']);
     }
   }
 }
