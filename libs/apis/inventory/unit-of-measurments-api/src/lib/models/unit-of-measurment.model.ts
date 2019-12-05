@@ -1,6 +1,6 @@
 export class UnitOfMeasurement {
   Id?: number;
-  Abbrivation: string;
+  Abrivation: string;
   Name: string;
   Active: number | null;
 }

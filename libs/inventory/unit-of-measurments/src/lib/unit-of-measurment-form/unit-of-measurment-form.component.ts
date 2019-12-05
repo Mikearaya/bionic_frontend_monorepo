@@ -54,7 +54,7 @@ export class UnitOfMeasurmentFormComponent implements OnInit {
   private createForm(): void {
     this.uomForm = this.formBuilder.group({
       Name: ['', Validators.required],
-      Abbrevation: ['', Validators.required],
+      Abrevation: ['', Validators.required],
       Active: [true, Validators.required]
     });
   }
@@ -64,7 +64,7 @@ export class UnitOfMeasurmentFormComponent implements OnInit {
   }
 
   get abbrevation(): FormControl {
-    return this.uomForm.get('Abbrevation') as FormControl;
+    return this.uomForm.get('Abrevation') as FormControl;
   }
 
   get isActive(): FormControl {
@@ -113,7 +113,7 @@ export class UnitOfMeasurmentFormComponent implements OnInit {
     return {
       Id: this.uomId ? this.uomId : 0,
       Name: this.name.value,
-      Abbrivation: this.abbrevation.value,
+      Abrivation: this.abbrevation.value,
       Active: this.isActive.value
     };
   }
