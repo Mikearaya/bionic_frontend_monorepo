@@ -96,7 +96,7 @@ export class PurchaseOrderSelectorComponent implements ControlValueAccessor {
         this.purchaseOrders = result;
         if (this._value) {
           if (obj !== 0) {
-            const data = this.purchaseOrders.filter(a => a.Vendor === obj);
+            const data = this.purchaseOrders.filter(a => a.Id === obj);
             data.forEach(element => {
               this.text = element.Vendor;
             });

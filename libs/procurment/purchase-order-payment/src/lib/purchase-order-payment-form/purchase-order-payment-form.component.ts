@@ -67,7 +67,6 @@ export class PurchaseOrderPaymentFormComponent implements OnInit {
   }
 
   onPurchaseOrderSelected(event: any): void {
-    alert(JSON.stringify(event));
     this.getControl('Amount').setValue(event.RemainingAmount);
   }
 
