@@ -1,6 +1,6 @@
 <section>
   <form [formGroup]="lookupForm" (ngSubmit)="onSubmit()" name="lookupForm">
-    <div class="container-fluid card m-3" formArrayName="Lookups">
+    <div class="container-fluid card m-3" formArrayName="lookup">
       <div
         class="row"
         *ngFor="let lookup of Lookups.controls; let i = index; let last = last"

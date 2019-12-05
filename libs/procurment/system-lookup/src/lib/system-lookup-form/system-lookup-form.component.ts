@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  SimpleChanges,
+  OnChanges
+} from '@angular/core';
 import {
   SystemLookupApiService,
   SystemLookupCategoriesModel,
@@ -14,7 +20,7 @@ import { NotificationComponent } from '@bionic/components/notification';
   templateUrl: './system-lookup-form.component.html',
   styleUrls: ['./system-lookup-form.component.css']
 })
-export class SystemLookupFormComponent implements OnInit {
+export class SystemLookupFormComponent implements OnInit, OnChanges {
   @ViewChild('notification')
   public notification: NotificationComponent;
 
@@ -32,13 +38,21 @@ export class SystemLookupFormComponent implements OnInit {
     this.lookupId = +this.activatedRoute.snapshot.paramMap.get('lookupId');
 
     if (this.lookupId) {
+      
       // if lookup id is present get the related account value
       this.isUpdate = true;
       // initialize the form with the retrived lookup value
       this.lookupApi
         .getLookupId(this.lookupId)
-        .subscribe((data: LookupViewModel) => (this.lookup = data));
+        .subscribe((data: LookupViewModel) => {this.lookup = data;
+        console.log("lookup retured", data);
+        }
+        );
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 
   onSubmit(formData: LookupModel[]) {

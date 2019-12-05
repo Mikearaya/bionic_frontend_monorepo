@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Output,
+  EventEmitter,
+  Input,
+  SimpleChanges
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -22,7 +30,7 @@ import {
   templateUrl: './system-lookup-form.component.html',
   styleUrls: ['./system-lookup-form.component.css']
 })
-export class SystemLookupFormComponent implements OnInit {
+export class SystemLookupFormComponent implements OnInit, OnChanges {
   @Output()
   public submitted: EventEmitter<LookupModel> = new EventEmitter();
   @Input()
@@ -44,11 +52,10 @@ export class SystemLookupFormComponent implements OnInit {
     private lookupApi: SystemLookupApiService
   ) {
     this.createLookupForm();
-
-    this.lookupFields = { value: 'Id', text: 'Name' };
   }
 
   ngOnInit() {
+    this.lookupFields = { value: 'Id', text: 'Name' };
     // get the look Id from route parameter if present
     this.LookupId = this.activatedRoute.snapshot.paramMap.get('lookupId');
     this.lookupApi
@@ -61,21 +68,23 @@ export class SystemLookupFormComponent implements OnInit {
       this.initializeLookup(this.lookup);
       // initialize the form with the retrived lookup value
     }
+  }
 
-    this.typeFields = {
-      text: 'Type',
-      value: 'Type'
-    };
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.lookup.currentValue) {
+      this.initializeLookup(changes.lookup.currentValue);
+    }
   }
 
   get Lookups(): FormArray {
-    return this.lookupForm.get('Lookups') as FormArray;
+    return this.lookupForm.get('lookup') as FormArray;
   }
 
   createLookupForm() {
     this.lookupForm = this.formBuilder.group({
-      Lookups: this.formBuilder.array([
+      lookup: this.formBuilder.array([
         this.formBuilder.group({
+          Id: ['', Validators.required],
           Type: ['', Validators.required],
           Value: ['', Validators.required]
         })
@@ -84,15 +93,7 @@ export class SystemLookupFormComponent implements OnInit {
   }
 
   initializeLookup(data: LookupViewModel) {
-    this.lookupForm = this.formBuilder.group({
-      Lookups: this.formBuilder.array([
-        this.formBuilder.group({
-          Id: [data.Id, Validators.required],
-          Type: [data.Type, Validators.required],
-          Value: [data.Value, Validators.required]
-        })
-      ])
-    });
+    this.Lookups.patchValue([data]);
   }
 
   removeRow(index: number): void {
@@ -128,6 +129,7 @@ export class SystemLookupFormComponent implements OnInit {
   addRow(): void {
     this.Lookups.push(
       this.formBuilder.group({
+        Id: [''],
         Type: ['', Validators.required],
         Value: ['', Validators.required]
       })
