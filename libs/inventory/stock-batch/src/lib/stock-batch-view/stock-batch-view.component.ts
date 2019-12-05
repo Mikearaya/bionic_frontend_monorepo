@@ -15,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
       [showDelete]="true"
       [enableSorting]="true"
       [showUpdate]="true"
+      [allowGrouping]="true"
       [addPrivilage]="'canAddStockBatchs'"
       [updatePrivilage]="'canEditStockBatchs'"
       [deletePrivilage]="'canDeleteStockBatchs'"

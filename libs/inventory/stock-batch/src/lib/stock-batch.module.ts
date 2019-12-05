@@ -13,12 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
     CommonModule,
     StorageLocationSelectorModule,
     ItemSelectorModule,
+    ButtonModule,
     ReactiveFormsModule,
     FormButtonsModule,
     NotificationModule,

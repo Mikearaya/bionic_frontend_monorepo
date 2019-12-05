@@ -62,7 +62,7 @@ export class StockBatchFormComponent implements OnInit {
       AvailableFrom: ['', Validators.required],
       ExpiryDate: [''],
       UnitCost: ['', Validators.required],
-      StorageLocation: this.formBuilder.array([this.createStorageLocation()])
+      Storages: this.formBuilder.array([this.createStorageLocation()])
     });
   }
 
@@ -101,7 +101,7 @@ export class StockBatchFormComponent implements OnInit {
     return this.stockBatchForm.get('ExpiryDate') as FormControl;
   }
   get storageLocation(): FormArray {
-    return this.stockBatchForm.get('StorageLocation') as FormArray;
+    return this.stockBatchForm.get('Storages') as FormArray;
   }
 
   moveStockLot(index: number): void {
@@ -162,10 +162,10 @@ export class StockBatchFormComponent implements OnInit {
         StorageLocation: []
       };
 
-      this.storageLocation.value.map(store =>
+      this.storageLocation.controls.map(store =>
         newBatch.StorageLocation.push({
-          StorageId: store.StorageId,
-          Quantity: store.Quantity
+          StorageId: store.value.StorageId,
+          Quantity: store.value.Quantity
         })
       );
 
