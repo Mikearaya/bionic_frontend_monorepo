@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   SystemUserApiService,
@@ -6,15 +6,19 @@ import {
   SystemUserModel
 } from '@bionic/apis/common/system-users-api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationComponent } from '@bionic/components/notification';
 
 @Component({
   template: `
     <bionic-user-form [user]="currentUser" (submitted)="onSubmitted($event)">
     </bionic-user-form>
+    <bionic-notification #notification> </bionic-notification>
   `,
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+  @ViewChild('notification')
+  public notification: NotificationComponent;
   private userId: string;
   isUpdate: boolean;
   currentUser: SystemUserViewModel;
@@ -39,16 +43,22 @@ export class UserFormComponent implements OnInit {
     if (data) {
       if (data && this.isUpdate) {
         this.userApi.updateUser(data).subscribe(
-          () => alert('Profile updated successfuly'),
+          () => this.notification.showMessage('Profile updated successfuly'),
           (error: HttpErrorResponse) => {
-            alert('Failed while attemptin to update profile, Try again later');
+            this.notification.showMessage(
+              'Failed while attemptin to update profile, Try again later',
+              'error'
+            );
           }
         );
       } else if (data) {
         this.userApi.createUser(data).subscribe(
-          () => alert('Profile Created successfuly'),
+          () => this.notification.showMessage('Profile Created successfuly'),
           (error: HttpErrorResponse) => {
-            alert('Failed while attemptin to update profile, Try again later');
+            this.notification.showMessage(
+              'Failed while attemptin to update profile, Try again later',
+              'error'
+            );
           }
         );
       }

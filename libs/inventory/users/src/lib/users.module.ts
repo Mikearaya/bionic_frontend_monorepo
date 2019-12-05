@@ -6,11 +6,13 @@ import { DataGridModule } from '@bionic/components/data-grid';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { SystemUsersModule } from '@bionic/components/system-users';
+import { NotificationModule } from '@bionic/components/notification';
 @NgModule({
   imports: [
     CommonModule,
     SystemUsersApiModule.forRoot({ apiUrl: 'system-user' }),
     SystemUsersModule,
+    NotificationModule,
     DataGridModule,
 
     RouterModule.forChild([
