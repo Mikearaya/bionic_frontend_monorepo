@@ -70,9 +70,12 @@ export class PurchaseOrderApiService extends Subject<DataStateChangeEventArgs> {
     );
   }
 
-  updatePurchaseOrder(purchaseOrder: PurchaseOrder): Observable<void> {
+  updatePurchaseOrder(
+    Id: number,
+    purchaseOrder: PurchaseOrder
+  ): Observable<void> {
     return this.httpClient.put<void>(
-      `${this.apiUrl}/${this.controller}/${purchaseOrder.Id}`,
+      `${this.apiUrl}/${this.controller}/${Id}`,
       purchaseOrder
     );
   }

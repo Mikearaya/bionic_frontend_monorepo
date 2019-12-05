@@ -31,7 +31,7 @@ export class SystemRoleApiService extends Subject<DataStateChangeEventArgs> {
 
   getSystemRoleById(roleId: string): Observable<SystemRoleModel> {
     return this.httpClient.get<SystemRoleModel>(
-      `${this.apiUrl}/${this.controller}${roleId}`
+      `${this.apiUrl}/${this.controller}/${roleId}`
     );
   }
 

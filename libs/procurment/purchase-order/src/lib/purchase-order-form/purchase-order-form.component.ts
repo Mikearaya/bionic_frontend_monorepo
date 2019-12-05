@@ -85,7 +85,7 @@ export class PurchaseOrderFormComponent implements OnInit {
       InvoiceId: [''],
       InvoiceDate: [''],
       PaymentDate: [''],
-      ShippedOn: [''],
+      ShippedDate: [''],
       ArrivalDate: [''],
       PurchaseOrderItems: this.formBuilder.array([
         this.createPurchaseOrderItems()
@@ -150,9 +150,8 @@ export class PurchaseOrderFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.purchaseOrderForm.valid) {
+      const purchaseOrder = this.prepareNewPurchaseOrderData();
       if (!this.isUpdate) {
-        const purchaseOrder = this.prepareNewPurchaseOrderData();
-
         if (purchaseOrder.Status !== 'RFQ') {
           this.purchaseOrderApi
             .createPurchaseOrder(purchaseOrder)
@@ -172,13 +171,24 @@ export class PurchaseOrderFormComponent implements OnInit {
               this.purchaseOrderId = data.Id;
             });
         }
+      } else {
+        this.purchaseOrderApi
+          .updatePurchaseOrder(this.purchaseOrderId, purchaseOrder)
+          .subscribe((data: void) => {
+            this.notification.showMessage(
+              'Purchase order updated successfully'
+            );
+            this.isUpdate = true;
+          });
       }
     }
   }
 
   private prepareNewPurchaseOrderData(): PurchaseOrder {
     const newPurchaseOrder: PurchaseOrder = this.purchaseOrderForm.value;
-
+    if (this.purchaseOrderId) {
+      newPurchaseOrder.Id = this.purchaseOrderId;
+    }
     return newPurchaseOrder;
   }
 

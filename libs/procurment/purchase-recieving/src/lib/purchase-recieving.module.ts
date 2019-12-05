@@ -11,6 +11,8 @@ import { PurchaseRecievingViewComponent } from './purchase-recieving-view/purcha
 import { PurchaseRecievingFormComponent } from './purchase-recieving-form/purchase-recieving-form.component';
 import { PurchaseRecievingApiModule } from '@bionic/apis/procurment/purchase-recieving-api';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { PurchaseOrderSelectorModule } from '@bionic/procurment/purchase-order';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
     NotificationModule,
     PurchaseOrderApiModule,
     PurchaseRecievingApiModule,
+    PurchaseOrderSelectorModule,
     VendorApiModule,
     ReactiveFormsModule,
     NumericTextBoxModule,

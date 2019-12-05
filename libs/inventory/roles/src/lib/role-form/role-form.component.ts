@@ -38,7 +38,10 @@ export class RoleFormComponent implements OnInit {
       this.isUpdate = true;
       this.roleApi
         .getSystemRoleById(this.roleId)
-        .subscribe((data: SystemRoleModel) => (this.currentRole = data));
+        .subscribe((data: SystemRoleModel) => {
+          this.currentRole = data;
+          console.log(this.currentRole);
+        });
     }
   }
 

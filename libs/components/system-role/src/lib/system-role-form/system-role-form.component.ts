@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -15,7 +23,7 @@ import {
   templateUrl: './system-role-form.component.html',
   styleUrls: ['./system-role-form.component.css']
 })
-export class SystemRoleFormComponent implements OnInit {
+export class SystemRoleFormComponent implements OnInit, OnChanges {
   public allSelected: Boolean;
   public userRoleForm: FormGroup;
   private roleId: string;
@@ -55,6 +63,16 @@ export class SystemRoleFormComponent implements OnInit {
         this.selectedRoles.push(elemet.ClaimType);
       });
       this.roleName.setValue(this.Role.Name);
+    }
+  }
+
+  ngOnChanges(chages: SimpleChanges): void {
+    console.log(chages);
+    if (chages.Role) {
+      chages.Role.currentValue.Claims.forEach(elemet => {
+        this.selectedRoles.push(elemet.ClaimType);
+      });
+      this.roleName.setValue(chages.Role.currentValue.Name);
     }
   }
 
