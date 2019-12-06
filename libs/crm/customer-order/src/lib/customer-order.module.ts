@@ -13,6 +13,7 @@ import { ItemSelectorModule } from '@bionic/inventory/item';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
     CustomerOrderApiModule,
     NotificationModule,
     FormButtonsModule,
+    ButtonModule,
     DropDownListModule,
     NumericTextBoxModule,
     CustomerSelectorModule,

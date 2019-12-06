@@ -67,10 +67,8 @@ export class CustomerOrderApiService extends Subject<DataStateChangeEventArgs> {
     );
   }
 
-  updateSalesOrder(
-    id: number,
-    finishedProduct: NewCustomerOrderModel
-  ): Observable<Boolean> {
+  updateSalesOrder(id: number, finishedProduct: any): Observable<Boolean> {
+    finishedProduct.Id = id;
     return this.httpClient.put<Boolean>(
       `${this.apiUrl}/${this.controller}/${id}`,
       finishedProduct

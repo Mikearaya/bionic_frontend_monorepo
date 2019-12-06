@@ -1,9 +1,9 @@
 import { CustomerOrderItemModel } from './customer-order-item.model';
 
 export interface NewCustomerOrderModel {
-  Status: string;
+  OrderStatus: string;
   ClientId: number;
   Description: string;
-  DeliveryDate: Date | string | null;
+  DueDate: Date | string | null;
   CustomerOrderItem: CustomerOrderItemModel[];
 }

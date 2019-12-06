@@ -36,7 +36,7 @@ export class CriticalInventoryApiService extends Subject<
 
   getProcuredData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/${this.controller}/procured`, state)
+      .post(`${this.apiUrl}/${this.controller}`, state)
       .pipe(
         map(
           (response: any) =>

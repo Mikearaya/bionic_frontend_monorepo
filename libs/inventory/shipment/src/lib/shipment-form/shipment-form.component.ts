@@ -43,10 +43,15 @@ export class ShipmentFormComponent implements OnInit {
     public router: Router
   ) {
     this.createForm();
-
-
   }
-
+  customerOrderChange(event: any): void {
+    alert(event);
+    this.shipmentApi
+      .getCustomerOrderShipments(event)
+      .subscribe((data: ShipmentViewDetail[]) =>
+        this.shipmentItems.patchValue(data)
+      );
+  }
   ngOnInit() {
     this.customerOrder = +this.activatedRoute.snapshot.paramMap.get(
       'customerOrderId'
@@ -104,7 +109,6 @@ export class ShipmentFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    
     const shipment: Shipment = this.prepateData();
     this.shipmentApi.createNewShipment(shipment).subscribe((data: Shipment) => {
       this.notification.showMessage('Shipment Created  Successfuly'),

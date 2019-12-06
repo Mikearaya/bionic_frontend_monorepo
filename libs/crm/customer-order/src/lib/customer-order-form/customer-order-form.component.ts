@@ -72,20 +72,23 @@ export class CustomerOrderFormComponent implements OnInit {
       this.isUpdate = true;
       this.customerOrderApi
         .getCustomerOrderById(this.customerOrderId)
-        .subscribe((data: CustomerOrderDetailView) => (this.orderData = data));
+        .subscribe((data: CustomerOrderDetailView) => {
+          this.orderData = data;
+          this.initializeForm(data);
+        });
     }
   }
 
   createForm(): void {
     this.salesOrderForm = this.formBuilder.group({
-      Client: ['', Validators.required],
-      DeliveryDate: ['', Validators.required],
-      Status: ['Quotation', Validators.required],
+      ClientId: ['', Validators.required],
+      DueDate: ['', Validators.required],
+      OrderStatus: ['Quotation', Validators.required],
       Description: [''],
-      Orders: this.formBuilder.array([
+      CustomerOrderItem: this.formBuilder.array([
         this.formBuilder.group({
           ItemId: ['', Validators.required],
-          UnitPrice: [0, [Validators.required, Validators.min(0)]],
+          PricePerItem: [0, [Validators.required, Validators.min(0)]],
           Quantity: [1, [Validators.required, Validators.min(1)]],
           DueDate: ['', Validators.required]
         })
@@ -102,25 +105,25 @@ export class CustomerOrderFormComponent implements OnInit {
   }
 
   get deliveryDate(): FormControl {
-    return this.salesOrderForm.get('DeliveryDate') as FormControl;
+    return this.salesOrderForm.get('DueDate') as FormControl;
   }
 
   get status(): FormControl {
-    return this.salesOrderForm.get('Status') as FormControl;
+    return this.salesOrderForm.get('OrderStatus') as FormControl;
   }
 
   get client(): FormControl {
-    return this.salesOrderForm.get('Client') as FormControl;
+    return this.salesOrderForm.get('ClientId') as FormControl;
   }
   get orders(): FormArray {
-    return this.salesOrderForm.get('Orders') as FormArray;
+    return this.salesOrderForm.get('CustomerOrderItem') as FormArray;
   }
 
   addOrder() {
     this.orders.push(
       this.formBuilder.group({
         ItemId: ['', Validators.required],
-        UnitPrice: [0, [Validators.required]],
+        PricePerItem: [0, [Validators.required]],
         Quantity: [1, [Validators.required, Validators.min(0)]],
         DueDate: ['', Validators.required]
       })
@@ -129,9 +132,9 @@ export class CustomerOrderFormComponent implements OnInit {
 
   onSubmit() {
     const form = this.salesOrderForm.value;
+    const order = this.prepareNewFormData(form);
 
     if (!this.isUpdate) {
-      const order = this.prepareNewFormData(form);
       this.customerOrderApi
         .createSalesOrder(order)
         .subscribe((co: CustomerOrderDetailView) => {
@@ -141,26 +144,22 @@ export class CustomerOrderFormComponent implements OnInit {
           });
         });
     } else {
+      this.customerOrderApi
+        .updateSalesOrder(this.customerOrderId, order)
+        .subscribe(
+          () =>
+            this.notification.showMessage('Customer order updated successfuly'),
+          error =>
+            this.notification.showMessage(
+              'Error occured while updating Customer order',
+              'error'
+            )
+        );
     }
   }
 
   prepareNewFormData(form: any): NewCustomerOrderModel {
-    const order: NewCustomerOrderModel = {
-      ClientId: form.Client ? form.Client : null,
-      Description: form.Description,
-      Status: form.Status,
-      DeliveryDate: form.DeliveryDate,
-      CustomerOrderItem: []
-    };
-
-    form.Orders.forEach(element => {
-      order.CustomerOrderItem.push({
-        ItemId: element.ItemId,
-        Quantity: element.Quantity,
-        DueDate: element.DueDate,
-        PricePerItem: element.UnitPrice
-      });
-    });
+    const order: NewCustomerOrderModel = form;
 
     return order;
   }

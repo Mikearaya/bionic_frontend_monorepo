@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CriticalInventoryApiOptionsService {
-  apiUrl = 'inventory/critical-items';
+  apiUrl = 'inventory/items/critical';
 
   constructor() {}
 }

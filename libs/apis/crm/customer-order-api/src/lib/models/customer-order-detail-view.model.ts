@@ -4,8 +4,8 @@ export interface CustomerOrderDetailView {
   Id: number;
   CustomerId: number;
   CustomerName: string;
-  Status: string;
-  DeliveryDate: Date | string | null;
+  OrderStatus: string;
+  DueDate: Date | string | null;
   DateAdded: Date | string | null;
   DateUpdated: Date | string | null;
 
@@ -13,5 +13,5 @@ export interface CustomerOrderDetailView {
   Reference: string;
   Description: string;
   Discount: number;
-  CustomerOrderItems: CustomerOrderItemView[];
+  CustomerOrderItem: CustomerOrderItemView[];
 }

@@ -17,7 +17,7 @@
           <div class="col-sm-12 col-xs-12">
             <bionic-customer-selector
               name="client"
-              formControlName="Client"
+              formControlName="ClientId"
               id="client"
             ></bionic-customer-selector>
 
@@ -35,7 +35,7 @@
             <ejs-dropdownlist
               [allowFiltering]="true"
               name="status"
-              formControlName="Status"
+              formControlName="OrderStatus"
               id="status"
               placeholder="Status"
               floatLabelType="Auto"
@@ -71,13 +71,10 @@
         <div class="row">
           <div class="col-12">
             <ejs-datepicker
-              floatLabelType="Auto"
               placeholder="Select Due Date"
-              formControlName="DeliveryDate"
-              [min]="today"
-              id="deliveryDate"
-              name="deliveryDate"
-              format="yyyy-MM-dd hh:ss"
+              formControlName="DueDate"
+              id="deliveryDat"
+              name="deliveryDat"
               i18n-placeholder="Final order delivery date input @@orderDeliveryDate"
             ></ejs-datepicker>
             <div class="e-error" *ngIf="deliveryDate.errors">
@@ -95,7 +92,7 @@
     </div>
     <h5 class="text-info" i18n="Section Header">Items</h5>
 
-    <div formArrayName="Orders">
+    <div formArrayName="CustomerOrderItem">
       <div
         class="row"
         *ngFor="let order of orders.controls; let i = index; let last = last"
@@ -126,7 +123,7 @@
             [attr.class]="'e-input'"
             min="1"
             floatLabelType="Auto"
-            formControlName="UnitPrice"
+            formControlName="PricePerItem"
             [attr.name]="'price' + i"
             placeholder="Unit Price"
             [attr.id]="'Price' + i"
@@ -136,12 +133,10 @@
         </div>
         <div class="col-sm-3 col-xs-12">
           <ejs-datepicker
-            floatLabelType="Auto"
             placeholder="Select Due Date"
             formControlName="DueDate"
             [attr.id]="'dueDate' + i"
             [attr.name]="'dueDate' + i"
-            format="yyyy-MM-dd hh:ss"
             i18n-placeholder="order due date select @@orderDueDateSelect"
           ></ejs-datepicker>
         </div>

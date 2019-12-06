@@ -1,4 +1,11 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { Predicate, Query } from '@syncfusion/ej2-data';
 import { CustomerOrderApiService } from '@bionic/apis/crm/customer-order-api';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -41,12 +48,18 @@ export class CustomerOrderSelectorComponent {
   public customers: any;
   public fields: object = { value: 'Id', text: 'Name' };
 
+  @Output()
+  public customerOrderChanged: EventEmitter<number> = new EventEmitter<
+    number
+  >();
+
   public text = '';
   constructor(private customerOrderApi: CustomerOrderApiService) {}
 
   customerChanged($event: any) {
     if ($event.itemData) {
       this.onChanged($event.itemData['Id']);
+      this.customerOrderChanged.emit($event.itemData['Id']);
     } else {
       this.onChanged('');
     }

@@ -26,6 +26,7 @@
       <div class="col-6 col-xs-12">
         <div i18n="@@customerOrder">Customer Order</div>
         <bionic-customer-order-selector
+          (customerOrderChanged)="customerOrderChange($event)"
           name="orderId"
           formControlName="CustomerOrderId"
           id="orderId"

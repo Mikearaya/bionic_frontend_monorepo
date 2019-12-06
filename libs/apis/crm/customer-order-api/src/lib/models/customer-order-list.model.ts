@@ -1,7 +1,7 @@
 export interface CustomerOrderListView {
   Id: number;
   TotalQuantity: number;
-  CustomerId: number;
+  ClientId: number;
   CustomerName: string;
   TotalPrice: number | null;
   TotalCost: number | null;
