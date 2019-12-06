@@ -11,7 +11,7 @@ import { InventoryCountApiOptionsService } from './inventory-count-api-options.s
 export class InventoryCountApiService extends Subject<
   DataStateChangeEventArgs
 > {
-  private controller = 'inventory/inventory-counts';
+  private controller = 'items/inventory';
   private apiUrl = `http://${window.location.hostname}:5000/api`;
 
   constructor(
@@ -28,7 +28,7 @@ export class InventoryCountApiService extends Subject<
 
   getData(state: QueryString): Observable<DataStateChangeEventArgs> {
     return this.httpClient
-      .post(`${this.apiUrl}/${this.controller}/filter`, state)
+      .post(`${this.apiUrl}/${this.controller}`, state)
       .pipe(
         map(
           (response: any) =>

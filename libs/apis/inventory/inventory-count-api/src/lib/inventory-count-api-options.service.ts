@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class InventoryCountApiOptionsService {
-  apiUrl = 'inventory/inventory-counts';
+  apiUrl = 'inventory/items/count';
 
   constructor() {}
 }
