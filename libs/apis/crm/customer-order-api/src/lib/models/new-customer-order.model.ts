@@ -5,5 +5,5 @@ export interface NewCustomerOrderModel {
   ClientId: number;
   Description: string;
   DeliveryDate: Date | string | null;
-  CustomerOrderDetail: CustomerOrderItemModel[];
+  CustomerOrderItem: CustomerOrderItemModel[];
 }

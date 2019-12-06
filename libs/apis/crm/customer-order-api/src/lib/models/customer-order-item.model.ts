@@ -3,5 +3,5 @@ export interface CustomerOrderItemModel {
   ItemId: number;
   Quantity: number;
   DueDate: Date | string;
-  UnitPrice: number;
+  PricePerItem: number;
 }

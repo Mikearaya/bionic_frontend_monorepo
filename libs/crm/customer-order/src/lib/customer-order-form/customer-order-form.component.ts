@@ -150,15 +150,15 @@ export class CustomerOrderFormComponent implements OnInit {
       Description: form.Description,
       Status: form.Status,
       DeliveryDate: form.DeliveryDate,
-      CustomerOrderDetail: []
+      CustomerOrderItem: []
     };
 
     form.Orders.forEach(element => {
-      order.CustomerOrderDetail.push({
+      order.CustomerOrderItem.push({
         ItemId: element.ItemId,
         Quantity: element.Quantity,
         DueDate: element.DueDate,
-        UnitPrice: element.UnitPrice
+        PricePerItem: element.UnitPrice
       });
     });
 
