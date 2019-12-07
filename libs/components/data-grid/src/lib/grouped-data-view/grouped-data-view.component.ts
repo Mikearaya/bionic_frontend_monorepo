@@ -336,7 +336,7 @@ export class GroupedDataViewComponent implements OnInit {
         const filteringModel = new FilterEventModel();
         filteringModel.columnName = args['currentFilterObject']['field'];
         filteringModel.operator = args['currentFilterObject']['operator'];
-        filteringModel.value = args['currentFilterObject']['value'];
+        filteringModel.value = args['currentFilterObject']['value'] as string;
 
         break;
       case 'searching':

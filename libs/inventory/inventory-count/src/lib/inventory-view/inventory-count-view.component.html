@@ -40,44 +40,43 @@
       [valueAccessor]="quantityValue"
       type="string"
     ></e-column>
-    <!--
-      <e-column
-        headerText="Physical Quantity"
-        width="70"
-        [customAttributes]="customAttributes"
-        [allowFiltering]="true"
-        textAlign="Center"
-      >
-        <ng-template #template let-data; let-index>
-          <ejs-numerictextbox
-            class="inventory-input"
-            [(ngModel)]="index.NewQuantity"
-            (change)="clicked(index)"
-            #vas
-          ></ejs-numerictextbox>
-        </ng-template>
-      </e-column>
-      <e-column width="80" textAlign="Center">
-        <ng-template #headerTemplate let-data let-index>
-          <button
-            ejs-button
-            class="e-primary e-small"
-            (click)="updateAllInventory(data)"
-          >
-            Update All
-          </button>
-        </ng-template>
-        <ng-template #template let-data let-index>
-          <button
-            ejs-button
-            class="e-primary e-small"
-            (click)="updateInventory(index)"
-          >
-            Update
-          </button>
-        </ng-template>
-      </e-column>
-    -->
+
+    <e-column
+      headerText="Physical Quantity"
+      width="70"
+      [customAttributes]="customAttributes"
+      [allowFiltering]="true"
+      textAlign="Center"
+    >
+      <ng-template #template let-data; let-index>
+        <ejs-numerictextbox
+          class="inventory-input"
+          [(ngModel)]="index.newQuantity"
+          (change)="clicked(index)"
+          #vas
+        ></ejs-numerictextbox>
+      </ng-template>
+    </e-column>
+    <e-column width="80" textAlign="Center">
+      <ng-template #headerTemplate let-data let-index>
+        <button
+          ejs-button
+          class="e-primary e-small"
+          (click)="updateAllInventory(data)"
+        >
+          Update All
+        </button>
+      </ng-template>
+      <ng-template #template let-data let-index>
+        <button
+          ejs-button
+          class="e-primary e-small"
+          (click)="updateInventory(index)"
+        >
+          Update
+        </button>
+      </ng-template>
+    </e-column>
   </e-columns>
 </ejs-grid>
 
