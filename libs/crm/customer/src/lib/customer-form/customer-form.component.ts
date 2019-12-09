@@ -43,8 +43,7 @@ export class CustomerFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private customerService: CustomerApiService,
     private activatedRoute: ActivatedRoute,
-    private location: Location,
-    private router: Router
+    private location: Location
   ) {
     this.generateForm();
   }
@@ -63,16 +62,16 @@ export class CustomerFormComponent implements OnInit {
     this.customerForm = this.formBuilder.group({
       FullName: ['', Validators.required],
       Type: ['', Validators.required],
-      TinNo: [''],
+      Tin: [''],
       Email: ['', [Validators.email]],
       TaxRate: [''],
       PaymentPeriod: [''],
       CreditLimit: [''],
       Fax: [''],
       PoBox: [''],
-      Telephones: this.formBuilder.array([]),
-      SocialMedias: this.formBuilder.array([]),
-      Addresses: this.formBuilder.array([])
+      PhoneNumber: this.formBuilder.array([]),
+      SocialMedia: this.formBuilder.array([]),
+      Address: this.formBuilder.array([])
     });
   }
   get fullName(): FormControl {
@@ -88,7 +87,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   get tinNo(): FormControl {
-    return this.customerForm.get('TinNo') as FormControl;
+    return this.customerForm.get('Tin') as FormControl;
   }
   get taxRate(): FormControl {
     return this.customerForm.get('TaxRate') as FormControl;
@@ -110,15 +109,15 @@ export class CustomerFormComponent implements OnInit {
   }
 
   get telephones(): FormArray {
-    return this.customerForm.get('Telephones') as FormArray;
+    return this.customerForm.get('PhoneNumber') as FormArray;
   }
 
   get addresses(): FormArray {
-    return this.customerForm.get('Addresses') as FormArray;
+    return this.customerForm.get('Address') as FormArray;
   }
 
   get socialMedias(): FormArray {
-    return this.customerForm.get('SocialMedias') as FormArray;
+    return this.customerForm.get('SocialMedia') as FormArray;
   }
 
   private createTelephoneRecord(): FormGroup {
@@ -149,6 +148,14 @@ export class CustomerFormComponent implements OnInit {
   }
 
   private initializeForm(customer: Customer): void {
+    console.log(customer);
+    if (customer.SocialMedia.length > 0)
+      this.socialMedias.controls.push(this.createSocialMedia());
+    if (customer.PhoneNumber.length > 0)
+      this.telephones.controls.push(this.createTelephoneRecord());
+    if (customer.Address.length > 0)
+      this.addresses.controls.push(this.createAddress());
+
     this.customerForm.patchValue(customer);
   }
 
@@ -205,70 +212,30 @@ export class CustomerFormComponent implements OnInit {
   }
 
   prepareDataModel(): Customer {
-    const formModel = this.customerForm.value;
-    const dataModel: Customer = {
-      Id: this.customerId,
-      FullName: formModel.FullName,
-      Type: formModel.Type,
-      Fax: formModel.Fax,
-      Tin: formModel.TinNo,
-      PoBox: formModel.PoBox,
-      CreditLimit: formModel.CreditLimit,
-      PaymentPeriod: formModel.PaymentPeriod,
-      Email: formModel.Email,
-      Addresses: [],
-      Telephones: [],
-      SocialMedias: []
-    };
-
-    this.addresses.controls.forEach(element => {
-      dataModel.Addresses.push({
-        Id: element.value.Id,
-        City: element.value.City,
-        Country: element.value.Country,
-        SubCity: element.value.SubCity,
-        Location: element.value.Location
-      });
-    });
-
-    this.socialMedias.controls.forEach(element => {
-      dataModel.SocialMedias.push({
-        Id: element.value.Id,
-        Site: element.value.Site,
-        Address: element.value.Address
-      });
-    });
-
-    this.telephones.controls.forEach(element => {
-      dataModel.Telephones.push({
-        Id: element.value.Id,
-        Type: element.value.Type,
-        Number: element.value.Number
-      });
-    });
-
-    return dataModel;
+    const formModel = this.customerForm.value as Customer;
+    return formModel;
   }
 
   onSubmit() {
     this.customer = this.prepareDataModel();
-    console.log(`${this.customer}`);
     if (this.isUpdate) {
-      this.customerService.updateCustomer(this.customer).subscribe(
-        () => {
-          this.notification.showMessage(
-            'Customer Record Updated Successfuly',
-            'success'
-          );
-          this.location.back();
-        },
-        (error: HttpErrorResponse) => {
-          this.notification.showMessage(
-            'Failed updating customer duplicate data exists',
-            'error'
-          );
-        }
-      );
+      this.customerService
+        .updateCustomer(this.customerId, this.customer)
+        .subscribe(
+          () => {
+            this.notification.showMessage(
+              'Customer Record Updated Successfuly',
+              'success'
+            );
+            this.location.back();
+          },
+          (error: HttpErrorResponse) => {
+            this.notification.showMessage(
+              'Failed updating customer duplicate data exists',
+              'error'
+            );
+          }
+        );
     } else {
       this.customerService.addCustomer(this.customer).subscribe(
         () => {

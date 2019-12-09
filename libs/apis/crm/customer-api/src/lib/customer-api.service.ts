@@ -44,9 +44,13 @@ export class CustomerApiService extends Subject<DataStateChangeEventArgs> {
       newCustomer
     );
   }
-  updateCustomer(updatedCustomer: Customer): Observable<Boolean> {
+  updateCustomer(
+    customerId: number,
+    updatedCustomer: Customer
+  ): Observable<Boolean> {
+    updatedCustomer.Id = customerId;
     return this.httpClient.put<Boolean>(
-      `${this.apiUrl}/${this.controller}/${updatedCustomer.Id}`,
+      `${this.apiUrl}/${this.controller}/${customerId}`,
       updatedCustomer
     );
   }

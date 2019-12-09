@@ -12,7 +12,7 @@ export interface Customer {
   Fax?: string;
   PoBox?: string;
   Email: string;
-  Telephones: CustomerTelephoneAddress[];
-  SocialMedias: CustomerSocialMediaAddress[];
-  Addresses: CustomerAddress[];
+  PhoneNumber: CustomerTelephoneAddress[];
+  SocialMedia: CustomerSocialMediaAddress[];
+  Address: CustomerAddress[];
 }
