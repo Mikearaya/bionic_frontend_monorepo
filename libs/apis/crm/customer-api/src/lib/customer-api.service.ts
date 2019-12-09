@@ -75,7 +75,7 @@ export class CustomerApiService extends Subject<DataStateChangeEventArgs> {
     phoneId: number
   ): Observable<Boolean> {
     return this.httpClient.delete<Boolean>(
-      `${this.apiUrl}/${this.controller}/${customerId}/phonenumber/${phoneId}`
+      `${this.apiUrl}/${this.controller}/${customerId}/phone-number/${phoneId}`
     );
   }
 
@@ -84,7 +84,7 @@ export class CustomerApiService extends Subject<DataStateChangeEventArgs> {
     socialId: number
   ): Observable<Boolean> {
     return this.httpClient.delete<Boolean>(
-      `${this.apiUrl}/${this.controller}/${customerId}/socialmedia/${socialId}`
+      `${this.apiUrl}/${this.controller}/${customerId}/social-media/${socialId}`
     );
   }
 

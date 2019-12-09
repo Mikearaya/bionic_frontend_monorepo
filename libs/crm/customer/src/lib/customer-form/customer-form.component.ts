@@ -168,7 +168,7 @@ export class CustomerFormComponent implements OnInit {
       this.customerService
         .deleteCustomerPhone(
           this.customerId,
-          this.telephones.controls[index].value.id
+          this.telephones.controls[index].value.Id
         )
         .subscribe(
           () => this.notification.showMessage('Phone Number Deleted'),
@@ -194,7 +194,7 @@ export class CustomerFormComponent implements OnInit {
       this.customerService
         .deleteCustomerSocialMediaAddress(
           this.customerId,
-          this.socialMedias.controls[index].value.id
+          this.socialMedias.controls[index].value.Id
         )
         .subscribe(
           () => this.notification.showMessage('Social Media Account Deleted'),
@@ -261,7 +261,7 @@ export class CustomerFormComponent implements OnInit {
       this.customerService
         .deleteCustomerAddress(
           this.customerId,
-          this.addresses.controls[index].value.id
+          this.addresses.controls[index].value.Id
         )
         .subscribe(
           () => this.notification.showMessage('Address Deleted'),
