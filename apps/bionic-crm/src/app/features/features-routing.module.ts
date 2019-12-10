@@ -37,13 +37,13 @@ const routes: Routes = [
           },
           {
             path: 'users',
-            loadChildren: '@bionic/inventory/users#UsersModule',
+            loadChildren: '@bionic/crm/users#UsersModule',
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/inventory/system-lookup#LookupModule',
+            loadChildren: '@bionic/crm/lookup#LookupModule',
             data: {
               breadCrum: 'System Lookups',
               claimType: 'canViewSystemLookups'

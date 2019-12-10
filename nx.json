@@ -340,6 +340,12 @@
     },
     "crm-roles": {
       "tags": ["crm"]
+    },
+    "crm-users": {
+      "tags": ["crm"]
+    },
+    "crm-lookup": {
+      "tags": ["crm"]
     }
   }
 }

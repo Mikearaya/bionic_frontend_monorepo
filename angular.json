@@ -4132,6 +4132,74 @@
         }
       },
       "schematics": {}
+    },
+    "crm-users": {
+      "root": "libs/crm/users",
+      "sourceRoot": "libs/crm/users/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/users/tsconfig.lib.json",
+            "project": "libs/crm/users/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/users/tsconfig.lib.json",
+              "libs/crm/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/crm/users/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/users/src/test.ts",
+            "tsConfig": "libs/crm/users/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/users/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "crm-lookup": {
+      "root": "libs/crm/lookup",
+      "sourceRoot": "libs/crm/lookup/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/lookup/tsconfig.lib.json",
+            "project": "libs/crm/lookup/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/lookup/tsconfig.lib.json",
+              "libs/crm/lookup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/crm/lookup/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/lookup/src/test.ts",
+            "tsConfig": "libs/crm/lookup/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/lookup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

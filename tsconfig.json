@@ -257,7 +257,9 @@
       "@bionic/wrp/users": ["libs/wrp/users/src/index.ts"],
       "@bionic/wrp/roles": ["libs/wrp/roles/src/index.ts"],
       "@bionic/wrp/system-lookup": ["libs/wrp/system-lookup/src/index.ts"],
-      "@bionic/crm/roles": ["libs/crm/roles/src/index.ts"]
+      "@bionic/crm/roles": ["libs/crm/roles/src/index.ts"],
+      "@bionic/crm/users": ["libs/crm/users/src/index.ts"],
+      "@bionic/crm/lookup": ["libs/crm/lookup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
