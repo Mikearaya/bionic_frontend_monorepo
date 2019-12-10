@@ -13,9 +13,11 @@ import {
   StockBatchApiService,
   StockBatchDetailView,
   NewStockBatchModel,
-  UpdatedStockBatchModel
+  UpdatedStockBatchModel,
+  StockBatchStorageView
 } from '@bionic/apis/inventory/stock-batch-api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { StorageLocation } from '@bionic/apis/inventory/storage-locations-api';
 
 @Component({
   selector: 'bionic-stock-batch-form',
@@ -73,8 +75,21 @@ export class StockBatchFormComponent implements OnInit {
     });
   }
 
+  private initializeStorageLocation(data: StockBatchStorageView): FormGroup {
+    return this.formBuilder.group({
+      Id: [data.Id, Validators.required],
+      StorageId: [data.StorageId, Validators.required],
+      Quantity: [data.Quantity, Validators.required]
+    });
+  }
   private initializeForm(batch: StockBatchDetailView): void {
     this.stockBatchForm.patchValue(batch);
+    if (batch.Storages.length > 0) {
+      this.storageLocation.controls = [];
+      batch.Storages.forEach(e => {
+        this.storageLocation.controls.push(this.initializeStorageLocation(e));
+      });
+    }
   }
 
   get itemId(): FormControl {

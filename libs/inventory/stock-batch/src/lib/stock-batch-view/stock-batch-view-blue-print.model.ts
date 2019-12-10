@@ -1,10 +1,11 @@
 import { CustomGridColumns } from '@bionic/components/data-grid';
 
 export const stockBatchColumnBluePrint: CustomGridColumns[] = [
+  { key: 'Id', header: 'ID', visible: true, type: 'number', width: 20 },
   {
-    key: 'Id',
-    header: 'ID',
-    visible: true,
+    key: 'ItemId',
+    header: 'Item Id',
+    visible: false,
     type: 'number',
     width: 20
   },
@@ -15,13 +16,7 @@ export const stockBatchColumnBluePrint: CustomGridColumns[] = [
     type: 'number',
     width: 20
   },
-  {
-    key: 'Item',
-    header: 'Item',
-    visible: true,
-    type: 'string',
-    width: 70
-  },
+  { key: 'Item', header: 'Item', visible: true, type: 'string', width: 70 },
   {
     key: 'ItemGroup',
     header: 'Item Group',
@@ -59,13 +54,7 @@ export const stockBatchColumnBluePrint: CustomGridColumns[] = [
     width: 35,
     format: '##'
   },
-  {
-    key: 'Status',
-    header: 'Status',
-    visible: true,
-    type: 'string',
-    width: 35
-  },
+  { key: 'Status', header: 'Status', visible: true, type: 'string', width: 35 },
   {
     key: 'StorageLocation',
     header: 'Storage',
@@ -73,13 +62,7 @@ export const stockBatchColumnBluePrint: CustomGridColumns[] = [
     type: 'string',
     width: 35
   },
-  {
-    key: 'Source',
-    header: 'Source',
-    visible: true,
-    type: 'string',
-    width: 50
-  },
+  { key: 'Source', header: 'Source', visible: true, type: 'string', width: 50 },
   {
     key: 'StorageLocationId',
     header: 'Storage Id',

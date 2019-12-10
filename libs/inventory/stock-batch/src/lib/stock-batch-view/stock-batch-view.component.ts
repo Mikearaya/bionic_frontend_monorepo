@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
       [showAdd]="true"
       [showDelete]="true"
       [enableSorting]="true"
+      [idKey]="'LotId'"
       [showUpdate]="true"
       [allowGrouping]="true"
       [addPrivilage]="'canAddStockBatchs'"
