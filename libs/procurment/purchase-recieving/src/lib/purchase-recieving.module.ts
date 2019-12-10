@@ -37,15 +37,6 @@ import { PurchaseOrderSelectorModule } from '@bionic/procurment/purchase-order';
         }
       },
       {
-        path: 'add',
-        component: PurchaseRecievingFormComponent,
-        data: {
-          breadCrum: 'View',
-          title: 'New Purchase Recievigs',
-          claimType: 'canAddPurchaseRecievings'
-        }
-      },
-      {
         path: ':purchaseOrderId/update',
         component: PurchaseRecievingFormComponent,
         data: {

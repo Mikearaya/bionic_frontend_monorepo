@@ -43,7 +43,7 @@ export class PurchaseTermApiService extends Subject<DataStateChangeEventArgs> {
 
   getVendorPurchseTerms(id: number): Observable<PurchaseTermView[]> {
     return this.httpClient.get<PurchaseTermView[]>(
-      `${this.apiUrl}/procurments/vendors/${id}/purchaseterms`
+      `${this.apiUrl}/procurments/vendors/${id}/purchase-terms`
     );
   }
 

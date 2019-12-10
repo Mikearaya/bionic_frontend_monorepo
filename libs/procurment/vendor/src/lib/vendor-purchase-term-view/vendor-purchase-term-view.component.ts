@@ -90,7 +90,7 @@ export class VendorPurchaseTermViewComponent implements AfterViewInit {
     const rowObj: IRow<Column> = this.grid.getRowObjectFromUID(
       closest(<Element>args.target, '.e-row').getAttribute('data-uid')
     );
-    this.route.navigate([`procurments/purchase-terms/${rowObj.data['id']}`]);
+    this.route.navigate([`purchase-terms/${rowObj.data['Id']}/update`]);
   }
 
   deleteTerm(args: Event): void {
@@ -109,10 +109,9 @@ export class VendorPurchaseTermViewComponent implements AfterViewInit {
   }
 
   toolbarClick(args: ClickEventArgs): void {
+    console.log(args.item);
     if (args.item.id && this.vendorId) {
-      this.route.navigate([
-        `procurments/purchase-terms/vendor/${this.vendorId}`
-      ]);
+      this.route.navigate([`/purchase-terms/vendor/${this.vendorId}`]);
     }
   }
 }

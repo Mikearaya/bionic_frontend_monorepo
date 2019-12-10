@@ -11,7 +11,9 @@ import { NotificationComponent } from '@bionic/components/notification';
 import {
   PurchaseOrderApiService,
   PurchaseOrderDetailView,
-  PurchaseOrder
+  PurchaseOrder,
+  PurchaseOrderItemModel,
+  PurchaseOrderItemView
 } from '@bionic/apis/procurment/purchase-order-api';
 
 @Component({
@@ -78,7 +80,7 @@ export class PurchaseOrderFormComponent implements OnInit {
       ExpectedDate: ['', Validators.required],
       Tax: [''],
       Discount: [''],
-      AdditionalFees: [''],
+      AdditionalFee: [''],
       Note: [''],
       OrderId: [''],
       OrderedDate: [''],
@@ -99,7 +101,7 @@ export class PurchaseOrderFormComponent implements OnInit {
       this.purchaseOrderItems.updateValueAndValidity()
     );
 
-    this.getControl('AdditionalFees').valueChanges.subscribe(() =>
+    this.getControl('AdditionalFee').valueChanges.subscribe(() =>
       this.purchaseOrderItems.updateValueAndValidity()
     );
     this.getControl('Tax').valueChanges.subscribe(() =>
@@ -122,10 +124,18 @@ export class PurchaseOrderFormComponent implements OnInit {
       this.totalBeforeDiscount -
       this.totalBeforeDiscount * (this.getControl('Tax').value / 100);
     this.totalAfterAdditionalFee =
-      this.totalAfterTax + this.getControl('AdditionalFees').value;
+      this.totalAfterTax + this.getControl('AdditionalFee').value;
   }
   private initializeForm(data: PurchaseOrderDetailView): void {
     this.purchaseOrderForm.patchValue(data);
+    if (data.PurchaseOrderItems.length > 0) {
+      this.purchaseOrderItems.controls = [];
+      data.PurchaseOrderItems.forEach(e => {
+        this.purchaseOrderItems.controls.push(
+          this.initializePurchaseOrderItems(e)
+        );
+      });
+    }
   }
 
   get purchaseOrderItems(): FormArray {
@@ -142,6 +152,15 @@ export class PurchaseOrderFormComponent implements OnInit {
       Quantity: ['', Validators.required],
       UnitPrice: [''],
       ExpectedDate: ['']
+    });
+  }
+
+  private initializePurchaseOrderItems(data: PurchaseOrderItemView): FormGroup {
+    return this.formBuilder.group({
+      ItemId: [data.ItemId, Validators.required],
+      Quantity: [data.Quantity, Validators.required],
+      UnitPrice: [data.UnitPrice],
+      ExpectedDate: [data.ExpectedDate]
     });
   }
 
