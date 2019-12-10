@@ -4098,6 +4098,40 @@
         }
       },
       "schematics": {}
+    },
+    "crm-roles": {
+      "root": "libs/crm/roles",
+      "sourceRoot": "libs/crm/roles/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/roles/tsconfig.lib.json",
+            "project": "libs/crm/roles/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/roles/tsconfig.lib.json",
+              "libs/crm/roles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/crm/roles/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/roles/src/test.ts",
+            "tsConfig": "libs/crm/roles/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/roles/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

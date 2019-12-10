@@ -12,7 +12,8 @@ import { NotificationComponent } from '@bionic/components/notification';
 import {
   CustomerOrderDetailView,
   CustomerOrderApiService,
-  NewCustomerOrderModel
+  NewCustomerOrderModel,
+  CustomerOrderItemModel
 } from '@bionic/apis/crm/customer-order-api';
 
 /*
@@ -98,6 +99,12 @@ export class CustomerOrderFormComponent implements OnInit {
 
   initializeForm(data: CustomerOrderDetailView): void {
     this.salesOrderForm.patchValue(data);
+    if (data.CustomerOrderItem.length > 0) {
+      this.orders.controls = [];
+      data.CustomerOrderItem.forEach(e => {
+        this.orders.controls.push(this.getInitializeOrder(e));
+      });
+    }
   }
 
   get orderedBy(): FormControl {
@@ -128,6 +135,16 @@ export class CustomerOrderFormComponent implements OnInit {
         DueDate: ['', Validators.required]
       })
     );
+  }
+
+  getInitializeOrder(data: CustomerOrderItemModel) {
+    return this.formBuilder.group({
+      Id: [data.Id],
+      ItemId: [data.ItemId, Validators.required],
+      PricePerItem: [data.PricePerItem, [Validators.required]],
+      Quantity: [data.Quantity, [Validators.required, Validators.min(0)]],
+      DueDate: [data.DueDate, Validators.required]
+    });
   }
 
   onSubmit() {
