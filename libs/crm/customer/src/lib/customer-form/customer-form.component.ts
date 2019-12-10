@@ -10,7 +10,13 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationComponent } from '@bionic/components/notification';
-import { Customer, CustomerApiService } from '@bionic/apis/crm/customer-api';
+import {
+  Customer,
+  CustomerApiService,
+  CustomerAddress,
+  CustomerSocialMediaAddress,
+  CustomerTelephoneAddress
+} from '@bionic/apis/crm/customer-api';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -128,11 +134,27 @@ export class CustomerFormComponent implements OnInit {
     });
   }
 
+  private initializeTelephoneRecord(data: CustomerTelephoneAddress): FormGroup {
+    return this.formBuilder.group({
+      Id: [data.Id],
+      Type: [data.Type, Validators.required],
+      Number: [data.Number, [Validators.min(10)]]
+    });
+  }
+
   private createSocialMedia(): FormGroup {
     return this.formBuilder.group({
       Id: [0],
       Address: ['', Validators.required],
       Site: ['', Validators.required]
+    });
+  }
+
+  private initializeSocialMedia(data: CustomerSocialMediaAddress): FormGroup {
+    return this.formBuilder.group({
+      Id: [data.Id],
+      Address: [data.Address, Validators.required],
+      Site: [data.Site, Validators.required]
     });
   }
 
@@ -147,16 +169,36 @@ export class CustomerFormComponent implements OnInit {
     });
   }
 
-  private initializeForm(customer: Customer): void {
-    console.log(customer);
-    if (customer.SocialMedia.length > 0)
-      this.socialMedias.controls.push(this.createSocialMedia());
-    if (customer.PhoneNumber.length > 0)
-      this.telephones.controls.push(this.createTelephoneRecord());
-    if (customer.Address.length > 0)
-      this.addresses.controls.push(this.createAddress());
+  private initializeAddress(data: CustomerAddress): FormGroup {
+    return this.formBuilder.group({
+      Id: [data.Id],
+      Location: [data.Location, Validators.required],
+      City: [data.City, Validators.required],
+      SubCity: [data.SubCity, Validators.required],
+      Country: [data.Country, Validators.required],
+      PhoneNumber: [data.PhoneNumber, [Validators.min(10), Validators.max(12)]]
+    });
+  }
 
+  private initializeForm(customer: Customer): void {
     this.customerForm.patchValue(customer);
+    if (customer.SocialMedia.length > 0) {
+      customer.SocialMedia.forEach(e => {
+        this.socialMedias.controls.push(this.initializeSocialMedia(e));
+      });
+    }
+
+    if (customer.PhoneNumber.length > 0) {
+      customer.PhoneNumber.forEach(e => {
+        this.telephones.controls.push(this.initializeTelephoneRecord(e));
+      });
+    }
+
+    if (customer.Address.length > 0) {
+      customer.Address.forEach(e => {
+        this.addresses.controls.push(this.initializeAddress(e));
+      });
+    }
   }
 
   addPhone(): void {
@@ -164,7 +206,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   deletePhone(index: number): void {
-    if (this.telephones.controls[index].value.id !== 0) {
+    if (this.telephones.controls[index].value.Id !== 0) {
       this.customerService
         .deleteCustomerPhone(
           this.customerId,
@@ -190,7 +232,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   deleteSocialAddress(index: number): void {
-    if (this.socialMedias.controls[index].value.id !== 0) {
+    if (this.socialMedias.controls[index].value.Id !== 0) {
       this.customerService
         .deleteCustomerSocialMediaAddress(
           this.customerId,
@@ -224,10 +266,8 @@ export class CustomerFormComponent implements OnInit {
         .subscribe(
           () => {
             this.notification.showMessage(
-              'Customer Record Updated Successfuly',
-              'success'
+              'Customer Record Updated Successfuly'
             );
-            this.location.back();
           },
           (error: HttpErrorResponse) => {
             this.notification.showMessage(
@@ -239,10 +279,7 @@ export class CustomerFormComponent implements OnInit {
     } else {
       this.customerService.addCustomer(this.customer).subscribe(
         () => {
-          this.notification.showMessage(
-            'Customer Created Successfuly',
-            'success'
-          );
+          this.notification.showMessage('Customer Created Successfuly');
           this.location.back();
         },
         (error: HttpErrorResponse) => {
@@ -257,7 +294,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   removeAddress(index: number): void {
-    if (this.addresses.controls[index].value.id !== 0) {
+    if (this.addresses.controls[index].value.Id !== 0) {
       this.customerService
         .deleteCustomerAddress(
           this.customerId,
