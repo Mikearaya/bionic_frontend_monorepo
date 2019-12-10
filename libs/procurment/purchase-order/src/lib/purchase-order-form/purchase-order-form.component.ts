@@ -98,6 +98,10 @@ export class PurchaseOrderFormComponent implements OnInit {
     this.getControl('Discount').valueChanges.subscribe(() =>
       this.purchaseOrderItems.updateValueAndValidity()
     );
+
+    this.getControl('AdditionalFees').valueChanges.subscribe(() =>
+      this.purchaseOrderItems.updateValueAndValidity()
+    );
     this.getControl('Tax').valueChanges.subscribe(() =>
       this.purchaseOrderItems.updateValueAndValidity()
     );
@@ -109,10 +113,11 @@ export class PurchaseOrderFormComponent implements OnInit {
     this.totalAfterAdditionalFee = 0;
     let subTotals = 0;
     e.forEach(item => {
-      subTotals = subTotals + item.quantity * item.unitPrice;
+      subTotals = subTotals + item.Quantity * item.UnitPrice;
     });
+
     this.totalBeforeDiscount =
-      subTotals - subTotals * (this.getControl('Discount').value / 100);
+      subTotals * (this.getControl('Discount').value / 100);
     this.totalAfterTax =
       this.totalBeforeDiscount -
       this.totalBeforeDiscount * (this.getControl('Tax').value / 100);
