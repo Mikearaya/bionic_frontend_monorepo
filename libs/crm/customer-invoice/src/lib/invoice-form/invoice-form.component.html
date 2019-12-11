@@ -1,3 +1,327 @@
-<p>
-  invoice-form works!
-</p>
+<h3 class="text-left " i18n="invoice section header">Invoice</h3>
+<section class="e-card">
+  {{ invoiceForm.value | json }}
+  <bionic-notification #notification></bionic-notification>
+  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" novalidate="">
+    <div class="container">
+      <bionic-form-options
+        [submitDisabled]="invoiceForm.invalid"
+      ></bionic-form-options>
+      <div class="row">
+        <div class="col-6 col-xs-12">
+          <div class="row">
+            <div class="col-4 label-area" i18n>Customer Order</div>
+            <div class="col-8">
+              <bionic-customer-order-selector
+                *ngIf="!isUpdate"
+                formControlName="PurchaseOrderId"
+                placeholde="Select Customer Order"
+                (customerOrderChanged)="customerOrderChange($event)"
+                filterBarPlaceholder="Search By Customer Order Id"
+                i18n-placeholder="@@customerOrderPlaceholder"
+                i18-filterBarPlaceHolder
+              >
+              </bionic-customer-order-selector>
+
+              <div class="e-error" *ngIf="customerOrderId.errors">
+                <div
+                  *ngIf="customerOrderId.errors['required']"
+                  i18n="@@customerOrderRequired"
+                >
+                  Customer Order is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4 label-area" i18n="@@invoiceType">
+              Invoice Type
+            </div>
+            <div class="col-8">
+              <ejs-dropdownlist
+                [dataSource]="invoiceTypes"
+                filterBarPlaceholder="Search Invoice Type"
+                [allowFiltering]="true"
+                formControlName="InvoiceType"
+                placeholder="Select Invoice Type"
+                i18n-placeholder="@@invoiceTypePlaceholder"
+                i18n-filterbarPlaceholder
+              ></ejs-dropdownlist>
+              <div class="e-error" *ngIf="invoiceType.errors">
+                <div
+                  *ngIf="invoiceType.errors['required']"
+                  i18n="@@invoiceTypeRequired"
+                >
+                  Invoice type is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 col-xs-12 ">
+              <p><strong i18n>Payment Method </strong></p>
+            </div>
+            <div class="col-8 col-xs-12 ">
+              <ejs-radiobutton
+                name="paymentMethod"
+                formControlName="PaymentMethod"
+                i18n-label="bank check @@bankCheck"
+                value="Check"
+                label="Check"
+              ></ejs-radiobutton>
+              <br />
+              <ejs-radiobutton
+                name="paymentMethod"
+                formControlName="PaymentMethod"
+                i18n-label="money @@bankCash"
+                value="Cash"
+                label="Cash"
+                [checked]="true"
+              ></ejs-radiobutton>
+              <div class="e-error" *ngIf="paymentMethod.errors">
+                <div
+                  *ngIf="paymentMethod.errors['required']"
+                  i18n="@@paymentMethodRequired"
+                >
+                  Payment Method is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-xs-12">
+          <div class="row">
+            <div class="col-4 label-area" i18n="@@dueDate">Due Date</div>
+            <div class="col-8">
+              <ejs-datepicker
+                formControlName="DueDate"
+                id="dueDate"
+                placeholder="Select Order Due Date"
+                i18n-placeholder="@@dueDatePlaceholder"
+              ></ejs-datepicker>
+              <div class="e-error" *ngIf="dueDate.errors">
+                <div
+                  *ngIf="dueDate.errors['required']"
+                  i18n="@@dueDateRequired"
+                >
+                  Invoice Due Date is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4 label-area" i18n="@@note">Note</div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="e-input"
+                formControlName="Note"
+                id="note"
+                name="note"
+                placeholder="Extra Notes?"
+                i18n-placeholder="@@notePlaceholder"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-12">
+          <table class="tablle table-striped" width="100%">
+            <thead>
+              <tr>
+                <th class="item-column" i18n="item @@item">Item</th>
+                <th class="price-column" i18n="@@quantity">Quantity</th>
+                <th class="price-column" i18n="@@unitPrice">Unit Price</th>
+                <th class="price-column" i18n="@@discount">Discount %</th>
+                <th class="price-column" i18n="@@subTotal">Sub-total</th>
+                <th class="action-column">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="InvoiceDetail">
+              <tr
+                *ngFor="
+                  let ite of items.controls;
+                  let i = index;
+                  let last = last
+                "
+                [formGroup]="ite"
+              >
+                <td>
+                  <div class="e-error" *ngIf="itemId(i).errors">
+                    <div
+                      *ngIf="itemId(i).errors['required']"
+                      i18n="product must be selected @@itemRequired"
+                    >
+                      Item is required
+                    </div>
+                  </div>
+                  <bionic-item-selector
+                    formControlName="ItemId"
+                    [attr.id]="'productId' + i"
+                    [attr.name]="'productId' + i"
+                    filterBarPlaceholder="Serarch Product"
+                    placeholder="Select Item"
+                    i18n-filterBarPlaceholder
+                    i18n-placeholder="@@itemPlaceholder"
+                  ></bionic-item-selector>
+                </td>
+                <td>
+                  <ejs-numerictextbox
+                    formControlName="Quantity"
+                    [attr.id]="'quantity' + i"
+                    [attr.name]="'quantity' + i"
+                    placeholder="Quantity"
+                    floatLable="Auto"
+                    i18n-placeholder="Quantity @@quantityPlaceholder"
+                    [min]="0"
+                  >
+                  </ejs-numerictextbox>
+                  <div class="e-error" *ngIf="quantity(i).errors">
+                    <div
+                      *ngIf="quantity(i).errors['required']"
+                      i18n="product quantity must be selected @@quantityRequired"
+                    >
+                      Quantity is required
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <ejs-numerictextbox
+                    formControlName="UnitPrice"
+                    [attr.id]="'unitPrice' + i"
+                    [attr.name]="'unitPrice' + i"
+                    placeholder="Unit Price"
+                    floatLable="Auto"
+                    i18n-placeholder="@@unitPricePlaceholder"
+                  >
+                  </ejs-numerictextbox>
+                  <div class="e-error" *ngIf="unitPrice(i).errors">
+                    <div
+                      *ngIf="unitPrice(i).errors['required']"
+                      i18n="item Unit Price must be selected @@unitPriceRequired"
+                    >
+                      Item Unit Price is required
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <ejs-numerictextbox
+                    formControlName="Discount"
+                    [attr.id]="'discount' + i"
+                    [attr.name]="'discount' + i"
+                    placeholder="Discount"
+                    floatLable="Auto"
+                    [min]="0"
+                    i18n-placeholder="@@discount"
+                  >
+                  </ejs-numerictextbox>
+                </td>
+                <td class="white-background">
+                  {{
+                    unitPrice(i).value * quantity(i).value -
+                      unitPrice(i).value *
+                        quantity(i).value *
+                        (discounts(i).value / 100)
+                  }}
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    (click)="removeItem(i)"
+                    [disabled]="items.length < 2"
+                    ejs-button
+                    class="e-danger e-icons e-times-icon"
+                    i18n="delete @@removeButton"
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="3" i18n="@@discount">Discount</th>
+                <td>&nbsp;</td>
+                <td class="white-background">
+                  <ejs-numerictextbox
+                    formControlName="TotalDiscount"
+                    name="totalDiscount"
+                    id="totalDiscount"
+                    placeholder="Total Discount"
+                    i18n-placeholder="@@totalDiscount"
+                  >
+                  </ejs-numerictextbox>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    type="button"
+                    ejs-button
+                    class="e-primary"
+                    (click)="addItem()"
+                    [disabled]="items.invalid"
+                    iconCss="e-icons e-plus"
+                    i18n="add button @addButton"
+                  >
+                    Add
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th i18n="@@total">Total</th>
+                <td class="text-center white-background">
+                  {{ totalQuantity }}
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="text-center white-background">
+                  {{ totalBeforeTax }}
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <th colspan="2" i18n="@@tax">Tax</th>
+                <td>&nbsp;</td>
+
+                <td class="text-center white-background"></td>
+                <td class="white-background">
+                  <ejs-numerictextbox
+                    formControlName="Tax"
+                    id="tax"
+                    name="tax"
+                    placeholder="Tax"
+                    [min]="0"
+                  ></ejs-numerictextbox>
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <th colspan="2" i18n>Total including Tax</th>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="text-center white-background">
+                  {{ totalAfterTax }}
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <bionic-form-options
+        [submitDisabled]="invoiceForm.invalid"
+      ></bionic-form-options>
+    </div>
+  </form>
+
+  <div class="container invoice-payment-block" *ngIf="isUpdate">
+    <h5 class="text-left text-info" i18n="invoice payment area title">
+      Payments
+    </h5>
+    <div class="col-6 col-xs-12"></div>
+    <div class="col-6 col-xs-12"></div>
+  </div>
+</section>

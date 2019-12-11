@@ -7,13 +7,31 @@ import { DataGridModule } from '@bionic/components/data-grid';
 import { NotificationModule } from '@bionic/components/notification';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { CustomerInvoiceApiModule } from '@bionic/apis/crm/customer-invoice-api';
+import { CustomerOrderSelectorModule } from '@bionic/crm/customer-order';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  RadioButtonModule,
+  ButtonModule
+} from '@syncfusion/ej2-angular-buttons';
+import { ItemSelectorModule } from '@bionic/inventory/item';
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
+    RadioButtonModule,
     NotificationModule,
+    ItemSelectorModule,
     CustomerInvoiceApiModule,
     FormButtonsModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    CustomerOrderSelectorModule,
+    DropDownListModule,
+    NumericTextBoxModule,
+    DatePickerModule,
 
     RouterModule.forChild([
       {

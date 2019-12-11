@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CustomerInvoiceApiModule } from '@bionic/apis/crm/customer-invoice-api';
+
 import { DataGridModule } from '@bionic/components/data-grid';
 import { NotificationModule } from '@bionic/components/notification';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,11 +11,12 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
+import { CustomerApiModule } from '@bionic/apis/crm/customer-api';
 
 @NgModule({
   imports: [
     CommonModule,
-    CustomerInvoiceApiModule,
+    CustomerApiModule,
     ButtonModule,
     DataGridModule,
     NotificationModule,
