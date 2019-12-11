@@ -259,7 +259,13 @@
       "@bionic/wrp/system-lookup": ["libs/wrp/system-lookup/src/index.ts"],
       "@bionic/crm/roles": ["libs/crm/roles/src/index.ts"],
       "@bionic/crm/users": ["libs/crm/users/src/index.ts"],
-      "@bionic/crm/lookup": ["libs/crm/lookup/src/index.ts"]
+      "@bionic/crm/lookup": ["libs/crm/lookup/src/index.ts"],
+      "@bionic/crm/customer-invoice": [
+        "libs/crm/customer-invoice/src/index.ts"
+      ],
+      "@bionic/apis/crm/customer-invoice-api": [
+        "libs/apis/crm/customer-invoice-api/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

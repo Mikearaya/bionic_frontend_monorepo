@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import {
   FormBuilder,
@@ -7,16 +6,14 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { Location } from '@angular/common';
 import { NotificationComponent } from '@bionic/components/notification';
-import { ItemView, ItemApiService } from '@bionic/apis/inventory/item-api';
+import { ItemView } from '@bionic/apis/inventory/item-api';
 import { VendorViewModel } from '@bionic/apis/procurment/vendor-api';
 import {
   PurchaseTermApiService,
   PurchaseTermView,
   PurchaseTerm
 } from '@bionic/apis/procurment/purchase-term-api';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'bionic-purchase-term-form',
@@ -40,8 +37,7 @@ export class PurchaseTermFormComponent implements OnInit {
   constructor(
     private purchaseTermApi: PurchaseTermApiService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private location: Location
+    private formBuilder: FormBuilder
   ) {
     this.vendorFields = { text: 'name', value: 'id' };
     this.itemFields = { text: 'name', value: 'id' };

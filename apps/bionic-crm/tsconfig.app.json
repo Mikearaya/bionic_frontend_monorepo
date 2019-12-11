@@ -17,6 +17,7 @@
 
     "../../libs/crm/roles/src/index.ts",
 
-    "../../libs/crm/lookup/src/index.ts"
+    "../../libs/crm/lookup/src/index.ts",
+    "../../libs/crm/customer-invoice/src/index.ts"
   ]
 }

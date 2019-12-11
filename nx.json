@@ -346,6 +346,12 @@
     },
     "crm-lookup": {
       "tags": ["crm"]
+    },
+    "crm-customer-invoice": {
+      "tags": ["crm"]
+    },
+    "apis-crm-customer-invoice-api": {
+      "tags": ["crm"]
     }
   }
 }

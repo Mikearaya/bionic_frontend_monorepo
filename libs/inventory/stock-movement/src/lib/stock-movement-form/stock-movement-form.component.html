@@ -1,4 +1,5 @@
 <bionic-notification #notification></bionic-notification>
+
 <form
   [formGroup]="lotMovementForm"
   class="card"
@@ -16,26 +17,10 @@
             <bionic-item-selector
               #item
               formControlName="ItemId"
-              (
               name="itemId"
               id="itemId"
             ></bionic-item-selector>
 
-            <!--
-              <ejs-dropdownlist
-                [dataSource]="itemsList"
-                #item
-                [fields]="itemFields"
-                formControlName="itemId"
-                (change)="itemChanged(item.value)"
-                name="itemId"
-                id="itemId"
-                placeholder="Select Stock Item"
-                filterBarPlaceholder="Search by item Name"
-                i18n-placeholder
-                i18n-filterBarPlaceholder
-              ></ejs-dropdownlist>
-            -->
             <div class="e-error" *ngIf="itemId.errors">
               <div *ngIf="itemId.errors['required']" i18n>
                 Stock Item is Required
@@ -55,21 +40,6 @@
               id="currentLotId"
             >
             </bionic-stock-batch-selector>
-            <!--
-              <ejs-dropdownlist
-                [dataSource]="lotsList"
-                [fields]="lotFields"
-                #lot
-                formControlName="currentLotId"
-                (change)="lotChanged(lot.value)"
-                name="currentLotId"
-                id="currentLotId"
-                placeholder="Select Stock Lot"
-                filterBarPlaceholder="Search by Lot Name"
-                i18n-placeholder
-                i18n-filterBarPlaceholder
-              ></ejs-dropdownlist>
-            -->
             <div class="e-error" *ngIf="currentLotId.errors">
               <div *ngIf="currentLotId.errors['required']" i18n>
                 Stock Lot is Required
@@ -89,20 +59,7 @@
               id="currentStorage"
               placeholder="Select old stock location"
             ></bionic-storage-location-selector>
-            <!--
-              <ejs-dropdownlist
-                [dataSource]="lotStoragesList"
-                #storage
-                [fields]="lotStorageFields"
-                formControlName="currentStorage"
-                name="currentStorage"
-                id="currentStorage"
-                placeholder="Select old stock location"
-                filterBarPlaceholder="Search by location Name"
-                i18n-placeholder
-                i18n-filterBarPlaceholder
-              ></ejs-dropdownlist>
-            -->
+
             <div class="e-error" *ngIf="currentStorage.errors">
               <div *ngIf="currentStorage.errors['required']" i18n>
                 Previous stock location is Required
@@ -142,19 +99,7 @@
               name="newStorage"
               id="newStorage"
             ></bionic-storage-location-selector>
-            <!--
-              <ejs-dropdownlist
-                [dataSource]="storagesList"
-                [fields]="storageFields"
-                formControlName="newStorage"
-                name="newStorage"
-                id="newStorage"
-                placeholder="Select new stock location"
-                filterBarPlaceholder="Search by location Name"
-                i18n-placeholder
-                i18n-filterBarPlaceholder
-              ></ejs-dropdownlist>
-            -->
+
             <div class="e-error" *ngIf="newStorage.errors">
               <div *ngIf="newStorage.errors['required']" i18n>
                 New stock location is Required
