@@ -8,7 +8,8 @@ export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<CustomerModuleOptions>(
 );
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule],
+  providers: [CustomerInvoiceApiService]
 })
 export class CustomerInvoiceApiModule {
   static forRoot(options?: CustomerModuleOptions): ModuleWithProviders {

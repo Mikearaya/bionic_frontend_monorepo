@@ -16,11 +16,12 @@ import { NotificationComponent } from '@bionic/components/notification';
 
 import { CustomerApiService } from '@bionic/apis/crm/customer-api';
 import { customerViewColumnsBluePrint } from './customer-view-blue-print.model';
+import { CustomerInvoiceApiService } from '@bionic/apis/crm/customer-invoice-api';
 
 @Component({
   template: `
     <bionic-data-view
-      [data]="data"
+      [data]="data | async"
       [showAdd]="true"
       [showDelete]="true"
       [enableSorting]="true"
@@ -49,7 +50,7 @@ export class CustomerViewComponent implements OnInit {
 
   public columnBluePrint = customerViewColumnsBluePrint;
 
-  constructor(private customerApi: CustomerApiService) {
+  constructor(private customerApi: CustomerInvoiceApiService) {
     this.data = this.customerApi;
     this.customerApi.execute(new QueryString());
   }
@@ -59,7 +60,7 @@ export class CustomerViewComponent implements OnInit {
   }
 
   deleteCustomer(data: any): void {
-    this.customerApi.deleteCustomer(data['Id']).subscribe(
+    this.customerApi.deleteCustomerInvoices(data['Id']).subscribe(
       () => this.notification.showMessage('Customer Deleted'),
       (error: HttpErrorResponse) => {
         this.notification.showMessage('Unable to Delete Customer', 'error');

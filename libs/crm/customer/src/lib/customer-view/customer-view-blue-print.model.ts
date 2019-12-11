@@ -33,15 +33,13 @@ export const customerViewColumnsBluePrint: CustomGridColumns[] = [
     header: 'Added',
     type: 'date',
     visible: false,
-    width: 30,
-
+    width: 30
   },
   {
     key: 'DateUpdated',
     header: 'Updated',
     type: 'date',
     visible: false,
-    width: 30,
-
+    width: 30
   }
 ];

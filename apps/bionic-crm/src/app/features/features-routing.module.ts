@@ -23,6 +23,14 @@ const routes: Routes = [
         }
       },
       {
+        path: 'customer-invoices',
+        loadChildren: '@bionic/crm/customer-invoice#CustomerInvoiceModule',
+        data: {
+          breadCrum: 'Customer Invoices',
+          claimType: 'canViewCustomerInvoices'
+        }
+      },
+      {
         path: 'settings',
         data: {
           breadCrum: 'Settings',

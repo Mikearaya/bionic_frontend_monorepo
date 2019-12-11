@@ -36,7 +36,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     name: 'Invoices',
     expanded: false,
     enabled: true,
-    url: '/invoices',
+    url: '/customer-invoices',
     selected: false,
     icon: 'fas fa-car',
     privilage: 'canViewInvoices'

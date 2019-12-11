@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CustomerApiModule } from '@bionic/apis/crm/customer-api';
+import { CustomerInvoiceApiModule } from '@bionic/apis/crm/customer-invoice-api';
 import { DataGridModule } from '@bionic/components/data-grid';
 import { NotificationModule } from '@bionic/components/notification';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { FormButtonsModule } from '@bionic/components/form-buttons';
 @NgModule({
   imports: [
     CommonModule,
-    CustomerApiModule,
+    CustomerInvoiceApiModule,
     ButtonModule,
     DataGridModule,
     NotificationModule,
