@@ -17,6 +17,7 @@ import {
   ButtonModule
 } from '@syncfusion/ej2-angular-buttons';
 import { ItemSelectorModule } from '@bionic/inventory/item';
+import { CustomerInvoiceSelectorComponent } from './customer-invoice-selector/customer-invoice-selector.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -51,6 +52,10 @@ import { ItemSelectorModule } from '@bionic/inventory/item';
       }
     ])
   ],
-  declarations: [InvoiceFormComponent, InvoiceViewComponent]
+  declarations: [
+    InvoiceFormComponent,
+    InvoiceViewComponent,
+    CustomerInvoiceSelectorComponent
+  ]
 })
 export class CustomerInvoiceModule {}

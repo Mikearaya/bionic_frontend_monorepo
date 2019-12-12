@@ -7,10 +7,12 @@ import { DataGridModule } from '@bionic/components/data-grid';
 import { NotificationModule } from '@bionic/components/notification';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { CustomerInvoicePaymentApiModule } from '@bionic/apis/crm/customer-invoice-payment-api';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     DataGridModule,
+    ReactiveFormsModule,
     NotificationModule,
     FormButtonsModule,
     CustomerInvoicePaymentApiModule,

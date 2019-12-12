@@ -7,6 +7,7 @@ import { QueryString } from '@bionic/components/data-grid';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CustomerInvoice } from './models/customer-invoice.model';
+import { InvoicePaymentStatusView } from '@bionic/apis/crm/customer-invoice-payment-api';
 import { CustomerInvoiceList } from './models/customer-invoice-list.model';
 
 @Injectable()
@@ -26,12 +27,14 @@ export class CustomerInvoiceApiService extends Subject<
     );
   }
 
-  /*   getCustomersIndex(filter: string = ''): Observable<CustomerIndex[]> {
-    return this.httpClient.get<CustomerIndex[]>(
-      `${this.apiUrl}/${this.controller}/index?name=${filter}`
+  getCustomerInvoiceIndex(
+    filter: string = ''
+  ): Observable<InvoicePaymentStatusView[]> {
+    return this.httpClient.get<InvoicePaymentStatusView[]>(
+      `${this.apiUrl}/${this.controller}/index?query=${filter}`
     );
   }
- */
+
   getAllCustomerInvoices(): Observable<CustomerInvoiceList[]> {
     return this.httpClient.get<CustomerInvoiceList[]>(
       `${this.apiUrl}/${this.controller}`
