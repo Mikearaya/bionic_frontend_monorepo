@@ -4268,6 +4268,77 @@
         }
       },
       "schematics": {}
+    },
+    "crm-customer-invoice-payment": {
+      "root": "libs/crm/customer-invoice-payment",
+      "sourceRoot": "libs/crm/customer-invoice-payment/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/crm/customer-invoice-payment/tsconfig.lib.json",
+            "project": "libs/crm/customer-invoice-payment/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/crm/customer-invoice-payment/tsconfig.lib.json",
+              "libs/crm/customer-invoice-payment/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/crm/customer-invoice-payment/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/crm/customer-invoice-payment/src/test.ts",
+            "tsConfig": "libs/crm/customer-invoice-payment/tsconfig.spec.json",
+            "karmaConfig": "libs/crm/customer-invoice-payment/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "apis-crm-customer-invoice-payment-api": {
+      "root": "libs/apis/crm/customer-invoice-payment-api",
+      "sourceRoot": "libs/apis/crm/customer-invoice-payment-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/crm/customer-invoice-payment-api/tsconfig.lib.json",
+            "project": "libs/apis/crm/customer-invoice-payment-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/crm/customer-invoice-payment-api/tsconfig.lib.json",
+              "libs/apis/crm/customer-invoice-payment-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/crm/customer-invoice-payment-api/src/test.ts",
+            "tsConfig": "libs/apis/crm/customer-invoice-payment-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/crm/customer-invoice-payment-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

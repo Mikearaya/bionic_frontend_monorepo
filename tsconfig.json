@@ -265,6 +265,12 @@
       ],
       "@bionic/apis/crm/customer-invoice-api": [
         "libs/apis/crm/customer-invoice-api/src/index.ts"
+      ],
+      "@bionic/crm/customer-invoice-payment": [
+        "libs/crm/customer-invoice-payment/src/index.ts"
+      ],
+      "@bionic/apis/crm/customer-invoice-payment-api": [
+        "libs/apis/crm/customer-invoice-payment-api/src/index.ts"
       ]
     }
   },

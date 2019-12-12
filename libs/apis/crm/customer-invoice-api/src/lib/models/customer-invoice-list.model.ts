@@ -2,8 +2,6 @@ export interface CustomerInvoiceList {
   Id: number;
   CustomerName: string;
   PurchaseOrderId: number;
-  PreparedBy: number;
-  PrintCount: number | null;
   InvoiceType: string;
   PaymentMethod: string;
   Tax: number;
