@@ -1,6 +1,4 @@
-<h3 class="text-left " i18n="invoice section header">Invoice</h3>
-<section class="e-card">
-  {{ invoiceForm.value | json }}
+<section class="card">
   <bionic-notification #notification></bionic-notification>
   <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" novalidate="">
     <div class="container">

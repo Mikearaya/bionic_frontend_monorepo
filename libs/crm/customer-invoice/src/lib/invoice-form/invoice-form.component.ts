@@ -81,12 +81,14 @@ export class InvoiceFormComponent implements OnInit {
       Quantity: [0, Validators.required],
       UnitPrice: [0, Validators.required],
       Discount: [0],
+      InvoiceNo: [],
       Note: ['']
     });
   }
 
   createForm() {
     this.invoiceForm = this.formBuilder.group({
+      Id: [0],
       PurchaseOrderId: ['', Validators.required],
       InvoiceType: ['', Validators.required],
       DueDate: ['', Validators.required],
@@ -144,6 +146,7 @@ export class InvoiceFormComponent implements OnInit {
 
   private initializeForm(data: CustomerInvoice) {
     this.invoiceForm.patchValue(data);
+    this.items.controls = [];
 
     this.items.valueChanges.subscribe((value: any[]) => {
       this.calculatePrice(value);
@@ -160,7 +163,8 @@ export class InvoiceFormComponent implements OnInit {
   private initializeInvoiceDetails(data: CustomerInvoiceDetailItem): FormGroup {
     return this.formBuilder.group({
       Id: [data.Id],
-      SalesOrderId: [data.Id, Validators.required],
+      SalesOrderId: [data.SalesOrderId, Validators.required],
+      InvoiceNo: [data.InvoiceNo, Validators.required],
       ItemId: [data.ItemId, Validators.required],
       Quantity: [data.Quantity, [Validators.required]],
       UnitPrice: [data.UnitPrice, Validators.required],
@@ -171,18 +175,31 @@ export class InvoiceFormComponent implements OnInit {
 
   onSubmit() {
     const data = this.invoiceForm.value as CustomerInvoice;
-    this.invoiceApi.addCustomerInvoices(data).subscribe(
-      (result: CustomerInvoice) => {
-        this.notification.showMessage('Invoice Created');
-        this.initializeForm(data);
-      },
-      (error: HttpErrorResponse) => {
-        this.notification.showMessage(
-          'Error occured while creating invoice, try again later',
-          'error'
+    if (!this.isUpdate) {
+      this.invoiceApi.addCustomerInvoices(data).subscribe(
+        (result: CustomerInvoice) => {
+          this.notification.showMessage('Invoice Created');
+          this.initializeForm(data);
+        },
+        (error: HttpErrorResponse) => {
+          this.notification.showMessage(
+            'Error occured while creating invoice, try again later',
+            'error'
+          );
+        }
+      );
+    } else {
+      this.invoiceApi
+        .updateCustomerInvoices(data)
+        .subscribe(
+          () => this.notification.showMessage('Invoice Updated Successfully'),
+          (error: HttpErrorResponse) =>
+            this.notification.showMessage(
+              'Error while updating customer invoice try again later',
+              'error'
+            )
         );
-      }
-    );
+    }
   }
 
   addItem() {

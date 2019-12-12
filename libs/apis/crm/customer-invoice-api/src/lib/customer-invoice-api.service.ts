@@ -47,12 +47,10 @@ export class CustomerInvoiceApiService extends Subject<
     );
   }
   updateCustomerInvoices(
-    customerId: number,
     updatedCustomer: CustomerInvoice
   ): Observable<Boolean> {
-    updatedCustomer.Id = customerId;
     return this.httpClient.put<Boolean>(
-      `${this.apiUrl}/${this.controller}/${customerId}`,
+      `${this.apiUrl}/${this.controller}/${updatedCustomer.Id}`,
       updatedCustomer
     );
   }

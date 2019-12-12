@@ -88,6 +88,7 @@ export class CustomerOrderFormComponent implements OnInit {
       Description: [''],
       CustomerOrderItem: this.formBuilder.array([
         this.formBuilder.group({
+          Id: [''],
           ItemId: ['', Validators.required],
           PricePerItem: [0, [Validators.required, Validators.min(0)]],
           Quantity: [1, [Validators.required, Validators.min(1)]],

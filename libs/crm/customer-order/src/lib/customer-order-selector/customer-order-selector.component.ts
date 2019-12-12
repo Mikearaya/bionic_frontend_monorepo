@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       id="customers"
       [enabled]="!disabled"
       name="customers"
-      placeholder="Search customers"
+      placeholder="Search Customer order"
       [text]="text"
       [allowFiltering]="true"
       [fields]="fields"
