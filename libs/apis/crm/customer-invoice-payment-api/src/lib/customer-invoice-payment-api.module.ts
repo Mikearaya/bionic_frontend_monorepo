@@ -1,12 +1,15 @@
 import { NgModule, InjectionToken, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerInvoicePaymentApiOptionsService } from './customer-invoice-payment-api-options.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerInvoicePaymentApiService } from './customer-invoice-payment-api.service';
 
 export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<
   CustomerInvoicePaymentModuleOptions
 >('forRoot()  Customer Order Api configuration.');
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule, HttpClientModule],
+  providers: [CustomerInvoicePaymentApiService]
 })
 export class CustomerInvoicePaymentApiModule {
   static forRoot(

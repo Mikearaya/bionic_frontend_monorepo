@@ -25,28 +25,28 @@ export class CustomerInvoicePaymentApiService extends Subject<
     super();
   }
 
-  getAllCustomerOrders(): Observable<InvoicePaymentListView[]> {
+  getAllInvoicePayments(): Observable<InvoicePaymentListView[]> {
     return this.httpClient.get<InvoicePaymentListView[]>(
       `${this.apiUrl}/${this.controller}`
     );
   }
 
-  getCustomerOrderById(id: number): Observable<InvoicePaymentListView> {
+  getInvoicePaymentById(id: number): Observable<InvoicePaymentListView> {
     return this.httpClient.get<InvoicePaymentListView>(
       `${this.apiUrl}/${this.controller}/${id}`
     );
   }
 
-  createSalesOrder(
-    customerOrder: InvoicePaymentModel
+  createInvoicePayment(
+    InvoicePayment: InvoicePaymentModel
   ): Observable<InvoicePaymentListView> {
     return this.httpClient.post<InvoicePaymentListView>(
       `${this.apiUrl}/${this.controller}`,
-      customerOrder
+      InvoicePayment
     );
   }
 
-  updateSalesOrder(id: number, finishedProduct: any): Observable<Boolean> {
+  updateInvoicePayment(id: number, finishedProduct: any): Observable<Boolean> {
     finishedProduct.Id = id;
     return this.httpClient.put<Boolean>(
       `${this.apiUrl}/${this.controller}/${id}`,
@@ -54,18 +54,18 @@ export class CustomerInvoicePaymentApiService extends Subject<
     );
   }
 
-  deleteSalesOrder(id: number): Observable<Boolean> {
+  deleteInvoicePayment(id: number): Observable<Boolean> {
     return this.httpClient.delete<Boolean>(
       `${this.apiUrl}/${this.controller}/${id}`
     );
   }
 
-  updateCustomerOrderStatus(
-    customerOrderId: number,
+  updateInvoicePaymentStatus(
+    InvoicePaymentId: number,
     newStatus: string
   ): Observable<boolean> {
     return this.httpClient.put<boolean>(
-      `${this.apiUrl}/${this.controller}/${customerOrderId}`,
+      `${this.apiUrl}/${this.controller}/${InvoicePaymentId}`,
       { status: newStatus }
     );
   }

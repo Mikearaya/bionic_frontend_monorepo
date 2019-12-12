@@ -42,6 +42,16 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewInvoices'
   },
   {
+    id: '03',
+    name: 'Invoices Payments',
+    expanded: false,
+    enabled: true,
+    url: '/invoice-payments',
+    selected: false,
+    icon: 'fas fa-car',
+    privilage: 'canViewInvoicePayments'
+  },
+  {
     id: '04',
     name: 'Settings',
     expanded: false,
