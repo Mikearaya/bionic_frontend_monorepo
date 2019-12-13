@@ -1,6 +1,46 @@
-<form [formGroup]="invoicePaymentForm" class="card">
+<form [formGroup]="invoicePaymentForm" (ngSubmit)="onSubmit()" class="card">
   <div class="container">
-    <div class="col-6"></div>
-    <div class="col-6"></div>
+    <div class="row">
+      <div class="col-6">
+        <label for="invoice">Invoice</label>
+
+        <bionic-customer-invoice-selector
+          (invoiceChanged)="onInvoiceChanged($event)"
+          formControlName="InvoiceNo"
+        ></bionic-customer-invoice-selector>
+      </div>
+      <div class="col-6">
+        <label for="amount"> Amount</label>
+        <ejs-numerictextbox formControlName="Amount"></ejs-numerictextbox>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="checkNo">Check No </label>
+        <input type="text" class="e-input" formControlName="CheckNo" />
+      </div>
+      <div class="col-6">
+        <label for="date">Date</label>
+        <ejs-datepicker formControlName="Date"></ejs-datepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="note"> Note</label>
+        <textarea
+          name="note"
+          id="note"
+          cols="30"
+          class="e-input"
+          rows="10"
+          formControlName="Note"
+        ></textarea>
+      </div>
+    </div>
   </div>
+  <bionic-form-options
+    [submitDisabled]="invoicePaymentForm.invalid"
+  ></bionic-form-options>
 </form>
+
+<bionic-notification #notification></bionic-notification>

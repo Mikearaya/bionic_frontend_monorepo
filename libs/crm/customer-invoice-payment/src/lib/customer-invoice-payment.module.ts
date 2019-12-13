@@ -8,6 +8,9 @@ import { NotificationModule } from '@bionic/components/notification';
 import { FormButtonsModule } from '@bionic/components/form-buttons';
 import { CustomerInvoicePaymentApiModule } from '@bionic/apis/crm/customer-invoice-payment-api';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomerInvoiceSelectorModule } from '@bionic/crm/customer-invoice';
+import { NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     NotificationModule,
     FormButtonsModule,
+    CustomerInvoiceSelectorModule,
     CustomerInvoicePaymentApiModule,
+    DatePickerModule,
+    NumericTextBoxModule,
 
     RouterModule.forChild([
       {
@@ -29,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         data: { breadCrum: 'add', title: 'New Payment' }
       },
       {
-        path: ':invoiceId/update',
+        path: ':paymentId/update',
         component: CustomerInvoicePaymentFormComponent,
         data: { breadCrum: 'add', title: 'Update Payment' }
       }

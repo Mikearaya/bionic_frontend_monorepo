@@ -11,12 +11,16 @@ const routes: Routes = [
     children: [
       {
         path: 'customers',
-        loadChildren: '@bionic/crm/customer#CustomerModule',
+        loadChildren: () =>
+          import('@bionic/crm/customer').then(mod => mod.CustomerModule),
         data: { breadCrum: 'Customers', claimType: 'canViewCustomers' }
       },
       {
         path: 'customer-orders',
-        loadChildren: '@bionic/crm/customer-order#CustomerOrderModule',
+        loadChildren: () =>
+          import('@bionic/crm/customer-order').then(
+            mod => mod.CustomerOrderModule
+          ),
         data: {
           breadCrum: 'Customer Orders',
           claimType: 'canViewCustomerOrders'
@@ -24,7 +28,10 @@ const routes: Routes = [
       },
       {
         path: 'customer-invoices',
-        loadChildren: '@bionic/crm/customer-invoice#CustomerInvoiceModule',
+        loadChildren: () =>
+          import('@bionic/crm/customer-invoice').then(
+            mod => mod.CustomerInvoiceModule
+          ),
         data: {
           breadCrum: 'Customer Invoices',
           claimType: 'canViewCustomerInvoices'
@@ -32,8 +39,10 @@ const routes: Routes = [
       },
       {
         path: 'invoice-payments',
-        loadChildren:
-          '@bionic/crm/customer-invoice-payment#CustomerInvoicePaymentModule',
+        loadChildren: () =>
+          import('@bionic/crm/customer-invoice-payment').then(
+            mod => mod.CustomerInvoicePaymentModule
+          ),
         data: {
           breadCrum: 'Invoice Payment',
           claimType: 'canViewCustomerInvoicePayments'
@@ -48,19 +57,22 @@ const routes: Routes = [
         children: [
           {
             path: 'roles',
-            loadChildren: '@bionic/crm/roles#RolesModule',
+            loadChildren: () =>
+              import('@bionic/crm/roles').then(mod => mod.RolesModule),
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'users',
-            loadChildren: '@bionic/crm/users#UsersModule',
+            loadChildren: () =>
+              import('@bionic/crm/users').then(mod => mod.UsersModule),
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/crm/lookup#LookupModule',
+            loadChildren: () =>
+              import('@bionic/crm/lookup').then(mod => mod.LookupModule),
             data: {
               breadCrum: 'System Lookups',
               claimType: 'canViewSystemLookups'

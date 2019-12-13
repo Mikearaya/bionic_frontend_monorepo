@@ -42,7 +42,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewInvoices'
   },
   {
-    id: '03',
+    id: '04',
     name: 'Invoices Payments',
     expanded: false,
     enabled: true,
@@ -52,7 +52,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewInvoicePayments'
   },
   {
-    id: '04',
+    id: '05',
     name: 'Settings',
     expanded: false,
     enabled: true,
@@ -62,7 +62,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     privilage: 'canViewSettings',
     subChild: [
       {
-        id: '04-01',
+        id: '05-01',
         name: 'Lookups',
         url: '/settings/system-lookups',
         expanded: false,
@@ -71,7 +71,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewSystemLookups'
       },
       {
-        id: '04-02',
+        id: '05-02',
         name: 'Role',
         url: '/settings/roles',
         expanded: false,
@@ -80,7 +80,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
         privilage: 'canViewRoles'
       },
       {
-        id: '04-03',
+        id: '05-03',
         name: 'Users',
         url: '/settings/users',
         expanded: false,
@@ -91,7 +91,7 @@ export const NAVIGATION_LINKS: DefaultLayoutModel[] = [
     ]
   },
   {
-    id: '05',
+    id: '06',
     name: 'Reports',
     expanded: false,
     enabled: true,

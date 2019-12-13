@@ -29,14 +29,15 @@ export const customerInvoicePaymentColumns: CustomGridColumns[] = [
   },
   { key: 'Date', header: 'Date', type: 'date', format: 'yMd', width: 30 },
   { key: 'CheckNo', header: 'CheckNo', type: 'string', width: 28 },
-  { key: 'Note', header: 'Note', type: 'string', width: 50 },
+  { key: 'Note', header: 'Note', type: 'string', width: 50, visible: false },
 
   {
     key: 'DateAdded',
     header: 'Created',
     format: 'yMd',
     type: 'date',
-    width: 30
+    width: 30,
+    visible: false
   },
   {
     key: 'DateUpdated',

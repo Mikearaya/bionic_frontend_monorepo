@@ -1,4 +1,11 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomerInvoiceApiService } from '@bionic/apis/crm/customer-invoice-api';
 import { Predicate, Query } from '@syncfusion/ej2-data';
@@ -9,8 +16,8 @@ import { Predicate, Query } from '@syncfusion/ej2-data';
     <ejs-dropdownlist
       id="customers"
       [enabled]="!disabled"
-      name="customers"
-      placeholder="Search customers"
+      CustomerName="customers"
+      placeholder="Search Invoice"
       [text]="text"
       [allowFiltering]="true"
       [fields]="fields"
@@ -38,15 +45,19 @@ export class CustomerInvoiceSelectorComponent {
 
   @Input()
   public searchBarPlaceholder: string;
+  @Output()
+  public invoiceChanged: EventEmitter<number> = new EventEmitter<number>();
+
   public customers: any;
-  public fields: object = { value: 'Id', text: 'Name' };
+  public fields: object = { value: 'InvoiceId', text: 'CustomerName' };
 
   public text = '';
   constructor(private itemApi: CustomerInvoiceApiService) {}
 
   customerChanged($event: any) {
     if ($event.itemData) {
-      this.onChanged($event.itemData['Id']);
+      this.invoiceChanged.emit($event.itemData['InvoiceId']);
+      this.onChanged($event.itemData['InvoiceId']);
     } else {
       this.onChanged('');
     }
@@ -56,7 +67,7 @@ export class CustomerInvoiceSelectorComponent {
 
   public onFiltering(e) {
     e.preventDefaultAction = true;
-    const predicate = new Predicate('Name', 'Contains', e.text);
+    const predicate = new Predicate('CustomerName', 'Contains', e.text);
 
     let query = new Query();
 
@@ -79,7 +90,7 @@ export class CustomerInvoiceSelectorComponent {
         if (obj !== 0) {
           const data = this.customers.filter(a => a.Id === obj);
           data.forEach(element => {
-            this.text = element.Name;
+            this.text = element.CustomerName;
           });
         }
       }

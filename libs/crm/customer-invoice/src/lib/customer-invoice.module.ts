@@ -52,10 +52,6 @@ import { CustomerInvoiceSelectorComponent } from './customer-invoice-selector/cu
       }
     ])
   ],
-  declarations: [
-    InvoiceFormComponent,
-    InvoiceViewComponent,
-    CustomerInvoiceSelectorComponent
-  ]
+  declarations: [InvoiceFormComponent, InvoiceViewComponent]
 })
 export class CustomerInvoiceModule {}

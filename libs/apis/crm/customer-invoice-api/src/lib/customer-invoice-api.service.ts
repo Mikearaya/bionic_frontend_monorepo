@@ -35,6 +35,9 @@ export class CustomerInvoiceApiService extends Subject<
     );
   }
 
+
+  
+
   getAllCustomerInvoices(): Observable<CustomerInvoiceList[]> {
     return this.httpClient.get<CustomerInvoiceList[]>(
       `${this.apiUrl}/${this.controller}`

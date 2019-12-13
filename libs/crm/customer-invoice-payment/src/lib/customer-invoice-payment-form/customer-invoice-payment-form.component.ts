@@ -9,7 +9,8 @@ import {
 import {
   CustomerInvoicePaymentApiService,
   InvoicePaymentListView,
-  InvoicePaymentModel
+  InvoicePaymentModel,
+  InvoicePaymentStatusView
 } from '@bionic/apis/crm/customer-invoice-payment-api';
 import { NotificationComponent } from '@bionic/components/notification';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -88,8 +89,8 @@ export class CustomerInvoicePaymentFormComponent implements OnInit {
     if (!this.isUpdate) {
       this.invoicePaymentApi.createInvoicePayment(formData).subscribe(
         (data: InvoicePaymentListView) => {
-          this.notification.showMessage('Invoice payment added successfuly');
           this.initializeForm(data);
+          this.notification.showMessage('Invoice payment added successfuly');
         },
         (error: HttpErrorResponse) =>
           this.notification.showMessage(
@@ -117,5 +118,17 @@ export class CustomerInvoicePaymentFormComponent implements OnInit {
   private prepareFormData(): InvoicePaymentModel {
     const formData = this.invoicePaymentForm.value as InvoicePaymentModel;
     return formData;
+  }
+
+  private initializeRemaining(status: InvoicePaymentStatusView) {
+    this.amount.setValue(status.RemainingAmount);
+  }
+
+  onInvoiceChanged($event): void {
+    this.invoicePaymentApi
+      .getInvoicePaymentStatus($event)
+      .subscribe((data: InvoicePaymentStatusView) =>
+        this.initializeRemaining(data)
+      );
   }
 }

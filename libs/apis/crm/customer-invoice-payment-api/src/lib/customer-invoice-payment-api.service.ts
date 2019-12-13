@@ -8,6 +8,7 @@ import { CustomerInvoicePaymentApiOptionsService } from './customer-invoice-paym
 import { HttpClient } from '@angular/common/http';
 import { InvoicePaymentListView } from './models/invoice-payment-list-view.model';
 import { InvoicePaymentModel } from './models/invoice-payment.model';
+import { InvoicePaymentStatusView } from './models/invoice-payment-status-view.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class CustomerInvoicePaymentApiService extends Subject<
   getAllInvoicePayments(): Observable<InvoicePaymentListView[]> {
     return this.httpClient.get<InvoicePaymentListView[]>(
       `${this.apiUrl}/${this.controller}`
+    );
+  }
+
+  getInvoicePaymentStatus(
+    invoiceId: number
+  ): Observable<InvoicePaymentStatusView> {
+    return this.httpClient.get<InvoicePaymentStatusView>(
+      `${this.apiUrl}/${this.controller}/${invoiceId}/remaining`
     );
   }
 
