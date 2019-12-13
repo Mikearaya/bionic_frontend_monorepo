@@ -15,12 +15,15 @@ const routes: Routes = [
           breadCrum: 'Items',
           claimType: 'canViewItems'
         },
-        loadChildren: '@bionic/inventory/item#ItemModule'
+        loadChildren: () =>
+          import('@bionic/inventory/item').then(mod => mod.ItemModule)
       },
       {
         path: 'critical-inventories',
-        loadChildren:
-          '@bionic/inventory/critical-inventory#CriticalInventoryModule',
+        loadChildren: () =>
+          import('@bionic/inventory/critical-inventory').then(
+            mod => mod.CriticalInventoryModule
+          ),
         data: {
           breadCrum: 'Critical Items',
           claimType: 'canViewCriticalInventories'
@@ -28,7 +31,10 @@ const routes: Routes = [
       },
       {
         path: 'inventory',
-        loadChildren: '@bionic/inventory/inventory-count#InventoryCountModule',
+        loadChildren: () =>
+          import('@bionic/inventory/inventory-count').then(
+            mod => mod.InventoryCountModule
+          ),
         data: {
           breadCrum: 'Inventory',
           claimType: 'canViewInventory'
@@ -36,7 +42,10 @@ const routes: Routes = [
       },
       {
         path: 'stock-batchs',
-        loadChildren: '@bionic/inventory/stock-batch#StockBatchModule',
+        loadChildren: () =>
+          import('@bionic/inventory/stock-batch').then(
+            mod => mod.StockBatchModule
+          ),
         data: {
           breadCrum: 'Stock Batchs',
           claimType: 'canViewStockBatchs'
@@ -44,7 +53,10 @@ const routes: Routes = [
       },
       {
         path: 'write-offs',
-        loadChildren: '@bionic/inventory/write-offs#WriteOffsModule',
+        loadChildren: () =>
+          import('@bionic/inventory/write-offs').then(
+            mod => mod.WriteOffsModule
+          ),
         data: {
           breadCrum: 'Write Offs',
           claimType: 'canViewWriteOffs'
@@ -52,7 +64,8 @@ const routes: Routes = [
       },
       {
         path: 'shipments',
-        loadChildren: '@bionic/inventory/shipment#ShipmentModule',
+        loadChildren: () =>
+          import('@bionic/inventory/shipment').then(mod => mod.ShipmentModule),
         data: {
           breadCrum: 'Shipments',
           claimType: 'canViewShipments'
@@ -60,7 +73,10 @@ const routes: Routes = [
       },
       {
         path: 'stock-movements',
-        loadChildren: '@bionic/inventory/stock-movement#StockMovementModule'
+        loadChildren: () =>
+          import('@bionic/inventory/stock-movement').then(
+            mod => mod.StockMovementModule
+          )
       },
       {
         path: 'settings',
@@ -71,19 +87,24 @@ const routes: Routes = [
         children: [
           {
             path: 'roles',
-            loadChildren: '@bionic/inventory/roles#RolesModule',
+            loadChildren: () =>
+              import('@bionic/inventory/roles').then(mod => mod.RolesModule),
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'users',
-            loadChildren: '@bionic/inventory/users#UsersModule',
+            loadChildren: () =>
+              import('@bionic/inventory/users').then(mod => mod.UsersModule),
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/inventory/system-lookup#LookupModule',
+            loadChildren: () =>
+              import('@bionic/inventory/system-lookup').then(
+                mod => mod.LookupModule
+              ),
             data: {
               breadCrum: 'System Lookups',
               claimType: 'canViewSystemLookups'
@@ -91,13 +112,18 @@ const routes: Routes = [
           },
           {
             path: 'item-groups',
-            loadChildren: '@bionic/inventory/item-groups#ItemGroupsModule',
+            loadChildren: () =>
+              import('@bionic/inventory/item-groups').then(
+                mod => mod.ItemGroupsModule
+              ),
             data: { breadCrum: 'Item Groups', claimType: 'canViewItemGroups' }
           },
           {
             path: 'unit-of-measurments',
-            loadChildren:
-              '@bionic/inventory/unit-of-measurments#UnitOfMeasurmentsModule',
+            loadChildren: () =>
+              import('@bionic/inventory/unit-of-measurments').then(
+                mod => mod.UnitOfMeasurmentsModule
+              ),
             data: {
               breadCrum: 'Unit Of Measurments',
               claimType: 'canViewUnitOfMeasurments'
@@ -105,8 +131,10 @@ const routes: Routes = [
           },
           {
             path: 'storage-locations',
-            loadChildren:
-              '@bionic/inventory/storage-locations#StorageLocationsModule',
+            loadChildren: () =>
+              import('@bionic/inventory/storage-locations').then(
+                mod => mod.StorageLocationsModule
+              ),
             data: {
               breadCrum: 'Storage Locations',
               claimType: 'canViewStorageLocations'
