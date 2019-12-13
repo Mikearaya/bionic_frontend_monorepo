@@ -11,7 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: 'purchase-orders',
-        loadChildren: '@bionic/procurment/purchase-order#PurchaseOrderModule',
+        loadChildren: () =>
+          import('@bionic/procurment/purchase-order').then(
+            mod => mod.PurchaseOrderModule
+          ),
         data: {
           breadCrum: 'Purchase orders',
           title: 'Purchase Order',
@@ -20,8 +23,10 @@ const routes: Routes = [
       },
       {
         path: 'purchase-recievings',
-        loadChildren:
-          '@bionic/procurment/purchase-recieving#PurchaseRecievingModule',
+        loadChildren: () =>
+          import('@bionic/procurment/purchase-recieving').then(
+            mod => mod.PurchaseRecievingModule
+          ),
         data: {
           breadCrum: 'Purchase requests',
           title: 'Purchase requests',
@@ -30,8 +35,10 @@ const routes: Routes = [
       },
       {
         path: 'purchase-order-payments',
-        loadChildren:
-          '@bionic/procurment/purchase-order-payment#PurchaseOrderPaymentModule',
+        loadChildren: () =>
+          import('@bionic/procurment/purchase-order-payment').then(
+            mod => mod.PurchaseOrderPaymentModule
+          ),
         data: {
           breadCrum: 'Purchase Order Payment',
           title: 'Purchase Order Payments',
@@ -40,7 +47,10 @@ const routes: Routes = [
       },
       {
         path: 'purchase-terms',
-        loadChildren: '@bionic/procurment/purchase-term#PurchaseTermModule',
+        loadChildren: () =>
+          import('@bionic/procurment/purchase-term').then(
+            mod => mod.PurchaseTermModule
+          ),
         data: {
           breadCrum: 'Purchase Terms',
           title: 'Purchase Terms',
@@ -49,7 +59,8 @@ const routes: Routes = [
       },
       {
         path: 'vendors',
-        loadChildren: '@bionic/procurment/vendor#VendorModule',
+        loadChildren: () =>
+          import('@bionic/procurment/vendor').then(mod => mod.VendorModule),
         data: {
           breadCrum: 'Vendors',
           title: 'Vendors',
@@ -65,19 +76,24 @@ const routes: Routes = [
         children: [
           {
             path: 'roles',
-            loadChildren: '@bionic/procurment/roles#RolesModule',
+            loadChildren: () =>
+              import('@bionic/procurment/roles').then(mod => mod.RolesModule),
             data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'users',
-            loadChildren: '@bionic/procurment/users#UsersModule',
+            loadChildren: () =>
+              import('@bionic/procurment/users').then(mod => mod.UsersModule),
             data: { breadCrum: 'Users', claimType: 'canViewUsers' },
             canLoad: [AuthorizationGuard]
           },
           {
             path: 'system-lookups',
-            loadChildren: '@bionic/procurment/system-lookup#LookupModule'
+            loadChildren: () =>
+              import('@bionic/procurment/system-lookup').then(
+                mod => mod.LookupModule
+              )
           }
         ]
       }
