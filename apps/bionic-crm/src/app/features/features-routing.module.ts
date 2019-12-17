@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FeaturesComponent } from './features.component';
 import { AuthorizationGuard } from '@bionic/apis/common/access-control-api';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,16 @@ const routes: Routes = [
     component: FeaturesComponent,
     data: { breadCrum: 'Home' },
     children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        data: {
+          breadCrum: 'Dashboard',
+          title: 'Dashboard',
+          claimType: 'canViewCrmDashboard'
+        }
+      },
+
       {
         path: 'customers',
         loadChildren: () =>
@@ -59,15 +70,13 @@ const routes: Routes = [
             path: 'roles',
             loadChildren: () =>
               import('@bionic/crm/roles').then(mod => mod.RolesModule),
-            data: { breadCrum: 'Roles', claimType: 'canViewRoles' },
-            canLoad: [AuthorizationGuard]
+            data: { breadCrum: 'Roles', claimType: 'canViewRoles' }
           },
           {
             path: 'users',
             loadChildren: () =>
               import('@bionic/crm/users').then(mod => mod.UsersModule),
-            data: { breadCrum: 'Users', claimType: 'canViewUsers' },
-            canLoad: [AuthorizationGuard]
+            data: { breadCrum: 'Users', claimType: 'canViewUsers' }
           },
           {
             path: 'system-lookups',

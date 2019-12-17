@@ -358,6 +358,9 @@
     },
     "apis-crm-customer-invoice-payment-api": {
       "tags": ["crm"]
+    },
+    "apis-crm-crm-report-api": {
+      "tags": ["crm"]
     }
   }
 }

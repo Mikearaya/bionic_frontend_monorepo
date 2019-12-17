@@ -12,13 +12,29 @@ import { RouterModule } from '@angular/router';
       [
         {
           path: '',
+          loadChildren: () =>
+            import('./features/features.module').then(
+              mod => mod.FeaturesModule
+            ),
+          data: { breadCrum: 'home' }
+        },
+        {
+          path: 'login',
+          loadChildren: () =>
+            import('@bionic/components/authentication').then(
+              mod => mod.AuthenticationModule
+            )
+        }
+        /*
+        {
+          path: '',
           loadChildren: './features/features.module#FeaturesModule',
           data: { breadCrum: 'home' }
         },
         {
           path: 'login',
           loadChildren: '@bionic/components/authentication#AuthenticationModule'
-        }
+        } */
       ],
       { initialNavigation: 'enabled' }
     )
@@ -27,3 +43,19 @@ import { RouterModule } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+/* {
+          path: '',
+          loadChildren: () =>
+            import('./features/features.module').then(
+              mod => mod.FeaturesModule
+            ),
+          data: { breadCrum: 'home' }
+        },
+        {
+          path: 'login',
+          loadChildren: () =>
+            import('@bionic/components/authentication').then(
+              mod => mod.AuthenticationModule
+            )
+        } */
