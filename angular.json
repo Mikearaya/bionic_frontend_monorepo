@@ -4376,6 +4376,43 @@
         }
       },
       "schematics": {}
+    },
+    "apis-procurment-procurment-report-api": {
+      "root": "libs/apis/procurment/procurment-report-api",
+      "sourceRoot": "libs/apis/procurment/procurment-report-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/procurment/procurment-report-api/tsconfig.lib.json",
+            "project": "libs/apis/procurment/procurment-report-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/procurment/procurment-report-api/tsconfig.lib.json",
+              "libs/apis/procurment/procurment-report-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/apis/procurment/procurment-report-api/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/procurment/procurment-report-api/src/test.ts",
+            "tsConfig": "libs/apis/procurment/procurment-report-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/procurment/procurment-report-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

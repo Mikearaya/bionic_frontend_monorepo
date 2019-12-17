@@ -274,6 +274,9 @@
       ],
       "@bionic/apis/crm/crm-report-api": [
         "libs/apis/crm/crm-report-api/src/index.ts"
+      ],
+      "@bionic/apis/procurment/procurment-report-api": [
+        "libs/apis/procurment/procurment-report-api/src/index.ts"
       ]
     }
   },

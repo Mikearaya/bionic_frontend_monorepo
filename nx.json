@@ -361,6 +361,9 @@
     },
     "apis-crm-crm-report-api": {
       "tags": ["crm"]
+    },
+    "apis-procurment-procurment-report-api": {
+      "tags": ["procurment"]
     }
   }
 }
