@@ -4413,6 +4413,43 @@
         }
       },
       "schematics": {}
+    },
+    "apis-inventory-inventory-report-api": {
+      "root": "libs/apis/inventory/inventory-report-api",
+      "sourceRoot": "libs/apis/inventory/inventory-report-api/src",
+      "projectType": "library",
+      "prefix": "bionic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/apis/inventory/inventory-report-api/tsconfig.lib.json",
+            "project": "libs/apis/inventory/inventory-report-api/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/apis/inventory/inventory-report-api/tsconfig.lib.json",
+              "libs/apis/inventory/inventory-report-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/apis/inventory/inventory-report-api/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/apis/inventory/inventory-report-api/src/test.ts",
+            "tsConfig": "libs/apis/inventory/inventory-report-api/tsconfig.spec.json",
+            "karmaConfig": "libs/apis/inventory/inventory-report-api/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

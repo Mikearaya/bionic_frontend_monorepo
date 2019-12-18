@@ -277,6 +277,9 @@
       ],
       "@bionic/apis/procurment/procurment-report-api": [
         "libs/apis/procurment/procurment-report-api/src/index.ts"
+      ],
+      "@bionic/apis/inventory/inventory-report-api": [
+        "libs/apis/inventory/inventory-report-api/src/index.ts"
       ]
     }
   },

@@ -364,6 +364,9 @@
     },
     "apis-procurment-procurment-report-api": {
       "tags": ["procurment"]
+    },
+    "apis-inventory-inventory-report-api": {
+      "tags": ["inventory"]
     }
   }
 }
