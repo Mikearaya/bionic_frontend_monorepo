@@ -62,7 +62,7 @@
     "@syncfusion/ej2-treegrid": "^17.3.29",
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.15.0",
     "rxjs": "6.3.3",
     "zone.js": "^0.8.26"
