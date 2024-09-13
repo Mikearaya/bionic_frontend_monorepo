@@ -60,7 +60,7 @@
     "@syncfusion/ej2-dropdowns": "^17.3.30",
     "@syncfusion/ej2-layouts": "^16.4.55",
     "@syncfusion/ej2-treegrid": "^17.3.29",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^5.0.0",
     "core-js": "^2.5.4",
     "jquery": "^3.5.0",
     "popper.js": "^1.15.0",
