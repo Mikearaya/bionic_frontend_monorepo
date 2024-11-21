@@ -71,7 +71,7 @@
     "@angular-devkit/build-angular": "14.2.13",
     "@angular-devkit/build-ng-packagr": "~0.13.0",
     "@angular/cli": "15.1.4",
-    "@angular/compiler-cli": "^7.0.0",
+    "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "^7.0.0",
     "@ngrx/store-devtools": "7.2.0",
     "@nrwl/builders": "7.6.2",
